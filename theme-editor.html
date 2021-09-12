@@ -30,20 +30,33 @@
                 <button id="account-btn" data-tooltip="Account">
                     <img src="res/imgs/account.svg" width="24px" height="24px">
                 </button>
-                <button id="menu-btn" data-tooltip="Menu" onclick="toggleSideBar()">
+                <button id="menu-btn" data-tooltip="Menu" onclick="toggleSidebar()">
                     <img src="res/imgs/menu.svg" width="32px" height="32px">
                 </button>
 
                 <section id="menu-side-bar">
                     <h1>Organization</h1>
                     <ul>
-                        <li>View your themes in <span class="switch">Grid <input type="checkbox" class="switch"> List</span></li>
-                        <li>Page is in <span class="switch">Light <input type="checkbox" class="switch" id="theme-switch"> Dark</span> mode</li>
+                        <li>
+                            View your themes in <span class="switch">
+                                <span class="first">Grid</span>
+                                <input type="checkbox" class="switch">
+                                <span class="second">List</span>
+                            </span>
+                        </li>
+                        <li>
+                            Page is in <span class="switch">
+                                <span class="first">Light</span>
+                                <input type="checkbox" class="switch" id="theme-switch">
+                                <span class="second">Dark</span>
+                            </span> mode
+                        </li>
                     </ul>
 
                     <hr>
                 </section>
-                <div id="page-filter" onclick="collapseSideBar()"></div>
+
+                <div id="page-filter" onclick="collapseSidebar()"></div>
             </div>
         </nav>
 

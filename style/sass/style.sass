@@ -56,7 +56,7 @@ body.light
 
 body.dark
     color: #eee
-    background: #292b30
+    background: #202225 // #292b30
 
     $tooltip-bg-color: #18191c
     $tooltip-color: #dcddde
@@ -315,13 +315,17 @@ input.switch, input.toggle, input.toggler
         border-radius: 100px
         // margin: 0
 
+        & ~ .second
+            transition: color 0.25s
+            color: #3ba55d
+
         &[checked]
             background: #3ba55d
 
             &::after
                 left: calc(1rem + 3px)
                 // right: 3px
-
+            
         // todo: disabled
 
         &::after
@@ -342,10 +346,13 @@ span
     &.switch, &.toggle, &.toggler
         display: inline-flex
         align-items: center
-        color: #72767d // TODO: change color to green for whichever text is the picked option
+        color: #72767d
 
         > input
             margin: 0 0.25rem
+
+    > .first, > .second
+        font-weight: bold
 
 section ul
     > li
