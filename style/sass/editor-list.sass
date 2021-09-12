@@ -1,5 +1,3 @@
-$theme-item-width: 23.5rem
-    
 
 /*
  * TODO: PLAN: the 'rows' div holds all theme-items
@@ -9,6 +7,22 @@ $theme-item-width: 23.5rem
 
  * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger
  */
+
+
+body.light
+    .theme-item
+        // background-color: 
+
+body.dark
+    .theme-item
+        background-color: #2f3136
+        color: #b9bbbe // #fff
+        &:hover
+            background-color: #393d44
+        &:active
+            background-color: #3c3f46
+
+
 
 #theme-list
     padding: 2.5rem 2rem 2.5rem 2rem
@@ -21,16 +35,40 @@ $theme-item-width: 23.5rem
         
 
     .theme-item
-        max-width: $theme-item-width
+        max-width: 23.5rem
+        width: 23.5rem
+        max-height: 16.544rem
         border-radius: 10px
+        border: none
         margin: 0 1.15rem 2.5rem 1.15rem
+        padding: 0
         text-align: center
+        cursor: pointer
+        
+        h3
+            display: inline-block
 
-        &:hover
-            background: #000
-
-        > img.thumbnail
-            width: $theme-item-width
+        > .img-wrapper
+            width: 100%
             border-radius: inherit
             border-bottom-right-radius: 0
             border-bottom-left-radius: 0
+            overflow: hidden
+
+            > .theme-bg
+                width: 100%
+                
+
+#new-theme
+    .img-wrapper
+        background-color: #3ba55d
+        height: 13.219rem
+
+        display: flex
+        justify-content: center
+
+        img, svg
+            fill: white
+            stroke: white
+            width: 25%
+            aspect-ratio: 1

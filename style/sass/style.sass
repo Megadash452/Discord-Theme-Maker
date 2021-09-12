@@ -31,6 +31,7 @@ body.home #back-btn
 
 body.light
     // color: darkgrey
+    background: #e3e5e8
 
     $tooltip-bg-color: #fff
     $tooltip-color: #000
@@ -53,6 +54,7 @@ body.light
 
     #menu-side-bar
         background-color: #f2f3f5
+        color: #4f5660
 
 body.dark
     color: #eee
@@ -201,6 +203,9 @@ button, a
 
         &:hover::before, &:hover::after
             --scale: 1
+        &:active::before, &:active::after
+            --scale: 0
+            
 
     
     &[tooltip-direction="left"]
@@ -354,9 +359,18 @@ span
     > .first, > .second
         font-weight: bold
 
-section ul
+ul.settings
+    padding-left: 0
+    
+    > h1
+        display: inline-block
+        margin-top: 0.5rem
+        margin-left: 1rem
     > li
+        margin-left: 2.5rem
         margin-bottom: 0.5rem
+        &::marker
+            content: ''
 
 
 #main-content

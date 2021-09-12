@@ -6,10 +6,28 @@
 
  * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger
  */
+/* line 17, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.dark .theme-item {
+  background-color: #2f3136;
+  color: #b9bbbe;
+}
+
+/* line 20, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.dark .theme-item:hover {
+  background-color: #393d44;
+}
+
+/* line 22, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.dark .theme-item:active {
+  background-color: #3c3f46;
+}
+
+/* line 27, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list {
   padding: 2.5rem 2rem 2.5rem 2rem;
 }
 
+/* line 30, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list > .rows {
   display: flex;
   flex-direction: row;
@@ -17,20 +35,52 @@
   flex-wrap: wrap;
 }
 
+/* line 37, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item {
   max-width: 23.5rem;
-  border-radius: 10px;
-  margin: 0 1.15rem 2.5rem 1.15rem;
-  text-align: center;
-}
-
-#theme-list .theme-item:hover {
-  background: #000;
-}
-
-#theme-list .theme-item > img.thumbnail {
   width: 23.5rem;
+  max-height: 16.544rem;
+  border-radius: 10px;
+  border: none;
+  margin: 0 1.15rem 2.5rem 1.15rem;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 48, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+#theme-list .theme-item h3 {
+  display: inline-block;
+}
+
+/* line 51, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+#theme-list .theme-item > .img-wrapper {
+  width: 100%;
   border-radius: inherit;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  overflow: hidden;
 }
+
+/* line 58, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+#theme-list .theme-item > .img-wrapper > .theme-bg {
+  width: 100%;
+}
+
+/* line 63, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+#new-theme .img-wrapper {
+  background-color: #3ba55d;
+  height: 13.219rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* line 70, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+#new-theme .img-wrapper img, #new-theme .img-wrapper svg {
+  fill: white;
+  stroke: white;
+  width: 25%;
+  aspect-ratio: 1;
+}
+
+/*# sourceMappingURL=editor-list.css.map */
