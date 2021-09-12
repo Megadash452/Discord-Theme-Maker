@@ -79,6 +79,7 @@ body.dark
 
     #menu-side-bar
         background-color: #2f3136 // #3e4148
+        color: #dcddde
 
 
 
@@ -181,7 +182,7 @@ button, a
 
             --scale: 0
             transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) scale(var(--scale))
-            transition: transform 0.05s
+            transition: transform 0.05s // ! do not add delay
 
         &::before
             content: attr(data-tooltip)
@@ -264,6 +265,7 @@ button, a
     +abs-pos($nav-padding * 2 + $nav-btn-size, auto, auto, 0)
     transition: right 0.5s, box-shadow 0.7s
     padding: 0.5rem 0.625rem
+    cursor: auto
 
     border: 2px solid #686a6c
     border-right: none
@@ -311,7 +313,7 @@ input.switch, input.toggle, input.toggler
         background: #72767d
         transition: background 0.25s
         border-radius: 100px
-        margin: 0
+        // margin: 0
 
         &[checked]
             background: #3ba55d
@@ -335,6 +337,19 @@ input.switch, input.toggle, input.toggler
 
             background: white
             border-radius: inherit
+
+span
+    &.switch, &.toggle, &.toggler
+        display: inline-flex
+        align-items: center
+        color: #72767d // TODO: change color to green for whichever text is the picked option
+
+        > input
+            margin: 0 0.25rem
+
+section ul
+    > li
+        margin-bottom: 0.5rem
 
 
 #main-content

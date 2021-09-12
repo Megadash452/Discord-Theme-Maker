@@ -6,10 +6,12 @@
 
  * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger
  */
+/* line 13, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list {
   padding: 2.5rem 2rem 2.5rem 2rem;
 }
 
+/* line 16, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list > .rows {
   display: flex;
   flex-direction: row;
@@ -17,6 +19,7 @@
   flex-wrap: wrap;
 }
 
+/* line 23, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item {
   max-width: 23.5rem;
   border-radius: 10px;
@@ -24,13 +27,17 @@
   text-align: center;
 }
 
+/* line 29, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item:hover {
   background: #000;
 }
 
+/* line 32, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item > img.thumbnail {
   width: 23.5rem;
   border-radius: inherit;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+/*# sourceMappingURL=editor-list.css.map */

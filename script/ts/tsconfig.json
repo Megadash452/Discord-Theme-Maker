@@ -4,7 +4,8 @@
         "sourceMap": true,
         "target": "es6",
         "strict": true,
-        "outDir": "../js"
+        "outDir": "../js",
+        "lib": ["DOM", "ES2021", "ES6"]
     },
     "exclude": [
         "node_modules"

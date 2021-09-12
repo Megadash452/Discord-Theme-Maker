@@ -15,25 +15,41 @@ const collapseSideBar = () => {
 }
 
 
+const toggleCheckbox = (checkbox) => {
+    if (checkbox.checked)
+        uncheckCheckbox(checkbox);
+    else
+        checkCheckbox(checkbox);
+}
+const checkCheckbox = (checkbox) => {
+    checkbox.setAttribute("checked", "");
+    checkbox.checked = true;
+}
+const uncheckCheckbox = (checkbox) => {
+    checkbox.removeAttribute("checked");
+    checkbox.checked = false;
+}
+
+
 let themeSwitch = document.getElementById("theme-switch");
 
-if (themeSwitch && window.matchMedia("(prefers-color-scheme: light)").matches) {
+if (window.matchMedia("(prefers-color-scheme: light)").matches) {
     document.body.classList.add("light");
-    themeSwitch.checked = false;
-} else if (themeSwitch) {
+    if (themeSwitch) uncheckCheckbox(themeSwitch);
+} else {
     document.body.classList.add("dark");
-    themeSwitch.checked = true;
+    if (themeSwitch) checkCheckbox(themeSwitch);
 }
 
 window.matchMedia("(prefers-color-scheme: light)").onchange = (e) => {
     if (e.matches) {
         document.body.classList.remove("dark");
         document.body.classList.add("light");
-        themeSwitch.checked = false;
+        if (themeSwitch) uncheckCheckbox(themeSwitch);
     } else {
         document.body.classList.remove("light");
         document.body.classList.add("dark");
-        themeSwitch.checked = true;
+        if (themeSwitch) checkCheckbox(themeSwitch);
     }
 };
 
@@ -52,9 +68,9 @@ document.querySelectorAll(   // * Goes last
     `input[type="checkbox"].switch, input[type="checkbox"].toggle, input[type="checkbox"].toggler`
 ).forEach(checkbox => {
     if (checkbox.checked)
-            checkbox.setAttribute("checked", "");
-        else
-            checkbox.removeAttribute("checked");
+        checkbox.setAttribute("checked", "");
+    else
+        checkbox.removeAttribute("checked");
             
     checkbox.addEventListener('click', () => {
         if (checkbox.checked)
