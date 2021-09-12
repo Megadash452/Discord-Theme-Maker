@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "editor-list.css",
+	"sources": [
+		"../sass/editor-list.sass"
+	],
+	"sourcesContent": [
+		"$theme-item-width: 23.5rem;\n\n\n/*\n * TODO: PLAN: the 'rows' div holds all theme-items\n * The side margins of each item will be around 1rem and will stay static\n * Each item will have a bottom margin equal to the padding/margin of the parent\n * The width of each item will be dynamic and will have a max width of 23.5rem\n\n * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger\n */\n\n#theme-list {\n    padding: 2.5rem 2rem 2.5rem 2rem;\n\n    > .rows {\n        display: flex;\n        flex-direction: row;\n        justify-content: start;\n        flex-wrap: wrap; }\n\n\n    .theme-item {\n        max-width: $theme-item-width;\n        border-radius: 10px;\n        margin: 0 1.15rem 2.5rem 1.15rem;\n        text-align: center;\n\n        &:hover {\n            background: #000; }\n\n        > img.thumbnail {\n            width: $theme-item-width;\n            border-radius: inherit;\n            border-bottom-right-radius: 0;\n            border-bottom-left-radius: 0; } } }\n"
+	],
+	"names": [],
+	"mappings": "AAGA;;;;;;;GAOG;;AAEH,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,uBAAuB;CAsBW;;;AAvB/C,AAGI,WAHO,GAGL,KAAK,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,KAAK;EACtB,SAAS,EAAE,IAAI;CAAG;;;AAP1B,AAUI,WAVO,CAUP,WAAW,CAAC;EACR,SAAS,EAvBE,OAAO;EAwBlB,aAAa,EAAE,IAAI;EACnB,MAAM,EAAE,wBAAwB;EAChC,UAAU,EAAE,MAAM;CASmB;;;AAvB7C,AAgBQ,WAhBG,CAUP,WAAW,AAMN,MAAM,CAAC;EACJ,UAAU,EAAE,IAAI;CAAG;;;AAjB/B,AAmBQ,WAnBG,CAUP,WAAW,GASL,GAAG,AAAA,UAAU,CAAC;EACZ,KAAK,EAhCE,OAAO;EAiCd,aAAa,EAAE,OAAO;EACtB,0BAA0B,EAAE,CAAC;EAC7B,yBAAyB,EAAE,CAAC;CAAG"
+}

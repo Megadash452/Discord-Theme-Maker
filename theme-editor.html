@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Theme Editor</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="style/css/style.css">
+        <link rel="stylesheet" href="style/css/editor-list.css">
+
+        <script defer src="script/js/ui.js"></script>
+    </head>
+
+    <body class="theme-editor">
+        <nav id="navbar">
+            <div class="header">
+                <a href="index.html" id="back-btn">
+                    <img src="res/imgs/back.svg">
+                </a>
+                <div class="title">
+                    <h1>Discord Theme Maker</h1>
+                </div>
+                
+            </div>
+            <div class="info">
+                <a id="themes-btn" class="active" data-tooltip="Theme Editor">
+                    <img src="res/imgs/brush.svg" width="24px" height="24px">
+                </a>
+                <button id="account-btn" data-tooltip="Account">
+                    <img src="res/imgs/account.svg" width="24px" height="24px">
+                </button>
+                <button id="menu-btn" data-tooltip="Menu" onclick="toggleSideBar()">
+                    <img src="res/imgs/menu.svg" width="32px" height="32px">
+                </button>
+
+                <section id="menu-side-bar">
+                    AMOGUS
+                    <button data-tooltip="nice" tooltip-direction="bottom">i agree</button>
+                    <button data-tooltip="nice" tooltip-direction="top">i agree</button>
+                    <button data-tooltip="nice" tooltip-direction="left">i agree</button>
+                    <button data-tooltip="nice" tooltip-direction="right">i agree</button>
+                </section>
+                <div id="page-filter" onclick="collapseSideBar()"></div>
+            </div>
+        </nav>
+
+        <div id="main-content">
+            <section id="theme-list">
+                <!-- this section is dynamic with js -->
+                <div class="rows">
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                    <div class="theme-item">
+                        <img src="res/imgs/sample.png"
+                            alt="theme thumbnail"
+                            class="thumbnail">
+                        <div class="info">
+                            <h3 class="title">Heart of the Mountain</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

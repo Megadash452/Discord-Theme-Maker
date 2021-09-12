@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Discord Theme Maker</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="style/css/style.css">
+
+        <script defer src="script/js/ui.js"></script>
+    </head>
+
+    <body class="">
+        <nav id="navbar">
+            <div class="header">
+                <a href="" id="back-btn">
+                    <img src="res/imgs/back.svg">
+                </a>
+                <div class="title">
+                    <h1>Discord Theme Maker</h1>
+                </div>
+                
+            </div>
+            <div class="info">
+                <a href="theme-editor.html" id="themes-btn" data-tooltip="Theme Editor">
+                    <img src="res/imgs/brush.svg" width="24px" height="24px">
+                </a>
+                <button id="account-btn" data-tooltip="Account">
+                    <img src="res/imgs/account.svg" width="24px" height="24px">
+                </button>
+                <button id="menu-btn" data-tooltip="Menu" onclick="toggleSideBar()">
+                    <img src="res/imgs/menu.svg" width="32px" height="32px">
+                </button>
+
+                <section id="menu-side-bar">
+                    <!-- SIDEBAR CONTENT -->
+                </section>
+                <div id="page-filter" onclick="collapseSideBar()"></div>
+            </div>
+        </nav>
+
+        <div id="main-content">
+            
+        </div>
+    </body>
+</html>

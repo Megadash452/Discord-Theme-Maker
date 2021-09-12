@@ -1,0 +1,36 @@
+$theme-item-width: 23.5rem
+    
+
+/*
+ * TODO: PLAN: the 'rows' div holds all theme-items
+ * The side margins of each item will be around 1rem and will stay static
+ * Each item will have a bottom margin equal to the padding/margin of the parent
+ * The width of each item will be dynamic and will have a max width of 23.5rem
+
+ * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger
+ */
+
+#theme-list
+    padding: 2.5rem 2rem 2.5rem 2rem
+
+    > .rows
+        display: flex
+        flex-direction: row
+        justify-content: start
+        flex-wrap: wrap
+        
+
+    .theme-item
+        max-width: $theme-item-width
+        border-radius: 10px
+        margin: 0 1.15rem 2.5rem 1.15rem
+        text-align: center
+
+        &:hover
+            background: #000
+
+        > img.thumbnail
+            width: $theme-item-width
+            border-radius: inherit
+            border-bottom-right-radius: 0
+            border-bottom-left-radius: 0

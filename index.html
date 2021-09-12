@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Discord Theme Maker</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="style/css/style.css">
+
+        <script defer src="script/js/ui.js"></script>
+    </head>
+
+    <body class="home">
+        <nav id="navbar">
+            <div class="header">
+                <a href="" id="back-btn">
+                    <!-- back.svg -- change to img -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                    <!-- back.svg -->
+                </a>
+                <div class="title">
+                    <h1>Discord Theme Maker</h1>
+                </div>
+                
+            </div>
+            <div class="info">
+                <a href="theme-editor.html" id="themes-btn" data-tooltip="Theme Editor">
+                    <img src="res/imgs/brush.svg" width="24px" height="24px">
+                </a>
+                <button id="account-btn" data-tooltip="Account">
+                    <img src="res/imgs/account.svg" width="24px" height="24px">
+                </button>
+                <button id="menu-btn" data-tooltip="Menu" onclick="toggleSideBar()">
+                    <img src="res/imgs/menu.svg" width="32px" height="32px">
+                </button>
+            </div>
+        </nav>
+
+        <section id="menu-side-bar">
+            <option>
+                Light theme <input id="theme-switch" type="checkbox" class="toggler"> Dark Theme
+            </option>
+        </section>
+        <div id="page-filter" onclick="collapseSideBar()"></div>
+
+        <div id="main-content">
+            description of site and better discord
+        </div>
+    </body>
+</html>
