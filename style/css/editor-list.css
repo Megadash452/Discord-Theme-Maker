@@ -6,28 +6,44 @@
 
  * Flex wrap will be applied, where each item will wrap one by one or by pairs as the screen gets smaller/larger
  */
-/* line 17, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 13, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.light .theme-item {
+  background-color: #f2f3f5;
+  color: #4f5660;
+}
+
+/* line 16, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.light .theme-item:hover {
+  background-color: #f4f5f6;
+}
+
+/* line 18, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+body.light .theme-item:active {
+  background-color: #fff;
+}
+
+/* line 22, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 body.dark .theme-item {
   background-color: #2f3136;
   color: #b9bbbe;
 }
 
-/* line 20, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 25, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 body.dark .theme-item:hover {
   background-color: #393d44;
 }
 
-/* line 22, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 27, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 body.dark .theme-item:active {
   background-color: #3c3f46;
 }
 
-/* line 27, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 32, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list {
   padding: 2.5rem 2rem 2.5rem 2rem;
 }
 
-/* line 30, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 35, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list > .rows {
   display: flex;
   flex-direction: row;
@@ -35,7 +51,7 @@ body.dark .theme-item:active {
   flex-wrap: wrap;
 }
 
-/* line 37, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 42, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item {
   max-width: 23.5rem;
   width: 23.5rem;
@@ -48,12 +64,12 @@ body.dark .theme-item:active {
   cursor: pointer;
 }
 
-/* line 48, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 54, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item h3 {
   display: inline-block;
 }
 
-/* line 51, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 57, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item > .img-wrapper {
   width: 100%;
   border-radius: inherit;
@@ -62,12 +78,12 @@ body.dark .theme-item:active {
   overflow: hidden;
 }
 
-/* line 58, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 64, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #theme-list .theme-item > .img-wrapper > .theme-bg {
   width: 100%;
 }
 
-/* line 63, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 69, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #new-theme .img-wrapper {
   background-color: #3ba55d;
   height: 13.219rem;
@@ -75,7 +91,7 @@ body.dark .theme-item:active {
   justify-content: center;
 }
 
-/* line 70, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
+/* line 76, ../../source/repos/Discord Theme Maker/style/sass/editor-list.sass */
 #new-theme .img-wrapper img, #new-theme .img-wrapper svg {
   fill: white;
   stroke: white;
