@@ -2,8 +2,6 @@ $nav-padding: 0.5rem
 $nav-btn-size: 2.125rem
 $nav-title-max-width: 19rem
 
-$tooltip-bg-color: #18191c
-$tooltip-color: #dcddde
 $distance: 0.125rem
 $arrow-size: 0.625rem
 
@@ -34,18 +32,53 @@ body.home #back-btn
 body.light
     // color: darkgrey
 
-    nav button::after, nav a::after
-        background-color: #202225
-        color: white
+    $tooltip-bg-color: #fff
+    $tooltip-color: #000
+
+    button, a
+        &[data-tooltip]::before
+            box-shadow: 0 8px 16px #00000029
+            background-color: $tooltip-bg-color
+            color: $tooltip-color
+
+        &[tooltip-direction="left"]::after
+            border-left-color: $tooltip-bg-color
+        &[tooltip-direction="right"]::after
+            border-right-color: $tooltip-bg-color
+        &[tooltip-direction="top"]::after
+            border-top-color: $tooltip-bg-color
+        &[tooltip-direction="bottom"]::after,
+        &:not([tooltip-direction])::after
+            border-bottom-color: $tooltip-bg-color
+
+    #menu-side-bar
+        background-color: #f2f3f5
 
 body.dark
     color: #eee
     background: #292b30
 
-    nav button::after, nav a::after
-        background-color: grey
-        color: black
+    $tooltip-bg-color: #18191c
+    $tooltip-color: #dcddde
 
+    button, a
+        &[data-tooltip]::before
+            box-shadow: 0 8px 16px #0000003d
+            background-color: $tooltip-bg-color
+            color: $tooltip-color
+
+        &[tooltip-direction="left"]::after
+            border-left-color: $tooltip-bg-color
+        &[tooltip-direction="right"]::after
+            border-right-color: $tooltip-bg-color
+        &[tooltip-direction="top"]::after
+            border-top-color: $tooltip-bg-color
+        &[tooltip-direction="bottom"]::after,
+        &:not([tooltip-direction])::after
+            border-bottom-color: $tooltip-bg-color
+
+    #menu-side-bar
+        background-color: #2f3136 // #3e4148
 
 
 
@@ -137,96 +170,90 @@ nav#navbar
     
 
 
-button[data-tooltip], a[data-tooltip]
-    position: relative
+button, a
+    &[data-tooltip]
+        position: relative
 
-    &::before, &::after
-        pointer-events: none
-        position: absolute
-        z-index: 4
+        &::before, &::after
+            pointer-events: none
+            position: absolute
+            z-index: 4
 
-        --scale: 0
-        transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) scale(var(--scale))
-        transition: transform 0.05s
+            --scale: 0
+            transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) scale(var(--scale))
+            transition: transform 0.05s
 
-    &::before
-        content: attr(data-tooltip)
-        text-align: center
-        font-family: Roboto, sans-serif
-        font-size: 1rem
+        &::before
+            content: attr(data-tooltip)
+            text-align: center
+            font-family: Roboto, sans-serif
+            font-size: 1rem
 
-        margin: 0
-        padding: 0.5rem 0.75rem
-        border-radius: 5px
-        box-shadow: 0 8px 16px #0000003d
-        background: $tooltip-bg-color
-        color: $tooltip-color
+            margin: 0
+            padding: 0.5rem 0.75rem
+            border-radius: 5px
 
-    &::after
-        content: ''
-        background: transparent
-        border: calc(#{$arrow-size} / 2) solid transparent
+        &::after
+            content: ''
+            background: transparent
+            border: calc(#{$arrow-size} / 2) solid transparent
 
-    &:hover::before, &:hover::after
-        --scale: 1
+        &:hover::before, &:hover::after
+            --scale: 1
 
     
-button[tooltip-direction="left"], a[tooltip-direction="left"]
-    &::before, &::after
-        top: 50%
-        right: 100%
-    &::before
-        --translate-x: calc( -#{$distance} - #{$arrow-size} / 2)
-        --translate-y: -50%
-        transform-origin: right center
-    &::after
-        --translate-x: calc( -#{$distance} + #{$arrow-size} / 2)
-        --translate-y: -50%
-        transform-origin: left center
-        border-left-color: $tooltip-bg-color
+    &[tooltip-direction="left"]
+        &::before, &::after
+            top: 50%
+            right: 100%
+        &::before
+            --translate-x: calc( -#{$distance} - #{$arrow-size} / 2)
+            --translate-y: -50%
+            transform-origin: right center
+        &::after
+            --translate-x: calc( -#{$distance} + #{$arrow-size} / 2)
+            --translate-y: -50%
+            transform-origin: left center
     
-button[tooltip-direction="right"], a[tooltip-direction="right"]
-    &::before, &::after
-        top: 50%
-        left: 100%
-    &::before
-        --translate-x: calc(#{$distance} + #{$arrow-size} / 2)
-        --translate-y: -50%
-        transform-origin: left center
-    &::after
-        --translate-x: calc(#{$distance} - #{$arrow-size} / 2)
-        --translate-y: -50%
-        transform-origin: right center
-        border-right-color: $tooltip-bg-color
+    &[tooltip-direction="right"]
+        &::before, &::after
+            top: 50%
+            left: 100%
+        &::before
+            --translate-x: calc(#{$distance} + #{$arrow-size} / 2)
+            --translate-y: -50%
+            transform-origin: left center
+        &::after
+            --translate-x: calc(#{$distance} - #{$arrow-size} / 2)
+            --translate-y: -50%
+            transform-origin: right center
 
-button[tooltip-direction="top"], a[tooltip-direction="top"]
-    &::before, &::after
-        bottom: 100%
-        left: 50%
-    &::before
-        --translate-x: -50%
-        --translate-y: calc( -#{$distance} - #{$arrow-size} / 2)
-        transform-origin: bottom center
-    &::after
-        --translate-x: -50%
-        --translate-y: calc( -#{$distance} + #{$arrow-size} / 2)
-        transform-origin: top center
-        border-top-color: $tooltip-bg-color
+    &[tooltip-direction="top"]
+        &::before, &::after
+            bottom: 100%
+            left: 50%
+        &::before
+            --translate-x: -50%
+            --translate-y: calc( -#{$distance} - #{$arrow-size} / 2)
+            transform-origin: bottom center
+        &::after
+            --translate-x: -50%
+            --translate-y: calc( -#{$distance} + #{$arrow-size} / 2)
+            transform-origin: top center
 
-button[tooltip-direction="bottom"], a[tooltip-direction="bottom"],
-button:not([tooltip-direction]), a:not([tooltip-direction])
-    &::before, &::after
-        top: 100%
-        left: 50%
-    &::before
-        --translate-x: -50%
-        --translate-y: calc(#{$distance} + #{$arrow-size} / 2)
-        transform-origin: top center
-    &::after
-        --translate-x: -50%
-        --translate-y: calc(#{$distance} - #{$arrow-size} / 2)
-        transform-origin: bottom center
-        border-bottom-color: $tooltip-bg-color
+    &[tooltip-direction="bottom"],
+    &:not([tooltip-direction])
+        &::before, &::after
+            top: 100%
+            left: 50%
+        &::before
+            --translate-x: -50%
+            --translate-y: calc(#{$distance} + #{$arrow-size} / 2)
+            transform-origin: top center
+        &::after
+            --translate-x: -50%
+            --translate-y: calc(#{$distance} - #{$arrow-size} / 2)
+            transform-origin: bottom center
 
 
 
@@ -238,7 +265,6 @@ button:not([tooltip-direction]), a:not([tooltip-direction])
     transition: right 0.5s, box-shadow 0.7s
     padding: 0.5rem 0.625rem
 
-    background-color: #3e4148
     border: 2px solid #686a6c
     border-right: none
     box-shadow: #00000060 0px 30px 60px 40px
@@ -293,6 +319,8 @@ input.switch, input.toggle, input.toggler
             &::after
                 left: calc(1rem + 3px)
                 // right: 3px
+
+        // todo: disabled
 
         &::after
             content: ''

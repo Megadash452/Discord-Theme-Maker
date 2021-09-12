@@ -16,9 +16,30 @@ body.home #back-btn {
   display: none;
 }
 
-body.light nav button::after, body.light nav a::after {
-  background-color: #202225;
-  color: white;
+body.light button[data-tooltip]::before, body.light a[data-tooltip]::before {
+  box-shadow: 0 8px 16px #00000029;
+  background-color: #fff;
+  color: #000;
+}
+
+body.light button[tooltip-direction="left"]::after, body.light a[tooltip-direction="left"]::after {
+  border-left-color: #fff;
+}
+
+body.light button[tooltip-direction="right"]::after, body.light a[tooltip-direction="right"]::after {
+  border-right-color: #fff;
+}
+
+body.light button[tooltip-direction="top"]::after, body.light a[tooltip-direction="top"]::after {
+  border-top-color: #fff;
+}
+
+body.light button[tooltip-direction="bottom"]::after, body.light button:not([tooltip-direction])::after, body.light a[tooltip-direction="bottom"]::after, body.light a:not([tooltip-direction])::after {
+  border-bottom-color: #fff;
+}
+
+body.light #menu-side-bar {
+  background-color: #f2f3f5;
 }
 
 body.dark {
@@ -26,9 +47,30 @@ body.dark {
   background: #292b30;
 }
 
-body.dark nav button::after, body.dark nav a::after {
-  background-color: grey;
-  color: black;
+body.dark button[data-tooltip]::before, body.dark a[data-tooltip]::before {
+  box-shadow: 0 8px 16px #0000003d;
+  background-color: #18191c;
+  color: #dcddde;
+}
+
+body.dark button[tooltip-direction="left"]::after, body.dark a[tooltip-direction="left"]::after {
+  border-left-color: #18191c;
+}
+
+body.dark button[tooltip-direction="right"]::after, body.dark a[tooltip-direction="right"]::after {
+  border-right-color: #18191c;
+}
+
+body.dark button[tooltip-direction="top"]::after, body.dark a[tooltip-direction="top"]::after {
+  border-top-color: #18191c;
+}
+
+body.dark button[tooltip-direction="bottom"]::after, body.dark button:not([tooltip-direction])::after, body.dark a[tooltip-direction="bottom"]::after, body.dark a:not([tooltip-direction])::after {
+  border-bottom-color: #18191c;
+}
+
+body.dark #menu-side-bar {
+  background-color: #2f3136;
 }
 
 nav#navbar {
@@ -139,9 +181,6 @@ button[data-tooltip]::before, a[data-tooltip]::before {
   margin: 0;
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
-  box-shadow: 0 8px 16px #0000003d;
-  background: #18191c;
-  color: #dcddde;
 }
 
 button[data-tooltip]::after, a[data-tooltip]::after {
@@ -169,7 +208,6 @@ button[tooltip-direction="left"]::after, a[tooltip-direction="left"]::after {
   --translate-x: calc( -0.125rem + 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: left center;
-  border-left-color: #18191c;
 }
 
 button[tooltip-direction="right"]::before, button[tooltip-direction="right"]::after, a[tooltip-direction="right"]::before, a[tooltip-direction="right"]::after {
@@ -187,7 +225,6 @@ button[tooltip-direction="right"]::after, a[tooltip-direction="right"]::after {
   --translate-x: calc(0.125rem - 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: right center;
-  border-right-color: #18191c;
 }
 
 button[tooltip-direction="top"]::before, button[tooltip-direction="top"]::after, a[tooltip-direction="top"]::before, a[tooltip-direction="top"]::after {
@@ -205,29 +242,23 @@ button[tooltip-direction="top"]::after, a[tooltip-direction="top"]::after {
   --translate-x: -50%;
   --translate-y: calc( -0.125rem + 0.625rem / 2);
   transform-origin: top center;
-  border-top-color: #18191c;
 }
 
-button[tooltip-direction="bottom"]::before, button[tooltip-direction="bottom"]::after, a[tooltip-direction="bottom"]::before, a[tooltip-direction="bottom"]::after,
-button:not([tooltip-direction])::before,
-button:not([tooltip-direction])::after, a:not([tooltip-direction])::before, a:not([tooltip-direction])::after {
+button[tooltip-direction="bottom"]::before, button[tooltip-direction="bottom"]::after, button:not([tooltip-direction])::before, button:not([tooltip-direction])::after, a[tooltip-direction="bottom"]::before, a[tooltip-direction="bottom"]::after, a:not([tooltip-direction])::before, a:not([tooltip-direction])::after {
   top: 100%;
   left: 50%;
 }
 
-button[tooltip-direction="bottom"]::before, a[tooltip-direction="bottom"]::before,
-button:not([tooltip-direction])::before, a:not([tooltip-direction])::before {
+button[tooltip-direction="bottom"]::before, button:not([tooltip-direction])::before, a[tooltip-direction="bottom"]::before, a:not([tooltip-direction])::before {
   --translate-x: -50%;
   --translate-y: calc(0.125rem + 0.625rem / 2);
   transform-origin: top center;
 }
 
-button[tooltip-direction="bottom"]::after, a[tooltip-direction="bottom"]::after,
-button:not([tooltip-direction])::after, a:not([tooltip-direction])::after {
+button[tooltip-direction="bottom"]::after, button:not([tooltip-direction])::after, a[tooltip-direction="bottom"]::after, a:not([tooltip-direction])::after {
   --translate-x: -50%;
   --translate-y: calc(0.125rem - 0.625rem / 2);
   transform-origin: bottom center;
-  border-bottom-color: #18191c;
 }
 
 #menu-side-bar {
@@ -238,7 +269,6 @@ button:not([tooltip-direction])::after, a:not([tooltip-direction])::after {
   right: 0;
   transition: right 0.5s, box-shadow 0.7s;
   padding: 0.5rem 0.625rem;
-  background-color: #3e4148;
   border: 2px solid #686a6c;
   border-right: none;
   box-shadow: #00000060 0px 30px 60px 40px;
