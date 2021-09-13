@@ -1,6 +1,8 @@
 console.log("ui.ts");
 
 type Checkbox = HTMLInputElement;
+type Radio = HTMLInputElement;
+type RadioWrapper = HTMLSpanElement | HTMLDivElement;
 
 
 const toggleSidebar = () => {
@@ -74,27 +76,8 @@ themeSwitch?.addEventListener('click', () => {
 });
 
 
-
-document.querySelector(
-    `span.switch, span.toggle, span.toggler`
-);
-
-
-
-document.querySelectorAll(   // * Goes last
-    `input[type="checkbox"].switch, input[type="checkbox"].toggle, input[type="checkbox"].toggler`
-) ! .forEach(element => {
-    ((checkbox: Checkbox) => {
-        if (checkbox.checked)
-            checkbox.setAttribute("checked", "");
-        else
-            checkbox.removeAttribute("checked");
-                
-        checkbox.addEventListener('click', () => {
-            if (checkbox.checked)
-                checkbox.setAttribute("checked", "");
-            else
-                checkbox.removeAttribute("checked");
-        });
-    })(element as Checkbox);
+document.querySelectorAll(`.radio:has(input[type="radio"])`) ! .forEach(element => {
+    // ((wrapper: RadioWrapper) => {
+        
+    // })(element as RadioWrapper);
 });

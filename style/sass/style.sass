@@ -30,7 +30,7 @@ body.home #back-btn
 
 
 body.light
-    // color: darkgrey
+    color: #4f5660
     background: #e3e5e8
 
     $tooltip-bg-color: #fff
@@ -52,12 +52,34 @@ body.light
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
 
+
+    span.radio, div.radio
+        input
+            border-color: #4f5660
+        label
+            color: #4f5660
+        &:hover
+            input
+                border-color: #2e3338
+            label
+                color: #2e3338
+        &:active
+            input
+                border-color: #060607
+            label
+                color: #060607
+        &:has(input[type="radio"]:checked) // TODO: DOESNT WORK
+            input
+                border-color: #060607
+            label
+                color: #060607
+
     #menu-side-bar
         background-color: #f2f3f5
         color: #4f5660
 
 body.dark
-    color: #eee
+    color: #b9bbbe
     background: #202225 // #292b30
 
     $tooltip-bg-color: #18191c
@@ -78,6 +100,27 @@ body.dark
         &[tooltip-direction="bottom"]::after,
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
+
+    span.radio, div.radio
+        input
+            border-color: #b9bbbe
+        label
+            color: #b9bbbe
+        &:hover
+            input
+                border-color: #dcddde
+            label
+                color: #dcddde
+        &:active
+            input
+                border-color: #fff
+            label
+                color: #fff
+        &:has(input[type="radio"]:checked) // TODO: DOESNT WORK
+            input
+                border-color: #fff
+            label
+                color: #fff
 
     #menu-side-bar
         background-color: #2f3136 // #3e4148
@@ -308,6 +351,36 @@ button, a
         z-index: 2
 
 
+input[type="radio"]
+    appearance: none
+    position: relative
+    width: 1.25rem
+    aspect-ratio: 1
+    border-radius: 50%
+    border: 2px solid black
+    background-origin: content-box
+    background: transparent
+    cursor: inherit
+
+    &::before
+        content: ''
+        +abs-pos(10px, 10px, 10px, 10px)
+        transition: top 0.15s, bottom 0.15s, left 0.15s, right 0.15s
+        border-radius: 50%
+        aspect-ratio: 1
+
+    &:checked::before
+        +abs-pos(3px, 3px, 3px, 3px)
+        background: #5865f2
+
+div.radio, span.radio
+    display: inline-block
+    cursor: pointer
+
+    label
+        cursor: pointer
+
+
 input.switch, input.toggle, input.toggler
     &[type="checkbox"]
         appearance: none
@@ -324,7 +397,7 @@ input.switch, input.toggle, input.toggler
             transition: color 0.25s
             color: #3ba55d
 
-        &[checked]
+        &:checked
             background: #3ba55d
 
             &::after
@@ -368,7 +441,7 @@ ul.settings
         margin-left: 1rem
     > li
         margin-left: 2.5rem
-        margin-bottom: 0.5rem
+        margin-bottom: 1rem
         &::marker
             content: ''
 

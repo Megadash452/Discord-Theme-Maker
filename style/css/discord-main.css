@@ -1,0 +1,19 @@
+/* line 1, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.light {
+  color: #4f5660;
+  background-color: #e3e5e8;
+}
+
+/* line 5, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark {
+  color: #b9bbbe;
+  background-color: #202225;
+}
+
+/* line 9, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds {
+  width: 72px;
+  possition: relative;
+}
+
+/*# sourceMappingURL=discord-main.css.map */

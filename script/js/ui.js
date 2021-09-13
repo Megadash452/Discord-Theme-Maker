@@ -68,19 +68,8 @@ themeSwitch === null || themeSwitch === void 0 ? void 0 : themeSwitch.addEventLi
         document.body.classList.add("light");
     }
 });
-document.querySelectorAll(// * Goes last
-`input[type="checkbox"].switch, input[type="checkbox"].toggle, input[type="checkbox"].toggler`).forEach(element => {
-    ((checkbox) => {
-        if (checkbox.checked)
-            checkbox.setAttribute("checked", "");
-        else
-            checkbox.removeAttribute("checked");
-        checkbox.addEventListener('click', () => {
-            if (checkbox.checked)
-                checkbox.setAttribute("checked", "");
-            else
-                checkbox.removeAttribute("checked");
-        });
-    })(element);
+document.querySelectorAll(`.radio:has(input[type="radio"])`).forEach(element => {
+    // ((wrapper: RadioWrapper) => {
+    // })(element as RadioWrapper);
 });
 //# sourceMappingURL=ui.js.map

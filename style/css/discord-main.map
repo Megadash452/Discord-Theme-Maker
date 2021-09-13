@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "discord-main.css",
+	"sources": [
+		"../sass/discord-main.sass"
+	],
+	"sourcesContent": [
+		"body.light {\n    color: #4f5660;\n    background-color: #e3e5e8; }\n\nbody.dark {\n    color: #b9bbbe;\n    background-color: #202225; }\n\n#guilds {\n    width: 72px;\n    possition: relative; }\n"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,IAAI,AAAA,MAAM,CAAC;EACP,KAAK,EAAE,OAAO;EACd,gBAAgB,EAAE,OAAO;CAAG;;;AAEhC,AAAA,IAAI,AAAA,KAAK,CAAC;EACN,KAAK,EAAE,OAAO;EACd,gBAAgB,EAAE,OAAO;CAAG;;;AAEhC,AAAA,OAAO,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,QAAQ;CAAG"
+}
