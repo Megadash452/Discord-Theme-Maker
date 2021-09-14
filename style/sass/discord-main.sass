@@ -1,11 +1,44 @@
+=abs-pos($top, $left, $bottom:auto, $right:auto)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+
+    
 body.light
-    color: #4f5660
-    background-color: #e3e5e8
+    color: #4f5660 //
+    background-color: #e3e5e8 //
     
 body.dark
-    color: #b9bbbe
-    background-color: #202225
+    color: #b9bbbe //
+    background-color: #202225 //
     
 #guilds
-    width: 72px
-    possition: relative
+    width: 72px //
+    height: 100% //
+    position: relative // TODO: pseudo elements disapear with relative
+    overflow: hidden
+
+    &::before, &::after
+        +abs-pos(0, 0, auto, 0)
+        width: 3.5rem
+        height: 1.5rem
+        // display: block
+        content: 'NEW'
+        opacity: 0.9
+        background: #ed4245 // hsl(359,calc(1*82.6%),59.4%)
+        color: #fff
+        font: 0.75rem sans-serif // TODO: font-family
+        font-weight: 600
+        cursor: pointer
+
+        // margin: 0.5rem
+        border-radius: 50px
+
+        &:hover
+            opacity: 1
+            background: yellow
+    &::after
+        top: auto
+        bottom: 0
