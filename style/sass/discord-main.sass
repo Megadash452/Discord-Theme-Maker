@@ -1,3 +1,5 @@
+$top-bar-height: 22px
+    
 =abs-pos($top, $left, $bottom:auto, $right:auto)
     position: absolute
     top: $top
@@ -5,6 +7,10 @@
     left: $left
     right: $right
 
+body
+    margin: 0
+    width: 100vw
+    height: calc(100vh - #{$top-bar-height})
     
 body.light
     color: #4f5660 //
@@ -13,18 +19,37 @@ body.light
 body.dark
     color: #b9bbbe //
     background-color: #202225 //
+
+
+#top-bar
+    width: 100%
+    height: #{$top-bar-height}
+    background: #d9ff0070
+
+    *
+        max-height: #{$top-bar-height}
+
     
 #guilds
     width: 72px //
     height: 100% //
-    position: relative // TODO: pseudo elements disapear with relative
+    position: relative
     overflow: hidden
 
-    &::before, &::after
+    > li
+        width: 72px //
+        height: 48px //
+        margin-bottom: 8px //
+        background-color: #0f0
+
+        &:first-child
+            margin-top: 4px // web is 12px
+
+    &::before, &::after // TODO: fix text not aligning
         +abs-pos(0, 0, auto, 0)
         width: 3.5rem
         height: 1.5rem
-        // display: block
+        display: block
         content: 'NEW'
         opacity: 0.9
         background: #ed4245 // hsl(359,calc(1*82.6%),59.4%)
@@ -33,7 +58,7 @@ body.dark
         font-weight: 600
         cursor: pointer
 
-        // margin: 0.5rem
+        margin: 0.5rem
         border-radius: 50px
 
         &:hover
