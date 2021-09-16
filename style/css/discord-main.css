@@ -31,15 +31,44 @@ body.dark {
   overflow: hidden;
 }
 
-#guilds > li {
+#guilds #home-btn {
+  margin-top: 4px;
+  background: #0000ff83;
+}
+
+#guilds li, #guilds .item {
   width: 72px;
   height: 48px;
   margin-bottom: 8px;
-  background-color: #0f0;
+  background-color: #00ff0073;
 }
 
-#guilds > li:first-child {
-  margin-top: 4px;
+#guilds li .img-wrapper, #guilds .item .img-wrapper {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
+
+#guilds li .img-wrapper::before, #guilds .item .img-wrapper::before {
+  content: '';
+  background-color: #fff;
+  position: absolute;
+  top: auto;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+#guilds hr, #guilds .divider {
+  margin: 0 auto 8px auto;
+  border: none;
+  width: 32px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #ffffff0f;
 }
 
 #guilds::before, #guilds::after {
@@ -50,12 +79,12 @@ body.dark {
   right: 0;
   width: 3.5rem;
   height: 1.5rem;
-  display: block;
   content: 'NEW';
   opacity: 0.9;
   background: #ed4245;
   color: #fff;
   font: 0.75rem sans-serif;
+  text-align: center;
   font-weight: 600;
   cursor: pointer;
   margin: 0.5rem;

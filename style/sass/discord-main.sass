@@ -35,26 +35,50 @@ body.dark
     height: 100% //
     position: relative
     overflow: hidden
+    // overflow-y: scroll
 
-    > li
+    #home-btn
+        margin-top: 4px // web is 12px
+        background: #0000ff83
+
+    li, .item
         width: 72px //
         height: 48px //
         margin-bottom: 8px //
-        background-color: #0f0
+        background-color: #00ff0073
 
-        &:first-child
-            margin-top: 4px // web is 12px
+        .img-wrapper
+            width: 48px//
+            height: 48px//
+            overflow: hidden
+
+            &::before // TODO: fix
+                content: ''
+                background-color: #fff
+                +abs-pos(auto, 0, auto, auto)
+                width: 8px
+                height: 8px
+                border-radius: 0 4px 4px 0
+
+    hr, .divider
+        margin: 0 auto 8px auto
+        border: none
+        width: 32px //
+        height: 2px
+        border-radius: 1px
+        background-color: #ffffff0f
 
     &::before, &::after // TODO: fix text not aligning
         +abs-pos(0, 0, auto, 0)
-        width: 3.5rem
-        height: 1.5rem
-        display: block
+        width: 3.5rem //
+        height: 1.5rem //
         content: 'NEW'
         opacity: 0.9
         background: #ed4245 // hsl(359,calc(1*82.6%),59.4%)
         color: #fff
         font: 0.75rem sans-serif // TODO: font-family
+        text-align: center
+        // ! TODO: Vertically center 
         font-weight: 600
         cursor: pointer
 
