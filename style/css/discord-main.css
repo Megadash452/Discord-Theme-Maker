@@ -181,13 +181,13 @@ body.dark {
   transform-origin: bottom center;
 }
 
-/* line 157, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+/* line 156, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds.new-above::before {
   --scale: 1;
   top: 0;
 }
 
-/* line 160, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+/* line 159, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds.new-below::after {
   --scale: 1;
   bottom: 0;
