@@ -1,4 +1,8 @@
-$top-bar-height: 22px
+$top-bar-height: 22px // web: 0px
+
+$server-list-width: 72px
+$guild-icon-size: 48px // width & height
+$guild-icon-spacing: 8px
     
 =abs-pos($top, $left, $bottom:auto, $right:auto)
     position: absolute
@@ -31,34 +35,78 @@ body.dark
 
     
 #guilds
-    width: 72px //
+    width: $server-list-width //
     height: 100% //
     position: relative
     overflow: hidden
-    // overflow-y: scroll
+
+    > .scroller
+        height: 100%
+        width: 100%
+        overflow-y: scroll
+        overflow-x: hidden
+        // TODO: options for user to put a scroller of their liking (cannot be larger than the margin in server icons)
+        scrollbar-width: none //
 
     #home-btn
         margin-top: 4px // web is 12px
-        background: #0000ff83
+        .img-wrapper
+            background: #0000ff83 // ! remove
+
+    #servers
+        li, .item
+            .img-wrapper
+                background: #00ff0088
 
     li, .item
-        width: 72px //
-        height: 48px //
-        margin-bottom: 8px //
-        background-color: #00ff0073
+        width: $server-list-width //
+        height: $guild-icon-size //
+        margin-bottom: $guild-icon-spacing //
+        position: relative
+        // display: flex
+        // justify-content: center
+
+        $border-rad: 50%
+        $border-rad-hov: 15px // TODO: get accurate radius
+        $border-rad-active: $border-rad-hov
 
         .img-wrapper
-            width: 48px//
-            height: 48px//
-            overflow: hidden
+            width: $guild-icon-size //
+            height: $guild-icon-size
+            display: block
+            margin-left: auto
+            margin-right: auto
+            overflow: visible
+            aspect-ratio: 1
+            border-radius: 50%
+            cursor: pointer
+            transition: border-radius 0.2s // TODO: get accurate time
+            background: #ff000088 // ! remove
 
-            &::before // TODO: fix
+            &::before // pill
                 content: ''
                 background-color: #fff
-                +abs-pos(auto, 0, auto, auto)
-                width: 8px
-                height: 8px
+                +abs-pos(50%, -8px, auto, auto)
+                transform: translateY(-50%)
+                width: 8px // 
+                height: 8px // unreads: 8px, hover: 20px, active: 40px
                 border-radius: 0 4px 4px 0
+                transition: height 0.2s, left 0.1s // TODO: get accurate time
+            &:active
+                border-radius: $border-rad-active
+            &:hover
+                border-radius: $border-rad-hov
+                &::before
+                    height: 20px
+                    left: -4px
+        &.unreads .img-wrapper::before
+            left: -4px
+        &.active .img-wrapper
+            border-radius: $border-rad-active
+            &::before
+                height: 40px
+                left: -4px
+
 
     hr, .divider
         margin: 0 auto 8px auto
@@ -68,26 +116,47 @@ body.dark
         border-radius: 1px
         background-color: #ffffff0f
 
-    &::before, &::after // TODO: fix text not aligning
-        +abs-pos(0, 0, auto, 0)
-        width: 3.5rem //
-        height: 1.5rem //
+
+    $new-width: 56px
+    $new-height: 24px
+    $new-margin: 8px
+    &::before, &::after
+        +abs-pos(-#{$new-height + $new-margin}, 0, auto, 0)
+        // width: 3.5rem //
+        // height: 1.5rem //
+        max-height: $new-height //
+        padding: 0.281rem 0 0.281rem 0
+        margin: $new-margin
+        border-radius: 50px
+        z-index: 2
+
         content: 'NEW'
         opacity: 0.9
         background: #ed4245 // hsl(359,calc(1*82.6%),59.4%)
         color: #fff
-        font: 0.75rem sans-serif // TODO: font-family
+        font: 0.75rem "Helvetica Neue", Helvetica, sans-serif // actual font is ginto, but is proprietarial
         text-align: center
-        // ! TODO: Vertically center 
+        
         font-weight: 600
         cursor: pointer
-
-        margin: 0.5rem
-        border-radius: 50px
+        // ! Vertically center using css method instead of padding
+        
+        --scale: 1 // * make user choose wether they want it to grow or to move // 0
+        transition: transform 0.05s, top 0.05s, bottom 0.05s
+        transform: scale(var(--scale, 1))
+        transform-origin: top center
 
         &:hover
             opacity: 1
             background: yellow
     &::after
         top: auto
+        bottom: -#{$new-height + $new-margin}
+        transform-origin: bottom center
+    
+    &.new-above::before
+        --scale: 1
+        top: 0
+    &.new-below::after
+        --scale: 1
         bottom: 0
