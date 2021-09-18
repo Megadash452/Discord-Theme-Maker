@@ -24,12 +24,19 @@ body.dark
     color: #b9bbbe //
     background-color: #202225 //
 
+    #home-btn .wrapper
+        color: #dcddde
+        background-color: #36393f
+        &:hover
+            color: #fff
+            background-color: #5865f2
+
+
 
 #top-bar
     width: 100%
     height: #{$top-bar-height}
     background: #d9ff0070
-
     *
         max-height: #{$top-bar-height}
 
@@ -50,15 +57,22 @@ body.dark
 
     #home-btn
         margin-top: 4px // web is 12px
-        .img-wrapper
-            background: #0000ff83 // ! remove
+        .icon
+            $width: 28px
+            $height: 20px
+            transform: translateX(calc(#{$guild-icon-size} / 2 - #{$width} / 2 )) translateY(calc(#{$guild-icon-size} / 2 - #{$height} / 2 ))
+        // .wrapper
+        //     display: flex
+        //     align-items: center
+        //     justify-content: center
+            
 
     #servers
         li, .item
-            .img-wrapper
+            .wrapper
                 background: #00ff0088
 
-    li, .item
+    li //, .item
         width: $server-list-width //
         height: $guild-icon-size //
         margin-bottom: $guild-icon-spacing //
@@ -70,7 +84,7 @@ body.dark
         $border-rad-hov: 15px // TODO: get accurate radius
         $border-rad-active: $border-rad-hov
 
-        .img-wrapper
+        .wrapper
             width: $guild-icon-size //
             height: $guild-icon-size
             display: block
@@ -80,7 +94,8 @@ body.dark
             aspect-ratio: 1
             border-radius: 50%
             cursor: pointer
-            transition: border-radius 0.2s // TODO: get accurate time
+            transition: border-radius 0.2s, background-color 0.15s ease-out, color 0.15s ease-out
+            // TODO: get accurate time for border-radius
             background: #ff000088 // ! remove
 
             &::before // pill
@@ -99,9 +114,9 @@ body.dark
                 &::before
                     height: 20px
                     left: -4px
-        &.unreads .img-wrapper::before
+        &.unreads .wrapper::before
             left: -4px
-        &.active .img-wrapper
+        &.active .wrapper
             border-radius: $border-rad-active
             &::before
                 height: 40px
@@ -132,7 +147,7 @@ body.dark
 
         content: 'NEW'
         opacity: 0.9
-        background: #ed4245 // hsl(359,calc(1*82.6%),59.4%)
+        background: #ed4245
         color: #fff
         font: 0.75rem "Helvetica Neue", Helvetica, sans-serif // actual font is ginto, but is proprietarial
         text-align: center
