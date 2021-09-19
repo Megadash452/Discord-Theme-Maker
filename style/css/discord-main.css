@@ -1,39 +1,67 @@
+/* line 13, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 body {
   margin: 0;
   width: 100vw;
-  height: calc(100vh - 22px);
 }
 
+/* line 19, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 body.light {
   color: #4f5660;
   background-color: #e3e5e8;
 }
 
+/* line 23, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 body.dark {
   color: #b9bbbe;
   background-color: #202225;
 }
 
-body.dark #home-btn .wrapper {
+/* line 27, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark #home-btn {
   color: #dcddde;
   background-color: #36393f;
 }
 
-body.dark #home-btn .wrapper:hover {
+/* line 30, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark #home-btn:hover {
   color: #fff;
   background-color: #5865f2;
 }
 
+/* line 33, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark #home-btn:active, body.dark #home-btn.active {
+  color: #fff;
+  background-color: #5865f2;
+}
+
+/* line 37, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark #sidebar {
+  background-color: #2f3136;
+}
+
+/* line 40, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+body.dark #main-content {
+  background-color: #36393f;
+}
+
+/* line 45, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #top-bar {
   width: 100%;
   height: 22px;
-  background: #d9ff0070;
 }
 
+/* line 48, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #top-bar * {
   max-height: 22px;
 }
 
+/* line 52, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#main-wrapper {
+  height: calc(100vh - 22px);
+  display: flex;
+}
+
+/* line 57, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds {
   width: 72px;
   height: 100%;
@@ -41,6 +69,7 @@ body.dark #home-btn .wrapper:hover {
   overflow: hidden;
 }
 
+/* line 63, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds > .scroller {
   height: 100%;
   width: 100%;
@@ -49,46 +78,49 @@ body.dark #home-btn .wrapper:hover {
   scrollbar-width: none;
 }
 
+/* line 71, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds #home-btn {
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#guilds #home-btn .icon {
-  transform: translateX(calc(48px / 2 - 28px / 2)) translateY(calc(48px / 2 - 20px / 2));
-}
-
-#guilds #servers li .wrapper, #guilds #servers .item .wrapper {
+/* line 79, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds #servers li, #guilds #servers .item {
   background: #00ff0088;
 }
 
-#guilds li {
-  width: 72px;
-  height: 48px;
-  margin-bottom: 8px;
-  position: relative;
-}
-
-#guilds li .wrapper {
+/* line 82, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li, #guilds .item {
   width: 48px;
   height: 48px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: visible;
   aspect-ratio: 1;
+  position: relative;
+  margin-left: calc((72px - 48px) / 2);
+  margin-right: auto;
+  margin-bottom: 8px;
   border-radius: 50%;
   cursor: pointer;
   transition: border-radius 0.2s, background-color 0.15s ease-out, color 0.15s ease-out;
+  list-style-type: none;
   background: #ff000088;
 }
 
-#guilds li .wrapper::before {
+/* line 107, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li svg, #guilds .item svg {
+  overflow: visible;
+}
+
+/* line 110, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li::before, #guilds .item::before {
+  --left: calc(-1 * (72px - 48px) / 2);
   content: '';
   background-color: #fff;
   position: absolute;
   top: 50%;
   bottom: auto;
-  left: -8px;
+  left: calc(var(--left) - 8px);
   right: auto;
   transform: translateY(-50%);
   width: 8px;
@@ -97,32 +129,34 @@ body.dark #home-btn .wrapper:hover {
   transition: height 0.2s, left 0.1s;
 }
 
-#guilds li .wrapper:active {
+/* line 121, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li:hover, #guilds .item:hover {
   border-radius: 15px;
 }
 
-#guilds li .wrapper:hover {
-  border-radius: 15px;
-}
-
-#guilds li .wrapper:hover::before {
+/* line 123, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li:hover::before, #guilds .item:hover::before {
   height: 20px;
-  left: -4px;
+  left: calc(var(--left) - 4px);
 }
 
-#guilds li.unreads .wrapper::before {
-  left: -4px;
+/* line 126, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li.unreads::before, #guilds .item.unreads::before {
+  left: calc(var(--left) - 4px);
 }
 
-#guilds li.active .wrapper {
+/* line 128, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li:active, #guilds li.active, #guilds .item:active, #guilds .item.active {
   border-radius: 15px;
 }
 
-#guilds li.active .wrapper::before {
+/* line 130, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#guilds li:active::before, #guilds li.active::before, #guilds .item:active::before, #guilds .item.active::before {
   height: 40px;
-  left: -4px;
+  left: calc(var(--left) - 4px);
 }
 
+/* line 135, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds hr, #guilds .divider {
   margin: 0 auto 8px auto;
   border: none;
@@ -132,6 +166,7 @@ body.dark #home-btn .wrapper:hover {
   background-color: #ffffff0f;
 }
 
+/* line 147, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds::before, #guilds::after {
   position: absolute;
   top: -32px;
@@ -157,23 +192,49 @@ body.dark #home-btn .wrapper:hover {
   transform-origin: top center;
 }
 
+/* line 173, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds::before:hover, #guilds::after:hover {
   opacity: 1;
   background: yellow;
 }
 
+/* line 176, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds::after {
   top: auto;
   bottom: -32px;
   transform-origin: bottom center;
 }
 
+/* line 180, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds.new-above::before {
   --scale: 1;
   top: 0;
 }
 
+/* line 183, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
 #guilds.new-below::after {
   --scale: 1;
   bottom: 0;
 }
+
+/* line 189, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#app-base {
+  height: calc(100vh - 22px);
+  width: calc(100vw - 72px);
+  display: flex;
+}
+
+/* line 194, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#app-base #sidebar {
+  width: 240px;
+  height: 100%;
+  border-radius: 8px 0 0 0;
+}
+
+/* line 199, ../../source/repos/Discord Theme Maker/style/sass/discord-main.sass */
+#app-base #main-content {
+  width: calc(100% - 240px);
+  height: 100%;
+}
+
+/*# sourceMappingURL=discord-main.css.map */

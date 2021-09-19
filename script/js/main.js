@@ -127,19 +127,6 @@ const iconOthers = {
     text: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg"><rect y="5" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="9" width="8" height="2" rx="1" fill="currentColor"></rect></svg>`,
     paragraph: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect y="3" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="11" width="8" height="2" rx="1" fill="currentColor"></rect><rect y="7" width="16" height="2" rx="1" fill="currentColor"></rect></svg>`,
 };
-const lastOf = (arr) => arr[arr.length - 1];
-const bar = {
-    baz: {
-        gig: [
-            "foo",
-            "bar"
-        ],
-        lar: [
-            "food bazar",
-            "gigabyte larry"
-        ]
-    }
-};
 (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(path => {
     let name = path.getAttribute("icon-data"); // microphone.muted
     let rtrn = "";
@@ -174,7 +161,7 @@ const bar = {
     }
     else {
         let levels = [""];
-        function foo(data, levels, level = 0) {
+        function getPathData(data, levels, level = 0) {
             let index_ = parseInt(levels[level]);
             let base;
             if (index_)
@@ -193,7 +180,7 @@ const bar = {
             else if (typeof base === "string")
                 return base;
             else if (typeof base === "object")
-                return foo(base, levels, level + 1);
+                return getPathData(base, levels, level + 1);
             else {
                 return "";
             }
@@ -206,8 +193,23 @@ const bar = {
             }
             else
                 levels[i] += name[j];
-        rtrn = foo(iconData, levels);
+        rtrn = getPathData(iconData, levels);
     }
     path.setAttribute('d', rtrn);
+});
+const homeBtn = document.getElementById("home-btn");
+let currentActiveGuild = document.getElementById("home-btn");
+currentActiveGuild.classList.add("active");
+document.querySelectorAll("#guilds li").forEach(guild => {
+    guild.addEventListener('click', () => {
+        // TODO: if parent classList contains "dm-ping"
+        currentActiveGuild.classList.remove("active");
+        currentActiveGuild = guild;
+        if (currentActiveGuild.parentElement.classList.contains("dm-ping"))
+            homeBtn.classList.remove("active");
+        if (guild.parentElement.classList.contains("dm-ping"))
+            homeBtn.classList.add("active");
+        guild.classList.add("active");
+    });
 });
 //# sourceMappingURL=main.js.map

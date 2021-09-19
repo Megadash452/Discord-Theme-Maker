@@ -135,22 +135,6 @@ const iconOthers = {
 }
 
 
-const lastOf = (arr: Array<any>) => arr[arr.length - 1];
-
-const bar = {
-    baz: {
-        gig: [
-            "foo",
-            "bar"
-        ],
-        lar: [
-            "food bazar",
-            "gigabyte larry"
-        ]
-    }
-}
-
-
 document.querySelectorAll("path[icon-data]")?.forEach(path => {
     let name = path.getAttribute("icon-data") !; // microphone.muted
     let rtrn = "";
@@ -231,4 +215,27 @@ document.querySelectorAll("path[icon-data]")?.forEach(path => {
     }
 
     path.setAttribute('d', rtrn);
+});
+
+
+const homeBtn = document.getElementById("home-btn") !;
+let currentActiveGuild = document.getElementById("home-btn") !;
+currentActiveGuild.classList.add("active");
+
+document.querySelectorAll("#guilds li").forEach(guild => {
+    guild.addEventListener('click', () => {
+        // TODO: if parent classList contains "dm-ping"
+
+        currentActiveGuild.classList.remove("active");
+        currentActiveGuild = guild as HTMLElement;
+
+        // if (currentActiveGuild.parentElement ! .classList.contains("dm-ping"))
+        //     homeBtn.classList.remove("active");
+
+        // if (guild.parentElement ! .classList.contains("dm-ping"))
+        //     homeBtn.classList.add("active");
+
+        
+        guild.classList.add("active");
+    });
 });
