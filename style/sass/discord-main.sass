@@ -36,9 +36,25 @@ body.dark
 
     #sidebar
         background-color: #2f3136
+        .head
+            background-color: #00000000
+        .channels
+            background-color: #00000000
+        .media-control
+            background-color: #292b2f
+
+    #search-dms
+        color: #72767d
+        background-color: #202225
 
     #main-content
         background-color: #36393f
+        .head
+            background-color: #00000000
+
+    #guilds
+        .guild-actions
+            background-color: #36393f
 
 
 
@@ -68,7 +84,7 @@ body.dark
         // TODO: options for user to put a scroller of their liking (cannot be larger than the margin in server icons)
         scrollbar-width: none //
 
-    #home-btn
+    #home-btn, .guild-actions
         margin-top: 4px // web is 12px
         display: flex
         align-items: center
@@ -102,7 +118,7 @@ body.dark
         list-style-type: none
         // TODO: get accurate time for border-radius
 
-        background: #ff000088 // ! remove
+        background: #ff000088 // ! remove // transparent
 
         svg
             overflow: visible
@@ -130,6 +146,9 @@ body.dark
             &::before
                 height: 40px
                 left: calc(var(--left) - 4px)
+
+    .guild-actions
+        color: hsl(139, 47.3%, 43.9%)
 
 
     hr, .divider
@@ -191,11 +210,54 @@ body.dark
     width: calc(100vw - #{$server-list-width})
     display: flex
 
+    $head-height: 48px //
+    $media-ctrl-height: 52px //
+
     #sidebar
         width: $sidebar-width
         height: 100%
         border-radius: 8px 0 0 0 //
+        overflow-y: hidden
+
+        .head
+            width: 100%
+            height: $head-height
+            display: flex
+            align-items: center
+            justify-content: center
+            
+            #search-dms
+                width: 220px //
+                height: 28px //
+                border: none
+                border-radius: 4px //
+                font-family: Whitney, "Helvetica Neue", Helvetica, sans-serif // TODO: Whitney
+                text-align: left //
+
+        .channels
+            width: 100%
+            height: calc(100% - #{$head-height} - #{$media-ctrl-height})
+            overflow-y: hidden
+        .media-control
+            width: 100%
+            height: $media-ctrl-height
 
     #main-content
         width: calc(100% - #{$sidebar-width})
         height: 100%
+
+        .head
+            width: 100%
+            height: $head-height
+        .chat
+            width: 100%
+            height: calc(100% - #{$head-height})
+
+    &::before
+        content: ''
+        height: 1px
+        display: block
+        +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), $server-list-width, auto, 0)
+        pointer-events: none
+        box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
+        

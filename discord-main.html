@@ -18,7 +18,7 @@
         </section>
 
         <div id="main-wrapper">
-            <nav id="guilds" class=""> <!-- class="new-above new-below" -->
+            <nav id="guilds" class=""> <!-- class="new-above, new-below" -->
                 <div class="scroller">
                     <li class="item" id="home-btn">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20">
@@ -38,31 +38,58 @@
                     </section>
                     <hr>
                     <section id="servers">
+                        <li class="item unreads">
+                            <svg width="  " height="  " viewBox="0 0 -- --">
+    
+                            </svg>
+                        </li>
                         <li class="item">
-                            <div class="wrapper">
-                                
-                            </div>
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+    
+                            </svg>
                         </li>
                     </section>
+
+                    <li class="item guild-actions" id="add-server">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" icon-data="plus"></path>
+                        </svg>
+                    </li>
+                    <li class="item guild-actions" id="explore">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" icon-data="compass"></path>
+                        </svg>
+                    </li>
                 </div>
             </nav>
     
-            <div id="app-base">
-                <section id="sidebar">
+            <div id="app-base" class="dms"> <!-- dms, server, explore -->
+                <nav id="sidebar">
                     <div class="head">
-
+                        <button id="search-dms">Find or start a conversation</button>
                     </div>
-                    <div class="cahnnels">
+                    <div class="channels">
+                        <div class="scroller">
+                            <button id="friends">Friends</button>
+                            <button id="stage-discovery">Stage Discovery</button>
+                            <button id="nitro">Nitro</button>
 
+                            <h2>
+                                <span>New Messages</span>
+                                <svg width="16" height="16" viewport="0 0 16 16">
+                                    <!-- <polygon fill-rule="nonzero" fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8"></polygon> -->
+                                </svg>
+                            </h2>
+                        </div>
                     </div>
                     <div class="media-control">
                         
                     </div>
-                </section>
+                </nav>
     
-                <section id="main-content">
-                    <div class="header">
-                        
+                <section id="main-content" class="friends"> <!-- friends, stage-discovery, nitro -->
+                    <div class="head">
+
                     </div>
                     <div class="chat">
                         
