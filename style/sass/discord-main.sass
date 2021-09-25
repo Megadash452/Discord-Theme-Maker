@@ -2,6 +2,7 @@ $top-bar-height: 22px // web: 0px
 
 $server-list-width: 72px
 $sidebar-width: 240px
+$badge-color: #ed4245
     
 =abs-pos($top, $left, $bottom:auto, $right:auto)
     position: absolute
@@ -65,6 +66,21 @@ body.dark
         .guild-actions
             background-color: #36393f
 
+
+.badge
+    text-align: center
+    font-size: 12px
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-weight: 600
+    box-sizing: border-box
+    line-height: 16px
+    width: 16px
+    height: 16px
+    border-radius: 8px
+    background: $badge-color
+    display: flex
+    align-items: center
+    justify-content: center
 
 
 #top-bar
@@ -184,9 +200,9 @@ body.dark
 
         content: 'NEW'
         opacity: 0.9
-        background: #ed4245
-        color: #fff
-        font: 0.75rem "Helvetica Neue", Helvetica, sans-serif // actual font is ginto, but is proprietarial
+        background: $badge-color
+        color: #fff //
+        font: 0.75rem Ginto, "Helvetica Neue", Helvetica, sans-serif // actual font is ginto, but is proprietarial
         text-align: center
         
         font-weight: 600
@@ -271,6 +287,15 @@ body.dark
                     font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                     font-size: 16px //
                     line-height: 20px
+
+                    .badge
+                        float: right
+                        margin-left: 8px
+                        flex: 0 0 auto
+
+                    span
+                        text-overflow: ellipsis
+                        flex: 1 1 auto
 
                     .avatar
                         width: 32px //
