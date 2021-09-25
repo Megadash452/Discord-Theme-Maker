@@ -72,14 +72,39 @@
                     <div class="channels">
                         <div class="scroller">
                             <!-- ! TEMPLATE -->
-                            <button id="friends">Friends</button>
-                            <button id="stage-discovery">Stage Discovery</button>
-                            <button id="nitro">Nitro</button>
+                            <a href="#" class="dm-channel active" id="friends">
+                                <div class="wrapper avatar">
+                                    <svg width="24" height="24" viewport="0 0 24 24"> <!-- TODO: add class -->
+                                        <path fill="currentColor" fill-rule="nonzero" icon-data="friend" transform="translate(2 4)"></path>
+                                        <path fill-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span>Friends</span>
+                                <div class="badge">
+                                    2
+                                </div>
+                            </a>
+                            <a href="#" class="dm-channel" id="stage-discovery">
+                                <div class="wrapper avatar">
+                                    <svg width="24" height="24" viewport="0 0 24 24">
+                                        <path fill="currentColor" icon-data="stage"></path>
+                                    </svg>
+                                </div>
+                                <span>Stage Discovery</span>
+                            </a>
+                            <a href="#" class="dm-channel" id="nitro">
+                                <div class="wrapper avatar">
+                                    <svg width="24" height="24" viewport="0 0 24 24">
+                                        <path fill="currentColor" icon-data="nitro"></path>
+                                    </svg>
+                                </div>
+                                <span>Nitro</span>
+                            </a>
 
                             <h2>
                                 <span>New Messages</span>
                                 <svg width="16" height="16" viewport="0 0 16 16">
-                                    <!-- <polygon fill-rule="nonzero" fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8"></polygon> -->
+                                    <polygon fill-rule="nonzero" fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8"></polygon>
                                 </svg>
                             </h2>
                         </div>

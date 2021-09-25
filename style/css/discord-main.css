@@ -40,6 +40,21 @@ body.dark #sidebar .channels {
   background-color: #00000000;
 }
 
+body.dark #sidebar .channels .dm-channel {
+  color: #8e9297;
+  background-color: transparent;
+}
+
+body.dark #sidebar .channels .dm-channel:hover {
+  color: #dcddde;
+  background-color: #4f545c29;
+}
+
+body.dark #sidebar .channels .dm-channel:active, body.dark #sidebar .channels .dm-channel.active {
+  color: #fff;
+  background-color: #4f545c52;
+}
+
 body.dark #sidebar .media-control {
   background-color: #292b2f;
 }
@@ -251,6 +266,43 @@ body.dark #guilds .guild-actions {
   width: 100%;
   height: calc(100% - 48px - 52px);
   overflow-y: hidden;
+}
+
+#app-base #sidebar .channels .scroller {
+  height: 100%;
+  padding-top: 8px;
+  overflow-x: visible;
+}
+
+#app-base #sidebar .channels .scroller .dm-channel {
+  display: flex;
+  align-items: center;
+  width: calc(240px - 8px * 2 - 16px);
+  height: 42px;
+  margin: 1px 8px;
+  padding: 0 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#app-base #sidebar .channels .scroller .dm-channel .avatar {
+  width: 32px;
+  aspect-ratio: 1;
+  margin-right: 12px;
+}
+
+#app-base #sidebar .channels .scroller .dm-channel .avatar.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app-base #sidebar .channels .scroller .dm-channel .avatar.wrapper svg {
+  width: 24px;
+  height: 24px;
 }
 
 #app-base #sidebar .media-control {
