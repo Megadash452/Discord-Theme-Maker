@@ -11,6 +11,10 @@ $badge-color: #ed4245
     left: $left
     right: $right
 
+
+// TODO: FONT: Whitney
+// TODO: FONT: Ginto
+
 body
     margin: 0
     width: 100vw
@@ -40,22 +44,66 @@ body.dark
         .head
             background-color: #00000000
         .channels
+            color: #8e9297
             background-color: #00000000
-            .dm-channel
-                color: #8e9297
-                background-color: transparent
+            .scroller
+                scrollbar-color: transparent transparent
+                &:hover
+                    scrollbar-color: #202225 transparent
+            h2.category
+                color: inherit
+                background-color: #00000000
+                &:hover
+                    color: #dcddde
+                    background-color: #00000000
+                &:active
+                    color: #dcddde
+                    background-color: #00000000
+            .dm-channel, .channel
+                color: inherit
+                background-color: #00000000
                 &:hover
                     color: #dcddde
                     background-color: #4f545c29
                 &:active, &.active
                     color: #fff
                     background-color: #4f545c52
+                &.muted
+                    color: #4f545c
+                    background-color: #00000000
+                    &:hover
+                        color: #dcddde
+                        background-color: #4f545c29
+                    &:active, &.active
+                        color: #fff
+                        background-color: #4f545c52
+                    .avatar
+                        opacity: 0.3
+                .avatar
+                    color: inherit
+                    background-color: #00000000
+            button
+                color: #8e9297
+                background-color: #00000000
+                &:hover
+                    color: #dcddde
+                    background-color: #00000000
+                &:active
+                    color: #dcddde
+                    background-color: #00000000
+
         .media-control
             background-color: #292b2f
 
-    #search-dms
+    .search-bar
         color: #72767d
         background-color: #202225
+        &:hover
+            color: #72767d
+            background-color: #202225
+        &:active
+            color: #72767d
+            background-color: #202225
 
     #main-content
         background-color: #36393f
@@ -65,6 +113,7 @@ body.dark
     #guilds
         .guild-actions
             background-color: #36393f
+            
 
 
 .badge
@@ -81,6 +130,7 @@ body.dark
     display: flex
     align-items: center
     justify-content: center
+    color: #fff
 
 
 #top-bar
@@ -137,16 +187,15 @@ body.dark
         margin-left: $side-margins // 
         margin-right: auto //
         margin-bottom: $icon-spacing //
-        border-radius: 50%
         cursor: pointer
-        transition: border-radius 0.2s, background-color 0.15s ease-out, color 0.15s ease-out
-        list-style-type: none
-        // TODO: get accurate time for border-radius
-
-        background: #ff000088 // ! remove // transparent
-
+        list-style-type: none 
         svg
             overflow: visible
+            .wrapper
+                background: #ff000088 // ! remove // transparent
+                border-radius: 50%
+                transition: border-radius 0.2s, background-color 0.15s ease-out, color 0.15s ease-out
+                // TODO: get accurate time for border-radius
 
         &::before // pill
             --left: calc(-1 * (#{$server-list-width} - #{$icon-size}) / 2)
@@ -160,14 +209,16 @@ body.dark
             border-radius: 0 4px 4px 0
             transition: height 0.2s, left 0.1s // TODO: get accurate time
         &:hover
-            border-radius: $border-rad-hov
+            svg .wrapper
+                border-radius: $border-rad-hov
             &::before
                 height: 20px
                 left: calc(var(--left) - 4px)
         &.unreads::before
             left: calc(var(--left) - 4px)
         &:active, &.active
-            border-radius: $border-rad-active
+            svg .wrapper
+                border-radius: $border-rad-active
             &::before
                 height: 40px
                 left: calc(var(--left) - 4px)
@@ -202,7 +253,7 @@ body.dark
         opacity: 0.9
         background: $badge-color
         color: #fff //
-        font: 0.75rem Ginto, "Helvetica Neue", Helvetica, sans-serif // actual font is ginto, but is proprietarial
+        font: 0.75rem Ginto, "Helvetica Neue", Helvetica, sans-serif // ginto is proprietarial
         text-align: center
         
         font-weight: 600
@@ -256,59 +307,145 @@ body.dark
                 height: 28px //
                 border: none
                 border-radius: 4px //
-                font-family: Whitney, "Helvetica Neue", Helvetica, sans-serif // TODO: Whitney
+                font: 14px Whitney, "Helvetica Neue", Helvetica, sans-serif
+                font-weight: 500
+                line-height: 24px
                 text-align: left //
+                cursor: pointer
 
         .channels
             width: 100%
             height: calc(100% - #{$head-height} - #{$media-ctrl-height})
+            position: relative
             overflow-y: hidden
+            user-select: none
 
             $btn-side-margin: 8px //
             $btn-vertical-margin: 1px //
             $btn-height: 42px //
 
+            button
+                border: none
+                padding: 0
+                margin: 0
+                cursor: pointer
+
             .scroller
                 height: 100%
                 padding-top: 8px //
+                padding-right: 8px
+                position: relative
                 overflow-x: visible
-                // overflow-y: scroll
+                overflow-y: auto
+                scrollbar-width: thin
+                transition: scrollbar-color 0.15s
+                &:hover
+                    scrollbar-color: #202225 transparent
+
+                .category
+                    height: 18px
+                    width: calc(#{$sidebar-width} - #{$btn-side-margin} * 2 - 18px)
+                    margin: 18px 8px 4px 18px
+                    border-radius: 4px
+                    box-sizing: border-box
+                    font: 12px Ginto, "Helvetica Neue", Helvetica, sans-serif
+                    font-weight: 600
+                    line-height: 16px
+                    letter-spacing: 0.25px
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                    display: flex
+                    span
+                        flex: 1
+                    button.add
+                        width: 16px
+                        height: 16px
+                        margin-right: 2px
 
                 .dm-channel
                     display: flex
                     align-items: center
-                    // justify-content: start
+                    justify-content: space-between
+                    position: relative
                     width: calc(#{$sidebar-width} - #{$btn-side-margin} * 2 - 16px)
                     height: $btn-height
-                    margin: $btn-vertical-margin $btn-side-margin
+                    margin: $btn-vertical-margin 0 $btn-vertical-margin $btn-side-margin
                     padding: 0 8px
                     border-radius: 4px //
                     text-decoration: none
-                    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                    font-size: 16px //
-                    line-height: 20px
+                    white-space: nowrap
 
                     .badge
-                        float: right
                         margin-left: 8px
                         flex: 0 0 auto
 
-                    span
+                    .title
+                        display: block
+                        margin: 0
+                        font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                        font-weight: 500
+                        line-height: 20px
+                        white-space: nowrap
+                        overflow: hidden
                         text-overflow: ellipsis
                         flex: 1 1 auto
+
+                    .subtitle
+                        display: block
+                        margin: -2px 0 0 0
+                        font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                        font-weight: 500
+                        line-height: 16px
+                        white-space: nowrap
+                        overflow: hidden
+                        text-overflow: ellipsis
 
                     .avatar
                         width: 32px //
                         aspect-ratio: 1
                         margin-right: 12px //
+                        flex: 0 0 auto
+                        // * foreign object border radius
+                        img
+                            width: 32px
+                            object-fit: cover
                         &.wrapper
+                            width: 32px //
+                            aspect-ratio: 1
                             display: flex
                             align-items: center
                             justify-content: center
+                            flex: 0 0 auto
                             svg
                                 width: 24px
                                 height: 24px
+                                flex: 0 0 auto
+                    img.avatar
+                        border-radius: 50%
 
+                    .content
+                        flex: 1 1 auto
+                        overflow: hidden
+                        white-space: nowrap
+                        text-overflow: ellipsis
+                    &:hover
+                        .close
+                            display: block
+                    button.close
+                        width: 20px
+                        height: 20px
+                        opacity: 0.7
+                        display: none
+                        border-radius: 4px //
+                        margin-left: 8px
+                        flex: 0 0 auto
+                        svg
+                            width: 16px
+                            height: 16px
+                            margin: 2px
+                            // ! TODO: path doesnt conform to size
+                        &:hover
+                            opacity: 1
 
         .media-control
             width: 100%
