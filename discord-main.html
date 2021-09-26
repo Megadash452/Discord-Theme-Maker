@@ -14,9 +14,9 @@
     
     <body class="dark">
         <svg style="position: absolute">
-            <mask id="user-status-mask" width="32" height="32">
+            <mask id="user-status-mask" width="32" height="32" maskContentUnits="objectBoundingBox">
                 <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
-                <rect x="19" y="19" width="16"   height="16"   fill="black" rx="8" ry="8"/>
+                <circle cx="0.84375" cy="0.84375" r="0.25" fill="black"/>
             </mask>
             <mask id="user-status-mobile-mask" width="32" height="32">
                 <rect x="0" y="0" width="100%" height="100%" fill="white"/>
@@ -116,7 +116,9 @@
 
                         <!-- ? HERE IS ALL THE SERVERS -->
 
-                        <li class="item foler"
+                        <li class="item folder">
+
+                        </li>
                     </section>
 
                     <li class="item guild-actions" id="add-server">
@@ -180,14 +182,14 @@
                             <div id="private-chats">
                                 <!-- ? GROUP DM -->
                                 <a href="#" class="dm-channel">
-                                    <img src="res/imgs/sample.png" class="avatar">
+                                    <img class="avatar" src="res/imgs/sample.png">
                                     <div class="content">
                                         <h2 class="title">Channel Name</h2>
                                         <p class="subtitle">subtitle</p>
                                     </div>
                                     <button class="close">
                                         <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
+                                            <path fill="currentColor" icon-data="x"/>
                                         </svg>
                                     </button>
                                 </a>
@@ -195,8 +197,7 @@
                                 <!-- ? Friend DM -->
                                 <a href="#" class="dm-channel">
                                     <svg class="avatar" viewbox="0 0 32 32">
-                                        
-                                        <foreignObject x="0" y="0" width="32" height="32" mask="url(#user-status-mask)">
+                                        <foreignObject width="32" height="32" mask="url(#user-status-mask)">
                                             <div class="wrapper">
                                                 <img src="res/imgs/Madeline.png">
                                             </div>
@@ -207,7 +208,7 @@
                                     </div>
                                     <button class="close">
                                         <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
+                                            <path fill="currentColor" icon-data="x"/>
                                         </svg>
                                     </button>
                                 </a>
@@ -223,7 +224,7 @@
                                     </div>
                                     <button class="close">
                                         <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
+                                            <path fill="currentColor" icon-data="x"/>
                                         </svg>
                                     </button>
                                 </a>
@@ -237,7 +238,7 @@
                                     </div>
                                     <button class="close">
                                         <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
+                                            <path fill="currentColor" icon-data="x"/>
                                         </svg>
                                     </button>
                                 </a>
@@ -271,7 +272,34 @@
                         </div>
                     </div>
                     <div class="media-control">
-                        
+                        <div class="vc-control">
+
+                        </div>
+                        <div class="content">
+                            <svg class="avatar" viewbox="0 0 32 32">
+                                <foreignObject width="32" height="32" mask="url(#user-status-mask)">
+                                    <div class="wrapper">
+                                        <img src="res/imgs/default.png">
+                                    </div>
+                                </foreignObject>
+                            </svg>
+                            <div class="name">
+                                <h2 class="title">MyUser</h2>
+                                <p class="subtitle">
+                                    <span class="desc">Description</span>
+                                    <!-- <span class="tag">#1234</span> -->
+                                </p>
+                            </div>
+                            <div class="control">
+                                <button id="mute-btn" class="mic unmuted" onclick="toggleMute()">
+                                    <svg>
+                                        <path fill="currentColor" icon-data="microphone.unmuted.1"></path>
+                                        <path fill="currentColor" icon-data="microphone.unmuted.2"></path>
+                                    </svg>
+                                </button>
+                                <!-- TODO -->
+                            </div>
+                        </div>
                     </div>
                 </nav>
     
