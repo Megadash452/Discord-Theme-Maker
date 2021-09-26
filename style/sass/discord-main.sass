@@ -2,7 +2,7 @@ $top-bar-height: 22px // web: 0px
 
 $server-list-width: 72px
 $sidebar-width: 240px
-$badge-color: #ed4245
+$ping-color: #ed4245
     
 =abs-pos($top, $left, $bottom:auto, $right:auto)
     position: absolute
@@ -30,12 +30,13 @@ body.dark
     background-color: #202225
 
     #home-btn
-        color: #dcddde
-        background-color: #36393f
-        &:hover
+        > svg
+            color: #dcddde
+            background-color: #36393f
+        &:hover > svg
             color: #fff
             background-color: #5865f2
-        &:active, &.active
+        &:active > svg, &.active > svg
             color: #fff
             background-color: #5865f2
 
@@ -126,7 +127,7 @@ body.dark
     width: 16px
     height: 16px
     border-radius: 8px
-    background: $badge-color
+    background: $ping-color
     display: flex
     align-items: center
     justify-content: center
@@ -159,12 +160,10 @@ body.dark
         // TODO: options for user to put a scroller of their liking (cannot be larger than the margin in server icons)
         scrollbar-width: none //
 
-    #home-btn, .guild-actions
+    #home-btn
         margin-top: 4px // web is 12px
-        display: flex
-        align-items: center
-        justify-content: center
-            
+        > svg svg
+            margin-top: 14px
 
     #servers
         li, .item
@@ -175,31 +174,35 @@ body.dark
         $icon-spacing: 8px
 
         $border-rad: 50%
-        $border-rad-hov: 15px // TODO: get accurate radius
+        $border-rad-hov: 17.5px
         $border-rad-active: $border-rad-hov
 
         $side-margins: calc((#{$server-list-width} - #{$icon-size}) / 2)
 
-        width: $icon-size //
-        height: $icon-size //
+        width: $icon-size
+        height: $icon-size
         aspect-ratio: 1
         position: relative
-        margin-left: $side-margins // 
-        margin-right: auto //
-        margin-bottom: $icon-spacing //
+        margin: 0 auto $icon-spacing $side-margins
+        list-style-type: none
         cursor: pointer
-        list-style-type: none 
-        svg
-            overflow: visible
-            .wrapper
-                background: #ff000088 // ! remove // transparent
-                border-radius: 50%
-                transition: border-radius 0.2s, background-color 0.15s ease-out, color 0.15s ease-out
-                // TODO: get accurate time for border-radius
+        border-radius: 50%
+        transition: border-radius 0.2s
+        // TODO: get accurate time for border-radius
+
+        > svg
+            width: $icon-size
+            aspect-ratio: 1
+            border-radius: inherit
+            overrflow: hidden
+            transition: background-color 0.15s ease-out, color 0.15s ease-out
+            svg
+                display: block
+                margin-left: auto
+                margin-right: auto
 
         &::before // pill
             --left: calc(-1 * (#{$server-list-width} - #{$icon-size}) / 2)
-
             content: ''
             background-color: #fff
             +abs-pos(50%, calc(var(--left) - 8px), auto, auto)
@@ -209,22 +212,37 @@ body.dark
             border-radius: 0 4px 4px 0
             transition: height 0.2s, left 0.1s // TODO: get accurate time
         &:hover
-            svg .wrapper
-                border-radius: $border-rad-hov
+            border-radius: $border-rad-hov
             &::before
                 height: 20px
                 left: calc(var(--left) - 4px)
         &.unreads::before
             left: calc(var(--left) - 4px)
         &:active, &.active
-            svg .wrapper
-                border-radius: $border-rad-active
+            border-radius: $border-rad-active
             &::before
                 height: 40px
                 left: calc(var(--left) - 4px)
+        
+        &.guild-actions
+            display: flex
+            align-items: center
+            justify-content: center
+            color: #3ba55d
 
-    .guild-actions
-        color: hsl(139, 47.3%, 43.9%)
+        .badge
+            +abs-pos(auto, auto, 50%, 0)
+            pointer-events: none
+            // padding-right: 1px
+            &.upper
+                top: 0
+                bottom: auto
+            &.lower
+                top: auto
+                bottom: 0
+            &.ping
+                background: $ping-color
+
 
 
     hr, .divider
@@ -251,7 +269,7 @@ body.dark
 
         content: 'NEW'
         opacity: 0.9
-        background: $badge-color
+        background: $ping-color
         color: #fff //
         font: 0.75rem Ginto, "Helvetica Neue", Helvetica, sans-serif // ginto is proprietarial
         text-align: center
@@ -420,7 +438,7 @@ body.dark
                                 width: 24px
                                 height: 24px
                                 flex: 0 0 auto
-                    img.avatar
+                    img.avatar, svg.avatar
                         border-radius: 50%
 
                     .content

@@ -13,6 +13,13 @@
     </head>
     
     <body class="dark">
+        <svg width="0" height="0" style="position: absolute">
+            <mask id="user-status-mask" width="32" height="32">
+                <circle cx="16" cy="16" r="16" fill="white"></circle>
+                <rect color="black" x="19" y="19" width="16" height="16" rx="8" ry="8"></rect>
+            </mask>
+        </svg>
+
         <section id="top-bar">
 
         </section>
@@ -21,23 +28,20 @@
             <nav id="guilds" class=""> <!-- class="new-above, new-below" -->
                 <div class="scroller">
                     <li class="item" id="home-btn">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20">
-                            <path fill="currentColor" icon-data="discord"></path>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                            <foreignObject width="100%" height="100%">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewbox="0 0 28 20">
+                                    <path fill="currentColor" icon-data="discord"></path>
+                                </svg>
+                            </foreignObject>
                         </svg>
+                        <div class="badge lower ping">1</div>
                     </li>
         
                     <section id="dms-ping">
                         <li class="item unreads">
                             <svg width="48" height="48" viewBox="0 0 48 48">
-                                <mask id="mask-1" width="32" height="32">
-                                    <rect x="0" y="0" width="48" height="48" fill="white"></rect>
-                                    <rect color="black" x="19" y="19" width="24" height="24" rx="8" ry="8"></rect>
-                                </mask>
-                                <foreignObject width="48" height="48" mask="url(#mask-1)">
-                                    <div class="wrapper">
-                                        <img src="res/imgs/Madeline.png">
-                                    </div>
-                                </foreignObject>
+                                
                             </svg>
                         </li>
                         <li class="item">
@@ -134,11 +138,8 @@
                                 <!-- ? Friend DM -->
                                 <a href="#" class="dm-channel">
                                     <svg class="avatar" viewbox="0 0 32 32">
-                                        <mask id="mask-1" width="32" height="32">
-                                            <circle cx="16" cy="16" r="16" fill="white"></circle>
-                                            <rect color="black" x="19" y="19" width="16" height="16" rx="8" ry="8"></rect>
-                                        </mask>
-                                        <foreignObject width="32" height="32" mask="url(#mask-1)">
+                                        
+                                        <foreignObject x="0" y="0" width="32" height="32" mask="url(#user-status-mask)">
                                             <div class="wrapper">
                                                 <img src="res/imgs/Madeline.png">
                                             </div>
