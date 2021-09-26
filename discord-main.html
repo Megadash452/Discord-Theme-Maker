@@ -13,53 +13,110 @@
     </head>
     
     <body class="dark">
-        <svg width="0" height="0" style="position: absolute">
+        <svg style="position: absolute">
             <mask id="user-status-mask" width="32" height="32">
-                <circle cx="16" cy="16" r="16" fill="white"></circle>
-                <rect color="black" x="19" y="19" width="16" height="16" rx="8" ry="8"></rect>
+                <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
+                <rect x="19" y="19" width="16"   height="16"   fill="black" rx="8" ry="8"/>
+            </mask>
+            <mask id="user-status-mobile-mask" width="32" height="32">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="0.59375" y="0.4375" width="0.5" height="0.65625" fill="black" rx="0.13125" ry="0.13125"/>
+            </mask>
+            <mask id="guild-upper-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-1-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="28" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-2-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="22" y="28" width="30" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-3-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="14" y="28" width="38" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-1-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="28" y="28" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-2-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="22" y="28" width="30" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-3-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="14" y="28" width="38" height="24" fill="black" rx="12" ry="12"/>
             </mask>
         </svg>
+
+        <template id="guild-img">
+            <li class="item"> <!-- unreads, active -->
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                    <foreignObject width="100%" height="100%" mask="url(#)">
+                        <div class="wrapper">
+                            <img src="res/imgs/Madeline.png" width="100%" height="100%">
+                        </div>
+                    </foreignObject>
+                </svg>
+                <div class="badge upper">1</div>
+            </li>
+        </template>
+        <template id="guild-no-img">
+            <li class="item"> <!-- unreads, active, no-img -->
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                    <foreignObject width="100%" height="100%" mask="url(#)">
+                        <div class="wrapper">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d=""/>
+                            </svg>
+                        </div>
+                    </foreignObject>
+                </svg>
+                <div class="badge upper">1</div>
+            </li>
+        </template>
+        <template id="folder">
+
+        </template>
 
         <section id="top-bar">
 
         </section>
+
 
         <div id="main-wrapper">
             <nav id="guilds" class=""> <!-- class="new-above, new-below" -->
                 <div class="scroller">
                     <li class="item" id="home-btn">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg">
-                            <foreignObject width="100%" height="100%">
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewbox="0 0 28 20">
-                                    <path fill="currentColor" icon-data="discord"></path>
-                                </svg>
+                            <foreignObject width="100%" height="100%" mask="url(#guild-lower-1-mask)">
+                                <div class="wrapper">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewbox="0 0 28 20">
+                                        <path fill="currentColor" icon-data="discord"/>
+                                    </svg>
+                                </div>
                             </foreignObject>
                         </svg>
                         <div class="badge lower ping">1</div>
                     </li>
         
                     <section id="dms-ping">
-                        <li class="item unreads">
-                            <svg width="48" height="48" viewBox="0 0 48 48">
-                                
-                            </svg>
-                        </li>
-                        <li class="item">
-    
-                        </li>
+
+                        <!-- ? HERE IS THE UNREAD DMS -->
+
                     </section>
                     <hr>
                     <section id="servers">
-                        <li class="item unreads">
-                            <svg width="  " height="  " viewBox="0 0 -- --">
-    
-                            </svg>
-                        </li>
-                        <li class="item">
-                            <svg width="48" height="48" viewBox="0 0 48 48">
-    
-                            </svg>
-                        </li>
+
+                        <!-- ? HERE IS ALL THE SERVERS -->
+
+                        <li class="item foler"
                     </section>
 
                     <li class="item guild-actions" id="add-server">
