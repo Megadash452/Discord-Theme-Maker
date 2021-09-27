@@ -47,26 +47,26 @@ body.dark
     #sidebar
         background-color: #2f3136
         .head
-            background-color: #00000000
+            background-color: #0000
         .channels
             color: #8e9297
-            background-color: #00000000
+            background-color: #0000
             .scroller
                 scrollbar-color: transparent transparent
                 &:hover
                     scrollbar-color: #202225 transparent
             h2.category
                 color: inherit
-                background-color: #00000000
+                background-color: #0000
                 &:hover
                     color: #dcddde
-                    background-color: #00000000
+                    background-color: #0000
                 &:active
                     color: #dcddde
-                    background-color: #00000000
+                    background-color: #0000
             .dm-channel, .channel
                 color: inherit
-                background-color: #00000000
+                background-color: #0000
                 &:hover
                     color: #dcddde
                     background-color: #4f545c29
@@ -75,7 +75,7 @@ body.dark
                     background-color: #4f545c52
                 &.muted
                     color: #4f545c
-                    background-color: #00000000
+                    background-color: #0000
                     &:hover
                         color: #dcddde
                         background-color: #4f545c29
@@ -86,24 +86,62 @@ body.dark
                         opacity: 0.3
                 .avatar
                     color: inherit
-                    background-color: #00000000
+                    background-color: #0000
             button
                 color: #8e9297
-                background-color: #00000000
+                background-color: #0000
                 &:hover
                     color: #dcddde
-                    background-color: #00000000
+                    background-color: #0000
                 &:active
                     color: #dcddde
-                    background-color: #00000000
+                    background-color: #0000
 
         .media-control
             color: #dcddde
             background-color: #292b2f
-            .content .title
+            .vc-control
                 color: #fff
-            .content .subtitle
-                color: #b9bbbe
+                background-color: #0000
+                border-bottom-color: #ffffff0f
+                .connection
+                    color: inherit
+                    background-color: #0000
+                    .subtitle
+                        color: #b9bbbe
+                        background-color: #0000
+                    button.disconnect
+                        color: #b9bbbe
+                        background-color: #0000
+                        &:hover
+                            color: #dcddde
+                            background-color: #4f545c52
+                        &:active
+                            color: #dcddde
+                            background-color: #4f545c52
+                .actions button
+                    color: #fff
+                    background-color: #36393f
+                    &:hover
+                        color: #fff
+                        background-color: #2f3136
+                    &:active
+                        color: #fff
+                        background-color: #2f3136
+            .content
+                .title
+                    color: #fff
+                .subtitle
+                    color: #b9bbbe
+                button
+                    color: #b9bbbe
+                    background-color: #0000
+                    &:hover
+                        color: #dcddde
+                        background-color: #4f545c52
+                    &:active
+                        color: #dcddde
+                        background-color: #4f545c52
 
     .search-bar
         color: #72767d
@@ -317,6 +355,12 @@ body.dark
         --scale: 1
         bottom: 0
 
+button
+    background: transparent
+    border: none
+    padding: 0
+    margin: 0
+    cursor: pointer
 
 
 #app-base
@@ -326,7 +370,6 @@ body.dark
 
     $head-height: 48px //
     $media-ctrl-height: 52px //
-    $vc-ctrl-height: 0 // TODO:
 
     &::before
         content: ''
@@ -341,13 +384,8 @@ body.dark
         height: 100%
         border-radius: 8px 0 0 0 //
         overflow-y: hidden
-
-        button
-            border: none
-            padding: 0
-            margin: 0
-            background: transparent
-            cursor: pointer
+        display: flex
+        flex-direction: column
 
         .head
             width: 100%
@@ -361,6 +399,7 @@ body.dark
                 height: 28px //
                 border: none
                 border-radius: 4px //
+                padding: 1px 6px
                 font: 14px Whitney, "Helvetica Neue", Helvetica, sans-serif
                 font-weight: 500
                 line-height: 24px
@@ -369,7 +408,8 @@ body.dark
 
         .channels
             width: 100%
-            height: calc(100% - #{$head-height} - #{$media-ctrl-height})
+            // height: calc(100% - #{$head-height} - #{$media-ctrl-height})
+            flex: 1 1 auto
             position: relative
             overflow-y: hidden
             user-select: none
@@ -451,6 +491,13 @@ body.dark
                     .avatar
                         margin-right: 12px //
                         flex: 0 0 auto
+                        &.wrapper
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            svg
+                                width: 24px
+                                height: 24px
 
                     .content
                         flex: 1 1 auto
@@ -478,6 +525,94 @@ body.dark
 
         .media-control
             width: 100%
+            flex: 0 0 auto
+            z-index: 1
+            &.in-vc .vc-control
+                display: block
+
+            .vc-control
+                position: relative
+                // overflow: visible
+                display: none
+                padding: 8px
+                border-bottom-width: 1px
+                border-bottom-style: solid
+
+                .connection
+                    margin: 0 0 4px 0
+                    display: flex
+                    .text
+                        flex: 1
+                        max-width: 100%
+                        // TODO: takes all the space, leaves none for button
+                        .status
+                            display: flex
+                            align-items: center
+                            margin: 0 0 2px 0
+                            font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                            font-weight: 600
+                            overflow: hidden
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            &.connected
+                                color: #4fdc7c
+                            &.connecting
+                            
+                            &.disconnected
+                                color: #ed4245
+                            svg
+                                width: 16px
+                                height: 16px
+                                margin: 0 4px 0 0
+                                flex: 0 0 auto
+                        
+                        .subtitle
+                            max-width: 100%
+                            margin: 0
+                            display: block
+                            font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                            line-height: 13px
+                            text-decoration: none
+                            overflow: hidden
+                            white-space: nowrap
+                            text-overflow: ellipsis
+                            cursor: pointer
+
+                    button.disconnect
+                        width: 32px
+                        height: 32px
+                        flex: 0 0 auto
+                        margin: 0 0 0 10px
+                        svg
+                            width: 20px
+                            height: 20px
+
+                .actions
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    margin: 4px 0 0 0
+
+                    button
+                        width: auto
+                        height: 32px
+                        min-width: auto
+                        padding: 2px 16px
+                        border-radius: 3px
+                        margin: 0 4px
+                        position: relative
+                        flex: 1 1 auto
+                        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                        font-weight: 500
+                        line-height: 16px
+                        transition: background-color .17s ease, color .17s ease
+                        &:first-child
+                            margin-left: 0
+                        &:last-child
+                            margin-right: 0
+                        // TODO: continue
+
+
             .content
                 height: $media-ctrl-height
                 display: flex
@@ -515,9 +650,21 @@ body.dark
 
                 .control
                     flex: 0 1 auto
-                    
+                    height: 32px
+                    font-size: 0
                     button
-                        // TODO
+                        width: 32px
+                        height: 32px
+                        aspect-ratio: 1
+                        position: relative
+                        border-radius: 4px
+                        // display: flex
+                        // align-items: center
+                        // justify-content: center
+                        svg
+                            width: 20px
+                            height: 20px
+                            aspect-ratio: 1
                 
 
     #main-content

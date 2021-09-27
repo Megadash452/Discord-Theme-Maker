@@ -13,7 +13,7 @@
     </head>
     
     <body class="dark">
-        <svg style="position: absolute">
+        <svg style="position: absolute; z-index: -2;">
             <mask id="user-status-mask" width="32" height="32" maskContentUnits="objectBoundingBox">
                 <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
                 <circle cx="0.84375" cy="0.84375" r="0.25" fill="black"/>
@@ -271,10 +271,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="media-control">
+                    <div class="media-control in-vc"> <!-- in-vc-->
                         <div class="vc-control">
-
+                            <div class="connection">
+                                <div class="text">
+                                    <h3 class="status connected">
+                                        <svg width="16" height="16" viewbox="0 0 24 24">
+                                            <path fill="currentColor" icon-data="connection"/>
+                                        </svg>
+                                        <span class="name">Voice Connected</span>
+                                    </h3>
+                                    <a class="subtitle">${Voice-Channel_Name} / ${Server_Name}</a>
+                                </div>
+                                <button class="disconnect">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="callEnd"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="actions">
+                                <button class="video" onclick="openVideo()"></button>
+                                <button class="stream" onclick="startStream()"></button>
+                            </div>
                         </div>
+
                         <div class="content">
                             <svg class="avatar" viewbox="0 0 32 32">
                                 <foreignObject width="32" height="32" mask="url(#user-status-mask)">
@@ -292,9 +312,19 @@
                             </div>
                             <div class="control">
                                 <button id="mute-btn" class="mic unmuted" onclick="toggleMute()">
-                                    <svg>
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
                                         <path fill="currentColor" icon-data="microphone.unmuted.1"></path>
                                         <path fill="currentColor" icon-data="microphone.unmuted.2"></path>
+                                    </svg>
+                                </button>
+                                <button id="deaf-btn" class="audio undeafened" onclick="toggleDeafen()">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="deaf.inactive"></path>
+                                    </svg>
+                                </button>
+                                <button id="settings-btn" onclick="openSettings()">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="settings"></path>
                                     </svg>
                                 </button>
                                 <!-- TODO -->
