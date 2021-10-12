@@ -549,12 +549,13 @@ button
                 border-bottom-style: solid
 
                 .connection
-                    margin: 0 0 4px 0
+                    padding: 0 0 4px 0
                     display: flex
+                    align-items: center
+
                     .text
                         flex: 1
-                        max-width: 100%
-                        // TODO: takes all the space, leaves none for button ... FIX
+                        min-width: 0 // do not remove
                         .status
                             display: flex
                             align-items: center
@@ -594,6 +595,7 @@ button
                         display: relative
                         flex: 0 0 auto
                         margin: 0 0 0 10px
+                        border-radius: 4px
                         svg
                             width: 20px
                             height: 20px
@@ -606,25 +608,35 @@ button
 
                     button
                         width: auto
-                        height: 32px
                         min-width: auto
+                        height: 32px
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        flex: 1 1 auto
+                        position: relative
                         padding: 2px 16px
                         border-radius: 3px
                         margin: 0 4px
-                        position: relative
-                        flex: 1 1 auto
                         font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                         font-weight: 500
                         line-height: 16px
                         transition: background-color .17s ease, color .17s ease
+                        white-space: nowrap
+                        text-overflow: ellipsis
+                        overflow: hidden
                         &:first-child
                             margin-left: 0
                         &:last-child
                             margin-right: 0
                         // TODO: continue
 
+                        svg
+                            margin-right: 8px
+                            flex-shrink: 0
 
-            .content
+
+            .content // TODO: &:hover show tag
                 height: $media-ctrl-height
                 display: flex
                 align-items: center
@@ -649,15 +661,29 @@ button
                         white-space: nowrap
                         text-overflow: ellipsis
                     .subtitle
+                        // height is 13
                         display: block
+                        position: relative
                         margin: 0
                         font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                        font-weight: 500
                         line-height: 13px
                         overflow: hidden
                         white-space: nowrap
                         text-overflow: ellipsis
                         span
                             display: block
+                            transition: top 0.22s ease
+                            // TODO: transition does not work
+                        .desc
+                            position: relative
+                        .tag
+                            position: absolute
+                &:hover .name .subtitle
+                    .desc
+                        top: -13px // depends on height
+                    .tag
+                        top: 0
 
                 .control
                     flex: 0 1 auto
@@ -676,7 +702,7 @@ button
                             width: 20px
                             height: 20px
                             aspect-ratio: 1
-                
+
 
     #main-content
         width: calc(100% - #{$sidebar-width})

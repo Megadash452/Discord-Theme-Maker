@@ -55,7 +55,10 @@
             </mask>
         </svg>
 
-        <template id="guild-img">
+
+        <!-- -- TEMPLATES -- -->
+
+        <template id="guild-img-tmp">
             <li class="item"> <!-- unreads, active -->
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg">
                     <foreignObject width="100%" height="100%" mask="url(#)">
@@ -67,7 +70,7 @@
                 <div class="badge upper">1</div>
             </li>
         </template>
-        <template id="guild-no-img">
+        <template id="guild-no-img-tmp">
             <li class="item"> <!-- unreads, active, no-img -->
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg">
                     <foreignObject width="100%" height="100%" mask="url(#)">
@@ -79,9 +82,14 @@
                 <div class="badge upper">1</div>
             </li>
         </template>
-        <template id="folder">
+        <template id="guild-folder-tmp">
 
         </template>
+
+
+        <!-- TEMPLATES END -->
+
+
 
         <section id="top-bar">
 
@@ -285,7 +293,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="media-control in-vc"> <!-- in-vc-->
+                    <div class="media-control"> <!-- in-vc-->
                         <div class="vc-control">
                             <div class="connection">
                                 <div class="text">
@@ -304,8 +312,18 @@
                                 </button>
                             </div>
                             <div class="actions">
-                                <button class="video" onclick="openVideo()"></button>
-                                <button class="stream" onclick="startStream()"></button>
+                                <button class="video" onclick="openVideo()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="videoCall"></path>
+                                    </svg>
+                                    <span>Video</span>
+                                </button>
+                                <button class="stream" onclick="startStream()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="startStream"></path>
+                                    </svg>
+                                    <span>Screen</span>
+                                </button>
                             </div>
                         </div>
 
@@ -321,7 +339,7 @@
                                 <h2 class="title">MyUser</h2>
                                 <p class="subtitle">
                                     <span class="desc">Description</span>
-                                    <!-- <span class="tag">#1234</span> -->
+                                    <span class="tag">#1234</span>
                                 </p>
                             </div>
                             <div class="control">
