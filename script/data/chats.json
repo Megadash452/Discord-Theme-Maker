@@ -1,0 +1,61 @@
+{
+    "servers": [
+
+    ],
+    "private messages": [
+        {
+            "picture": "",
+            "name": "Group 1",
+            "memberCount": 3,
+            "unreads": 0,
+            "href": "group1"
+        },
+        {
+            "picture": "res/imgs/Madeline.png",
+            "name": "Friend A",
+            "status": "online",
+            "href": "frienda"
+        },
+        {
+            "picture": "",
+            "name": "Group 2",
+            "memberCount": 5,
+            "unreads": 0,
+            "href": "group2"
+        },
+        {
+            "picture": "",
+            "name": "Friend B",
+            "status": "idle",
+            "unreads": 0,
+            "href": "friendb"
+        },
+        {
+            "picture": "",
+            "name": "Group 3",
+            "memberCount": 6,
+            "href": "group3"
+        },
+        {
+            "picture": "",
+            "name": "Friend C",
+            "status": "offline",
+            "unreads": 0,
+            "href": "friendc"
+        },
+        {
+            "picture": "",
+            "name": "Friend D",
+            "status": "mobile",
+            "unreads": 0,
+            "href": "friendd"
+        },
+        {
+            "picture": "",
+            "name": "Friend E",
+            "status": "dnd",
+            "unreads": 0,
+            "href": "friende"
+        }
+    ]
+}
