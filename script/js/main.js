@@ -203,18 +203,31 @@ const iconOthers = {
     path.setAttribute('d', rtrn);
 });
 const homeBtn = document.getElementById("home-btn");
+const guilds = document.getElementById("guilds");
 let currentActiveGuild = document.getElementById("home-btn");
 currentActiveGuild.classList.add("active");
-document.querySelectorAll("#guilds li").forEach(guild => {
+function setActiveGuild(guild) {
+    removeAllActiveGuilds(); //currentActiveGuild.classList.remove("active");
+    guild.classList.add("active");
+    currentActiveGuild = guild;
+}
+function removeActiveGuild() {
+    currentActiveGuild.classList.remove("active");
+}
+function removeAllActiveGuilds() {
+    guilds.querySelectorAll("li.active").forEach(guild => {
+        guild.classList.remove("active");
+    });
+}
+document.querySelectorAll("#servers li, #guilds .guild-actions").forEach(guild => {
     guild.addEventListener('click', () => {
-        // TODO: if parent classList contains "dm-ping"
-        currentActiveGuild.classList.remove("active");
-        currentActiveGuild = guild;
-        // if (currentActiveGuild.parentElement ! .classList.contains("dm-ping"))
-        //     homeBtn.classList.remove("active");
-        // if (guild.parentElement ! .classList.contains("dm-ping"))
-        //     homeBtn.classList.add("active");
-        guild.classList.add("active");
+        setActiveGuild(guild);
+    });
+});
+document.querySelectorAll("#dms-ping li").forEach(guild => {
+    guild.addEventListener('click', () => {
+        setActiveGuild(guild);
+        homeBtn.classList.add("active");
     });
 });
 //# sourceMappingURL=main.js.map

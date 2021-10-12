@@ -290,6 +290,15 @@ body.dark
                 color: #fff
                 background-color: #3ba55d
 
+        &.no-img .wrapper // * (childWrapper-anI2G9 acronym-2mOFsV) inside svg foreignObject when Compiling
+            font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+            font-weight: 500
+            line-height: 1.2em
+            white-space: nowrap
+            display: flex
+            align-items: center
+            justify-content: center
+
         .badge
             +abs-pos(auto, auto, 50%, 0)
             pointer-events: none
@@ -391,6 +400,7 @@ button
             width: 100%
             height: $head-height
             display: flex
+            flex: 0 0 auto
             align-items: center
             justify-content: center
             
@@ -544,7 +554,7 @@ button
                     .text
                         flex: 1
                         max-width: 100%
-                        // TODO: takes all the space, leaves none for button
+                        // TODO: takes all the space, leaves none for button ... FIX
                         .status
                             display: flex
                             align-items: center
@@ -581,6 +591,7 @@ button
                     button.disconnect
                         width: 32px
                         height: 32px
+                        display: relative
                         flex: 0 0 auto
                         margin: 0 0 0 10px
                         svg

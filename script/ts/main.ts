@@ -222,24 +222,34 @@ document.querySelectorAll("path[icon-data]")?.forEach(path => {
 });
 
 
-const homeBtn = document.getElementById("home-btn") !;
-let currentActiveGuild = document.getElementById("home-btn") !;
+const homeBtn = document.getElementById("home-btn") as HTMLLIElement;
+const guilds = document.getElementById("guilds") as HTMLElement;
+let currentActiveGuild = document.getElementById("home-btn") as HTMLLIElement;
 currentActiveGuild.classList.add("active");
 
-document.querySelectorAll("#guilds li").forEach(guild => {
+function setActiveGuild(guild: HTMLLIElement) {
+    removeAllActiveGuilds(); //currentActiveGuild.classList.remove("active");
+    guild.classList.add("active");
+    currentActiveGuild = guild as HTMLLIElement;
+}
+function removeActiveGuild() {
+    currentActiveGuild.classList.remove("active");
+}
+function removeAllActiveGuilds() {
+    guilds.querySelectorAll("li.active").forEach(guild => {
+        guild.classList.remove("active");
+    });
+}
+
+document.querySelectorAll("#servers li, #guilds .guild-actions").forEach(guild => {
     guild.addEventListener('click', () => {
-        // TODO: if parent classList contains "dm-ping"
+        setActiveGuild(guild as HTMLLIElement);
+    });
+});
 
-        currentActiveGuild.classList.remove("active");
-        currentActiveGuild = guild as HTMLElement;
-
-        // if (currentActiveGuild.parentElement ! .classList.contains("dm-ping"))
-        //     homeBtn.classList.remove("active");
-
-        // if (guild.parentElement ! .classList.contains("dm-ping"))
-        //     homeBtn.classList.add("active");
-
-        
-        guild.classList.add("active");
+document.querySelectorAll("#dms-ping li").forEach(guild => {
+    guild.addEventListener('click', () => {
+        setActiveGuild(guild as HTMLLIElement);
+        homeBtn.classList.add("active");
     });
 });
