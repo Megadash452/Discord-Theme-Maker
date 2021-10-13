@@ -204,9 +204,6 @@ function assignIconData(path) {
     path.setAttribute('d', rtrn);
 }
 (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
-document.addEventListener('DOMSubtreeModified', () => {
-    assignIconData(document.querySelector("#main-wrapper svg path:not([d])[icon-data]"));
-});
 const homeBtn = document.getElementById("home-btn");
 const guilds = document.getElementById("guilds");
 let currentActiveGuild = document.getElementById("home-btn");
@@ -246,22 +243,25 @@ function setUserStatus(svg, status) {
 }
 function appendToGuilds(chat) {
     let element = guildTmp.content.cloneNode(true);
+    element = element.querySelector("li");
     if (chat.picture)
         element.querySelector("img").setAttribute('src', chat.picture);
-    if (chat.unreads > 0) {
+    if (chat.unreads > 0)
         element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-1-mask)`);
-    }
-    else if (chat.unreads > 9) {
+    else if (chat.unreads > 9)
         element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-2-mask)`);
-    }
-    else if (chat.unreads > 99) {
+    else if (chat.unreads > 99)
         element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-3-mask)`);
-    }
-    // element.querySelector("");
+    // element.querySelector(""); // name
+    element.addEventListener('click', () => {
+        setActiveGuild(element);
+        homeBtn.classList.add("active");
+    });
     document.getElementById("dms-ping").appendChild(element);
 }
 function writePrivateChats(data) {
     data.forEach(dm => {
+        var _a;
         let element;
         if (dm.hasOwnProperty('status')) {
             element = privateMsgTmp.content.cloneNode(true);
@@ -271,10 +271,12 @@ function writePrivateChats(data) {
             element = privateGroupTmp.content.cloneNode(true);
             element.querySelector(".subtitle").innerHTML = `${dm.memberCount} members`;
         }
+        element = element.querySelector("a");
         if (dm.picture)
             element.querySelector("img").setAttribute('src', dm.picture);
+        element.setAttribute('href', dm.href);
         element.querySelector(".title").innerHTML = dm.name;
-        element.querySelector("a").setAttribute('href', dm.href);
+        (_a = element.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
         dms.appendChild(element);
         if (dm.unreads > 0)
             appendToGuilds(dm);

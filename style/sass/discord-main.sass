@@ -241,7 +241,7 @@ body.dark
         height: $icon-size
         aspect-ratio: 1
         position: relative
-        margin: 0 auto $icon-spacing $side-margins
+        margin: 0 auto $icon-spacing auto // side margins should be auto /* $side-margins */
         list-style-type: none
         cursor: pointer
         border-radius: $border-rad
@@ -633,14 +633,13 @@ button
                             margin-left: 0
                         &:last-child
                             margin-right: 0
-                        // TODO: continue
 
                         svg
                             margin-right: 8px
                             flex-shrink: 0
 
 
-            .content // TODO: &:hover show tag
+            .content
                 height: $media-ctrl-height
                 display: flex
                 align-items: center

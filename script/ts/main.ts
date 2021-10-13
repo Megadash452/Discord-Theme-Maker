@@ -236,14 +236,7 @@ function assignIconData(path: Element) {
     
     path.setAttribute('d', rtrn);
 }
-
-
 document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
-
-document.addEventListener('DOMSubtreeModified', () => {
-    assignIconData(document.querySelector("#main-wrapper svg path:not([d])[icon-data]") as Element);
-});
-
 
 
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;
@@ -291,20 +284,25 @@ function setUserStatus(svg: SVGElement, status: UserStatus) {
 }
 
 function appendToGuilds(chat: PrivateChat) {
-    let element = guildTmp.content.cloneNode(true) as HTMLElement;
+    let element: HTMLLIElement = guildTmp.content.cloneNode(true) as HTMLLIElement;
+    element = element.querySelector("li") as HTMLLIElement;
     
     if (chat.picture)
-        element.querySelector("img")!.setAttribute('src', chat.picture);
+        element.querySelector("img") ! .setAttribute('src', chat.picture);
 
-    if (chat.unreads > 0) {
-        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-1-mask)`)
-    } else if (chat.unreads > 9) {
-        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-2-mask)`)
-    } else if (chat.unreads > 99) {
-        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-3-mask)`)
-    }
+    if (chat.unreads > 0)
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-1-mask)`)
+    else if (chat.unreads > 9)
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-2-mask)`)
+    else if (chat.unreads > 99)
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-3-mask)`)
 
-    // element.querySelector("");
+    // element.querySelector(""); // name
+
+    element.addEventListener('click', () => {
+        setActiveGuild(element as HTMLLIElement);
+        homeBtn.classList.add("active");
+    });
 
     document.getElementById("dms-ping")!.appendChild(element);
 }
@@ -312,20 +310,23 @@ function appendToGuilds(chat: PrivateChat) {
 
 function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
     data.forEach(dm => {
-        let element: HTMLElement;
+        let element: HTMLAnchorElement;
 
         if (dm.hasOwnProperty('status')) {
-            element = privateMsgTmp.content.cloneNode(true) as HTMLElement;
+            element = privateMsgTmp.content.cloneNode(true) as HTMLAnchorElement;
             setUserStatus(element.querySelector("svg") as SVGSVGElement, dm.status);
         } else {
-            element = privateGroupTmp.content.cloneNode(true) as HTMLElement;
+            element = privateGroupTmp.content.cloneNode(true) as HTMLAnchorElement;
             element.querySelector(".subtitle") ! .innerHTML = `${dm.memberCount} members`;
         }
-
+        element = element.querySelector("a") as HTMLAnchorElement;
+        
         if (dm.picture)
             element.querySelector("img") ! .setAttribute('src', dm.picture);
-        element.querySelector(".title")  ! .innerHTML = dm.name;
-        element.querySelector("a")!.setAttribute('href', dm.href);
+
+        element.setAttribute('href', dm.href);
+        element.querySelector(".title") ! .innerHTML = dm.name;
+        element.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
 
         dms!.appendChild(element);
 
