@@ -238,12 +238,27 @@ document.querySelectorAll("#dms-ping li").forEach(guild => {
 // --- Appending servers and chats to navs
 const dms = document.getElementById("private-chats");
 const guildTmp = document.getElementById("guild-tmp");
+const guildNoImgTmp = document.getElementById("guild-no-img-tmp");
 const privateMsgTmp = document.getElementById("private-message-tmp");
 const privateGroupTmp = document.getElementById("private-group-tmp");
 function setUserStatus(svg, status) {
     //TODO:
 }
 function appendToGuilds(chat) {
+    let element = guildTmp.content.cloneNode(true);
+    if (chat.picture)
+        element.querySelector("img").setAttribute('src', chat.picture);
+    if (chat.unreads > 0) {
+        element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-1-mask)`);
+    }
+    else if (chat.unreads > 9) {
+        element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-2-mask)`);
+    }
+    else if (chat.unreads > 99) {
+        element.querySelector("foreignObject").setAttribute('mask', `url(#guild-lower-3-mask)`);
+    }
+    // element.querySelector("");
+    document.getElementById("dms-ping").appendChild(element);
 }
 function writePrivateChats(data) {
     data.forEach(dm => {
@@ -266,7 +281,7 @@ function writePrivateChats(data) {
     });
 }
 fetch("https://raw.githubusercontent.com/Megadash452/Discord-Theme-Maker/master/script/data/chats.json").then(response => response.json()).then(json => {
-    writePrivateChats(json.privateMessages); // Chats
+    writePrivateChats(json.privateChats);
 }).catch(error => {
     console.log("error: ", error);
 });

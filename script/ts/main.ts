@@ -140,7 +140,7 @@ type UserStatus = "online" | "idle" | "offline" | "dnd" | "mobile";
 interface PrivateChat {
     picture: string,
     name: string,
-    unread: number,
+    unreads: number,
     href: string
 };
 interface Friend extends PrivateChat {
@@ -244,6 +244,8 @@ document.addEventListener('DOMSubtreeModified', () => {
     assignIconData(document.querySelector("#main-wrapper svg path:not([d])[icon-data]") as Element);
 });
 
+
+
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;
 const guilds = document.getElementById("guilds") as HTMLElement;
 let currentActiveGuild = document.getElementById("home-btn") as HTMLLIElement;
@@ -278,8 +280,9 @@ document.querySelectorAll("#dms-ping li").forEach(guild => {
 
 // --- Appending servers and chats to navs
 
-const dms = document.getElementById("private-chats");
+const dms = document.getElementById("private-chats") as HTMLElement;
 const guildTmp = document.getElementById("guild-tmp") as HTMLTemplateElement;
+const guildNoImgTmp = document.getElementById("guild-no-img-tmp") as HTMLTemplateElement;
 const privateMsgTmp = document.getElementById("private-message-tmp") as HTMLTemplateElement;
 const privateGroupTmp = document.getElementById("private-group-tmp") as HTMLTemplateElement;
 
@@ -288,11 +291,26 @@ function setUserStatus(svg: SVGElement, status: UserStatus) {
 }
 
 function appendToGuilds(chat: PrivateChat) {
+    let element = guildTmp.content.cloneNode(true) as HTMLElement;
+    
+    if (chat.picture)
+        element.querySelector("img")!.setAttribute('src', chat.picture);
 
+    if (chat.unreads > 0) {
+        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-1-mask)`)
+    } else if (chat.unreads > 9) {
+        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-2-mask)`)
+    } else if (chat.unreads > 99) {
+        element.querySelector("foreignObject")!.setAttribute('mask', `url(#guild-lower-3-mask)`)
+    }
+
+    // element.querySelector("");
+
+    document.getElementById("dms-ping")!.appendChild(element);
 }
 
 
-function writePrivateChats(data: Array<any>) {
+function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
     data.forEach(dm => {
         let element: HTMLElement;
 
@@ -319,7 +337,7 @@ function writePrivateChats(data: Array<any>) {
 fetch("https://raw.githubusercontent.com/Megadash452/Discord-Theme-Maker/master/script/data/chats.json").then(
     response => response.json()
 ).then(json => {
-    writePrivateChats(json.privateMessages); // Chats
+    writePrivateChats(json.privateChats);
 }).catch(error => {
     console.log("error: ", error);
 });
