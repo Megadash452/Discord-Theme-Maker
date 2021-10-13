@@ -58,8 +58,8 @@
 
         <!-- -- TEMPLATES -- -->
 
-        <template id="guild-img-tmp">
-            <li class="item"> <!-- unreads, active -->
+        <template id="guild-tmp"> <!-- Class: unread, active -->
+            <li class="item">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg">
                     <foreignObject width="100%" height="100%" mask="url(#)">
                         <div class="wrapper">
@@ -70,8 +70,8 @@
                 <div class="badge upper">1</div>
             </li>
         </template>
-        <template id="guild-no-img-tmp">
-            <li class="item"> <!-- unreads, active, no-img -->
+        <template id="guild-no-img-tmp"> <!-- Class: unreads, active, no-img -->
+            <li class="item">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg">
                     <foreignObject width="100%" height="100%" mask="url(#)">
                         <div class="wrapper">
@@ -84,6 +84,40 @@
         </template>
         <template id="guild-folder-tmp">
 
+        </template>
+
+        <template id="private-message-tmp"> <!-- Class: unread, active, muted -->
+            <a href="#" class="dm-channel">
+                <svg class="avatar" viewbox="0 0 32 32">
+                    <foreignObject width="32" height="32" mask="url(#user-status-mask)">
+                        <div class="wrapper">
+                            <img src="res/imgs/default.png">
+                        </div>
+                    </foreignObject>
+                </svg>
+                <div class="content">
+                    <h2 class="title">Friend Name</h2>
+                </div>
+                <button class="close">
+                    <svg width="16" height="16" viewport="0 0 24 24">
+                        <path fill="currentColor" icon-data="x"/>
+                    </svg>
+                </button>
+            </a>
+        </template>
+        <template id="private-group-tmp"> <!-- Class: unread, active, muted -->
+            <a href="#" class="dm-channel">
+                <img class="avatar" src="res/imgs/sample.png">
+                <div class="content">
+                    <h2 class="title">Channel Name</h2>
+                    <p class="subtitle">subtitle</p>
+                </div>
+                <button class="close">
+                    <svg width="16" height="16" viewport="0 0 24 24">
+                        <path fill="currentColor" icon-data="x"/>
+                    </svg>
+                </button>
+            </a>
         </template>
 
 
@@ -113,33 +147,14 @@
                     </li>
         
                     <section id="dms-ping">
-
                         <!-- ? HERE IS THE UNREAD DMS -->
-
-                        <li class="item unreads">
-                            
-                        </li>
-                        <li class="item unreads">
-                            
-                        </li>
                     </section>
                     <hr>
                     <section id="servers">
-
                         <!-- ? HERE IS ALL THE SERVERS -->
 
-                        <li class="item no-img">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg">
-                                <foreignObject width="100%" height="100%" mask="url(#)">
-                                    <div class="wrapper">
-                                        <span class="title">ABC...</span>
-                                    </div>
-                                </foreignObject>
-                            </svg>
-                        </li>
-
                         <li class="item folder">
-
+                            <!-- TODO: -->
                         </li>
                     </section>
 
@@ -202,94 +217,7 @@
                             </h2>
 
                             <div id="private-chats">
-                                <!-- ? GROUP DM -->
-                                <a href="#" class="dm-channel">
-                                    <img class="avatar" src="res/imgs/sample.png">
-                                    <div class="content">
-                                        <h2 class="title">Channel Name</h2>
-                                        <p class="subtitle">subtitle</p>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"/>
-                                        </svg>
-                                    </button>
-                                </a>
-
-                                <!-- ? Friend DM -->
-                                <a href="#" class="dm-channel">
-                                    <svg class="avatar" viewbox="0 0 32 32">
-                                        <foreignObject width="32" height="32" mask="url(#user-status-mask)">
-                                            <div class="wrapper">
-                                                <img src="res/imgs/Madeline.png">
-                                            </div>
-                                        </foreignObject>
-                                    </svg>
-                                    <div class="content">
-                                        <h2 class="title">Friend Name</h2>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"/>
-                                        </svg>
-                                    </button>
-                                </a>
-
-
-                                <a href="#" class="dm-channel">
-                                    <svg class="avatar">
-                                        <!-- <path fill="currentColor" icon-data="friend"></path> -->
-                                    </svg>
-                                    <div class="content">
-                                        <h2 class="title">Group Name</h2>
-                                        <p class="subtitle">3 Members</p>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"/>
-                                        </svg>
-                                    </button>
-                                </a>
-                                <a href="#" class="dm-channel muted">
-                                    <svg class="avatar">
-                                        
-                                    </svg>
-                                    <div class="content">
-                                        <h2 class="title">Group Name</h2>
-                                        <p class="subtitle">5 Members</p>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"/>
-                                        </svg>
-                                    </button>
-                                </a>
-                                <a href="#" class="dm-channel">
-                                    <svg class="avatar">
-                                        <!-- <path fill="currentColor" icon-data="friend"></path> -->
-                                    </svg>
-                                    <div class="content">
-                                        <h2 class="title">Friend Name</h2>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
-                                        </svg>
-                                    </button>
-                                </a>
-                                <a href="#" class="dm-channel">
-                                    <svg class="avatar">
-                                        <!-- <path fill="currentColor" icon-data="friend"></path> -->
-                                    </svg>
-                                    <div class="content">
-                                        <h2 class="title">Friend Name</h2>
-                                    </div>
-                                    <button class="close">
-                                        <svg width="16" height="16" viewport="0 0 24 24">
-                                            <path fill="currentColor" icon-data="x"></path>
-                                        </svg>
-                                    </button>
-                                </a>
+                                <!-- ? Private Chats -->
                             </div>
                         </div>
                     </div>

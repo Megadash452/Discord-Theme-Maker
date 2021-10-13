@@ -273,7 +273,7 @@ body.dark
             &::before
                 height: 20px
                 left: calc(var(--left) - 4px)
-        &.unreads::before
+        &.unreads::before, &.unread::before
             left: calc(var(--left) - 4px)
         &:active, &.active
             border-radius: $border-rad-active
@@ -460,78 +460,78 @@ button
                         height: 16px
                         margin-right: 2px
 
-                .dm-channel
-                    display: flex
-                    align-items: center
-                    justify-content: space-between
-                    position: relative
-                    width: calc(#{$sidebar-width} - #{$btn-side-margin} * 2 - 16px)
-                    height: $btn-height
-                    margin: $btn-vertical-margin 0 $btn-vertical-margin $btn-side-margin
-                    padding: 0 8px
-                    border-radius: 4px //
-                    text-decoration: none
+            .dm-channel
+                display: flex
+                align-items: center
+                justify-content: space-between
+                position: relative
+                width: calc(#{$sidebar-width} - #{$btn-side-margin} * 2 - 16px)
+                height: $btn-height
+                margin: $btn-vertical-margin 0 $btn-vertical-margin $btn-side-margin
+                padding: 0 8px
+                border-radius: 4px //
+                text-decoration: none
+                white-space: nowrap
+
+                .badge
+                    margin-left: 8px
+                    flex: 0 0 auto
+
+                .title
+                    display: block
+                    margin: 0
+                    font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                    font-weight: 500
+                    line-height: 20px
                     white-space: nowrap
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    flex: 1 1 auto
 
-                    .badge
-                        margin-left: 8px
-                        flex: 0 0 auto
+                .subtitle
+                    display: block
+                    margin: -2px 0 0 0
+                    font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
+                    font-weight: 500
+                    line-height: 16px
+                    white-space: nowrap
+                    overflow: hidden
+                    text-overflow: ellipsis
 
-                    .title
-                        display: block
-                        margin: 0
-                        font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                        font-weight: 500
-                        line-height: 20px
-                        white-space: nowrap
-                        overflow: hidden
-                        text-overflow: ellipsis
-                        flex: 1 1 auto
-
-                    .subtitle
-                        display: block
-                        margin: -2px 0 0 0
-                        font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                        font-weight: 500
-                        line-height: 16px
-                        white-space: nowrap
-                        overflow: hidden
-                        text-overflow: ellipsis
-
-                    .avatar
-                        margin-right: 12px //
-                        flex: 0 0 auto
-                        &.wrapper
-                            display: flex
-                            align-items: center
-                            justify-content: center
-                            svg
-                                width: 24px
-                                height: 24px
-
-                    .content
-                        flex: 1 1 auto
-                        overflow: hidden
-                        white-space: nowrap
-                        text-overflow: ellipsis
-                    &:hover
-                        .close
-                            display: block
-                    button.close
-                        width: 20px
-                        height: 20px
-                        opacity: 0.7
-                        display: none
-                        border-radius: 4px //
-                        margin-left: 8px
-                        flex: 0 0 auto
+                .avatar
+                    margin-right: 12px //
+                    flex: 0 0 auto
+                    &.wrapper
+                        display: flex
+                        align-items: center
+                        justify-content: center
                         svg
-                            width: 16px
-                            height: 16px
-                            margin: 2px
-                            // ! TODO: path doesnt conform to size
-                        &:hover
-                            opacity: 1
+                            width: 24px
+                            height: 24px
+
+                .content
+                    flex: 1 1 auto
+                    overflow: hidden
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                &:hover
+                    .close
+                        display: block
+                button.close
+                    width: 20px
+                    height: 20px
+                    opacity: 0.7
+                    display: none
+                    border-radius: 4px //
+                    margin-left: 8px
+                    flex: 0 0 auto
+                    svg
+                        width: 16px
+                        height: 16px
+                        margin: 2px
+                        // ! TODO: path doesnt conform to size
+                    &:hover
+                        opacity: 1
 
         .media-control
             width: 100%

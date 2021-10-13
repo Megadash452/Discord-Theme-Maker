@@ -129,7 +129,8 @@ const iconOthers = {
     text: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg"><rect y="5" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="9" width="8" height="2" rx="1" fill="currentColor"></rect></svg>`,
     paragraph: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect y="3" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="11" width="8" height="2" rx="1" fill="currentColor"></rect><rect y="7" width="16" height="2" rx="1" fill="currentColor"></rect></svg>`,
 };
-(_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(path => {
+;
+function assignIconData(path) {
     let name = path.getAttribute("icon-data");
     let rtrn = "";
     let hasSeparator = false;
@@ -201,6 +202,10 @@ const iconOthers = {
         rtrn = getPathData(iconData, levels);
     }
     path.setAttribute('d', rtrn);
+}
+(_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
+document.addEventListener('DOMSubtreeModified', () => {
+    assignIconData(document.querySelector("#main-wrapper svg path:not([d])[icon-data]"));
 });
 const homeBtn = document.getElementById("home-btn");
 const guilds = document.getElementById("guilds");
@@ -219,7 +224,7 @@ function removeAllActiveGuilds() {
         guild.classList.remove("active");
     });
 }
-document.querySelectorAll("#servers li, #guilds .guild-actions").forEach(guild => {
+document.querySelectorAll("#home-btn, #servers li, #guilds .guild-actions").forEach(guild => {
     guild.addEventListener('click', () => {
         setActiveGuild(guild);
     });
@@ -229,5 +234,40 @@ document.querySelectorAll("#dms-ping li").forEach(guild => {
         setActiveGuild(guild);
         homeBtn.classList.add("active");
     });
+});
+// --- Appending servers and chats to navs
+const dms = document.getElementById("private-chats");
+const guildTmp = document.getElementById("guild-tmp");
+const privateMsgTmp = document.getElementById("private-message-tmp");
+const privateGroupTmp = document.getElementById("private-group-tmp");
+function setUserStatus(svg, status) {
+    //TODO:
+}
+function appendToGuilds(chat) {
+}
+function writePrivateChats(data) {
+    data.forEach(dm => {
+        let element;
+        if (dm.hasOwnProperty('status')) {
+            element = privateMsgTmp.content.cloneNode(true);
+            setUserStatus(element.querySelector("svg"), dm.status);
+        }
+        else {
+            element = privateGroupTmp.content.cloneNode(true);
+            element.querySelector(".subtitle").innerHTML = `${dm.memberCount} members`;
+        }
+        if (dm.picture)
+            element.querySelector("img").setAttribute('src', dm.picture);
+        element.querySelector(".title").innerHTML = dm.name;
+        element.querySelector("a").setAttribute('href', dm.href);
+        dms.appendChild(element);
+        if (dm.unreads > 0)
+            appendToGuilds(dm);
+    });
+}
+fetch("https://raw.githubusercontent.com/Megadash452/Discord-Theme-Maker/master/script/data/chats.json").then(response => response.json()).then(json => {
+    writePrivateChats(json.privateMessages); // Chats
+}).catch(error => {
+    console.log("error: ", error);
 });
 //# sourceMappingURL=main.js.map
