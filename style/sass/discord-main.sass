@@ -284,6 +284,10 @@ body.dark
             &::before
                 height: 40px
                 left: calc(var(--left) - 4px)
+        &:active
+            top: 1px
+            &::before
+                top: calc(50% - 1px)
         
         &.guild-actions
             display: flex
