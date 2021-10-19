@@ -12,7 +12,7 @@ const iconData = {
         ],
         unmuted: [
             "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V21H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1ZM12 4C11.2 4 11 4.66667 11 5V11C11 11.3333 11.2 12 12 12C12.8 12 13 11.3333 13 11V5C13 4.66667 12.8 4 12 4Z",
-            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V22H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1Z"
+            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V22H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1Z" // fill-rule="evenodd" clip-rule="evenodd"
         ]
     },
     deaf: {
@@ -130,6 +130,18 @@ const iconOthers = {
     paragraph: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect y="3" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="11" width="8" height="2" rx="1" fill="currentColor"></rect><rect y="7" width="16" height="2" rx="1" fill="currentColor"></rect></svg>`,
 };
 ;
+function appendTemplate(template, element, templateManipulator = (tmpFirstChild) => { }) {
+    let tmp = template.content.cloneNode(true);
+    tmp = tmp.querySelector("*");
+    if (tmp == null) {
+        console.error("Template", template, "does not contain any elements");
+        return;
+    }
+    else
+        templateManipulator(tmp);
+    element.appendChild(tmp);
+}
+appendTemplate(document.querySelector("#friends-page-tmp"), document.querySelector("#main-content"));
 function assignIconData(path) {
     let name = path.getAttribute("icon-data");
     let rtrn = "";
@@ -180,16 +192,15 @@ function assignIconData(path) {
                     type = "array";
                 else
                     type = typeof data;
-                console.error("Cannot set property of type", type, "as SVG Path Data");
+                console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
                 return "";
             }
             else if (typeof base === "string")
                 return base;
             else if (typeof base === "object")
                 return getPathData(base, levels, level + 1);
-            else {
+            else
                 return "";
-            }
         }
         let i = 0;
         for (let j = 0; j < name.length; j++)

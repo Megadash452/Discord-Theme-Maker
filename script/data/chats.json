@@ -1,6 +1,13 @@
 {
     "servers": [
-
+        {
+            "picture": "",
+            "name": "Server 1",
+            "unreads": false,
+            "pings": 0,
+            "currentEvent": "",
+            "href": "server1"
+        }
     ],
     "privateChats": [
         {

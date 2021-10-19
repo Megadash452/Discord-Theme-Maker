@@ -10,8 +10,8 @@ const iconData: any = {
             "M21 4.27L19.73 3L3 19.73L4.27 21L8.46 16.82L9.69 15.58L11.35 13.92L14.99 10.28L21 4.27Z" // * strikethrough
         ],
         unmuted: [
-            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V21H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1ZM12 4C11.2 4 11 4.66667 11 5V11C11 11.3333 11.2 12 12 12C12.8 12 13 11.3333 13 11V5C13 4.66667 12.8 4 12 4Z",
-            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V22H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1Z"
+            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V21H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1ZM12 4C11.2 4 11 4.66667 11 5V11C11 11.3333 11.2 12 12 12C12.8 12 13 11.3333 13 11V5C13 4.66667 12.8 4 12 4Z", // fill-rule="evenodd" clip-rule="evenodd"
+            "M14.99 11C14.99 12.66 13.66 14 12 14C10.34 14 9 12.66 9 11V5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5L14.99 11ZM12 16.1C14.76 16.1 17.3 14 17.3 11H19C19 14.42 16.28 17.24 13 17.72V22H11V17.72C7.72 17.23 5 14.41 5 11H6.7C6.7 14 9.24 16.1 12 16.1Z" // fill-rule="evenodd" clip-rule="evenodd"
         ]
     },
     deaf: {
@@ -152,6 +152,23 @@ interface GroupChat extends PrivateChat {
 
 
 
+function appendTemplate(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmpFirstChild: HTMLElement) => {}) {
+    let tmp = template.content.cloneNode(true) as HTMLElement;
+    tmp = tmp.querySelector("*") as HTMLElement;
+
+    if (tmp == null) {
+        console.error("Template", template,"does not contain any elements");
+        return;
+    } else
+        templateManipulator(tmp);
+    
+    element.appendChild(tmp);
+}
+appendTemplate(
+    document.querySelector("#friends-page-tmp")!,
+    document.querySelector("#main-content")!
+);
+
 
 function assignIconData(path: Element) {
     let name = path.getAttribute("icon-data") !;
@@ -200,9 +217,9 @@ function assignIconData(path: Element) {
                 let index_ = parseInt(levels[level]);
                 let base: any;
                 if (index_)
-                base = data[index_];
+                    base = data[index_];
                 else
-                base = data[levels[level]];
+                    base = data[levels[level]];
                 
                 if (base == undefined) {
                     let type: string;
@@ -211,25 +228,24 @@ function assignIconData(path: Element) {
                     else
                     type = typeof data;
                     
-                    console.error("Cannot set property of type", type, "as SVG Path Data");
+                    console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
                     return "";
                 }
                 else if (typeof base === "string")
-                return base as string;
+                    return base as string;
                 else if (typeof base === "object")
-                return getPathData(base, levels, level + 1);
-                else {
+                    return getPathData(base, levels, level + 1);
+                else
                     return "";
-                }
             }
             
         let i = 0;
         for (let j = 0; j < name.length; j++)
-        if (name[j] == '.' || name[j] == ' ') {
-            levels.push("");
-            i++
-        } else
-        levels[i] += name[j];
+            if (name[j] == '.' || name[j] == ' ') {
+                levels.push("");
+                i++;
+            } else
+                levels[i] += name[j];
         
         rtrn = getPathData(iconData, levels);
     }
