@@ -18,6 +18,7 @@ $ping-color: #ed4245
 body
     margin: 0
     width: 100vw
+    height: 100vh
     
 // * All colors can be changed by user
 
@@ -26,8 +27,17 @@ body.light
     background-color: #e3e5e8
     
 body.dark
-    color: #b9bbbe
-    background-color: #202225
+    // --primary-col: 
+    // --primary-bg: #36393f
+    // --secondary-col:
+    // --secondary-bg:
+    // --thirtiary-col:
+    // --thirtiary-bg:
+    --main-col: #b9bbbe
+    --main-bg: #202225
+
+    color: var(--main-col)
+    background-color: var(--main-bg)
 
     #guilds 
         .item.no-img, #home-btn
@@ -154,9 +164,14 @@ body.dark
             background-color: #202225
 
     #main-content
-        background-color: #36393f
         .head
-            background-color: #00000000
+            background-color: #36393f
+            .info .title
+                color: #fff
+                svg
+                    color: #72767d
+        .content
+            background-color: #36393f
 
     .tooltip, .tooltip::before
         color: #dcddde
@@ -722,7 +737,32 @@ button
         .head
             width: 100%
             height: $head-height
-        .chat
+            display: flex
+            align-items: center
+            z-index: 2
+            // position: relative
+            padding: 0 8px
+            box-sizing: border-box
+
+            .info
+                display: flex
+                align-items: center
+                flex: 1 1 auto
+                overflow: hidden
+                h3
+                    display: flex
+                    align-items: center
+                    flex: 0 0 auto
+                    margin: 0 8px 0 0
+                    font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
+                    font-weight: 600
+                    svg
+                        flex: 0 0 auto
+                        margin: 0 8px
+            .tools
+                flex: 0 0 auto
+
+        .content
             width: 100%
             height: calc(100% - #{$head-height})
 

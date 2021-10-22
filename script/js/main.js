@@ -130,10 +130,10 @@ const iconOthers = {
     paragraph: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect y="3" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="11" width="8" height="2" rx="1" fill="currentColor"></rect><rect y="7" width="16" height="2" rx="1" fill="currentColor"></rect></svg>`,
 };
 ;
-function appendTemplate(template, element, templateManipulator = (tmpFirstChild) => { }) {
+function appendTemplate(template, element, templateManipulator = (tmp) => { }) {
     let tmp = template.content.cloneNode(true);
-    tmp = tmp.querySelector("*");
-    if (tmp == null) {
+    let first = tmp.querySelector("*");
+    if (first == null) {
         console.error("Template", template, "does not contain any elements");
         return;
     }

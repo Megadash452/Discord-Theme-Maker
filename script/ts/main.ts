@@ -152,11 +152,11 @@ interface GroupChat extends PrivateChat {
 
 
 
-function appendTemplate(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmpFirstChild: HTMLElement) => {}) {
+function appendTemplate(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
     let tmp = template.content.cloneNode(true) as HTMLElement;
-    tmp = tmp.querySelector("*") as HTMLElement;
+    let first = tmp.querySelector("*") as HTMLElement;
 
-    if (tmp == null) {
+    if (first == null) {
         console.error("Template", template,"does not contain any elements");
         return;
     } else
