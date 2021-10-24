@@ -20,56 +20,56 @@
     "privateChats": [
         {
             "name": "Group 1",
-            "picture": "",
+            "picture": "res/imgs/group-1.png",
             "memberCount": 3,
             "unreads": 0,
             "href": "group1"
         },
         {
             "name": "Friend A",
-            "picture": "res/imgs/Madeline.png",
+            "picture": "res/imgs/user-1.png",
             "status": "online",
             "unreads": 4,
             "href": "frienda"
         },
         {
             "name": "Group 2",
-            "picture": "",
+            "picture": "res/imgs/group-2.png",
             "memberCount": 5,
             "unreads": 0,
             "href": "group2"
         },
         {
             "name": "Friend B",
-            "picture": "",
+            "picture": "res/imgs/user-2.png",
             "status": "idle",
             "unreads": 0,
             "href": "friendb"
         },
         {
             "name": "Group 3",
-            "picture": "",
+            "picture": "res/imgs/group-3.png",
             "memberCount": 6,
             "unreads": 1,
             "href": "group3"
         },
         {
             "name": "Friend C",
-            "picture": "",
+            "picture": "res/imgs/user-3.png",
             "status": "offline",
             "unreads": 0,
             "href": "friendc"
         },
         {
             "name": "Friend D",
-            "picture": "",
+            "picture": "res/imgs/user-4.png",
             "status": "mobile",
             "unreads": 0,
             "href": "friendd"
         },
         {
             "name": "Friend E",
-            "picture": "",
+            "picture": "res/imgs/user-5.png",
             "status": "dnd",
             "unreads": 0,
             "href": "friende"
