@@ -1,67 +1,75 @@
 {
     "servers": [
         {
-            "picture": "",
             "name": "Server 1",
+            "picture": "",
             "unreads": false,
             "pings": 0,
             "currentEvent": "",
             "href": "server1"
+        },
+        {
+            "name": "New Folder",
+            "color": "#fff",
+            "state": "collapsed",
+            "guilds": [
+
+            ]
         }
     ],
     "privateChats": [
         {
-            "picture": "",
             "name": "Group 1",
+            "picture": "",
             "memberCount": 3,
             "unreads": 0,
             "href": "group1"
         },
         {
-            "picture": "res/imgs/Madeline.png",
             "name": "Friend A",
+            "picture": "res/imgs/Madeline.png",
             "status": "online",
             "unreads": 4,
             "href": "frienda"
         },
         {
-            "picture": "",
             "name": "Group 2",
+            "picture": "",
             "memberCount": 5,
             "unreads": 0,
             "href": "group2"
         },
         {
-            "picture": "",
             "name": "Friend B",
+            "picture": "",
             "status": "idle",
             "unreads": 0,
             "href": "friendb"
         },
         {
-            "picture": "",
             "name": "Group 3",
+            "picture": "",
             "memberCount": 6,
             "unreads": 1,
             "href": "group3"
         },
         {
-            "picture": "",
             "name": "Friend C",
+            "picture": "",
             "status": "offline",
             "unreads": 0,
             "href": "friendc"
         },
         {
-            "picture": "",
             "name": "Friend D",
+            "picture": "",
             "status": "mobile",
             "unreads": 0,
             "href": "friendd"
         },
         {
-            "picture": "",
             "name": "Friend E",
+            "picture": "",
             "status": "dnd",
             "unreads": 0,
             "href": "friende"

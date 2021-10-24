@@ -60,7 +60,7 @@
 
         <template id="guild-tmp"> <!-- Class: unread, active -->
             <li class="item">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                <svg class="icon">
                     <foreignObject width="100%" height="100%" mask="url(#)">
                         <div class="wrapper">
                             <img src="res/imgs/sample.png" width="100%" height="100%">
@@ -71,7 +71,7 @@
         </template>
         <template id="guild-no-img-tmp"> <!-- Class: unreads, active, no-img -->
             <li class="item">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                <svg class="icon">
                     <foreignObject width="100%" height="100%" mask="url(#)">
                         <div class="wrapper">
                             <span class="title">ABC...</span>
@@ -144,7 +144,7 @@
                         </svg>
                     </button>
                     <hr class="vertical">
-                    <button onclick="showInbox()">
+                    <button onclick="showInbox()" data-tooltip="Inbox">
                         <svg width="24" height="24" viewbox="0 0 24 24">
                             <path fill="currentColor" icon-data="inbox"></path>
                         </svg>
@@ -176,12 +176,12 @@
                                 </div>
                             </div>
                             <div class="actions">
-                                <button data-tooltip="Message">
+                                <button data-tooltip="Message" tooltip-direction="up">
                                     <svg width="20" height="20" viewbox="0 0 24 24">
                                         <path fill="currentColor" icon-data="message"></path>
                                     </svg>
                                 </button>
-                                <button data-tooltip="More">
+                                <button data-tooltip="More" tooltip-direction="up">
                                     <svg width="20" height="20" viewbox="0 0 24 24">
                                         <path fill="currentColor" icon-data="options"></path>
                                     </svg>
@@ -205,7 +205,7 @@
                 </div>
 
                 <section class="sidebar" id="active-now">
-                    <div class="scroller">
+                    <div class="scroller"> <!-- class: empty-->
                         <h2 class="header">Active Now</h2>
                         <li class="item">
                             <header>
@@ -272,6 +272,10 @@
                                 <img src="res/imgs/minecraft.png" alt="mc.png" class="header-icon">
                             </header>
                         </li>
+                        <li class="item empty">
+                            <h3 class="title">It's quiet for now...</h3>
+                            <p class="subtitle">When a friend starts an activity—like playing a game or hanging out on voice—we’ll show it here!</p>
+                        </li>
                     </div>
                 </section>
             </section>
@@ -327,7 +331,40 @@
                     <section id="servers">
                         <!-- ? HERE IS ALL THE SERVERS -->
 
-                        <li class="item folder">
+                        <!-- folder icons div color will always have channel a="0.4" -->
+                        <li class="item folder collapsed"> <!-- class: opened, collapsed -->
+                            <svg class="icon">
+                                <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                    <div class="content">
+                                        <div class="wrapper">
+                                            <div class="icons" style="background: #5865f266; color: #5865f2">
+                                                <div class="folder-icon-wrapper">
+                                                    <svg class="folder-icon" width="24" height="24" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="folder" />
+                                                    </svg>
+                                                </div>
+                                                <div class="icons-wrapper">
+                                                    <img src="res/imgs/celeste ost.png" alt="g" class="icon">
+                                                    <img src="res/imgs/dolphin.png" alt="g" class="icon">
+                                                    <img src="res/imgs/minecraft.png" alt="g" class="icon">
+                                                    <img src="res/imgs/nether.png" alt="g" class="icon">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                            </svg>
+                            <div class="guilds">
+                                <li class="item">
+                                    <svg class="icon">
+                                        <foreignObject width="100%" height="100%" mask="url(#)">
+                                            <div class="wrapper">
+                                                <img src="res/imgs/sample.png" width="100%" height="100%">
+                                            </div>
+                                        </foreignObject>
+                                    </svg>
+                                </li>
+                            </div>
                             <!-- TODO: -->
                         </li>
                     </section>

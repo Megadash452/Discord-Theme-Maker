@@ -54,9 +54,18 @@ body.dark
             &:active
                 color: #fff
                 background-color: #4f545c3d
+                &.close-app
+                    color: #dcddde
                 
-
-    #guilds 
+    #guilds
+        li.folder, .item.folder
+            .wrapper
+                background-color: #2f3136
+                &:hover
+                    background-color: #36393f
+            &.opened
+                .icons
+                    background-color: #0000 !important
         .item.no-img, #home-btn
             > svg .wrapper
                 color: #dcddde
@@ -258,6 +267,12 @@ body.dark
                         border-color: rgba(255, 255, 255, 0.06)
                         &:hover
                             background-color: #18191c
+                        &.empty
+                            background-color: #0000
+                            .title
+                                color: #fff
+                            .subtitle
+                                color: #b9bbbe
                         header
                             .title
                                 color: #dcddde
@@ -279,6 +294,12 @@ body.dark
         border-color: #18191c
 
 
+button, a
+    &[data-tooltip]::after
+        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+        font-weight: 500
+
+
 hr.vertical
     width: 1px
     height: 100%
@@ -288,20 +309,19 @@ hr.vertical
     outline: 0
 
 .badge
-    text-align: center
-    font-size: 12px
-    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-    font-weight: 600
-    box-sizing: border-box
-    line-height: 16px
     width: 16px
     height: 16px
-    border-radius: 8px
-    background: $ping-color
     display: flex
     align-items: center
     justify-content: center
+    border-radius: 8px
     color: #fff
+    background: $ping-color
+    font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-weight: 600
+    line-height: 16px
+    text-align: center
+    box-sizing: border-box
 
 .avatar
     width: 32px //
@@ -389,6 +409,63 @@ hr.vertical
         border-radius: $border-rad
         transition: border-radius 0.2s ease-out // 0.15s
         // TODO: get accurate time for border-radius
+        &.folder
+            border-radius: $border-rad-hov
+            $wrapper-pading: 4px
+
+            .folder-icon-wrapper, .icons-wrapper
+                width: calc(#{$icon-size} - #{$wrapper-pading} * 2)
+                height: calc(#{$icon-size} - #{$wrapper-pading} * 2)
+                position: absolute
+                transition: top 0.25s // TODO: get accurate time
+
+            .folder-icon-wrapper
+                display: flex
+                align-items: center
+                justify-content: center
+                .folder-icon
+                    margin: 0
+            
+            &.opened
+                &::before
+                    height: 8px
+                    left: calc(var(--left) - 8px)
+                foreignObject
+                    mask: url(#)
+                .icons
+                    // padding: 0
+                    .folder-icon-wrapper
+                        top: $wrapper-pading
+                    .icons-wrapper
+                        top: calc(#{$icon-size} + 1px)
+            &.collapsed
+                .folder-icon-wrapper
+                    top: calc(-#{$icon-size} + #{$wrapper-pading} * 2)
+                .icons-wrapper
+                    top: $wrapper-pading
+
+            .wrapper, .icons
+                width: 100%
+                height: $icon-size
+                transition: background .15s ease-out
+                .icons
+                    position: relative
+                    border-radius: 16px
+                    padding: $wrapper-pading
+                    box-sizing: border-box
+                    overflow: hidden
+                    .icons-wrapper
+                        display: grid
+                        grid-template: 1fr 1fr/1fr 1fr
+                        align-items: center
+                        justify-items: center
+                        .icon
+                            width: 16px
+                            height: 16px
+                            aspect-ratio: 1
+                            position: static
+                            border-radius: 50%
+                            overflow: hidden
 
         > svg
             width: $icon-size
@@ -428,6 +505,10 @@ hr.vertical
                 left: calc(var(--left) - 4px)
         &:active
             top: 1px
+            &.folder
+                top: auto
+                &::before
+                    top: 50%
             &::before
                 top: calc(50% - 1px)
         
@@ -976,7 +1057,7 @@ button
                         border-top-style: solid
                         margin: 0 20px 0 30px
                         box-sizing: border-box
-                        overflow: hidden
+                        // overflow: hidden
                         cursor: pointer
                         &:hover
                             border-radius: 8px
@@ -1052,6 +1133,8 @@ button
                     overflow: hidden scroll
                     scrollbar-width: thin
                     list-style: none
+                    &.empty li.item.empty
+                        display: block
                     .header
                         margin: 8px 0 16px
                         font: 20px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -1066,6 +1149,20 @@ button
                         user-select: none
                         &:first-child
                             margin: 0
+                        &.empty
+                            display: none
+                            text-align: center
+                            cursor: default
+                            .title
+                                font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                font-weight: 600
+                                line-height: 20px
+                                margin: 0 0 4px 0
+                            .subtitle
+                                font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                font-weight: 400
+                                line-height: 18px
+                                padding: 0 
                         header
                             height: 36px
                             display: grid

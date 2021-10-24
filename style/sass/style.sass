@@ -2,7 +2,7 @@ $nav-padding: 0.5rem
 $nav-btn-size: 2.125rem
 $nav-title-max-width: 19rem
 
-$distance: 0.125rem
+$distance: 2px
 $arrow-size: 0.625rem
 
 =abs-pos($top, $left, $bottom:auto, $right:auto)
@@ -47,8 +47,10 @@ body.light
         &[tooltip-direction="right"]::after
             border-right-color: $tooltip-bg-color
         &[tooltip-direction="top"]::after
+        &[tooltip-direction="up"]::after
             border-top-color: $tooltip-bg-color
         &[tooltip-direction="bottom"]::after,
+        &[tooltip-direction="down"]::after
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
 
@@ -95,9 +97,11 @@ body.dark
             border-left-color: $tooltip-bg-color
         &[tooltip-direction="right"]::after
             border-right-color: $tooltip-bg-color
-        &[tooltip-direction="top"]::after
+        &[tooltip-direction="top"]::after,
+        &[tooltip-direction="up"]::after
             border-top-color: $tooltip-bg-color
         &[tooltip-direction="bottom"]::after,
+        &[tooltip-direction="down"]::after
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
 
@@ -277,7 +281,8 @@ button, a
             --translate-y: -50%
             transform-origin: right center
 
-    &[tooltip-direction="top"]
+    &[tooltip-direction="top"],
+    &[tooltip-direction="up"]
         &::before, &::after
             bottom: 100%
             left: 50%
@@ -291,6 +296,7 @@ button, a
             transform-origin: top center
 
     &[tooltip-direction="bottom"],
+    &[tooltip-direction="down"]
     &:not([tooltip-direction])
         &::before, &::after
             top: 100%
