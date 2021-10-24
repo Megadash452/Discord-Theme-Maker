@@ -152,7 +152,7 @@ interface GroupChat extends PrivateChat {
 
 
 
-function appendTemplate(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
+function appendTemplateElement(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
     let tmp = template.content.cloneNode(true) as HTMLElement;
     let first = tmp.querySelector("*") as HTMLElement;
 
@@ -162,97 +162,70 @@ function appendTemplate(template: HTMLTemplateElement, element: HTMLElement, tem
     } else
         templateManipulator(tmp);
     
-    element.appendChild(tmp);
+    element.appendChild(tmp.cloneNode(true));
 }
-appendTemplate(
+function appendTemplateNode(template: HTMLElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
+    let first = template.querySelector("*") as HTMLElement;
+
+    if (first == null) {
+        console.error("Template", template,"does not contain any elements");
+        return;
+    } else
+        templateManipulator(template);
+    
+    element.appendChild(template.cloneNode(true));
+}
+
+function activeBtnArray(...btns: Array<HTMLElement>) {
+    // buttons will have a relationship where when one is clicked, it gets .active, but buttons with .active have the class removed
+    for (let btn of btns)
+        btn.addEventListener('click', () => {
+            if (! btn.classList.contains("active")) {
+                for (let btn of btns)
+                    if (btn.classList.contains("active"))
+                        btn.classList.remove("active");
+                btn.classList.add("active");
+            }
+        });
+}
+function activeBtnRelation(btnsHolder: HTMLElement) {
+    // take all buttons in a div and do what activeBtnArray does
+    let btns = Array.from(btnsHolder.querySelectorAll("button"));
+    for (let btn of btns)
+        btn.addEventListener('click', () => {
+            if (! btn.classList.contains("active")) {
+                for (let btn of btns)
+                    if (btn.classList.contains("active"))
+                        btn.classList.remove("active");
+                btn.classList.add("active");
+            }
+        });
+}
+
+function linkToTabs(btnsHolder: HTMLElement) {
+    for (let btn of Array.from(btnsHolder.querySelectorAll("[target]"))) {
+        btn.addEventListener('click', () => {
+            let element = document.querySelector(`.tab[name="${btn.getAttribute('target')}"]`) as HTMLElement;
+
+            for (let tab of Array.from(element.parentElement!.children))
+                if (tab.matches(".tab.active"))
+                    tab.classList.remove("active");
+
+            element.classList.add("active");
+        });
+    }
+}
+
+
+appendTemplateElement(
     document.querySelector("#friends-page-tmp")!,
     document.querySelector("#main-content")!
 );
+    
+activeBtnRelation(document.querySelector("#main-content .head .tab-btns")!);
+linkToTabs(document.querySelector("#main-content .head .tab-btns")!);
 
 
-function assignIconData(path: Element) {
-    let name = path.getAttribute("icon-data") !;
-    let rtrn = "";
-    
-    let hasSeparator = false;
-    let separatorIndexes = [];
-    
-    for (let i = 0; i < name.length; i++) {
-        let char = name[i];
-        
-        if (char == '.' || char == ' ') {
-            hasSeparator = true;
-            separatorIndexes.push(i);
-        }
-    }
-
-    if (! hasSeparator) {
-        let data = iconData[name];
-        
-        if (data === undefined) {
-            console.error(`Icon <${name}> Data is invalid`);
-        } else if (data.constructor === String)
-        rtrn = data as string;
-        else if (data.constructor === Array) {
-            // data.forEach(str => {
-                //     rtrn += str;
-                // });
-                rtrn = data[0] as string;
-                console.log(data.length);
-                
-                for (let i = 1; i < data.length; i++) {
-                    let element = document.createElement("path");
-                    element.setAttribute('class', path.getAttribute('class')!);
-                    element.setAttribute('fill', "currentColor");
-                    element.setAttribute('d', data[i]);
-                    path.parentElement ! .appendChild(element);
-                    
-                    // ! TODO: the new element is appended, but for some reason doesn't render
-                }
-            }
-        } else {
-            let levels = [""];
-            
-            function getPathData(data: any, levels: string[], level: number = 0): string {
-                let index_ = parseInt(levels[level]);
-                let base: any;
-                if (index_)
-                    base = data[index_];
-                else
-                    base = data[levels[level]];
-                
-                if (base == undefined) {
-                    let type: string;
-                    if (data.constructor === Array)
-                    type = "array";
-                    else
-                    type = typeof data;
-                    
-                    console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
-                    return "";
-                }
-                else if (typeof base === "string")
-                    return base as string;
-                else if (typeof base === "object")
-                    return getPathData(base, levels, level + 1);
-                else
-                    return "";
-            }
-            
-        let i = 0;
-        for (let j = 0; j < name.length; j++)
-            if (name[j] == '.' || name[j] == ' ') {
-                levels.push("");
-                i++;
-            } else
-                levels[i] += name[j];
-        
-        rtrn = getPathData(iconData, levels);
-    }
-    
-    path.setAttribute('d', rtrn);
-}
-document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
 
 
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;
@@ -285,6 +258,8 @@ document.querySelectorAll("#dms-ping li").forEach(guild => {
         homeBtn.classList.add("active");
     });
 });
+
+
 
 
 // --- Appending servers and chats to navs
@@ -358,3 +333,87 @@ fetch("https://raw.githubusercontent.com/Megadash452/Discord-Theme-Maker/master/
 }).catch(error => {
     console.log("error: ", error);
 });
+
+function assignIconData(path: Element) {
+    let name = path.getAttribute("icon-data") !;
+    let rtrn = "";
+    
+    let hasSeparator = false;
+    let separatorIndexes = [];
+    
+    for (let i = 0; i < name.length; i++) {
+        let char = name[i];
+        
+        if (char == '.' || char == ' ') {
+            hasSeparator = true;
+            separatorIndexes.push(i);
+        }
+    }
+
+    if (! hasSeparator) {
+        let data = iconData[name];
+        
+        if (data === undefined) {
+            console.error(`Icon <${name}> Data is invalid`);
+        } else if (data.constructor === String) {
+            rtrn = data as string;
+        } else if (data.constructor === Array) {
+            // data.forEach(str => {
+            //     rtrn += str;
+            // });
+            rtrn = data[0] as string;
+            console.log(data.length);
+            
+            for (let i = 1; i < data.length; i++) {
+                let element = document.createElement("path");
+                element.setAttribute('class', path.getAttribute('class')!);
+                element.setAttribute('fill', "currentColor");
+                element.setAttribute('d', data[i]);
+                path.parentElement ! .appendChild(element);
+                
+                // ! TODO: the new element is appended, but for some reason doesn't render
+            }
+        }
+    } else {
+        let levels = [""];
+        
+        function getPathData(data: any, levels: string[], level: number = 0): string {
+            let index_ = parseInt(levels[level]);
+            let base: any;
+            if (index_)
+                base = data[index_];
+            else
+                base = data[levels[level]];
+            
+            if (base == undefined) {
+                let type: string;
+                if (data.constructor === Array)
+                type = "array";
+                else
+                type = typeof data;
+                
+                console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
+                return "";
+            }
+            else if (typeof base === "string")
+                return base as string;
+            else if (typeof base === "object")
+                return getPathData(base, levels, level + 1);
+            else
+                return "";
+        }
+            
+        let i = 0;
+        for (let j = 0; j < name.length; j++)
+            if (name[j] == '.' || name[j] == ' ') {
+                levels.push("");
+                i++;
+            } else
+                levels[i] += name[j];
+        
+        rtrn = getPathData(iconData, levels);
+    }
+    
+    path.setAttribute('d', rtrn);
+}
+document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);

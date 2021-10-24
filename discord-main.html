@@ -129,22 +129,84 @@
                         Friends
                     </h3>
                     <hr class="vertical">
-                    <nav class="tabs">
-                        <button class="active">Online</button>
-                        <button>All</button>
-                        <button>Pending</button>
-                        <button>Blocked</button>
-                        <button id="add-friend">Add Friend</button>
+                    <nav class="tab-btns" target="#main-content .content">
+                        <button class="active" target="online">Online</button>
+                        <button target="all">All</button>
+                        <button target="pending">Pending</button>
+                        <button target="blocked">Blocked</button>
+                        <button id="add-friend-btn" target="add-friend">Add Friend</button>
                     </nav>
                 </div>
                 <div class="tools">
-                    <button></button>
-                    <hr class="vertical"> <!-- TODO: FINISH -->
-
+                    <button id="new-group-btn">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="messageAdd"></path>
+                        </svg>
+                    </button>
+                    <hr class="vertical">
+                    <button onclick="showInbox()">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="inbox"></path>
+                        </svg>
+                    </button>
+                    <button>
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="help"></path>
+                        </svg>
+                    </button>
                 </div>
             </section>
             <section class="content">
-                
+                <div class="tab chat active" name="online">
+                    <div class="scroller">
+                        <h2 class="title">Online — 12</h2>
+                        <li class="item">
+                            <div class="user-info">
+                                <svg class="avatar" width="32" height="32">
+                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                    <!-- TODO: user status badge -->
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">
+                                        <span class="username">Friend A</span>
+                                        <span class="tag">#0001</span></h3>
+                                    <span class="subtitle">Online</span>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button data-tooltip="Message">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="message"></path>
+                                    </svg>
+                                </button>
+                                <button data-tooltip="More">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="options"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                <div class="tab chat" name="all">
+                    <!-- TODO: hardcode friend list -->
+                    
+                </div>
+                <div class="tab chat" name="pending">
+                    pending
+                </div>
+                <div class="tab chat" name="blocked">
+                    blocked
+                </div>
+                <div class="tab chat" name="add-friend">
+                    add-friend
+                </div>
+
+                <div class="sidebar" id="active-now">
+
+                </div>
             </section>
         </template>
         
@@ -292,7 +354,7 @@
                                 </foreignObject>
                             </svg>
                             <div class="name">
-                                <h2 class="title">MyUser</h2>
+                                <h3 class="title">MyUser</h3>
                                 <p class="subtitle">
                                     <span class="desc">Description</span>
                                     <span class="tag">#1234</span>
@@ -323,12 +385,7 @@
     
                 <section id="main-content" class="friends"> <!-- friends, stage-discovery, nitro -->
                     <!-- ! TEMPLATE -->
-                    <!-- <div class="head">
-                        
-                    </div>
-                    <div class="content">
-                        
-                    </div> -->
+                    
                 </section>
             </div>
         </div>

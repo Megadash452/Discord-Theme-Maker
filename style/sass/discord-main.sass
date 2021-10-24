@@ -58,12 +58,11 @@ body.dark
             
 
     #sidebar
-        background-color: #2f3136
         .head
-            background-color: #0000
+            background-color: #2f3136
         .channels
             color: #8e9297
-            background-color: #0000
+            background-color: #2f3136
             .scroller
                 scrollbar-color: transparent transparent
                 &:hover
@@ -176,7 +175,7 @@ body.dark
                     color: #fff
                     svg
                         color: #72767d
-                .tabs button
+                .tab-btns button
                     color: #b9bbbe
                     background-color: #0000 
                     &:hover
@@ -188,8 +187,53 @@ body.dark
                     &.active
                         color: #fff
                         background-color: #4f545c52
+                    &.active:hover
+                        background-color: #4f545c29
+                #add-friend-btn.active
+                    background-color: #0000 !important
+                    &:hover
+                        background-color: #4f545c29 !important
+                    &:active
+                        background-color: #4f545c3d !important
+            .tools
+                button
+                    color: #b9bbbe
+                    &:hover
+                        color: #dcddde
+                    &:active, &.active
+                        color: #dcddde
         .content
-            background-color: #36393f
+            scroll-color: #202225 #2f3136
+            .chat
+                background-color: #36393f
+                .scroller
+                    .title
+                        color: #b9bbbe
+                    li.item
+                        background-color: #0000
+                        border-color: #ffffff0f
+                        &:hover
+                            background-color: #4f545c29
+                            .actions button
+                                background-color: #202225
+                        &:hover, &:hover + li.item
+                            border-color: #0000
+                        .username
+                            color: #fff
+                        .tag
+                            color: #b9bbbe
+                        .subtitle
+                            color: #b9bbbe
+                        .actions button
+                            color: #b9bbbe
+                            background-color: #2f3136
+                            &:hover
+                                color: #dcddde
+                            &:active
+                                color: #fff
+                                background-color: #4f545c3d
+            .sidebar
+                background-color: #36393f
 
     .tooltip, .tooltip::before
         color: #dcddde
@@ -432,6 +476,7 @@ button
     &::before
         content: ''
         height: 1px
+        z-index: 3
         display: block
         +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), $server-list-width, auto, 0)
         pointer-events: none
@@ -755,10 +800,13 @@ button
     #main-content
         width: calc(100% - #{$sidebar-width})
         height: 100%
+        display: flex
+        flex-direction: column
 
         .head
             width: 100%
             height: $head-height
+            flex: 0 0 auto
             display: flex
             align-items: center
             z-index: 2
@@ -777,6 +825,8 @@ button
                 flex: 1 1 auto
                 min-width: 0
                 overflow: hidden
+                cursor: default
+                user-select: none
                 &::after
                     content: ''
                     width: 8px
@@ -794,7 +844,7 @@ button
                         flex: 0 0 auto
                         margin: 0 8px
 
-                .tabs
+                .tab-btns
                     display: flex
                     button
                         min-width: 40px
@@ -806,23 +856,142 @@ button
                         text-align: center
                         font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                         font-weight: 500
+                        overflow: hidden
                         white-space: nowrap
                         text-overflow: ellipsis
-                        overflow: hidden
                         &.active
                             cursor: default
-                    #add-friend
-                        color: #fff
-                        background-color: #3ba55d
+            #add-friend-btn // ? vs code thinks this is a button
+                color: #fff
+                background-color: #3ba55d
+                &.active
+                    color: #3ba55d
 
             .tools
                 flex: 0 0 auto
                 display: flex
                 align-items: center
+                button
+                    margin: 0 8px
+                    flex: 0 0 auto
 
         .content
             width: 100%
             height: calc(100% - #{$head-height})
+            position: relative
+            display: flex
+            overflow: hidden
+            transform: translateZ(0) // t?????????
+
+            .chat
+                flex: 1 1 auto
+                .scroller
+                    --margin-top: 8px
+                    height: calc(100% - var(--margin-top))
+                    min-height: 0
+                    position: relative
+                    box-sizing: border-box
+                    padding: 0 0 8px 0
+                    margin: var(--margin-top) 0 0 0
+                    overflow: hidden scroll
+                    scrollbar-width: auto
+                    &.empty
+                        overflow: hidden
+
+                    h2.title
+                        margin: 16px 20px 8px 30px
+                        font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
+                        font-weight: 600
+                        line-height: 16px
+                        letter-spacing: 0.25px
+                        text-transform: uppercase
+
+                    li.item
+                        height: 62px
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        border-top-width: 1px
+                        border-top-style: solid
+                        margin: 0 20px 0 30px
+                        box-sizing: border-box
+                        overflow: hidden
+                        cursor: pointer
+                        &:hover
+                            border-radius: 8px
+                            margin: 0 10px 0 20px
+                            padding: 0 10px
+                            // box-shadow: none
+                            .user-info .name .title .tag
+                                visibility: visible
+
+                        .user-info
+                            display: flex
+                            overflow: hidden
+                            flex-shrink: 0
+                            .avatar
+                                margin: 0 12px 0 0
+                                pointer-events: none
+                                img
+                                    width: 100%
+                                    height: 100%
+                                    aspect-ratio: 1
+                                    object-fit: cover
+                            .name
+                                // display: flex
+                                // flex-direction: column
+                                .title
+                                    display: flex
+                                    align-items: flex-end
+                                    justify-content: flex-start
+                                    flex-grow: 1
+                                    margin: 0
+                                    font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                    font-weight: 600
+                                    .username
+                                        flex: 0 1 auto
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        text-overflow: ellipsis
+                                    .tag
+                                        visibility: hidden
+                                        font-size: 14px
+                                        font-weight: 500
+                                        line-height: 16px
+
+                                .subtitle
+                                    font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                    font-weight: 500
+                                    overflow: hidden
+                                    white-space: nowrap
+                                    text-overflow: ellipsis
+
+                        .actions
+                            display: flex
+                            margin: 0 0 0 8px
+                            button
+                                width: 36px
+                                height: 36px
+                                display: flex
+                                align-items: center
+                                justify-content: center
+                                border-radius: 50%
+                                margin: 0 0 0 10px
+                                &:first-child
+                                    margin: 0
+
+            .sidebar
+                min-width: 360px
+                max-width: 420px
+                flex: 0 1 30%
+            
+            #active-now
+
+            .tab
+                display: none
+                &.active
+                    display: block
+
 
 
 .tooltip
