@@ -122,7 +122,7 @@
         <template id="friends-page-tmp">
             <section class="head">
                 <div class="info">
-                    <h3 class="title">
+                    <h3 class="header">
                         <svg x="0" y="0" width="24" height="24" viewbox="0 0 24 24">
                             <path fill="currentColor" icon-data="friend" transform="translate(2 4)"></path>
                         </svg>
@@ -159,7 +159,7 @@
             <section class="content">
                 <div class="tab chat active" name="online">
                     <div class="scroller">
-                        <h2 class="title">Online — 12</h2>
+                        <h2 class="header">Online — 12</h2>
                         <li class="item">
                             <div class="user-info">
                                 <svg class="avatar" width="32" height="32">
@@ -204,9 +204,76 @@
                     add-friend
                 </div>
 
-                <div class="sidebar" id="active-now">
-
-                </div>
+                <section class="sidebar" id="active-now">
+                    <div class="scroller">
+                        <h2 class="header">Active Now</h2>
+                        <li class="item">
+                            <header>
+                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">Friend A</h3>
+                                    <span class="subtitle">Dolphin Emulator – 30m</span>
+                                </div>
+                                <img src="res/imgs/dolphin.png" alt="mc.png" class="header-icon">
+                            </header>
+                            <div class="body">
+                                <div class="wrapper">
+                                    <img src="res/imgs/nether.png" alt="nthr.png" class="section-icon">
+                                    <img src="res/imgs/minecraft.png" alt="mc.png" class="icon-badge">
+                                </div>
+                                <div class="name">
+                                    <h3 class="title">Legend of Zelda - The Wind Waker</h3>
+                                    <p class="subtitle">The Great Sea</p>
+                                    <p class="time-elapsed">30:41 elapsed</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <!-- TODO: in vc -->
+                        </li>
+                        <li class="item">
+                            <header>
+                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">Friend B</h3>
+                                    <span class="subtitle">Listening to Spotify</span>
+                                </div>
+                                <img src="res/imgs/spotify.png" alt="mc.png" class="header-icon">
+                            </header>
+                            <div class="body">
+                                <div class="wrapper">
+                                    <img src="res/imgs/celeste ost.png" alt="nthr.png" class="section-icon">
+                                </div>
+                                <div class="name">
+                                    <h3 class="title">Celeste - Scattered and Lost</h3>
+                                    <p class="subtitle">Lena Raine</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <header>
+                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">Friend C</h3>
+                                    <span class="subtitle">Minecraft – 2m</span>
+                                </div>
+                                <img src="res/imgs/minecraft.png" alt="mc.png" class="header-icon">
+                            </header>
+                        </li>
+                    </div>
+                </section>
             </section>
         </template>
         
@@ -216,7 +283,24 @@
 
 
         <section id="top-bar">
-
+            <svg class="logo" width="55" height="16" viewbox="0 0 55 16">
+                <path fill="currentColor" icon-data="discordWord" />
+            </svg>
+            <button class="close-app">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <polygon fill="currentColor" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1" />
+                </svg>
+            </button>
+            <button class="min-max">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" fill="none" />
+                </svg>
+            </button>
+            <button class="save">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="1" y="6" width="10" height="1" fill="currentColor" />
+                </svg>
+            </button>
         </section>
 
 
@@ -272,7 +356,7 @@
                             <!-- ! TEMPLATE -->
                             <a href="#" class="dm-channel active" id="friends">
                                 <div class="wrapper avatar">
-                                    <svg width="24" height="24" viewport="0 0 24 24"> <!-- TODO: add class -->
+                                    <svg width="24" height="24" viewport="0 0 24 24">
                                         <path fill="currentColor" fill-rule="nonzero" icon-data="friend" transform="translate(2 4)"></path>
                                         <path fill-rule="evenodd"></path>
                                     </svg>
@@ -377,7 +461,6 @@
                                         <path fill="currentColor" icon-data="settings"></path>
                                     </svg>
                                 </button>
-                                <!-- TODO -->
                             </div>
                         </div>
                     </div>
@@ -385,7 +468,7 @@
     
                 <section id="main-content" class="friends"> <!-- friends, stage-discovery, nitro -->
                     <!-- ! TEMPLATE -->
-                    
+
                 </section>
             </div>
         </div>
