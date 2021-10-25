@@ -200,21 +200,21 @@ function linkToTabs(btnsHolder) {
         });
     }
 }
-function setToggleClasses(element, classes) {
+function setToggleClasses(element, classes, target = element) {
     // * Empty class will kill the function
     element.addEventListener('click', () => {
         let index = classes.findIndex(// go through classes array. If one of the items matches a class of element, the index of that item will be returned
         // go through classes array. If one of the items matches a class of element, the index of that item will be returned
-        item => element.matches(`.${item}`));
+        item => target.matches(`.${item}`));
         if (index < 0) {
-            element.classList.add(classes[0]);
+            target.classList.add(classes[0]);
             return;
         }
-        element.classList.remove(classes[index]);
+        target.classList.remove(classes[index]);
         if (index == classes.length - 1)
-            element.classList.add(classes[0]);
+            target.classList.add(classes[0]);
         else
-            element.classList.add(classes[index + 1]);
+            target.classList.add(classes[index + 1]);
     });
 }
 appendTemplateElement(document.querySelector("#friends-page-tmp"), document.querySelector("#main-content"));
@@ -259,6 +259,23 @@ const privateMsgTmp = document.getElementById("private-message-tmp");
 const privateGroupTmp = document.getElementById("private-group-tmp");
 function setUserStatus(svg, status) {
     //TODO:
+}
+function applyMaskAndBadge(guild, pings, currentEvent = "") {
+    let mask = "url(#guild-";
+    if (currentEvent == "vc" ||
+        currentEvent == "stream" ||
+        currentEvent == "date")
+        mask += "upper-";
+    // TODO: add upper badge
+    else if (pings > 99)
+        mask += "lower-3-";
+    else if (pings > 9)
+        mask += "lower-2-";
+    if (pings > 0) {
+        mask += "lower-1-";
+        guild.innerHTML += `<span class="badge lower ping">${pings}</span>`;
+    }
+    guild.querySelector("foreignObject").setAttribute('mask', mask + "mask)");
 }
 function appendToGuilds(chat) {
     let element = guildTmp.content.cloneNode(true);
@@ -308,8 +325,6 @@ function writePrivateChats(data) {
             appendToGuilds(dm);
     });
 }
-function appendServertoElement(server, element) {
-}
 function writeServers(data) {
     data.forEach(guild => {
         var _a;
@@ -322,24 +337,30 @@ function writeServers(data) {
                 element.querySelector(".icons").setAttribute('style', "background: #5865f266; color: #5865f2");
             else
                 element.querySelector(".icons").setAttribute('style', `background: ${guild.color}66; color: ${guild.color}`);
-            for (let server of guild.guilds)
-                if (server.unreads || server.pings > 0) {
-                    element.classList.add("unreads");
-                    break;
-                }
+            let pings = 0;
+            let event = "";
             for (let server of guild.guilds) {
-                let serverElement = manageServer(server);
-                serverElement.addEventListener('click', () => {
-                    setActiveGuild(serverElement);
+                if ((server.unreads || server.pings > 0) &&
+                    !element.classList.contains("unreads")) {
+                    element.classList.add("unreads");
+                }
+                pings += server.pings;
+                if (server.currentEvent == "vc")
+                    event = "vc";
+                element.querySelector(".guilds").appendChild(manageServer(server).querySelector("li, .item"));
+            }
+            applyMaskAndBadge(element, pings, event);
+            setToggleClasses(element.querySelector("svg.icon"), ["collapsed", "opened"], element);
+            element.querySelectorAll("li.item").forEach(server => {
+                server.addEventListener('click', () => {
+                    setActiveGuild(server);
                     element.classList.add("active");
                     // TODO: set #app-base .head content
                 });
-                element.querySelector(".guilds").appendChild(serverElement);
-            }
-            setToggleClasses(element, ["collapsed", "opened"]);
+            });
         }
         else { // is server
-            element = manageServer(guild);
+            element = manageServer(guild).querySelector("li, .item");
             element.addEventListener('click', () => {
                 setActiveGuild(element);
                 // TODO: set #app-base .head content
@@ -358,26 +379,9 @@ function writeServers(data) {
             element = guildTmp.content.cloneNode(true);
             element.querySelector("img").setAttribute('src', server.picture);
         }
-        element.querySelector("li, .item").addEventListener('click', () => {
-            // TODO: set #app-base .head content href
-        });
         if (server.unreads || server.pings > 0)
             element.querySelector("li, .item").classList.add("unreads");
-        let mask = "url(#guild-";
-        if (server.currentEvent == "vc" ||
-            server.currentEvent == "stream" ||
-            server.currentEvent == "date")
-            mask += "upper-";
-        // TODO: add upper badge
-        else if (server.pings > 99)
-            mask += "lower-3-";
-        else if (server.pings > 9)
-            mask += "lower-2-";
-        if (server.pings > 0) {
-            mask += "lower-1-";
-            element.querySelector("li, .item").innerHTML += `<span class="badge lower ping">${server.pings}</span>`;
-        }
-        element.querySelector("foreignObject").setAttribute('mask', mask + "mask)");
+        applyMaskAndBadge(element.querySelector("li, .item"), server.pings, server.currentEvent);
         return element;
     }
 }
