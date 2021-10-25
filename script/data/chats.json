@@ -2,18 +2,57 @@
     "servers": [
         {
             "name": "Server 1",
+            "picture": "res/imgs/sample.png",
+            "unreads": false,
+            "pings": 0,
+            "currentEvent": "",
+            "href": "#"
+        },
+        {
+            "name": "Server No-Img",
             "picture": "",
             "unreads": false,
             "pings": 0,
             "currentEvent": "",
-            "href": "server1"
+            "href": "#"
         },
         {
             "name": "New Folder",
-            "color": "#fff",
+            "color": "default",
             "state": "collapsed",
             "guilds": [
-
+                {
+                    "name": "Server",
+                    "picture": "res/imgs/music album.png",
+                    "unreads": false,
+                    "pings": 0,
+                    "currentEvent": "",
+                    "href": "#"
+                },
+                {
+                    "name": "Server",
+                    "picture": "res/imgs/dolphin.png",
+                    "unreads": false,
+                    "pings": 0,
+                    "currentEvent": "",
+                    "href": "#"
+                },
+                {
+                    "name": "Server",
+                    "picture": "res/imgs/minecraft.png",
+                    "unreads": false,
+                    "pings": 0,
+                    "currentEvent": "",
+                    "href": "#"
+                },
+                {
+                    "name": "Server",
+                    "picture": "res/imgs/nether.png",
+                    "unreads": false,
+                    "pings": 0,
+                    "currentEvent": "",
+                    "href": "#"
+                }
             ]
         }
     ],
