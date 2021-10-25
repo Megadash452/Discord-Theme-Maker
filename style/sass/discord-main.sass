@@ -11,6 +11,9 @@ $ping-color: #ed4245
     left: $left
     right: $right
 
+=transition-pos($time)
+    transition: top $time, right $time, bottom $time, left $time
+
 
 // TODO: FONT: Whitney
 // TODO: FONT: Ginto
@@ -59,11 +62,13 @@ body.dark
                 
     #guilds
         li.folder, .item.folder
-            .wrapper
+            background: #0000
+            >svg .wrapper
                 background-color: #2f3136
                 &:hover
                     background-color: #36393f
             &.opened
+                background: #2f3136
                 .icons
                     background-color: #0000 !important
         .item.no-img, #home-btn
@@ -322,6 +327,10 @@ hr.vertical
     line-height: 16px
     text-align: center
     box-sizing: border-box
+    &.width-2, &.2
+        width: 22px
+    &.width-3, &.3
+        width: 30px
 
 .avatar
     width: 32px //
@@ -379,6 +388,9 @@ hr.vertical
     > .scroller
         width: 100%
         height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
         overflow-y: scroll
         overflow-x: hidden
         // TODO: options for user to put a scroller of their liking (cannot be larger than the margin in server icons)
@@ -394,16 +406,19 @@ hr.vertical
         $icon-spacing: 8px
 
         $border-rad: 50%
-        $border-rad-hov: 17.5px
+        $border-rad-hov: 16px
         $border-rad-active: $border-rad-hov
 
         $side-margins: calc((#{$server-list-width} - #{$icon-size}) / 2)
 
+        // TODO: transitions on height and position (top, left etc..) do not work
+
         width: $icon-size
         height: $icon-size
         aspect-ratio: 1
+        flex: 0 0 auto
         position: relative
-        margin: 0 auto $icon-spacing auto // side margins should be auto /* $side-margins */
+        margin: 0 0 $icon-spacing 0 // margin: 0 auto $icon-spacing auto // side margins should be auto /* $side-margins */
         list-style-type: none
         cursor: pointer
         border-radius: $border-rad
@@ -411,7 +426,12 @@ hr.vertical
         // TODO: get accurate time for border-radius
         &.folder
             border-radius: $border-rad-hov
+            transition: height 0.25s // TODO: get accurate time
+            cursor: default
             $wrapper-pading: 4px
+            &:active::before
+                    height: 20px
+                    left: calc(var(--left) - 4px)
 
             .folder-icon-wrapper, .icons-wrapper
                 width: calc(#{$icon-size} - #{$wrapper-pading} * 2)
@@ -427,6 +447,8 @@ hr.vertical
                     margin: 0
             
             &.opened
+                height: auto
+                border-radius: $border-rad-hov $border-rad-hov #{$icon-size / 2} #{$icon-size / 2}
                 &::before
                     height: 8px
                     left: calc(var(--left) - 8px)
@@ -438,19 +460,36 @@ hr.vertical
                         top: $wrapper-pading
                     .icons-wrapper
                         top: calc(#{$icon-size} + 1px)
+                .guilds
+                    height: auto
+                .badge
+                    opacity: 0
+                    &.ping, &.badge.lower
+                        top: $icon-size
+                        left: $icon-size
+                        bottom: auto
+                        right: auto
+                    &.upper
+                        top: auto
+                        left: auto
+                        bottom: $icon-size
+                        right: $icon-size
             &.collapsed
                 .folder-icon-wrapper
                     top: calc(-#{$icon-size} + #{$wrapper-pading} * 2)
                 .icons-wrapper
                     top: $wrapper-pading
+                .guilds
+                    height: 0
 
-            .wrapper, .icons
+            >svg .wrapper, .icons
                 width: 100%
                 height: $icon-size
+                border-radius: $border-rad-hov // ! TODO: IMPORTANT!!! element will not use this border-radius, even though dev tool ssays it does
                 transition: background .15s ease-out
+                cursor: pointer
                 .icons
                     position: relative
-                    border-radius: 16px
                     padding: $wrapper-pading
                     box-sizing: border-box
                     overflow: hidden
@@ -466,6 +505,16 @@ hr.vertical
                             position: static
                             border-radius: 50%
                             overflow: hidden
+            .guilds
+                margin: 0
+                padding: 0
+                // overflow-y: hidden
+                transition: height 0.25s // TODO: get accurate time
+                li, .item
+                    &:first-child
+                        margin: $icon-spacing 0 $icon-spacing 0
+                    &:last-child
+                        margin: 0
 
         > svg
             width: $icon-size
@@ -482,13 +531,13 @@ hr.vertical
                 margin-right: auto
 
         &::before // pill
-            --left: calc(-1 * (#{$server-list-width} - #{$icon-size}) / 2)
             content: ''
-            background-color: #fff
-            +abs-pos(50%, calc(var(--left) - 8px), auto, auto)
-            transform: translateY(-50%)
             width: 8px // 
             height: 8px // unreads: 8px, hover: 20px, active: 40px
+            +abs-pos(calc(#{$icon-size} / 2), calc(var(--left) - 8px), auto, auto)
+            --left: calc(-1 * (#{$server-list-width} - #{$icon-size}) / 2)
+            background-color: #fff
+            transform: translateY(-50%)
             border-radius: 0 4px 4px 0
             transition: height 0.2s, left 0.1s // TODO: get accurate time
         &:hover
@@ -532,7 +581,9 @@ hr.vertical
 
         .badge
             +abs-pos(auto, auto, 50%, 0)
+            transition: all 0.25s // TODO: transition doesnt work // TODO: get accurate time
             pointer-events: none
+            opacity: 1
             // padding-right: 1px
             &.upper
                 top: 0
@@ -544,10 +595,11 @@ hr.vertical
                 background: $ping-color
 
     hr, .divider
-        margin: 0 auto 8px auto
-        border: none
         width: 32px //
         height: 2px
+        flex: 0 0 2px
+        border: none
+        margin: 0 auto 8px auto
         border-radius: 1px
         background-color: #ffffff0f
 
@@ -1149,6 +1201,8 @@ button
                         user-select: none
                         &:first-child
                             margin: 0
+                        &.spotify .body .wrapper .section-icon
+                            mask: none
                         &.empty
                             display: none
                             text-align: center

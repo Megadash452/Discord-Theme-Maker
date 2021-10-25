@@ -69,8 +69,8 @@
                 </svg>
             </li>
         </template>
-        <template id="guild-no-img-tmp"> <!-- Class: unreads, active, no-img -->
-            <li class="item">
+        <template id="guild-no-img-tmp"> <!-- Class: unreads, active -->
+            <li class="item no-img">
                 <svg class="icon">
                     <foreignObject width="100%" height="100%" mask="url(#)">
                         <div class="wrapper">
@@ -81,7 +81,31 @@
             </li>
         </template>
         <template id="guild-folder-tmp">
-
+            <!-- folder icons div color will always have channel a="0.4" -->
+            <li class="item folder"> <!-- class: opened, collapsed -->
+                <svg class="icon">
+                    <foreignObject width="100%" height="100%" mask="url(#)">
+                        <div class="wrapper">
+                            <div class="icons">
+                                <div class="folder-icon-wrapper">
+                                    <svg class="folder-icon" width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="folder" />
+                                    </svg>
+                                </div>
+                                <div class="icons-wrapper">
+                                    <img src="res/imgs/music album.png" alt="g" class="icon">
+                                    <img src="res/imgs/dolphin.png" alt="g" class="icon">
+                                    <img src="res/imgs/minecraft.png" alt="g" class="icon">
+                                    <img src="res/imgs/nether.png" alt="g" class="icon">
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                </svg>
+                <ul class="guilds">
+                    
+                </ul>
+            </li>
         </template>
 
         <template id="private-message-tmp"> <!-- Class: unread, active, muted -->
@@ -89,7 +113,7 @@
                 <svg class="avatar" viewbox="0 0 32 32">
                     <foreignObject width="32" height="32" mask="url(#user-status-mask)">
                         <div class="wrapper">
-                            <img src="res/imgs/default.png">
+                            <img src="res/imgs/user-1.png">
                         </div>
                     </foreignObject>
                 </svg>
@@ -196,6 +220,9 @@
                 </div>
                 <div class="tab chat" name="pending">
                     pending
+                    <svg width="48" height="48" viewbox="0 0 48 48">
+                        <path d="M0 24C0 16.5449 0 12.8174 1.21793 9.87706C2.84183 5.95662 5.95662 2.84183 9.87706 1.21793C12.8174 0 16.5449 0 24 0C31.4551 0 35.1826 0 38.1229 1.21793C42.0434 2.84183 45.1582 5.95662 46.7821 9.87706C48 12.8174 48 16.5449 48 24C48 31.4551 48 35.1826 46.7821 38.1229C45.1582 42.0434 42.0434 45.1582 38.1229 46.7821C35.1826 48 31.4551 48 24 48C16.5449 48 12.8174 48 9.87706 46.7821C5.95662 45.1582 2.84183 42.0434 1.21793 38.1229C0 35.1826 0 31.4551 0 24Z" />
+                    </svg>
                 </div>
                 <div class="tab chat" name="blocked">
                     blocked
@@ -235,7 +262,7 @@
                         <li class="item">
                             <!-- TODO: in vc -->
                         </li>
-                        <li class="item">
+                        <li class="item spotify">
                             <header>
                                 <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
                                     <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
@@ -250,7 +277,7 @@
                             </header>
                             <div class="body">
                                 <div class="wrapper">
-                                    <img src="res/imgs/celeste ost.png" alt="nthr.png" class="section-icon">
+                                    <img src="res/imgs/music album.png" alt="nthr.png" class="section-icon">
                                 </div>
                                 <div class="name">
                                     <h3 class="title">Celeste - Scattered and Lost</h3>
@@ -321,7 +348,7 @@
                                 </div>
                             </foreignObject>
                         </svg>
-                        <div class="badge lower ping">1</div>
+                        <span class="badge lower ping">1</span>
                     </li>
         
                     <section id="dms-ping"> <!-- private-unreads -->
@@ -330,43 +357,6 @@
                     <hr>
                     <section id="servers">
                         <!-- ? HERE IS ALL THE SERVERS -->
-
-                        <!-- folder icons div color will always have channel a="0.4" -->
-                        <li class="item folder collapsed"> <!-- class: opened, collapsed -->
-                            <svg class="icon">
-                                <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                    <div class="content">
-                                        <div class="wrapper">
-                                            <div class="icons" style="background: #5865f266; color: #5865f2">
-                                                <div class="folder-icon-wrapper">
-                                                    <svg class="folder-icon" width="24" height="24" viewbox="0 0 24 24">
-                                                        <path fill="currentColor" icon-data="folder" />
-                                                    </svg>
-                                                </div>
-                                                <div class="icons-wrapper">
-                                                    <img src="res/imgs/celeste ost.png" alt="g" class="icon">
-                                                    <img src="res/imgs/dolphin.png" alt="g" class="icon">
-                                                    <img src="res/imgs/minecraft.png" alt="g" class="icon">
-                                                    <img src="res/imgs/nether.png" alt="g" class="icon">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </foreignObject>
-                            </svg>
-                            <div class="guilds">
-                                <li class="item">
-                                    <svg class="icon">
-                                        <foreignObject width="100%" height="100%" mask="url(#)">
-                                            <div class="wrapper">
-                                                <img src="res/imgs/sample.png" width="100%" height="100%">
-                                            </div>
-                                        </foreignObject>
-                                    </svg>
-                                </li>
-                            </div>
-                            <!-- TODO: -->
-                        </li>
                     </section>
 
                     <li class="item guild-actions" id="add-server">
@@ -470,7 +460,7 @@
                             <svg class="avatar" viewbox="0 0 32 32">
                                 <foreignObject width="32" height="32" mask="url(#user-status-mask)">
                                     <div class="wrapper">
-                                        <img src="res/imgs/default.png">
+                                        <img src="res/imgs/user-1.png">
                                     </div>
                                 </foreignObject>
                             </svg>

@@ -140,19 +140,46 @@ const iconOthers = {
 
 type UserStatus = "online" | "idle" | "offline" | "dnd" | "mobile";
 interface PrivateChat {
-    picture: string,
     name: string,
+    picture: string,
     unreads: number,
     href: string
 };
 interface Friend extends PrivateChat {
     status: UserStatus
-}
+};
 interface GroupChat extends PrivateChat {
     memberCount: number
+};
+
+interface Server {
+    name: string,
+    picture: string,
+    unreads: boolean,
+    pings: number,
+    currentEvent: "vc" | "stream" | "date",
+    href: string
+}
+interface Folder {
+    name: string,
+    color: string
+    state: "colapsed" | "opened",
+    guilds: Array<Server>
 }
 
 
+
+function getAcronym(str: string): string {
+    str = str.trim();
+    let result = str[0];
+
+    for (let i=1; i < str.length; i++) {
+        if (str[i - 1] == ' ')
+            result += str[i];
+    }
+
+    return result;
+}
 
 function appendTemplateElement(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
     let tmp = template.content.cloneNode(true) as HTMLElement;
@@ -272,12 +299,14 @@ function removeAllActiveGuilds() {
 document.querySelectorAll("#home-btn, #servers li:not(.folder), #guilds .guild-actions").forEach(guild => {
     guild.addEventListener('click', () => {
         setActiveGuild(guild as HTMLLIElement);
+        // TODO: set #app-base .head content
     });
 });
 document.querySelectorAll("#dms-ping li").forEach(guild => {
     guild.addEventListener('click', () => {
         setActiveGuild(guild as HTMLLIElement);
         homeBtn.classList.add("active");
+        // TODO: set #app-base .head content
     });
 });
 
@@ -289,6 +318,7 @@ document.querySelectorAll("#dms-ping li").forEach(guild => {
 const dms = document.getElementById("private-chats") as HTMLElement;
 const guildTmp = document.getElementById("guild-tmp") as HTMLTemplateElement;
 const guildNoImgTmp = document.getElementById("guild-no-img-tmp") as HTMLTemplateElement;
+const guildFolderTmp = document.getElementById("guild-folder-tmp") as HTMLTemplateElement;
 const privateMsgTmp = document.getElementById("private-message-tmp") as HTMLTemplateElement;
 const privateGroupTmp = document.getElementById("private-group-tmp") as HTMLTemplateElement;
 
@@ -299,17 +329,21 @@ function setUserStatus(svg: SVGElement, status: UserStatus) {
 function appendToGuilds(chat: PrivateChat) {
     let element: HTMLLIElement = guildTmp.content.cloneNode(true) as HTMLLIElement;
     element = element.querySelector("li") as HTMLLIElement;
+    element.classList.add("unreads")
     
     if (chat.picture)
         element.querySelector("img") ! .setAttribute('src', chat.picture);
 
-    if (chat.unreads > 0)
-        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-1-mask)`)
-    else if (chat.unreads > 9)
-        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-2-mask)`)
-    else if (chat.unreads > 99)
-        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-3-mask)`)
-
+    if (chat.unreads > 99) {
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-3-mask)`);
+        element.innerHTML += `<span class="badge lower ping width-3">${chat.unreads}</span>`;
+    } else if (chat.unreads > 9) {
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-2-mask)`);
+        element.innerHTML += `<span class="badge lower ping width-2">${chat.unreads}</span>`;
+    } else if (chat.unreads > 0) {
+        element.querySelector("foreignObject") ! .setAttribute('mask', `url(#guild-lower-1-mask)`);
+        element.innerHTML += `<span class="badge lower ping">${chat.unreads}</span>`;
+    }
     // element.querySelector(""); // name
 
     element.addEventListener('click', () => {
@@ -325,10 +359,10 @@ function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
     data.forEach(dm => {
         let element: HTMLAnchorElement;
 
-        if (dm.hasOwnProperty('status')) {
+        if (dm.hasOwnProperty('status')) { // is user
             element = privateMsgTmp.content.cloneNode(true) as HTMLAnchorElement;
             setUserStatus(element.querySelector("svg") as SVGSVGElement, dm.status);
-        } else {
+        } else { // is group chat
             element = privateGroupTmp.content.cloneNode(true) as HTMLAnchorElement;
             element.querySelector(".subtitle") ! .innerHTML = `${dm.memberCount} members`;
         }
@@ -348,16 +382,91 @@ function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
     });
 }
 
+function appendServertoElement(server: Server, element: HTMLElement) {
+
+}
+
+function writeServers(data: Array<any>) {
+    data.forEach(guild => {
+        let element: HTMLLIElement;
+
+        if (guild.hasOwnProperty('guilds')) { // is folder
+            element = guildFolderTmp.content.cloneNode(true) as HTMLLIElement;
+            element = element.querySelector("li, .item") as HTMLLIElement;
+
+            element.classList.add(guild.state);
+
+            if (guild.color === "default" || guild.color === "")
+                element.querySelector(".icons") ! .setAttribute('style', "background: #5865f266; color: #5865f2");
+            else 
+                element.querySelector(".icons") ! .setAttribute('style', `background: ${guild.color}66; color: ${guild.color}`);
+
+            for (let server of guild.guilds)
+                if (server.unreads || server.pings > 0) {
+                    element.classList.add("unreads");
+                    break;
+                }
+            for (let server of guild.guilds) {
+                let serverElement = manageServer(server);
+                element.querySelector(".guilds") ! .appendChild(serverElement);
+            }
+
+            setToggleClasses(element as HTMLElement, ["collapsed", "opened"]);
+
+        } else // is server
+            element = manageServer(guild);
+
+        element.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
+        document.getElementById("servers") ! .appendChild(element);
+    });
+
+    function manageServer(server: Server): HTMLLIElement {
+        let element: HTMLLIElement;
+
+        if (!server.picture) { // is server no-img
+            element = guildNoImgTmp.content.cloneNode(true) as HTMLLIElement;
+            element.querySelector(".title") ! .innerHTML = getAcronym(server.name);
+        } else { // is normal server
+            element = guildTmp.content.cloneNode(true) as HTMLLIElement;
+            element.querySelector("img") ! .setAttribute('src', server.picture);
+        }
+        element.querySelector("li, .item") ! .addEventListener('click', () => {
+            // TODO: set #app-base .head content href
+        });
+
+        if (server.unreads || server.pings > 0)
+            element.querySelector("li, .item") ! .classList.add("unreads");
+
+        let mask = "url(#guild-";
+        if (server.currentEvent == "vc" ||
+            server.currentEvent == "stream" ||
+            server.currentEvent == "date")
+                mask += "upper-";
+
+        // TODO: add upper badge
+
+        else if (server.pings > 99)
+            mask += "lower-3-";
+        else if (server.pings > 9)
+            mask += "lower-2-";
+        if (server.pings > 0) {
+            mask += "lower-1-";
+            element.querySelector("li, .item") ! .innerHTML += `<span class="badge lower ping">${server.pings}</span>`;
+        }
+
+        element.querySelector("foreignObject") ! .setAttribute('mask', mask + "mask)");
+
+        return element;
+    }
+}
+
 fetch("https://raw.githubusercontent.com/Megadash452/Discord-Theme-Maker/master/script/data/chats.json").then(
     response => response.json()
 ).then(json => {
     writePrivateChats(json.privateChats);
+    writeServers(json.servers);
 }).catch(error => {
     console.log("error: ", error);
-});
-
-document.querySelectorAll("li.item.folder")?.forEach(folder => {
-    setToggleClasses(folder as HTMLElement, ["collapsed", "opened"]);
 });
 
 function assignIconData(path: Element) {
