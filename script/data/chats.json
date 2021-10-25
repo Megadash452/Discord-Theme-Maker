@@ -41,7 +41,7 @@
                     "name": "Server",
                     "picture": "res/imgs/minecraft.png",
                     "unreads": false,
-                    "pings": 0,
+                    "pings": 1,
                     "currentEvent": "",
                     "href": "#"
                 },
