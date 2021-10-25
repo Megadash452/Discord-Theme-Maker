@@ -329,12 +329,22 @@ function writeServers(data) {
                 }
             for (let server of guild.guilds) {
                 let serverElement = manageServer(server);
+                serverElement.addEventListener('click', () => {
+                    setActiveGuild(serverElement);
+                    element.classList.add("active");
+                    // TODO: set #app-base .head content
+                });
                 element.querySelector(".guilds").appendChild(serverElement);
             }
             setToggleClasses(element, ["collapsed", "opened"]);
         }
-        else // is server
+        else { // is server
             element = manageServer(guild);
+            element.addEventListener('click', () => {
+                setActiveGuild(element);
+                // TODO: set #app-base .head content
+            });
+        }
         (_a = element.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
         document.getElementById("servers").appendChild(element);
     });

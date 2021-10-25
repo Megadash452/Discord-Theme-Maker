@@ -408,14 +408,23 @@ function writeServers(data: Array<any>) {
                 }
             for (let server of guild.guilds) {
                 let serverElement = manageServer(server);
+                serverElement.addEventListener('click', () => {
+                    setActiveGuild(serverElement as HTMLLIElement);
+                    element.classList.add("active");
+                    // TODO: DOESNT WORK // TODO: set #app-base .head content
+                });
                 element.querySelector(".guilds") ! .appendChild(serverElement);
             }
 
             setToggleClasses(element as HTMLElement, ["collapsed", "opened"]);
 
-        } else // is server
+        } else { // is server
             element = manageServer(guild);
-
+            element.addEventListener('click', () => {
+                setActiveGuild(element as HTMLLIElement);
+                // TODO: DOESNT WORK // TODO: set #app-base .head content
+            });
+        }
         element.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
         document.getElementById("servers") ! .appendChild(element);
     });
