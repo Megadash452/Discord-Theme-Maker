@@ -18,9 +18,15 @@
                 <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
                 <circle cx="0.84375" cy="0.84375" r="0.25" fill="black"/>
             </mask>
+            <mask id="user-status-small-mask">
+                <path d="m31.8865 17.9153c.075-.628.1135-1.2671.1135-1.9153 0-8.83656-7.1634-16-16-16-8.83656 0-16 7.16344-16 16 0 8.8366 7.16344 16 16 16 .6482 0 1.2873-.0385 1.9153-.1135-1.2045-1.6514-1.9153-3.686-1.9153-5.8865 0-5.5228 4.4772-10 10-10 2.2005 0 4.2351.7108 5.8865 1.9153z" fill="#fff"/>
+            </mask>
             <mask id="user-status-mobile-mask" width="32" height="32">
                 <rect x="0" y="0" width="100%" height="100%" fill="white"/>
                 <rect x="0.59375" y="0.4375" width="0.5" height="0.65625" fill="black" rx="0.13125" ry="0.13125"/>
+            </mask>
+            <mask id="users-list-item-mask">
+                <path d="m22 18.6356c-2.1498 3.2334-5.8261 5.3644-10 5.3644-6.62742 0-12-5.3726-12-12 0-6.62742 5.37258-12 12-12 4.1739 0 7.8502 2.13102 10 5.36441-1.2637 1.90061-2 4.18212-2 6.63559 0 2.4535.7363 4.735 2 6.6356z" fill="#fff"/>
             </mask>
             <mask id="guild-upper-mask" width="48" height="48">
                 <rect x="0" y="0" width="100%" height="100%" fill="white"/>
@@ -195,7 +201,8 @@
                                 <div class="name">
                                     <h3 class="title">
                                         <span class="username">Friend A</span>
-                                        <span class="tag">#0001</span></h3>
+                                        <span class="tag">#0001</span>
+                                    </h3>
                                     <span class="subtitle">Online</span>
                                 </div>
                             </div>
@@ -234,28 +241,59 @@
                     </div>
                 </div>
                 <div class="tab chat" name="pending">
-                    <!-- TODO: h -->
-                    
                     <div class="scroller">
-                        ONE PENDING INCOMING REQUEST
-                        pending
-                        subtitle: Incoming Friend Request, Outgoing Friend Request (only has x button)
-                                <!-- Hover color: rgb(59, 165, 93) -->
+                        <h2 class="header">Pending — 2</h2>
+                        <li class="item">
+                            <div class="user-info">
+                                <svg class="avatar" width="32" height="32">
+                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">
+                                        <span class="username">Friend A</span>
+                                        <span class="tag">#0001</span>
+                                    </h3>
+                                    <span class="subtitle">Incoming Friend Request</span>
+                                </div>
+                            </div>
+                            <div class="actions">
                                 <button class="accept" data-tooltip="Accept" tooltip-direction="up">
-                                    <svg width="24" height="24" viewbox="0 0 24 24">
-                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="checkMark" />
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="checkMark" />
                                     </svg>
                                 </button>
-                                <!-- Hover color: rgb(237, 66, 69) -->
                                 <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
-                                    <svg width="24" height="24" viewbox="0 0 24 24">
-                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="x" />
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="x" />
                                     </svg>
                                 </button>
-                        <svg width="48" height="48" viewbox="0 0 48 48">
-                            <path d="M0 24C0 16.5449 0 12.8174 1.21793 9.87706C2.84183 5.95662 5.95662 2.84183 9.87706 1.21793C12.8174 0 16.5449 0 24 0C31.4551 0 35.1826 0 38.1229 1.21793C42.0434 2.84183 45.1582 5.95662 46.7821 9.87706C48 12.8174 48 16.5449 48 24C48 31.4551 48 35.1826 46.7821 38.1229C45.1582 42.0434 42.0434 45.1582 38.1229 46.7821C35.1826 48 31.4551 48 24 48C16.5449 48 12.8174 48 9.87706 46.7821C5.95662 45.1582 2.84183 42.0434 1.21793 38.1229C0 35.1826 0 31.4551 0 24Z" />
-                        </svg>
-
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="user-info">
+                                <svg class="avatar" width="32" height="32">
+                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">
+                                        <span class="username">Friend B</span>
+                                        <span class="tag">#0001</span>
+                                    </h3>
+                                    <span class="subtitle">Outgoing Friend Request</span>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="reject" data-tooltip="Cancel" tooltip-direction="up">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor"icon-data="x" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
                         <div class="scroller empty">
                             <div class="wrapper">
                                 <img src="res/imgs/empty-pending.svg">
@@ -265,16 +303,31 @@
                     </div>
                 </div>
                 <div class="tab chat" name="blocked">
-                    <!-- TODO: h -->
-                    
                     <div class="scroller">
-                        blocked
-                                <!-- Hover color: rgb(237, 66, 69) -->
-                                <button class="unblock" data-tooltip="Ignore" tooltip-direction="up">
-                                    <svg width="24" height="24" viewbox="0 0 24 24">
-                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="unblock" />
+                        <h2 class="header">Blocked — 1</h2>
+                        <li class="item">
+                            <div class="user-info">
+                                <svg class="avatar" width="32" height="32">
+                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">
+                                        <span class="username">Friend B</span>
+                                        <span class="tag">#0001</span>
+                                    </h3>
+                                    <span class="subtitle">Blocked</span>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="reject" data-tooltip="Unblock" tooltip-direction="up">
+                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="unblock" />
                                     </svg>
                                 </button>
+                            </div>
+                        </li>
                         <div class="scroller empty">
                             <div class="wrapper">
                                 <img src="res/imgs/empty-blocked.svg">
@@ -321,7 +374,9 @@
                             <div class="body">
                                 <div class="wrapper">
                                     <img src="res/imgs/nether.png" alt="nthr.png" class="section-icon">
-                                    <img src="res/imgs/minecraft.png" alt="mc.png" class="icon-badge">
+                                    <div class="badge-wrapper">
+                                        <img src="res/imgs/minecraft.png" alt="mc.png" class="icon-badge">
+                                    </div>
                                 </div>
                                 <div class="name">
                                     <h3 class="title">Legend of Zelda - The Wind Waker</h3>
@@ -331,7 +386,38 @@
                             </div>
                         </li>
                         <li class="item">
-                            <!-- TODO: in vc -->
+                            <header>
+                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                        <img src="res/imgs/Madeline.png">
+                                    </foreignObject>
+                                </svg>
+                                <div class="name">
+                                    <h3 class="title">Friend D and Friend E</h3>
+                                    <span class="subtitle">In a Voice Chanel</span>
+                                </div>
+                            </header>
+                            <div class="body">
+                                <div class="wrapper server">
+                                    <img src="res/imgs/sample.png" class="section-icon">
+                                    <div class="badge-wrapper">
+                                        <svg width="10" height="10" viewbox="0 0 24 24" class="icon-badge">
+                                            <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="voiceChatSmall" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <a href="#" class="title">Server</a>
+                                    <a href="#" class="subtitle">Voice Channel</a>
+                                </div>
+                                <div class="users">
+                                    <img src="res/imgs/Madeline.png">
+                                    <img src="res/imgs/Madeline.png">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <!-- TODO: vc while playing a game -->
                         </li>
                         <li class="item spotify">
                             <header>
