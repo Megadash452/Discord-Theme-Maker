@@ -231,7 +231,41 @@ body.dark
             scroll-color: #202225 #2f3136
             .chat
                 background-color: #36393f
+                &[name="add-friend"]
+                    header
+                        border-color: #ffffff0f
+                        .title
+                            color: #fff
+                        .subtitle
+                            color: #b9bbbe
+                        form
+                            background-color: #0000001a
+                            border-color: #0000004d
+                            input
+                                color: #dcddde
+                                background-color: transparent
+                                &::placeholder
+                                    color: #72767d
+                            .input-overlay
+                                color: #4f545c
+                            button
+                                color: #fff
+                                background-color: #5865f2
+                                &:hover
+                                    background-color: #4752c4
+                                &:active
+                                    background-color: #3c45a5
                 .scroller
+                    &.empty
+                        .subtitle
+                            color: #72767d
+                        button
+                            color: #fff
+                            background-color: #5865f2
+                            &:hover
+                                background-color: #4752c4
+                            &:active
+                                background-color: #3c45a5
                     .header
                         color: #b9bbbe
                     li.item
@@ -415,7 +449,7 @@ hr.vertical
         position: relative
         margin: 0 0 $icon-spacing 0
         list-style-type: none
-        transition: border-radius 0.2s ease-out, height 0.2s // border-rad:0.15s // Height doenst work // TODO: get accurate time
+        transition: background-color .15s ease-out, border-radius 0.2s ease-out, height 0.2s // border-rad:0.15s // Height doenst work // TODO: get accurate time
         user-select: none
         &.folder
             border-radius: $border-rad-hov $border-rad-hov #{$icon-size / 2} #{$icon-size / 2}
@@ -473,10 +507,12 @@ hr.vertical
                 .guilds
                     height: 0
 
-            >svg .wrapper, .icons
+            > svg
+                border-radius: $border-rad-hov
+            > svg .wrapper, .icons
                 width: 100%
                 height: $icon-size
-                border-radius: $border-rad-hov
+                // border-radius: $border-rad-hov
                 transition: background .15s ease-out
                 cursor: pointer
                 .icons
@@ -1045,19 +1081,24 @@ button
                     display: flex
                     button
                         min-width: 40px
-                        position: relative
                         flex: 0 0 auto
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        position: relative
+                        margin: 0 8px
                         padding: 2px 8px
                         border-radius: 4px
-                        margin: 0 8px
-                        text-align: center
                         font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                         font-weight: 500
+                        text-align: center
                         overflow: hidden
                         white-space: nowrap
                         text-overflow: ellipsis
                         &.active
                             cursor: default
+                        .badge
+                            margin: 0 0 0 8px
             #add-friend-btn // ? vs code thinks this is a button
                 color: #fff
                 background-color: #3ba55d
@@ -1082,10 +1123,91 @@ button
 
             .chat
                 flex: 1 1 auto
+                display: flex
+                flex-direction: column
+                &[name="add-friend"] header
+                    flex-shrink: 0
+                    padding: 20px 30px
+                    border-bottom-width: 1px
+                    border-bottom-style: solid
+                    .title, .subtitle
+                        user-select: none
+                        line-height: 20px
+                    .title
+                        margin: 0 0 8px 0
+                        font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
+                        font-weight: 600
+                        text-transform: uppercase
+                    .subtitle
+                        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                        font-weight: 400
+                        &.message
+                            margin: 8px 0 0 0
+                            strong
+                                font-weight: 600
+                        &.success
+                            color: #4fdc7c
+                        &.error
+                            color: #ed4245
+                    form
+                        display: flex
+                        align-items: center
+                        position: relative
+                        margin: 16px 0 0 0
+                        padding: 0 16px
+                        border-width: 1px
+                        border-style: solid
+                        border-radius: 8px
+                        &:focus-within
+                            border-color: #00aff4
+                        &.success
+                            border-color: #3ba55d
+                        &.error
+                            border-color: #ed4245
+                        input
+                            flex: 1 1 auto
+                            z-index: 1
+                            margin: 0 16px 0 0
+                            padding: 16px 0
+                            border: none
+                            outline: 0
+                            box-sizing: border-box
+                        input, .input-overlay
+                            font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 500
+                            line-height: 20px
+                            letter-spacing: 0.04em
+                            white-space: pre
+                        .input-overlay
+                            +abs-pos(auto, 16px, auto, auto)
+                            padding: 16px 0
+                            cursor: text
+                            box-sizing: border-box
+                        button
+                            height: 32px
+                            min-width: 60px
+                            min-height: 32px
+                            position: relative
+                            padding: 2px 16px
+                            border-radius: 3px
+                            box-sizing: border-box
+                            font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 500
+                            line-height: 16px
+                            overflow: hidde
+                            white-space: nowrap
+                            text-overflow: ellipsis
+                            user-select: none
+                            transition: background-color 0.17s ease, color 0.17s ease
+                            &:disabled
+                                opacity: 0.5
+                                cursor: not-allowed
+
                 .scroller
                     --margin-top: 8px
                     height: calc(100% - var(--margin-top))
                     min-height: 0
+                    flex: 1 1 auto
                     position: relative
                     box-sizing: border-box
                     padding: 0 0 8px 0
@@ -1093,7 +1215,40 @@ button
                     overflow: hidden scroll
                     scrollbar-width: auto
                     &.empty
+                        width: 100%
+                        height: auto
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        margin: 0
+                        padding: 0
                         overflow: hidden
+                        .wrapper
+                            max-width: 440px
+                        img
+                            flex: 0 1 auto
+                            margin: 0 0 40px 0
+                        .subtitle
+                            flex: 0 1 auto
+                            margin: 8px 0 0 0
+                            font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 400
+                            line-height: 20px
+                            text-align: center
+                        button
+                            height: 38px
+                            min-width: 96px
+                            position: relative
+                            display: block
+                            margin: 20px auto 0 auto
+                            padding: 2px 16px
+                            border-radius: 3px
+                            box-sizing: border-box
+                            font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 500
+                            line-height: 16px
+                            user-select: none
+                            transition: background-color 0.17s ease, color 0.17s ease
 
                     .header
                         margin: 16px 20px 8px 30px
@@ -1291,7 +1446,7 @@ button
             .tab
                 display: none
                 &.active
-                    display: block
+                    display: flex
 
 
 

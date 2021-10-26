@@ -156,7 +156,7 @@
                     <nav class="tab-btns" target="#main-content .content">
                         <button class="active" target="online">Online</button>
                         <button target="all">All</button>
-                        <button target="pending">Pending</button>
+                        <button target="pending">Pending<span class="badge">1</span></button>
                         <button target="blocked">Blocked</button>
                         <button id="add-friend-btn" target="add-friend">Add Friend</button>
                     </nav>
@@ -212,23 +212,94 @@
                                 </button>
                             </div>
                         </li>
+                        <div class="scroller empty">
+                            <div class="wrapper">
+                                <img src="res/imgs/empty-online.svg">
+                                <p class="subtitle">No one's around to play with Wumpus.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab chat" name="all">
                     <!-- TODO: hardcode friend list -->
-                    
+
+                    <div class="scroller">
+                        <div class="scroller empty">
+                            <div class="wrapper">
+                                <img src="res/imgs/empty-friends.svg">
+                                <p class="subtitle">No one's around to play with Wumpus.</p>
+                                <button>Add Friend</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab chat" name="pending">
-                    pending
-                    <svg width="48" height="48" viewbox="0 0 48 48">
-                        <path d="M0 24C0 16.5449 0 12.8174 1.21793 9.87706C2.84183 5.95662 5.95662 2.84183 9.87706 1.21793C12.8174 0 16.5449 0 24 0C31.4551 0 35.1826 0 38.1229 1.21793C42.0434 2.84183 45.1582 5.95662 46.7821 9.87706C48 12.8174 48 16.5449 48 24C48 31.4551 48 35.1826 46.7821 38.1229C45.1582 42.0434 42.0434 45.1582 38.1229 46.7821C35.1826 48 31.4551 48 24 48C16.5449 48 12.8174 48 9.87706 46.7821C5.95662 45.1582 2.84183 42.0434 1.21793 38.1229C0 35.1826 0 31.4551 0 24Z" />
-                    </svg>
+                    <!-- TODO: h -->
+                    
+                    <div class="scroller">
+                        ONE PENDING INCOMING REQUEST
+                        pending
+                        subtitle: Incoming Friend Request, Outgoing Friend Request (only has x button)
+                                <!-- Hover color: rgb(59, 165, 93) -->
+                                <button class="accept" data-tooltip="Accept" tooltip-direction="up">
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="checkMark" />
+                                    </svg>
+                                </button>
+                                <!-- Hover color: rgb(237, 66, 69) -->
+                                <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="x" />
+                                    </svg>
+                                </button>
+                        <svg width="48" height="48" viewbox="0 0 48 48">
+                            <path d="M0 24C0 16.5449 0 12.8174 1.21793 9.87706C2.84183 5.95662 5.95662 2.84183 9.87706 1.21793C12.8174 0 16.5449 0 24 0C31.4551 0 35.1826 0 38.1229 1.21793C42.0434 2.84183 45.1582 5.95662 46.7821 9.87706C48 12.8174 48 16.5449 48 24C48 31.4551 48 35.1826 46.7821 38.1229C45.1582 42.0434 42.0434 45.1582 38.1229 46.7821C35.1826 48 31.4551 48 24 48C16.5449 48 12.8174 48 9.87706 46.7821C5.95662 45.1582 2.84183 42.0434 1.21793 38.1229C0 35.1826 0 31.4551 0 24Z" />
+                        </svg>
+
+                        <div class="scroller empty">
+                            <div class="wrapper">
+                                <img src="res/imgs/empty-pending.svg">
+                                <p class="subtitle">There are no pending friend requests. Here's Wumpus for now.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab chat" name="blocked">
-                    blocked
+                    <!-- TODO: h -->
+                    
+                    <div class="scroller">
+                        blocked
+                                <!-- Hover color: rgb(237, 66, 69) -->
+                                <button class="unblock" data-tooltip="Ignore" tooltip-direction="up">
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="unblock" />
+                                    </svg>
+                                </button>
+                        <div class="scroller empty">
+                            <div class="wrapper">
+                                <img src="res/imgs/empty-blocked.svg">
+                                <p class="subtitle">You can't unblock the Wumpus.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab chat" name="add-friend">
-                    add-friend
+                    <header>
+                        <h2 class="title">Add Friend</h2>
+                        <p class="subtitle">You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
+                        <form autocomplete="off" class="wrapper"> <!-- :focus-within, class: success -->
+                            <input id="new-friend-search-bar" type="text" placeholder="Enter a Username#0000" maxlength="37">
+                            <div class="input-overlay"></div>
+                            <button type="submit" disabled>Send Friend Request</button>
+                        </form>
+                        <p class="subtitle message error hidden"></p> <!-- class: hidden, error, success -->
+                    </header>
+                    <div class="scroller empty">
+                        <div class="wrapper">
+                            <img src="res/imgs/empty-friends.svg">
+                            <p class="subtitle">Wumpus is waiting on friends. You don’t have to though!</p>
+                        </div>
+                    </div>
                 </div>
 
                 <section class="sidebar" id="active-now">
