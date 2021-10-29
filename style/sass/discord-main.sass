@@ -25,6 +25,9 @@ body
 body.light
     color: #4f5660
     background-color: #e3e5e8
+
+    #notice
+        box-shadow: 0 1px 0 #0606071a, 0 1.5px 0 #06060706, 0 2px 0 #06060706
     
 body.dark
     // --primary-col: 
@@ -80,7 +83,9 @@ body.dark
                 background-color: #5865f2
         .guild-actions
             background-color: #36393f
-            
+
+    #notice
+        box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d,0 2px 0 #0404050d           
 
     #sidebar
         .head
@@ -704,6 +709,7 @@ button
 
     $head-height: 48px //
     $media-ctrl-height: 52px //
+    $sidebad-border-rad: 8px
 
     h1, h2, h3, p
         margin: 0
@@ -717,10 +723,35 @@ button
         pointer-events: none
         box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
 
+    &:has(#notice:not(.hidden))
+        #sidebar
+            border-radius: 0 // TODO: MIGHT NOT WORK
+
+    #notice
+        position: relative
+        border-radius: $sidebad-border-rad 0 0 0
+        padding: 0 28px 0 4px
+        // z-index: 101
+        color: #fff
+        background-color: #f26522 
+        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+        font-weight: 500
+        line-height: 36px
+        text-align: center
+        button.close
+            width: 36px
+            height: 36px
+            +abs-pos(0, auto, auto, 0)
+            background: url(res/imgs/close.svg) no-repeat // DO NOT USE DUE TO LEGAL ISSUE
+            background-position: 50% 55%
+            background-size: 10px 10px
+            opacity: .5
+            transition: opacity .2s
+
     #sidebar
         width: $sidebar-width
         height: 100%
-        border-radius: 8px 0 0 0 //
+        border-radius: $sidebad-border-rad 0 0 0
         overflow-y: hidden
         display: flex
         flex-direction: column
