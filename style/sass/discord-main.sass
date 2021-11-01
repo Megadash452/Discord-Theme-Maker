@@ -705,7 +705,12 @@ button
 #app-base
     height: calc(100vh - #{$top-bar-height})
     width: calc(100vw - #{$server-list-width})
+    flex-grow: 1
+    position: relative
     display: flex
+    flex-direction: column
+    overflow: hidden
+
 
     $head-height: 48px //
     $media-ctrl-height: 52px //
@@ -714,18 +719,35 @@ button
     h1, h2, h3, p
         margin: 0
 
-    &::before
-        content: ''
-        height: 1px
-        z-index: 3
-        display: block
-        +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), $server-list-width, auto, 0)
-        pointer-events: none
-        box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
+    // &::before
+    //     content: ''
+    //     height: 1px
+    //     z-index: 3
+    //     display: block
+    //     +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), $server-list-width, auto, 0)
+    //     pointer-events: none
+    //     box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
 
     &:has(#notice:not(.hidden))
         #sidebar
             border-radius: 0 // TODO: MIGHT NOT WORK
+
+    > .base-wrapper
+        min-width: 0
+        min-height: 0
+        flex: 1 1 auto
+        position: relative
+        display: flex
+        align-items: stretch
+        justify-content: flex-start
+        &::before
+            content: ''
+            height: 1px
+            z-index: 3
+            display: block
+            +abs-pos(calc(#{$head-height} - 1px), 0, auto, 0)
+            pointer-events: none
+            box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d // TODO: put in theme colors???
 
     #notice
         position: relative
@@ -742,15 +764,17 @@ button
             width: 36px
             height: 36px
             +abs-pos(0, auto, auto, 0)
-            background: url(res/imgs/close.svg) no-repeat // DO NOT USE DUE TO LEGAL ISSUE
+            background: url("res/imgs/close.svg") no-repeat // from discord // TODO: img does not load
             background-position: 50% 55%
             background-size: 10px 10px
             opacity: .5
+            color: inherit
             transition: opacity .2s
 
     #sidebar
         width: $sidebar-width
         height: 100%
+        flex: 0 0 auto
         border-radius: $sidebad-border-rad 0 0 0
         overflow-y: hidden
         display: flex

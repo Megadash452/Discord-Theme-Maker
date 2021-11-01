@@ -276,6 +276,7 @@ activeBtnRelation(document.querySelector("#main-content .head .tab-btns")!);
 linkToTabs(document.querySelector("#main-content .head .tab-btns")!);
 
 
+// TODO: close button in notice to hide it.
 
 
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;
@@ -375,7 +376,6 @@ function appendToGuilds(chat: PrivateChat) {
 
     document.getElementById("dms-ping")!.appendChild(element);
 }
-
 
 function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
     data.forEach(dm => {
