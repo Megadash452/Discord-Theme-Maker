@@ -69,7 +69,7 @@
             "picture": "res/imgs/user-1.png",
             "status": "online",
             "description": "",
-            "unreads": 4,
+            "unreads": 0,
             "href": "frienda"
         },
         {
@@ -84,7 +84,7 @@
             "picture": "res/imgs/user-2.png",
             "status": "idle",
             "description": "",
-            "unreads": 0,
+            "unreads": 4,
             "href": "friendb"
         },
         {
