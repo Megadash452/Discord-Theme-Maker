@@ -268,15 +268,17 @@ function setToggleClasses(element: HTMLElement, classes: Array<string>, target=e
 
 
 appendTemplateElement(
-    document.querySelector("#friends-page-tmp")!,
-    document.querySelector("#main-content")!
+    document.querySelector("#active-now-tmp")!,
+    document.querySelector("#main-content .sidebar > .scroller")!
 );
     
 activeBtnRelation(document.querySelector("#main-content .head .tab-btns")!);
 linkToTabs(document.querySelector("#main-content .head .tab-btns")!);
 
 
-// TODO: close button in notice to hide it.
+document.querySelector("#notice button")?.addEventListener('click', () => {
+    document.querySelector("#app-base")!.classList.remove("show-notice");
+});
 
 
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;

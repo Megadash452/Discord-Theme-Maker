@@ -296,8 +296,15 @@ body.dark
                             &:active
                                 color: #fff
                                 background-color: #4f545c3d
-            #active-now
-                background-color: #36393f
+            .sidebar
+                &[content="active-now"]
+                    background-color: #36393f
+                &[content="members"]
+                    background-color: #2f3136
+                    .scroller
+                        scrollbar-color:#0000 #0000
+                        &:hover
+                            scrollbar-color: #202225 #0000
                 .scroller
                     scrollbar-color: #202225 #0000
                     border-color: #ffffff0f
@@ -308,7 +315,7 @@ body.dark
                         border-color: rgba(255, 255, 255, 0.06)
                         &:hover
                             background-color: #18191c
-                        &.empty
+                        &.empty-card
                             background-color: #0000
                             .title
                                 color: #fff
@@ -728,9 +735,11 @@ button
     //     pointer-events: none
     //     box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
 
-    &:has(#notice:not(.hidden))
+    &.show-notice
         #sidebar
-            border-radius: 0 // TODO: MIGHT NOT WORK
+            border-radius: 0
+        #notice
+            display: block
 
     > .base-wrapper
         min-width: 0
@@ -753,13 +762,14 @@ button
         position: relative
         border-radius: $sidebad-border-rad 0 0 0
         padding: 0 28px 0 4px
-        // z-index: 101
+        z-index: 3
         color: #fff
         background-color: #f26522 
         font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
         font-weight: 500
         line-height: 36px
         text-align: center
+        display: none
         button.close
             width: 36px
             height: 36px
@@ -1397,7 +1407,7 @@ button
                                 &:first-child
                                     margin: 0
 
-            #active-now
+            .sidebar
                 min-width: 360px
                 max-width: 420px
                 flex: 0 1 30%
@@ -1413,7 +1423,8 @@ button
                     overflow: hidden scroll
                     scrollbar-width: thin
                     list-style: none
-                    &.empty li.item.empty
+                    transition: scrollbar-color
+                    &.empty li.item.empty-card
                         display: block
                     .header
                         margin: 8px 0 16px
@@ -1431,7 +1442,7 @@ button
                             margin: 0
                         &.spotify .body .wrapper .section-icon
                             mask: none
-                        &.empty
+                        &.empty-card
                             display: none
                             text-align: center
                             cursor: default
@@ -1476,7 +1487,7 @@ button
                             display: grid
                             grid-gap: 12px
                             grid-template-columns: 32px minmax(20px, auto) max-content
-                            align-items: start // TODO: center???
+                            align-items: center // * start???
                             position: relative
                             padding: 12px
                             margin: 12px 0 0 0
@@ -1530,17 +1541,20 @@ button
                                 font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                                 font-weight: 400
                                 line-height: 16px
-                            .users // TODO: FINISH ALL
+                            .users
                                 height: 24px
                                 display: flex
-                                align-items: center
-                                justify-content: flex-end
+                                // align-items: center // from parent div in discord.com
+                                // justify-content: flex-end
                                 img
                                     width: 24px
                                     height: 24px
                                     aspect-ratio: 1
+                                    position: relative
+                                    // display: inline-block
                                     border-radius: 50%
                                     mask: url(#users-list-item-mask)
+                                    // TODO: position the images so theyre closer together
                                     &:first-child
                                         margin: 0
                                     &:last-child

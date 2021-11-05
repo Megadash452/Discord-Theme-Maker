@@ -148,326 +148,137 @@
             </a>
         </template>
 
+        <template id="active-now-tmp">
+            <h2 class="header">Active Now</h2>
+            <li class="item">
+                <header>
+                    <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                        <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                            <img src="res/imgs/Madeline.png">
+                        </foreignObject>
+                    </svg>
+                    <div class="name">
+                        <h3 class="title">Friend A</h3>
+                        <span class="subtitle">Dolphin Emulator – 30m</span>
+                    </div>
+                    <img src="res/imgs/dolphin.png" alt="mc.png" class="header-icon">
+                </header>
+                <div class="body">
+                    <div class="wrapper">
+                        <img src="res/imgs/nether.png" alt="nthr.png" class="section-icon">
+                        <div class="badge-wrapper">
+                            <img src="res/imgs/minecraft.png" alt="mc.png" class="icon-badge">
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3 class="title">Legend of Zelda - The Wind Waker</h3>
+                        <p class="subtitle">The Great Sea</p>
+                        <p class="time-elapsed">30:41 elapsed</p>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <header>
+                    <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                        <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                            <img src="res/imgs/Madeline.png">
+                        </foreignObject>
+                    </svg>
+                    <div class="name">
+                        <h3 class="title">Friend D and Friend E</h3>
+                        <span class="subtitle">In a Voice Chanel</span>
+                    </div>
+                </header>
+                <div class="body">
+                    <div class="wrapper server">
+                        <img src="res/imgs/sample.png" class="section-icon">
+                        <div class="badge-wrapper">
+                            <svg width="10" height="10" viewbox="0 0 24 24" class="icon-badge">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="voiceChatSmall" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <a href="#" class="title">Server</a>
+                        <a href="#" class="subtitle">Voice Channel</a>
+                    </div>
+                    <div class="users">
+                        <img src="res/imgs/Madeline.png">
+                        <img src="res/imgs/Madeline.png">
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <!-- TODO: vc while playing a game -->
+            </li>
+            <li class="item spotify">
+                <header>
+                    <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                        <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                            <img src="res/imgs/Madeline.png">
+                        </foreignObject>
+                    </svg>
+                    <div class="name">
+                        <h3 class="title">Friend B</h3>
+                        <span class="subtitle">Listening to Spotify</span>
+                    </div>
+                    <img src="res/imgs/spotify.png" alt="mc.png" class="header-icon">
+                </header>
+                <div class="body">
+                    <div class="wrapper">
+                        <img src="res/imgs/music album.png" alt="nthr.png" class="section-icon">
+                    </div>
+                    <div class="name">
+                        <h3 class="title">Celeste - Scattered and Lost</h3>
+                        <p class="subtitle">Lena Raine</p>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <header>
+                    <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
+                        <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                            <img src="res/imgs/Madeline.png">
+                        </foreignObject>
+                    </svg>
+                    <div class="name">
+                        <h3 class="title">Friend C</h3>
+                        <span class="subtitle">Minecraft – 2m</span>
+                    </div>
+                    <img src="res/imgs/minecraft.png" alt="mc.png" class="header-icon">
+                </header>
+            </li>
+            <li class="item empty-card">
+                <h3 class="title">It's quiet for now...</h3>
+                <p class="subtitle">When a friend starts an activity—like playing a game or hanging out on voice—we’ll show it here!</p>
+            </li>
+        </template>
 
-        <template id="friends-page-tmp">
-            <section class="head">
-                <div class="info">
-                    <h3 class="header">
-                        <svg x="0" y="0" width="24" height="24" viewbox="0 0 24 24">
-                            <path fill="currentColor" icon-data="friend" transform="translate(2 4)"></path>
-                        </svg>
-                        Friends
-                    </h3>
-                    <hr class="vertical">
-                    <nav class="tab-btns" target="#main-content .content">
-                        <button class="active" target="online">Online</button>
-                        <button target="all">All</button>
-                        <button target="pending">Pending<span class="badge">1</span></button>
-                        <button target="blocked">Blocked</button>
-                        <button id="add-friend-btn" target="add-friend">Add Friend</button>
-                    </nav>
-                </div>
-                <div class="tools">
-                    <button id="new-group-btn">
-                        <svg width="24" height="24" viewbox="0 0 24 24">
-                            <path fill="currentColor" icon-data="messageAdd"></path>
-                        </svg>
-                    </button>
-                    <hr class="vertical">
-                    <button onclick="showInbox()" data-tooltip="Inbox">
-                        <svg width="24" height="24" viewbox="0 0 24 24">
-                            <path fill="currentColor" icon-data="inbox"></path>
-                        </svg>
-                    </button>
-                    <button>
-                        <svg width="24" height="24" viewbox="0 0 24 24">
-                            <path fill="currentColor" icon-data="help"></path>
-                        </svg>
-                    </button>
-                </div>
-            </section>
-            <section class="content">
-                <div class="tab chat active" name="online">
-                    <div class="scroller">
-                        <h2 class="header">Online — 12</h2>
-                        <li class="item">
-                            <div class="user-info">
-                                <svg class="avatar" width="32" height="32">
-                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                    <!-- TODO: user status badge -->
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">
-                                        <span class="username">Friend A</span>
-                                        <span class="tag">#0001</span>
-                                    </h3>
-                                    <span class="subtitle">Online</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button data-tooltip="Message" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor" icon-data="message"></path>
-                                    </svg>
-                                </button>
-                                <button data-tooltip="More" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor" icon-data="options"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <div class="scroller empty">
-                            <div class="wrapper">
-                                <img src="res/imgs/empty-online.svg">
-                                <p class="subtitle">No one's around to play with Wumpus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab chat" name="all">
-                    <!-- TODO: hardcode friend list -->
+        <template id="group-chat-members-tmp">
 
-                    <div class="scroller">
-                        <div class="scroller empty">
-                            <div class="wrapper">
-                                <img src="res/imgs/empty-friends.svg">
-                                <p class="subtitle">No one's around to play with Wumpus.</p>
-                                <button>Add Friend</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab chat" name="pending">
-                    <div class="scroller">
-                        <h2 class="header">Pending — 2</h2>
-                        <li class="item">
-                            <div class="user-info">
-                                <svg class="avatar" width="32" height="32">
-                                    <foreignObject width="100%" height="100%" mask="url(#)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">
-                                        <span class="username">Friend A</span>
-                                        <span class="tag">#0001</span>
-                                    </h3>
-                                    <span class="subtitle">Incoming Friend Request</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="accept" data-tooltip="Accept" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor" icon-data="checkMark" />
-                                    </svg>
-                                </button>
-                                <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor" icon-data="x" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="user-info">
-                                <svg class="avatar" width="32" height="32">
-                                    <foreignObject width="100%" height="100%" mask="url(#)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">
-                                        <span class="username">Friend B</span>
-                                        <span class="tag">#0001</span>
-                                    </h3>
-                                    <span class="subtitle">Outgoing Friend Request</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="reject" data-tooltip="Cancel" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor"icon-data="x" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <div class="scroller empty">
-                            <div class="wrapper">
-                                <img src="res/imgs/empty-pending.svg">
-                                <p class="subtitle">There are no pending friend requests. Here's Wumpus for now.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab chat" name="blocked">
-                    <div class="scroller">
-                        <h2 class="header">Blocked — 1</h2>
-                        <li class="item">
-                            <div class="user-info">
-                                <svg class="avatar" width="32" height="32">
-                                    <foreignObject width="100%" height="100%" mask="url(#)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">
-                                        <span class="username">Friend B</span>
-                                        <span class="tag">#0001</span>
-                                    </h3>
-                                    <span class="subtitle">Blocked</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="reject" data-tooltip="Unblock" tooltip-direction="up">
-                                    <svg width="20" height="20" viewbox="0 0 24 24">
-                                        <path fill="currentColor" icon-data="unblock" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </li>
-                        <div class="scroller empty">
-                            <div class="wrapper">
-                                <img src="res/imgs/empty-blocked.svg">
-                                <p class="subtitle">You can't unblock the Wumpus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab chat" name="add-friend">
-                    <header>
-                        <h2 class="title">Add Friend</h2>
-                        <p class="subtitle">You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
-                        <form autocomplete="off" class="wrapper"> <!-- :focus-within, class: success -->
-                            <input id="new-friend-search-bar" type="text" placeholder="Enter a Username#0000" maxlength="37">
-                            <div class="input-overlay"></div>
-                            <button type="submit" disabled>Send Friend Request</button>
-                        </form>
-                        <p class="subtitle message error hidden"></p> <!-- class: hidden, error, success -->
-                    </header>
-                    <div class="scroller empty">
-                        <div class="wrapper">
-                            <img src="res/imgs/empty-friends.svg">
-                            <p class="subtitle">Wumpus is waiting on friends. You don’t have to though!</p>
-                        </div>
-                    </div>
-                </div>
+        </template>
 
-                <section class="sidebar" id="active-now">
-                    <div class="scroller"> <!-- class: empty-->
-                        <h2 class="header">Active Now</h2>
-                        <li class="item">
-                            <header>
-                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
-                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">Friend A</h3>
-                                    <span class="subtitle">Dolphin Emulator – 30m</span>
-                                </div>
-                                <img src="res/imgs/dolphin.png" alt="mc.png" class="header-icon">
-                            </header>
-                            <div class="body">
-                                <div class="wrapper">
-                                    <img src="res/imgs/nether.png" alt="nthr.png" class="section-icon">
-                                    <div class="badge-wrapper">
-                                        <img src="res/imgs/minecraft.png" alt="mc.png" class="icon-badge">
-                                    </div>
-                                </div>
-                                <div class="name">
-                                    <h3 class="title">Legend of Zelda - The Wind Waker</h3>
-                                    <p class="subtitle">The Great Sea</p>
-                                    <p class="time-elapsed">30:41 elapsed</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <header>
-                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
-                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">Friend D and Friend E</h3>
-                                    <span class="subtitle">In a Voice Chanel</span>
-                                </div>
-                            </header>
-                            <div class="body">
-                                <div class="wrapper server">
-                                    <img src="res/imgs/sample.png" class="section-icon">
-                                    <div class="badge-wrapper">
-                                        <svg width="10" height="10" viewbox="0 0 24 24" class="icon-badge">
-                                            <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" icon-data="voiceChatSmall" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="name">
-                                    <a href="#" class="title">Server</a>
-                                    <a href="#" class="subtitle">Voice Channel</a>
-                                </div>
-                                <div class="users">
-                                    <img src="res/imgs/Madeline.png">
-                                    <img src="res/imgs/Madeline.png">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <!-- TODO: vc while playing a game -->
-                        </li>
-                        <li class="item spotify">
-                            <header>
-                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
-                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">Friend B</h3>
-                                    <span class="subtitle">Listening to Spotify</span>
-                                </div>
-                                <img src="res/imgs/spotify.png" alt="mc.png" class="header-icon">
-                            </header>
-                            <div class="body">
-                                <div class="wrapper">
-                                    <img src="res/imgs/music album.png" alt="nthr.png" class="section-icon">
-                                </div>
-                                <div class="name">
-                                    <h3 class="title">Celeste - Scattered and Lost</h3>
-                                    <p class="subtitle">Lena Raine</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <header>
-                                <svg class="avatar" width="32" height="32" viewbox="0 0 32 32">
-                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                        <img src="res/imgs/Madeline.png">
-                                    </foreignObject>
-                                </svg>
-                                <div class="name">
-                                    <h3 class="title">Friend C</h3>
-                                    <span class="subtitle">Minecraft – 2m</span>
-                                </div>
-                                <img src="res/imgs/minecraft.png" alt="mc.png" class="header-icon">
-                            </header>
-                        </li>
-                        <li class="item empty">
-                            <h3 class="title">It's quiet for now...</h3>
-                            <p class="subtitle">When a friend starts an activity—like playing a game or hanging out on voice—we’ll show it here!</p>
-                        </li>
-                    </div>
-                </section>
-            </section>
+        <template id="server-members-tmp">
+
         </template>
         
         
         <!-- TEMPLATES END -->
 
+
+        <!-- URL ADDRESSES
+            home/
+            ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
+
+            /channels ==> is discord-main.html
+                /channels/dms
+                    /channels/dms/friends
+                    /channels/dms/stage-discovery
+                    /channels/dms/nitro
+                    /channels/dms/${private-chat-name}
+
+            /settings ==> is discord-settings.html
+        -->
 
 
         <section id="top-bar">
@@ -529,8 +340,7 @@
                 </div>
             </nav>
     
-            <div id="app-base" class="dms"> <!-- dms, server, explore -->
-                <!-- TODO: wrapp sdebar and main content in div, make this one flex column -->
+            <div id="app-base" class="dms show-notice"> <!-- dms, server, explore, show-notice -->
                 <div id="notice" class="">
                     <button class="close"></button>
                     THIS IS A NOTICE
@@ -538,12 +348,12 @@
                 <div class="base-wrapper">
                     <nav id="sidebar">
                         <div class="head">
-                            <!-- ! TEMPLATE -->
+                            <!-- ? variable -->
                             <button id="search-dms" class="search-bar">Find or start a conversation</button>
                         </div>
-                        <div class="channels">
+                        <div class="channels" conent="private-msgs"> <!-- content: private-msgs, server-channels, public-servers -->
                             <div class="scroller">
-                                <!-- ! TEMPLATE -->
+                                <!-- ? variable -->
                                 <a href="#" class="dm-channel active" id="friends">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
@@ -656,9 +466,219 @@
                         </div>
                     </nav>
         
-                    <section id="main-content" class="friends"> <!-- friends, stage-discovery, nitro -->
-                        <!-- ! TEMPLATE -->
-    
+                    <section id="main-content" content="friends"> <!-- content: friends, stage-discovery, nitro -->
+                        <section class="head">
+                            <div class="info">
+                                <h3 class="header">
+                                    <svg class="section-icon" x="0" y="0" width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="friend" transform="translate(2 4)"></path>
+                                    </svg>
+                                    Friends
+                                </h3>
+                                <hr class="vertical">
+                                <nav class="tab-btns" target="#main-content .content">
+                                    <button class="active" target="online">Online</button>
+                                    <button target="all">All</button>
+                                    <button target="pending">Pending<span class="badge">1</span></button>
+                                    <button target="blocked">Blocked</button>
+                                    <button id="add-friend-btn" target="add-friend">Add Friend</button>
+                                </nav>
+                            </div>
+                            <div class="tools">
+                                <button id="new-group-btn">
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="messageAdd"></path>
+                                    </svg>
+                                </button>
+                                <hr class="vertical">
+                                <button onclick="showInbox()" data-tooltip="Inbox">
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="inbox"></path>
+                                    </svg>
+                                </button>
+                                <button>
+                                    <svg width="24" height="24" viewbox="0 0 24 24">
+                                        <path fill="currentColor" icon-data="help"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </section>
+                        <section class="content"> <!-- TODO: Content property? -->
+                            <div class="tab chat active" name="online">
+                                <div class="scroller">
+                                    <h2 class="header">Online — 12</h2>
+                                    <li class="item">
+                                        <div class="user-info">
+                                            <svg class="avatar" width="32" height="32">
+                                                <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                                    <img src="res/imgs/Madeline.png">
+                                                </foreignObject>
+                                                <!-- TODO: user status badge -->
+                                            </svg>
+                                            <div class="name">
+                                                <h3 class="title">
+                                                    <span class="username">Friend A</span>
+                                                    <span class="tag">#0001</span>
+                                                </h3>
+                                                <span class="subtitle">Online</span>
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button data-tooltip="Message" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor" icon-data="message"></path>
+                                                </svg>
+                                            </button>
+                                            <button data-tooltip="More" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor" icon-data="options"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <div class="scroller empty">
+                                        <div class="wrapper">
+                                            <img src="res/imgs/empty-online.svg">
+                                            <p class="subtitle">No one's around to play with Wumpus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab chat" name="all">
+                                <!-- TODO: hardcode friend list -->
+            
+                                <div class="scroller">
+                                    <div class="scroller empty">
+                                        <div class="wrapper">
+                                            <img src="res/imgs/empty-friends.svg">
+                                            <p class="subtitle">No one's around to play with Wumpus.</p>
+                                            <button>Add Friend</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab chat" name="pending">
+                                <div class="scroller">
+                                    <h2 class="header">Pending — 2</h2>
+                                    <li class="item">
+                                        <div class="user-info">
+                                            <svg class="avatar" width="32" height="32">
+                                                <foreignObject width="100%" height="100%" mask="url(#)">
+                                                    <img src="res/imgs/Madeline.png">
+                                                </foreignObject>
+                                            </svg>
+                                            <div class="name">
+                                                <h3 class="title">
+                                                    <span class="username">Friend A</span>
+                                                    <span class="tag">#0001</span>
+                                                </h3>
+                                                <span class="subtitle">Incoming Friend Request</span>
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button class="accept" data-tooltip="Accept" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor" icon-data="checkMark" />
+                                                </svg>
+                                            </button>
+                                            <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor" icon-data="x" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="user-info">
+                                            <svg class="avatar" width="32" height="32">
+                                                <foreignObject width="100%" height="100%" mask="url(#)">
+                                                    <img src="res/imgs/Madeline.png">
+                                                </foreignObject>
+                                            </svg>
+                                            <div class="name">
+                                                <h3 class="title">
+                                                    <span class="username">Friend B</span>
+                                                    <span class="tag">#0001</span>
+                                                </h3>
+                                                <span class="subtitle">Outgoing Friend Request</span>
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button class="reject" data-tooltip="Cancel" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor"icon-data="x" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <div class="scroller empty">
+                                        <div class="wrapper">
+                                            <img src="res/imgs/empty-pending.svg">
+                                            <p class="subtitle">There are no pending friend requests. Here's Wumpus for now.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab chat" name="blocked">
+                                <div class="scroller">
+                                    <h2 class="header">Blocked — 1</h2>
+                                    <li class="item">
+                                        <div class="user-info">
+                                            <svg class="avatar" width="32" height="32">
+                                                <foreignObject width="100%" height="100%" mask="url(#)">
+                                                    <img src="res/imgs/Madeline.png">
+                                                </foreignObject>
+                                            </svg>
+                                            <div class="name">
+                                                <h3 class="title">
+                                                    <span class="username">Friend B</span>
+                                                    <span class="tag">#0001</span>
+                                                </h3>
+                                                <span class="subtitle">Blocked</span>
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button class="reject" data-tooltip="Unblock" tooltip-direction="up">
+                                                <svg width="20" height="20" viewbox="0 0 24 24">
+                                                    <path fill="currentColor" icon-data="unblock" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <div class="scroller empty">
+                                        <div class="wrapper">
+                                            <img src="res/imgs/empty-blocked.svg">
+                                            <p class="subtitle">You can't unblock the Wumpus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab chat" name="add-friend">
+                                <header>
+                                    <h2 class="title">Add Friend</h2>
+                                    <p class="subtitle">You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
+                                    <form autocomplete="off" class="wrapper"> <!-- :focus-within, class: success -->
+                                        <input id="new-friend-search-bar" type="text" placeholder="Enter a Username#0000" maxlength="37">
+                                        <div class="input-overlay"></div>
+                                        <button type="submit" disabled>Send Friend Request</button>
+                                    </form>
+                                    <p class="subtitle message error hidden"></p> <!-- class: hidden, error, success -->
+                                </header>
+                                <div class="scroller empty">
+                                    <div class="wrapper">
+                                        <img src="res/imgs/empty-friends.svg">
+                                        <p class="subtitle">Wumpus is waiting on friends. You don’t have to though!</p>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <section class="sidebar" content="active-now"> <!-- content: active-now, members-->
+                                <div class="scroller empty"> <!-- class: empty-->
+                                    <!-- ! TEMPLATE -->
+
+                                </div>
+                            </section>
+                        </section>
                     </section>
                 </div>
                 
