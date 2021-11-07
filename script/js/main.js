@@ -318,7 +318,7 @@ function writePrivateChats(data) {
             element = privateGroupTmp.content.cloneNode(true);
             element.querySelector(".subtitle").innerHTML = `${dm.memberCount} members`;
         }
-        element = element.querySelector("a");
+        element = element.querySelector("*");
         if (dm.picture)
             element.querySelector("img").setAttribute('src', dm.picture);
         element.setAttribute('href', dm.href);

@@ -3,15 +3,25 @@
 	"tasks": [
 		{
 			"type": "typescript",
-			"label": "tsc: build - script/ts/tsconfig.json",
+			"label": "TypeScript Build Watch",
 			"tsconfig": "script/ts/tsconfig.json",
+			"option": "watch",
 			"problemMatcher": [
-				"$tsc"
+				"$tsc-watch"
 			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"type": "typescript",
+			"label": "TypeScript Build",
+			"tsconfig": "script/ts/tsconfig.json",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
 		}
 	]
 }

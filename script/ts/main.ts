@@ -390,7 +390,7 @@ function writePrivateChats(data: Array<any>) { // Array<Friend | GroupChat>
             element = privateGroupTmp.content.cloneNode(true) as HTMLAnchorElement;
             element.querySelector(".subtitle") ! .innerHTML = `${dm.memberCount} members`;
         }
-        element = element.querySelector("a") as HTMLAnchorElement;
+        element = element.querySelector("*") as HTMLAnchorElement;
         
         if (dm.picture)
             element.querySelector("img") ! .setAttribute('src', dm.picture);

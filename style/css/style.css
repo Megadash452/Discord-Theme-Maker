@@ -2,7 +2,6 @@
   font-family: "Uni Sans";
   src: url("../../res/fonts/Uni Sans Regular.ttf") format("truetype");
 }
-
 body {
   margin: 0;
   overflow: hidden;
@@ -20,61 +19,47 @@ body.light {
   color: #4f5660;
   background: #e3e5e8;
 }
-
 body.light button[data-tooltip]::before, body.light a[data-tooltip]::before {
   box-shadow: 0 8px 16px #00000029;
   background-color: #fff;
   color: #000;
 }
-
-body.light button[tooltip-direction="left"]::after, body.light a[tooltip-direction="left"]::after {
+body.light button[tooltip-direction=left]::after, body.light a[tooltip-direction=left]::after {
   border-left-color: #fff;
 }
-
-body.light button[tooltip-direction="right"]::after, body.light a[tooltip-direction="right"]::after {
+body.light button[tooltip-direction=right]::after, body.light a[tooltip-direction=right]::after {
   border-right-color: #fff;
 }
-
-body.light button[tooltip-direction="up"]::after, body.light a[tooltip-direction="up"]::after {
+body.light button[tooltip-direction=top]::after, body.light button[tooltip-direction=up]::after, body.light a[tooltip-direction=top]::after, body.light a[tooltip-direction=up]::after {
   border-top-color: #fff;
 }
-
-body.light button:not([tooltip-direction])::after, body.light a:not([tooltip-direction])::after {
+body.light button[tooltip-direction=bottom]::after, body.light button[tooltip-direction=down]::after, body.light button:not([tooltip-direction])::after, body.light a[tooltip-direction=bottom]::after, body.light a[tooltip-direction=down]::after, body.light a:not([tooltip-direction])::after {
   border-bottom-color: #fff;
 }
-
 body.light span.radio input, body.light div.radio input {
   border-color: #4f5660;
 }
-
 body.light span.radio label, body.light div.radio label {
   color: #4f5660;
 }
-
 body.light span.radio:hover input, body.light div.radio:hover input {
   border-color: #2e3338;
 }
-
 body.light span.radio:hover label, body.light div.radio:hover label {
   color: #2e3338;
 }
-
 body.light span.radio:active input, body.light div.radio:active input {
   border-color: #060607;
 }
-
 body.light span.radio:active label, body.light div.radio:active label {
   color: #060607;
 }
-
-body.light span.radio:has(input[type="radio"]:checked) input, body.light div.radio:has(input[type="radio"]:checked) input {
+body.light span.radio:has(input[type=radio]:checked) input, body.light div.radio:has(input[type=radio]:checked) input {
   border-color: #060607;
 }
-
-body.light span.radio:has(input[type="radio"]:checked) label, body.light div.radio:has(input[type="radio"]:checked) label {
+body.light span.radio:has(input[type=radio]:checked) label, body.light div.radio:has(input[type=radio]:checked) label {
   color: #060607;
 }
-
 body.light #menu-side-bar {
   background-color: #f2f3f5;
   color: #4f5660;
@@ -84,61 +69,47 @@ body.dark {
   color: #b9bbbe;
   background: #202225;
 }
-
 body.dark button[data-tooltip]::before, body.dark a[data-tooltip]::before {
   box-shadow: 0 8px 16px #0000003d;
   background-color: #18191c;
   color: #dcddde;
 }
-
-body.dark button[tooltip-direction="left"]::after, body.dark a[tooltip-direction="left"]::after {
+body.dark button[tooltip-direction=left]::after, body.dark a[tooltip-direction=left]::after {
   border-left-color: #18191c;
 }
-
-body.dark button[tooltip-direction="right"]::after, body.dark a[tooltip-direction="right"]::after {
+body.dark button[tooltip-direction=right]::after, body.dark a[tooltip-direction=right]::after {
   border-right-color: #18191c;
 }
-
-body.dark button[tooltip-direction="top"]::after, body.dark button[tooltip-direction="up"]::after, body.dark a[tooltip-direction="top"]::after, body.dark a[tooltip-direction="up"]::after {
+body.dark button[tooltip-direction=top]::after, body.dark button[tooltip-direction=up]::after, body.dark a[tooltip-direction=top]::after, body.dark a[tooltip-direction=up]::after {
   border-top-color: #18191c;
 }
-
-body.dark button:not([tooltip-direction])::after, body.dark a:not([tooltip-direction])::after {
+body.dark button[tooltip-direction=bottom]::after, body.dark button[tooltip-direction=down]::after, body.dark button:not([tooltip-direction])::after, body.dark a[tooltip-direction=bottom]::after, body.dark a[tooltip-direction=down]::after, body.dark a:not([tooltip-direction])::after {
   border-bottom-color: #18191c;
 }
-
 body.dark span.radio input, body.dark div.radio input {
   border-color: #b9bbbe;
 }
-
 body.dark span.radio label, body.dark div.radio label {
   color: #b9bbbe;
 }
-
 body.dark span.radio:hover input, body.dark div.radio:hover input {
   border-color: #dcddde;
 }
-
 body.dark span.radio:hover label, body.dark div.radio:hover label {
   color: #dcddde;
 }
-
 body.dark span.radio:active input, body.dark div.radio:active input {
   border-color: #fff;
 }
-
 body.dark span.radio:active label, body.dark div.radio:active label {
   color: #fff;
 }
-
-body.dark span.radio:has(input[type="radio"]:checked) input, body.dark div.radio:has(input[type="radio"]:checked) input {
+body.dark span.radio:has(input[type=radio]:checked) input, body.dark div.radio:has(input[type=radio]:checked) input {
   border-color: #fff;
 }
-
-body.dark span.radio:has(input[type="radio"]:checked) label, body.dark div.radio:has(input[type="radio"]:checked) label {
+body.dark span.radio:has(input[type=radio]:checked) label, body.dark div.radio:has(input[type=radio]:checked) label {
   color: #fff;
 }
-
 body.dark #menu-side-bar {
   background-color: #2f3136;
   color: #dcddde;
@@ -153,16 +124,13 @@ nav#navbar {
   flex-direction: row;
   justify-content: space-between;
 }
-
 nav#navbar #back-btn {
   margin: 0 0.5rem 0 0;
 }
-
 nav#navbar #back-btn > img, nav#navbar #back-btn > svg {
   width: 1.75rem;
   height: 1.75rem;
 }
-
 nav#navbar div.title {
   display: block;
   overflow-x: hidden;
@@ -172,7 +140,6 @@ nav#navbar div.title {
   flex-direction: column;
   justify-content: center;
 }
-
 nav#navbar div.title > h1 {
   white-space: nowrap;
   font-family: "Uni Sans", sans-serif;
@@ -180,14 +147,12 @@ nav#navbar div.title > h1 {
   margin: 0;
   cursor: default;
 }
-
 nav#navbar .header {
   height: 2.125rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-
 nav#navbar .info {
   height: 100%;
   cursor: default;
@@ -195,7 +160,6 @@ nav#navbar .info {
   flex-direction: row;
   justify-content: flex-end;
 }
-
 nav#navbar button, nav#navbar a {
   display: flex;
   flex-direction: column;
@@ -213,7 +177,6 @@ nav#navbar button, nav#navbar a {
   cursor: pointer;
   transition: background-color, color, stroke 0.25s, 0.25s, 0.25s;
 }
-
 nav#navbar button > img, nav#navbar button > svg, nav#navbar a > img, nav#navbar a > svg {
   display: block;
   margin-left: auto;
@@ -221,11 +184,9 @@ nav#navbar button > img, nav#navbar button > svg, nav#navbar a > img, nav#navbar
   stroke: transparent;
   color: inherit;
 }
-
 nav#navbar button:hover, nav#navbar a:hover {
   background-color: #4858d3;
 }
-
 nav#navbar button:active, nav#navbar button.active, nav#navbar a:active, nav#navbar a.active {
   background-color: #3553a5a9;
   color: #fff;
@@ -234,7 +195,6 @@ nav#navbar button:active, nav#navbar button.active, nav#navbar a:active, nav#nav
 button[data-tooltip], a[data-tooltip] {
   position: relative;
 }
-
 button[data-tooltip]::before, button[data-tooltip]::after, a[data-tooltip]::before, a[data-tooltip]::after {
   pointer-events: none;
   position: absolute;
@@ -243,7 +203,6 @@ button[data-tooltip]::before, button[data-tooltip]::after, a[data-tooltip]::befo
   transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) scale(var(--scale));
   transition: transform 0.05s;
 }
-
 button[data-tooltip]::before, a[data-tooltip]::before {
   content: attr(data-tooltip);
   text-align: center;
@@ -253,84 +212,69 @@ button[data-tooltip]::before, a[data-tooltip]::before {
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
 }
-
 button[data-tooltip]::after, a[data-tooltip]::after {
-  content: '';
+  content: "";
   background: transparent;
   border: calc(0.625rem / 2) solid transparent;
 }
-
 button[data-tooltip]:hover::before, button[data-tooltip]:hover::after, a[data-tooltip]:hover::before, a[data-tooltip]:hover::after {
   --scale: 1;
 }
-
 button[data-tooltip]:active::before, button[data-tooltip]:active::after, a[data-tooltip]:active::before, a[data-tooltip]:active::after {
   --scale: 0;
 }
-
-button[tooltip-direction="left"]::before, button[tooltip-direction="left"]::after, a[tooltip-direction="left"]::before, a[tooltip-direction="left"]::after {
+button[tooltip-direction=left]::before, button[tooltip-direction=left]::after, a[tooltip-direction=left]::before, a[tooltip-direction=left]::after {
   top: 50%;
   right: 100%;
 }
-
-button[tooltip-direction="left"]::before, a[tooltip-direction="left"]::before {
+button[tooltip-direction=left]::before, a[tooltip-direction=left]::before {
   --translate-x: calc( -2px - 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: right center;
 }
-
-button[tooltip-direction="left"]::after, a[tooltip-direction="left"]::after {
+button[tooltip-direction=left]::after, a[tooltip-direction=left]::after {
   --translate-x: calc( -2px + 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: left center;
 }
-
-button[tooltip-direction="right"]::before, button[tooltip-direction="right"]::after, a[tooltip-direction="right"]::before, a[tooltip-direction="right"]::after {
+button[tooltip-direction=right]::before, button[tooltip-direction=right]::after, a[tooltip-direction=right]::before, a[tooltip-direction=right]::after {
   top: 50%;
   left: 100%;
 }
-
-button[tooltip-direction="right"]::before, a[tooltip-direction="right"]::before {
+button[tooltip-direction=right]::before, a[tooltip-direction=right]::before {
   --translate-x: calc(2px + 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: left center;
 }
-
-button[tooltip-direction="right"]::after, a[tooltip-direction="right"]::after {
+button[tooltip-direction=right]::after, a[tooltip-direction=right]::after {
   --translate-x: calc(2px - 0.625rem / 2);
   --translate-y: -50%;
   transform-origin: right center;
 }
-
-button[tooltip-direction="top"]::before, button[tooltip-direction="top"]::after, button[tooltip-direction="up"]::before, button[tooltip-direction="up"]::after, a[tooltip-direction="top"]::before, a[tooltip-direction="top"]::after, a[tooltip-direction="up"]::before, a[tooltip-direction="up"]::after {
+button[tooltip-direction=top]::before, button[tooltip-direction=top]::after, button[tooltip-direction=up]::before, button[tooltip-direction=up]::after, a[tooltip-direction=top]::before, a[tooltip-direction=top]::after, a[tooltip-direction=up]::before, a[tooltip-direction=up]::after {
   bottom: 100%;
   left: 50%;
 }
-
-button[tooltip-direction="top"]::before, button[tooltip-direction="up"]::before, a[tooltip-direction="top"]::before, a[tooltip-direction="up"]::before {
+button[tooltip-direction=top]::before, button[tooltip-direction=up]::before, a[tooltip-direction=top]::before, a[tooltip-direction=up]::before {
   --translate-x: -50%;
   --translate-y: calc( -2px - 0.625rem / 2);
   transform-origin: bottom center;
 }
-
-button[tooltip-direction="top"]::after, button[tooltip-direction="up"]::after, a[tooltip-direction="top"]::after, a[tooltip-direction="up"]::after {
+button[tooltip-direction=top]::after, button[tooltip-direction=up]::after, a[tooltip-direction=top]::after, a[tooltip-direction=up]::after {
   --translate-x: -50%;
   --translate-y: calc( -2px + 0.625rem / 2);
   transform-origin: top center;
 }
-
-button:not([tooltip-direction])::before, button:not([tooltip-direction])::after, a:not([tooltip-direction])::before, a:not([tooltip-direction])::after {
+button[tooltip-direction=bottom]::before, button[tooltip-direction=bottom]::after, button[tooltip-direction=down]::before, button[tooltip-direction=down]::after, button:not([tooltip-direction])::before, button:not([tooltip-direction])::after, a[tooltip-direction=bottom]::before, a[tooltip-direction=bottom]::after, a[tooltip-direction=down]::before, a[tooltip-direction=down]::after, a:not([tooltip-direction])::before, a:not([tooltip-direction])::after {
   top: 100%;
   left: 50%;
 }
-
-button:not([tooltip-direction])::before, a:not([tooltip-direction])::before {
+button[tooltip-direction=bottom]::before, button[tooltip-direction=down]::before, button:not([tooltip-direction])::before, a[tooltip-direction=bottom]::before, a[tooltip-direction=down]::before, a:not([tooltip-direction])::before {
   --translate-x: -50%;
   --translate-y: calc(2px + 0.625rem / 2);
   transform-origin: top center;
 }
-
-button:not([tooltip-direction])::after, a:not([tooltip-direction])::after {
+button[tooltip-direction=bottom]::after, button[tooltip-direction=down]::after, button:not([tooltip-direction])::after, a[tooltip-direction=bottom]::after, a[tooltip-direction=down]::after, a:not([tooltip-direction])::after {
   --translate-x: -50%;
   --translate-y: calc(2px - 0.625rem / 2);
   transform-origin: bottom center;
@@ -352,19 +296,17 @@ button:not([tooltip-direction])::after, a:not([tooltip-direction])::after {
   height: calc(100vh - 0.5rem * 2 - 2.125rem - 0.5rem * 2 - 4px);
   z-index: 3;
 }
-
 #menu-side-bar hr {
   border: 1px solid #686a6c;
   background: #686a6c;
 }
-
 #menu-side-bar:not(.active) {
   right: calc(-26.25rem - 2px);
   box-shadow: #00000000 0px 30px;
 }
 
 #page-filter {
-  content: '';
+  content: "";
   background-color: transparent;
   backdrop-filter: blur(0px);
   transition: background-color 0.5s, backdrop-filter 0.5s;
@@ -375,14 +317,13 @@ button:not([tooltip-direction])::after, a:not([tooltip-direction])::after {
   right: 0;
   z-index: -1;
 }
-
 #page-filter.active {
   background-color: #0000006b;
   backdrop-filter: blur(2px);
   z-index: 2;
 }
 
-input[type="radio"] {
+input[type=radio] {
   appearance: none;
   position: relative;
   width: 1.25rem;
@@ -393,9 +334,8 @@ input[type="radio"] {
   background: transparent;
   cursor: inherit;
 }
-
-input[type="radio"]::before {
-  content: '';
+input[type=radio]::before {
+  content: "";
   position: absolute;
   top: 10px;
   bottom: 10px;
@@ -405,8 +345,7 @@ input[type="radio"]::before {
   border-radius: 50%;
   aspect-ratio: 1;
 }
-
-input[type="radio"]:checked::before {
+input[type=radio]:checked::before {
   position: absolute;
   top: 3px;
   bottom: 3px;
@@ -419,12 +358,11 @@ div.radio, span.radio {
   display: inline-block;
   cursor: pointer;
 }
-
 div.radio label, span.radio label {
   cursor: pointer;
 }
 
-input.switch[type="checkbox"], input.toggle[type="checkbox"], input.toggler[type="checkbox"] {
+input.switch[type=checkbox], input.toggle[type=checkbox], input.toggler[type=checkbox] {
   appearance: none;
   position: relative;
   width: 2.5rem;
@@ -433,22 +371,18 @@ input.switch[type="checkbox"], input.toggle[type="checkbox"], input.toggler[type
   transition: background 0.25s;
   border-radius: 100px;
 }
-
-input.switch[type="checkbox"] ~ .second, input.toggle[type="checkbox"] ~ .second, input.toggler[type="checkbox"] ~ .second {
+input.switch[type=checkbox] ~ .second, input.toggle[type=checkbox] ~ .second, input.toggler[type=checkbox] ~ .second {
   transition: color 0.25s;
   color: #3ba55d;
 }
-
-input.switch[type="checkbox"]:checked, input.toggle[type="checkbox"]:checked, input.toggler[type="checkbox"]:checked {
+input.switch[type=checkbox]:checked, input.toggle[type=checkbox]:checked, input.toggler[type=checkbox]:checked {
   background: #3ba55d;
 }
-
-input.switch[type="checkbox"]:checked::after, input.toggle[type="checkbox"]:checked::after, input.toggler[type="checkbox"]:checked::after {
+input.switch[type=checkbox]:checked::after, input.toggle[type=checkbox]:checked::after, input.toggler[type=checkbox]:checked::after {
   left: calc(1rem + 3px);
 }
-
-input.switch[type="checkbox"]::after, input.toggle[type="checkbox"]::after, input.toggler[type="checkbox"]::after {
-  content: '';
+input.switch[type=checkbox]::after, input.toggle[type=checkbox]::after, input.toggler[type=checkbox]::after {
+  content: "";
   display: block;
   aspect-ratio: 1;
   position: absolute;
@@ -465,11 +399,9 @@ span.switch, span.toggle, span.toggler {
   align-items: center;
   color: #72767d;
 }
-
 span.switch > input, span.toggle > input, span.toggler > input {
   margin: 0 0.25rem;
 }
-
 span > .first, span > .second {
   font-weight: bold;
 }
@@ -477,23 +409,22 @@ span > .first, span > .second {
 ul.settings {
   padding-left: 0;
 }
-
 ul.settings > h1 {
   display: inline-block;
   margin-top: 0.5rem;
   margin-left: 1rem;
 }
-
 ul.settings > li {
   margin-left: 2.5rem;
   margin-bottom: 1rem;
 }
-
 ul.settings > li::marker {
-  content: '';
+  content: "";
 }
 
 #main-content:not(section) {
   overflow-y: auto;
   max-height: calc(100vh - 2.125rem - 0.5rem * 2);
 }
+
+/*# sourceMappingURL=style.css.map */

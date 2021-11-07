@@ -1,3 +1,6 @@
+@use "sass:math"
+    
+    
 $top-bar-height: 22px // web: 0px
 
 $server-list-width: 72px
@@ -235,7 +238,7 @@ body.dark
                     &:active, &.active
                         color: #dcddde
         .content
-            scroll-color: #202225 #2f3136
+            scrollbar-color: #202225 #2f3136
             .chat
                 background-color: #36393f
                 &[name="add-friend"]
@@ -374,9 +377,9 @@ hr.vertical
     line-height: 16px
     text-align: center
     box-sizing: border-box
-    &.width-2, &.2
+    &.width-2, &.w-2
         width: 22px
-    &.width-3, &.3
+    &.width-3, &.w-3
         width: 30px
 
 .avatar
@@ -468,7 +471,7 @@ hr.vertical
         transition: background-color .15s ease-out, border-radius 0.2s ease-out, height 0.2s // border-rad:0.15s // Height doenst work // TODO: get accurate time
         user-select: none
         &.folder
-            border-radius: $border-rad-hov $border-rad-hov #{$icon-size / 2} #{$icon-size / 2}
+            border-radius: $border-rad-hov $border-rad-hov math.div($icon-size, 2) math.div($icon-size, 2)
             cursor: default
             $wrapper-pading: 4px
             &:active::before
@@ -774,12 +777,14 @@ button
             width: 36px
             height: 36px
             +abs-pos(0, auto, auto, 0)
-            background: url("res/imgs/close.svg") no-repeat // from discord // TODO: img does not load
+            background: url("../../res/imgs/close.svg") no-repeat // from discord // TODO: img does not load
             background-position: 50% 55%
             background-size: 10px 10px
             opacity: .5
             color: inherit
             transition: opacity .2s
+            &:hover
+                opacity: 1
 
     #sidebar
         width: $sidebar-width
@@ -817,6 +822,9 @@ button
             position: relative
             overflow-y: hidden
             user-select: none
+            ul
+                margin: 0
+                padding: 0
 
             $btn-side-margin: 8px //
             $btn-vertical-margin: 1px //
@@ -866,6 +874,7 @@ button
                 border-radius: 4px //
                 text-decoration: none
                 white-space: nowrap
+                cursor: pointer
 
                 .badge
                     margin-left: 8px
@@ -957,12 +966,12 @@ button
                             font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                             font-weight: 600
                             overflow: hidden
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
+                            white-space: nowrap
+                            text-overflow: ellipsis
                             &.connected
                                 color: #4fdc7c
-                            &.connecting
-                            
+                            // &.connecting
+                                // TODO:
                             &.disconnected
                                 color: #ed4245
                             svg
@@ -1560,8 +1569,8 @@ button
                                     &:last-child
                                         mask: none
             
-            #members-sidebar
-
+            // #members-sidebar
+                // TODO:
 
             .tab
                 display: none
@@ -1587,10 +1596,10 @@ button, a
     line-height: 20px
     word-wrap: break-word
     // transform-origin: 0 50%
-    .title
-    
-    .subtitle
-
+    // .title
+        // TODO:
+    // .subtitle
+        // TODO:
     &::before
         $size: 5px
         content: ''
@@ -1604,4 +1613,5 @@ button, a
 
         border-top-color: #000 //////// direction
 
-    .direction
+    // .direction
+        // TODO:

@@ -46,11 +46,11 @@ body.light
             border-left-color: $tooltip-bg-color
         &[tooltip-direction="right"]::after
             border-right-color: $tooltip-bg-color
-        &[tooltip-direction="top"]::after
+        &[tooltip-direction="top"]::after,
         &[tooltip-direction="up"]::after
             border-top-color: $tooltip-bg-color
         &[tooltip-direction="bottom"]::after,
-        &[tooltip-direction="down"]::after
+        &[tooltip-direction="down"]::after,
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
 
@@ -101,7 +101,7 @@ body.dark
         &[tooltip-direction="up"]::after
             border-top-color: $tooltip-bg-color
         &[tooltip-direction="bottom"]::after,
-        &[tooltip-direction="down"]::after
+        &[tooltip-direction="down"]::after,
         &:not([tooltip-direction])::after
             border-bottom-color: $tooltip-bg-color
 
@@ -296,7 +296,7 @@ button, a
             transform-origin: top center
 
     &[tooltip-direction="bottom"],
-    &[tooltip-direction="down"]
+    &[tooltip-direction="down"],
     &:not([tooltip-direction])
         &::before, &::after
             top: 100%
@@ -353,7 +353,7 @@ button, a
 
     &.active
         background-color: #0000006b
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px)
         z-index: 2
 
 
