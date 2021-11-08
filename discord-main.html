@@ -277,6 +277,7 @@
                     /channels/dms/stage-discovery
                     /channels/dms/nitro
                     /channels/dms/${private-chat-name}
+                /channels/${server-name}
 
             /settings ==> is discord-settings.html
         -->
@@ -355,7 +356,7 @@
                         <div class="channels" conent="private-msgs"> <!-- content: private-msgs, server-channels, public-servers -->
                             <div class="scroller">
                                 <!-- ? variable -->
-                                <a href="#" class="dm-channel active" id="friends">
+                                <a href="channels/friends" class="dm-channel active" id="friends">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" fill-rule="nonzero" icon-data="friend" transform="translate(2 4)"></path>
@@ -365,7 +366,7 @@
                                     <h2 class="title">Friends</h2>
                                     <div class="badge">1</div>
                                 </a>
-                                <a href="#" class="dm-channel" id="stage-discovery">
+                                <a href="channels/stage-discovery" class="dm-channel" id="stage-discovery">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" icon-data="stage"></path>
@@ -373,7 +374,7 @@
                                     </div>
                                     <span class="title">Stage Discovery</span>
                                 </a>
-                                <a href="#" class="dm-channel" id="nitro">
+                                <a href="channels/nitro" class="dm-channel" id="nitro">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" icon-data="nitro"></path>
@@ -396,7 +397,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="media-control"> <!-- in-vc-->
+                        <div class="media-control"> <!-- class: in-vc-->
                             <div class="vc-control">
                                 <div class="connection">
                                     <div class="text">
@@ -505,176 +506,178 @@
                             </div>
                         </section>
                         <section class="content"> <!-- TODO: Content property? -->
-                            <div class="tab chat active" name="online">
-                                <div class="scroller">
-                                    <h2 class="header">Online — 12</h2>
-                                    <li class="item">
-                                        <div class="user-info">
-                                            <svg class="avatar" width="32" height="32">
-                                                <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
-                                                    <img src="res/imgs/Madeline.png">
-                                                </foreignObject>
-                                                <!-- TODO: user status badge -->
-                                            </svg>
-                                            <div class="name">
-                                                <h3 class="title">
-                                                    <span class="username">Friend A</span>
-                                                    <span class="tag">#0001</span>
-                                                </h3>
-                                                <span class="subtitle">Online</span>
+                            <main class="chat">
+                                <div class="tab active" name="online">
+                                    <div class="scroller">
+                                        <h2 class="header">Online — 12</h2>
+                                        <li class="item">
+                                            <div class="user-info">
+                                                <svg class="avatar" width="32" height="32">
+                                                    <foreignObject width="100%" height="100%" mask="url(#user-status-mask)">
+                                                        <img src="res/imgs/Madeline.png">
+                                                    </foreignObject>
+                                                    <!-- TODO: user status badge -->
+                                                </svg>
+                                                <div class="name">
+                                                    <h3 class="title">
+                                                        <span class="username">Friend A</span>
+                                                        <span class="tag">#0001</span>
+                                                    </h3>
+                                                    <span class="subtitle">Online</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="actions">
-                                            <button data-tooltip="Message" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor" icon-data="message"></path>
-                                                </svg>
-                                            </button>
-                                            <button data-tooltip="More" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor" icon-data="options"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <div class="scroller empty">
-                                        <div class="wrapper">
-                                            <img src="res/imgs/empty-online.svg">
-                                            <p class="subtitle">No one's around to play with Wumpus.</p>
+                                            <div class="actions">
+                                                <button data-tooltip="Message" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="message"></path>
+                                                    </svg>
+                                                </button>
+                                                <button data-tooltip="More" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="options"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <div class="scroller empty">
+                                            <div class="wrapper">
+                                                <img src="res/imgs/empty-online.svg">
+                                                <p class="subtitle">No one's around to play with Wumpus.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab chat" name="all">
-                                <div class="scroller">
-                                    <!-- TODO: hardcode friend list -->
-                                    <li class="item">
+                                <div class="tab" name="all">
+                                    <div class="scroller">
+                                        <!-- TODO: hardcode friend list -->
+                                        <li class="item">
+                                            
+                                        </li>
                                         
-                                    </li>
-                                    
+                                        <div class="scroller empty">
+                                            <div class="wrapper">
+                                                <img src="res/imgs/empty-friends.svg">
+                                                <p class="subtitle">No one's around to play with Wumpus.</p>
+                                                <button>Add Friend</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab" name="pending">
+                                    <div class="scroller">
+                                        <h2 class="header">Pending — 2</h2>
+                                        <li class="item">
+                                            <div class="user-info">
+                                                <svg class="avatar" width="32" height="32">
+                                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                                        <img src="res/imgs/Madeline.png">
+                                                    </foreignObject>
+                                                </svg>
+                                                <div class="name">
+                                                    <h3 class="title">
+                                                        <span class="username">Friend A</span>
+                                                        <span class="tag">#0001</span>
+                                                    </h3>
+                                                    <span class="subtitle">Incoming Friend Request</span>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button class="accept" data-tooltip="Accept" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="checkMark" />
+                                                    </svg>
+                                                </button>
+                                                <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="x" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="user-info">
+                                                <svg class="avatar" width="32" height="32">
+                                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                                        <img src="res/imgs/Madeline.png">
+                                                    </foreignObject>
+                                                </svg>
+                                                <div class="name">
+                                                    <h3 class="title">
+                                                        <span class="username">Friend B</span>
+                                                        <span class="tag">#0001</span>
+                                                    </h3>
+                                                    <span class="subtitle">Outgoing Friend Request</span>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button class="reject" data-tooltip="Cancel" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor"icon-data="x" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <div class="scroller empty">
+                                            <div class="wrapper">
+                                                <img src="res/imgs/empty-pending.svg">
+                                                <p class="subtitle">There are no pending friend requests. Here's Wumpus for now.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab" name="blocked">
+                                    <div class="scroller">
+                                        <h2 class="header">Blocked — 1</h2>
+                                        <li class="item">
+                                            <div class="user-info">
+                                                <svg class="avatar" width="32" height="32">
+                                                    <foreignObject width="100%" height="100%" mask="url(#)">
+                                                        <img src="res/imgs/Madeline.png">
+                                                    </foreignObject>
+                                                </svg>
+                                                <div class="name">
+                                                    <h3 class="title">
+                                                        <span class="username">Friend B</span>
+                                                        <span class="tag">#0001</span>
+                                                    </h3>
+                                                    <span class="subtitle">Blocked</span>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button class="reject" data-tooltip="Unblock" tooltip-direction="up">
+                                                    <svg width="20" height="20" viewbox="0 0 24 24">
+                                                        <path fill="currentColor" icon-data="unblock" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <div class="scroller empty">
+                                            <div class="wrapper">
+                                                <img src="res/imgs/empty-blocked.svg">
+                                                <p class="subtitle">You can't unblock the Wumpus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab" name="add-friend">
+                                    <header>
+                                        <h2 class="title">Add Friend</h2>
+                                        <p class="subtitle">You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
+                                        <form autocomplete="off" class="wrapper"> <!-- :focus-within, class: success -->
+                                            <input id="new-friend-search-bar" type="text" placeholder="Enter a Username#0000" maxlength="37">
+                                            <div class="input-overlay"></div>
+                                            <button type="submit" disabled>Send Friend Request</button>
+                                        </form>
+                                        <p class="subtitle message error hidden"></p> <!-- class: hidden, error, success -->
+                                    </header>
                                     <div class="scroller empty">
                                         <div class="wrapper">
                                             <img src="res/imgs/empty-friends.svg">
-                                            <p class="subtitle">No one's around to play with Wumpus.</p>
-                                            <button>Add Friend</button>
+                                            <p class="subtitle">Wumpus is waiting on friends. You don’t have to though!</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab chat" name="pending">
-                                <div class="scroller">
-                                    <h2 class="header">Pending — 2</h2>
-                                    <li class="item">
-                                        <div class="user-info">
-                                            <svg class="avatar" width="32" height="32">
-                                                <foreignObject width="100%" height="100%" mask="url(#)">
-                                                    <img src="res/imgs/Madeline.png">
-                                                </foreignObject>
-                                            </svg>
-                                            <div class="name">
-                                                <h3 class="title">
-                                                    <span class="username">Friend A</span>
-                                                    <span class="tag">#0001</span>
-                                                </h3>
-                                                <span class="subtitle">Incoming Friend Request</span>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <button class="accept" data-tooltip="Accept" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor" icon-data="checkMark" />
-                                                </svg>
-                                            </button>
-                                            <button class="reject" data-tooltip="Ignore" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor" icon-data="x" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="user-info">
-                                            <svg class="avatar" width="32" height="32">
-                                                <foreignObject width="100%" height="100%" mask="url(#)">
-                                                    <img src="res/imgs/Madeline.png">
-                                                </foreignObject>
-                                            </svg>
-                                            <div class="name">
-                                                <h3 class="title">
-                                                    <span class="username">Friend B</span>
-                                                    <span class="tag">#0001</span>
-                                                </h3>
-                                                <span class="subtitle">Outgoing Friend Request</span>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <button class="reject" data-tooltip="Cancel" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor"icon-data="x" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <div class="scroller empty">
-                                        <div class="wrapper">
-                                            <img src="res/imgs/empty-pending.svg">
-                                            <p class="subtitle">There are no pending friend requests. Here's Wumpus for now.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab chat" name="blocked">
-                                <div class="scroller">
-                                    <h2 class="header">Blocked — 1</h2>
-                                    <li class="item">
-                                        <div class="user-info">
-                                            <svg class="avatar" width="32" height="32">
-                                                <foreignObject width="100%" height="100%" mask="url(#)">
-                                                    <img src="res/imgs/Madeline.png">
-                                                </foreignObject>
-                                            </svg>
-                                            <div class="name">
-                                                <h3 class="title">
-                                                    <span class="username">Friend B</span>
-                                                    <span class="tag">#0001</span>
-                                                </h3>
-                                                <span class="subtitle">Blocked</span>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <button class="reject" data-tooltip="Unblock" tooltip-direction="up">
-                                                <svg width="20" height="20" viewbox="0 0 24 24">
-                                                    <path fill="currentColor" icon-data="unblock" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <div class="scroller empty">
-                                        <div class="wrapper">
-                                            <img src="res/imgs/empty-blocked.svg">
-                                            <p class="subtitle">You can't unblock the Wumpus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab chat" name="add-friend">
-                                <header>
-                                    <h2 class="title">Add Friend</h2>
-                                    <p class="subtitle">You can add a friend with their Discord Tag. It's cAsE sEnSitIvE!</p>
-                                    <form autocomplete="off" class="wrapper"> <!-- :focus-within, class: success -->
-                                        <input id="new-friend-search-bar" type="text" placeholder="Enter a Username#0000" maxlength="37">
-                                        <div class="input-overlay"></div>
-                                        <button type="submit" disabled>Send Friend Request</button>
-                                    </form>
-                                    <p class="subtitle message error hidden"></p> <!-- class: hidden, error, success -->
-                                </header>
-                                <div class="scroller empty">
-                                    <div class="wrapper">
-                                        <img src="res/imgs/empty-friends.svg">
-                                        <p class="subtitle">Wumpus is waiting on friends. You don’t have to though!</p>
-                                    </div>
-                                </div>
-                            </div>
+                            </main>
             
                             <section class="sidebar" content="active-now"> <!-- content: active-now, members-->
                                 <div class="scroller empty"> <!-- class: empty-->

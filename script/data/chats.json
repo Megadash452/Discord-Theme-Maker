@@ -62,7 +62,7 @@
             "picture": "res/imgs/group-1.png",
             "memberCount": 3,
             "unreads": 0,
-            "href": "group1"
+            "href": "script/data/chats-data/group1.gc.json"
         },
         {
             "name": "Friend A",
@@ -70,14 +70,14 @@
             "status": "online",
             "description": "",
             "unreads": 0,
-            "href": "frienda"
+            "href": "script/data/chats-data/frienda.dm.json"
         },
         {
             "name": "Group 2",
             "picture": "res/imgs/group-2.png",
             "memberCount": 5,
             "unreads": 0,
-            "href": "group2"
+            "href": "script/data/chats-data/group2.gc.json"
         },
         {
             "name": "Friend B",
@@ -85,14 +85,14 @@
             "status": "idle",
             "description": "",
             "unreads": 4,
-            "href": "friendb"
+            "href": "script/data/chats-data/friendb.dm.json"
         },
         {
             "name": "Group 3",
             "picture": "res/imgs/group-3.png",
             "memberCount": 6,
             "unreads": 1,
-            "href": "group3"
+            "href": "script/data/chats-data/group3.gc.json"
         },
         {
             "name": "Friend C",
@@ -100,7 +100,7 @@
             "status": "offline",
             "description": "",
             "unreads": 0,
-            "href": "friendc"
+            "href": "script/data/chats-data/friendc.dm.json"
         },
         {
             "name": "Friend D",
@@ -108,7 +108,7 @@
             "status": "mobile",
             "description": "",
             "unreads": 0,
-            "href": "friendd"
+            "href": "script/data/chats-data/friendd.dm.json"
         },
         {
             "name": "Friend E",
@@ -116,7 +116,7 @@
             "status": "dnd",
             "description": "",
             "unreads": 0,
-            "href": "friende"
+            "href": "script/data/chats-data/friende.dm.json"
         }
     ]
 }

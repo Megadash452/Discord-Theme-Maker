@@ -265,88 +265,88 @@ body.dark #main-content .head .tools button:active, body.dark #main-content .hea
 body.dark #main-content .content {
   scrollbar-color: #202225 #2f3136;
 }
-body.dark #main-content .content .chat {
+body.dark #main-content .content main.chat {
   background-color: #36393f;
 }
-body.dark #main-content .content .chat[name=add-friend] header {
+body.dark #main-content .content main.chat .tab[name=add-friend] header {
   border-color: #ffffff0f;
 }
-body.dark #main-content .content .chat[name=add-friend] header .title {
+body.dark #main-content .content main.chat .tab[name=add-friend] header .title {
   color: #fff;
 }
-body.dark #main-content .content .chat[name=add-friend] header .subtitle {
+body.dark #main-content .content main.chat .tab[name=add-friend] header .subtitle {
   color: #b9bbbe;
 }
-body.dark #main-content .content .chat[name=add-friend] header form {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form {
   background-color: #0000001a;
   border-color: #0000004d;
 }
-body.dark #main-content .content .chat[name=add-friend] header form input {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form input {
   color: #dcddde;
   background-color: transparent;
 }
-body.dark #main-content .content .chat[name=add-friend] header form input::placeholder {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form input::placeholder {
   color: #72767d;
 }
-body.dark #main-content .content .chat[name=add-friend] header form .input-overlay {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form .input-overlay {
   color: #4f545c;
 }
-body.dark #main-content .content .chat[name=add-friend] header form button {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form button {
   color: #fff;
   background-color: #5865f2;
 }
-body.dark #main-content .content .chat[name=add-friend] header form button:hover {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form button:hover {
   background-color: #4752c4;
 }
-body.dark #main-content .content .chat[name=add-friend] header form button:active {
+body.dark #main-content .content main.chat .tab[name=add-friend] header form button:active {
   background-color: #3c45a5;
 }
-body.dark #main-content .content .chat .scroller.empty .subtitle {
+body.dark #main-content .content main.chat .scroller.empty .subtitle {
   color: #72767d;
 }
-body.dark #main-content .content .chat .scroller.empty button {
+body.dark #main-content .content main.chat .scroller.empty button {
   color: #fff;
   background-color: #5865f2;
 }
-body.dark #main-content .content .chat .scroller.empty button:hover {
+body.dark #main-content .content main.chat .scroller.empty button:hover {
   background-color: #4752c4;
 }
-body.dark #main-content .content .chat .scroller.empty button:active {
+body.dark #main-content .content main.chat .scroller.empty button:active {
   background-color: #3c45a5;
 }
-body.dark #main-content .content .chat .scroller .header {
+body.dark #main-content .content main.chat .scroller .header {
   color: #b9bbbe;
 }
-body.dark #main-content .content .chat .scroller li.item {
+body.dark #main-content .content main.chat .scroller li.item {
   background-color: #0000;
   border-color: #ffffff0f;
 }
-body.dark #main-content .content .chat .scroller li.item:hover {
+body.dark #main-content .content main.chat .scroller li.item:hover {
   background-color: #4f545c29;
 }
-body.dark #main-content .content .chat .scroller li.item:hover .actions button {
+body.dark #main-content .content main.chat .scroller li.item:hover .actions button {
   background-color: #202225;
 }
-body.dark #main-content .content .chat .scroller li.item:hover, body.dark #main-content .content .chat .scroller li.item:hover + li.item {
+body.dark #main-content .content main.chat .scroller li.item:hover, body.dark #main-content .content main.chat .scroller li.item:hover + li.item {
   border-color: #0000;
 }
-body.dark #main-content .content .chat .scroller li.item .username {
+body.dark #main-content .content main.chat .scroller li.item .username {
   color: #fff;
 }
-body.dark #main-content .content .chat .scroller li.item .tag {
+body.dark #main-content .content main.chat .scroller li.item .tag {
   color: #b9bbbe;
 }
-body.dark #main-content .content .chat .scroller li.item .subtitle {
+body.dark #main-content .content main.chat .scroller li.item .subtitle {
   color: #b9bbbe;
 }
-body.dark #main-content .content .chat .scroller li.item .actions button {
+body.dark #main-content .content main.chat .scroller li.item .actions button {
   color: #b9bbbe;
   background-color: #2f3136;
 }
-body.dark #main-content .content .chat .scroller li.item .actions button:hover {
+body.dark #main-content .content main.chat .scroller li.item .actions button:hover {
   color: #dcddde;
 }
-body.dark #main-content .content .chat .scroller li.item .actions button:active {
+body.dark #main-content .content main.chat .scroller li.item .actions button:active {
   color: #fff;
   background-color: #4f545c3d;
 }
@@ -1313,44 +1313,51 @@ button {
   overflow: hidden;
   transform: translateZ(0);
 }
-#app-base #main-content .content .chat {
+#app-base #main-content .content main.chat {
   flex: 1 1 auto;
-  display: flex;
+}
+#app-base #main-content .content main.chat .tab {
+  width: 100%;
+  height: 100%;
+  display: none;
   flex-direction: column;
 }
-#app-base #main-content .content .chat[name=add-friend] header {
+#app-base #main-content .content main.chat .tab.active {
+  display: flex;
+}
+#app-base #main-content .content main.chat .tab[name=add-friend] header {
   flex-shrink: 0;
   padding: 20px 30px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
-#app-base #main-content .content .chat[name=add-friend] header .title, #app-base #main-content .content .chat[name=add-friend] header .subtitle {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .title, #app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle {
   user-select: none;
   line-height: 20px;
 }
-#app-base #main-content .content .chat[name=add-friend] header .title {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .title {
   margin: 0 0 8px 0;
   font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
 }
-#app-base #main-content .content .chat[name=add-friend] header .subtitle {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
-#app-base #main-content .content .chat[name=add-friend] header .subtitle.message {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.message {
   margin: 8px 0 0 0;
 }
-#app-base #main-content .content .chat[name=add-friend] header .subtitle.message strong {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.message strong {
   font-weight: 600;
 }
-#app-base #main-content .content .chat[name=add-friend] header .subtitle.success {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.success {
   color: #4fdc7c;
 }
-#app-base #main-content .content .chat[name=add-friend] header .subtitle.error {
+#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.error {
   color: #ed4245;
 }
-#app-base #main-content .content .chat[name=add-friend] header form {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form {
   display: flex;
   align-items: center;
   position: relative;
@@ -1360,16 +1367,16 @@ button {
   border-style: solid;
   border-radius: 8px;
 }
-#app-base #main-content .content .chat[name=add-friend] header form:focus-within {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form:focus-within {
   border-color: #00aff4;
 }
-#app-base #main-content .content .chat[name=add-friend] header form.success {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form.success {
   border-color: #3ba55d;
 }
-#app-base #main-content .content .chat[name=add-friend] header form.error {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form.error {
   border-color: #ed4245;
 }
-#app-base #main-content .content .chat[name=add-friend] header form input {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form input {
   flex: 1 1 auto;
   z-index: 1;
   margin: 0 16px 0 0;
@@ -1378,14 +1385,14 @@ button {
   outline: 0;
   box-sizing: border-box;
 }
-#app-base #main-content .content .chat[name=add-friend] header form input, #app-base #main-content .content .chat[name=add-friend] header form .input-overlay {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form input, #app-base #main-content .content main.chat .tab[name=add-friend] header form .input-overlay {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.04em;
   white-space: pre;
 }
-#app-base #main-content .content .chat[name=add-friend] header form .input-overlay {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form .input-overlay {
   position: absolute;
   top: auto;
   bottom: auto;
@@ -1395,7 +1402,7 @@ button {
   cursor: text;
   box-sizing: border-box;
 }
-#app-base #main-content .content .chat[name=add-friend] header form button {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form button {
   height: 32px;
   min-width: 60px;
   min-height: 32px;
@@ -1412,22 +1419,22 @@ button {
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-#app-base #main-content .content .chat[name=add-friend] header form button:disabled {
+#app-base #main-content .content main.chat .tab[name=add-friend] header form button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-#app-base #main-content .content .chat[name=pending] .scroller li.item .user-info .name .subtitle, #app-base #main-content .content .chat[name=blocked] .scroller li.item .user-info .name .subtitle {
+#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .user-info .name .subtitle, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .user-info .name .subtitle {
   font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 20px;
 }
-#app-base #main-content .content .chat[name=pending] .scroller li.item .actions button.accept:hover, #app-base #main-content .content .chat[name=blocked] .scroller li.item .actions button.accept:hover {
+#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .actions button.accept:hover, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .actions button.accept:hover {
   color: #3ba55d;
 }
-#app-base #main-content .content .chat[name=pending] .scroller li.item .actions button.reject:hover, #app-base #main-content .content .chat[name=blocked] .scroller li.item .actions button.reject:hover {
+#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .actions button.reject:hover, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .actions button.reject:hover {
   color: #ed4245;
 }
-#app-base #main-content .content .chat .scroller {
+#app-base #main-content .content main.chat .tab .scroller {
   --margin-top: 8px;
   height: calc(100% - var(--margin-top));
   min-height: 0;
@@ -1439,7 +1446,7 @@ button {
   overflow: hidden scroll;
   scrollbar-width: auto;
 }
-#app-base #main-content .content .chat .scroller.empty {
+#app-base #main-content .content main.chat .tab .scroller.empty {
   width: 100%;
   height: auto;
   display: flex;
@@ -1449,14 +1456,14 @@ button {
   padding: 0;
   overflow: hidden;
 }
-#app-base #main-content .content .chat .scroller.empty .wrapper {
+#app-base #main-content .content main.chat .tab .scroller.empty .wrapper {
   max-width: 440px;
 }
-#app-base #main-content .content .chat .scroller.empty img {
+#app-base #main-content .content main.chat .tab .scroller.empty img {
   flex: 0 1 auto;
   margin: 0 0 40px 0;
 }
-#app-base #main-content .content .chat .scroller.empty .subtitle {
+#app-base #main-content .content main.chat .tab .scroller.empty .subtitle {
   flex: 0 1 auto;
   margin: 8px 0 0 0;
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1464,7 +1471,7 @@ button {
   line-height: 20px;
   text-align: center;
 }
-#app-base #main-content .content .chat .scroller.empty button {
+#app-base #main-content .content main.chat .tab .scroller.empty button {
   height: 38px;
   min-width: 96px;
   position: relative;
@@ -1479,7 +1486,7 @@ button {
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-#app-base #main-content .content .chat .scroller .header {
+#app-base #main-content .content main.chat .tab .scroller .header {
   margin: 16px 20px 8px 30px;
   font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
@@ -1487,7 +1494,7 @@ button {
   letter-spacing: 0.25px;
   text-transform: uppercase;
 }
-#app-base #main-content .content .chat .scroller li.item {
+#app-base #main-content .content main.chat .tab .scroller li.item {
   height: 62px;
   display: flex;
   align-items: center;
@@ -1498,24 +1505,24 @@ button {
   box-sizing: border-box;
   cursor: pointer;
 }
-#app-base #main-content .content .chat .scroller li.item:hover {
+#app-base #main-content .content main.chat .tab .scroller li.item:hover {
   border-radius: 8px;
   margin: 0 10px 0 20px;
   padding: 0 10px;
 }
-#app-base #main-content .content .chat .scroller li.item:hover .user-info .name .title .tag {
+#app-base #main-content .content main.chat .tab .scroller li.item:hover .user-info .name .title .tag {
   visibility: visible;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info {
   display: flex;
   overflow: hidden;
   flex-shrink: 0;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info .avatar {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info .avatar {
   margin: 0 12px 0 0;
   pointer-events: none;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info .name .title {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -1524,30 +1531,30 @@ button {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info .name .title .username {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title .username {
   flex: 0 1 auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info .name .title .tag {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title .tag {
   visibility: hidden;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
 }
-#app-base #main-content .content .chat .scroller li.item .user-info .name .subtitle {
+#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content .chat .scroller li.item .actions {
+#app-base #main-content .content main.chat .tab .scroller li.item .actions {
   display: flex;
   margin: 0 0 0 8px;
 }
-#app-base #main-content .content .chat .scroller li.item .actions button {
+#app-base #main-content .content main.chat .tab .scroller li.item .actions button {
   width: 36px;
   height: 36px;
   display: flex;
@@ -1556,7 +1563,7 @@ button {
   border-radius: 50%;
   margin: 0 0 0 10px;
 }
-#app-base #main-content .content .chat .scroller li.item .actions button:first-child {
+#app-base #main-content .content main.chat .tab .scroller li.item .actions button:first-child {
   margin: 0;
 }
 #app-base #main-content .content .sidebar {
@@ -1739,12 +1746,6 @@ button {
 }
 #app-base #main-content .content .sidebar .scroller li.item .body .users img:last-child {
   mask: none;
-}
-#app-base #main-content .content .tab {
-  display: none;
-}
-#app-base #main-content .content .tab.active {
-  display: flex;
 }
 
 button[data-tooltip]::before, a[data-tooltip]::before {
