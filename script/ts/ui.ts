@@ -76,8 +76,8 @@ themeSwitch?.addEventListener('click', () => {
 });
 
 
-document.querySelectorAll(`.radio:has(input[type="radio"])`) ! .forEach(element => {
-    // ((wrapper: RadioWrapper) => {
+// document.querySelectorAll(`.radio:has(input[type="radio"])`) ! .forEach(element => {
+//     // ((wrapper: RadioWrapper) => {
         
-    // })(element as RadioWrapper);
-});
+//     // })(element as RadioWrapper);
+// });

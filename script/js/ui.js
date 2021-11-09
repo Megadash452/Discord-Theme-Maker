@@ -68,8 +68,8 @@ themeSwitch === null || themeSwitch === void 0 ? void 0 : themeSwitch.addEventLi
         document.body.classList.add("light");
     }
 });
-document.querySelectorAll(`.radio:has(input[type="radio"])`).forEach(element => {
-    // ((wrapper: RadioWrapper) => {
-    // })(element as RadioWrapper);
-});
+// document.querySelectorAll(`.radio:has(input[type="radio"])`) ! .forEach(element => {
+//     // ((wrapper: RadioWrapper) => {
+//     // })(element as RadioWrapper);
+// });
 //# sourceMappingURL=ui.js.map
