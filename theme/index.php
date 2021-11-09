@@ -3,9 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="<?php
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+                $prot = "https://";
+            else
+                $prot = "http://";
+            echo $prot.$_SERVER['HTTP_HOST'];
+        ?>">
 
         <title>Theme Editor</title>
-        <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="style/css/style.css">
         <link rel="stylesheet" href="style/css/editor-list.css">
 
@@ -86,6 +92,7 @@
         <div id="main-content">
             <section id="theme-list">
                 <!-- this section is dynamic with js -->
+                <!-- TODO: Themes have id -->
                 <div class="rows">
                     <button class="theme-item">
                         <div class="img-wrapper">
@@ -178,7 +185,7 @@
                         </div>
                     </button>
 
-                    <a href="discord-main.html">FOR DEV - DISCORD PAGE</a>
+                    <a href="theme/channels">FOR DEV - DISCORD PAGE</a>
                 </div>
             </section>
         </div>

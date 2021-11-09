@@ -4,7 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Discord</title>
+        <base href="<?php
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+                $prot = "https://";
+            else
+                $prot = "http://";
+            echo $prot.$_SERVER['HTTP_HOST'];
+        ?>">
+
+        <title>${Theme Name} - Discord Theme Maker</title>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="style/css/style.css">
         <link rel="stylesheet" href="style/css/discord-main.css">
@@ -267,8 +275,10 @@
         
         
         <!-- TEMPLATES END -->
+        
+        <!-- * this page will be redirected from /theme with parameter ?t = where the theme data is found in the database -->
 
-
+        <!-- ! Do not use the slash model -->
         <!-- URL ADDRESSES
             home/
             ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
@@ -280,6 +290,20 @@
                     /channels/dms/nitro
                     /channels/dms/${private-chat-name}
                 /channels/${server-name}
+
+            /settings ==> is discord-settings.html
+        -->
+        <!-- URL ADDRESSES
+            home/
+            ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
+
+            /channels ==> is discord-main.html
+                ?sec=dms
+                    &content=friends
+                    &content=stage-discovery
+                    &content=nitro
+                    &content=${private-chat-name}
+                ?sec=${server-name}
 
             /settings ==> is discord-settings.html
         -->

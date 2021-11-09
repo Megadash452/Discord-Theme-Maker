@@ -332,8 +332,6 @@ function writeServers(data: Array<any>) {
 }
 
 
-
-// TODO: SET UP LOCALHOST
 fetch("script/data/chats.json").then(
     response => response.json()
 ).then(json => {
@@ -354,10 +352,12 @@ fetch("script/data/chats.json").then(
     document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
     document.querySelectorAll("#private-chats .dm-channel, #guilds .item[href]")?.forEach(chat => {
         chat.addEventListener('click', e => {
-            e.preventDefault()
+            e.preventDefault();
+            if (chat.classList.contains("active"))
+                return;
+
             window.history.pushState({}, document.title, chat.getAttribute("href"));
         });
-        console.log("when click", chat, ", will go to url:", chat.getAttribute("href"));
     });
 }).catch(error => {
     console.log("error: ", error);
