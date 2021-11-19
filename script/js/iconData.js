@@ -130,4 +130,77 @@ const iconOthers = {
     text: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg"><rect y="5" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="9" width="8" height="2" rx="1" fill="currentColor"></rect></svg>`,
     paragraph: `<svg class="icon-1CGepy" aria-hidden="false" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect y="3" width="16" height="2" rx="1" fill="currentColor"></rect><rect y="11" width="8" height="2" rx="1" fill="currentColor"></rect><rect y="7" width="16" height="2" rx="1" fill="currentColor"></rect></svg>`,
 };
+function assignIconData(path) {
+    let name = path.getAttribute("icon-data");
+    let rtrn = "";
+    let hasSeparator = false;
+    let separatorIndexes = [];
+    for (let i = 0; i < name.length; i++) {
+        let char = name[i];
+        if (char == '.' || char == ' ') {
+            hasSeparator = true;
+            separatorIndexes.push(i);
+        }
+    }
+    if (!hasSeparator) {
+        let data = iconData[name];
+        if (data === undefined) {
+            console.error(`Icon <${name}> Data is invalid`);
+        }
+        else if (data.constructor === String) {
+            rtrn = data;
+        }
+        else if (data.constructor === Array) {
+            // data.forEach(str => {
+            //     rtrn += str;
+            // });
+            rtrn = data[0];
+            console.log(data.length);
+            for (let i = 1; i < data.length; i++) {
+                let element = document.createElement("path");
+                element.setAttribute('class', path.getAttribute('class'));
+                element.setAttribute('fill', "currentColor");
+                element.setAttribute('d', data[i]);
+                path.parentElement.appendChild(element);
+                // ! TODO: the new element is appended, but for some reason doesn't render
+            }
+        }
+    }
+    else {
+        let levels = [""];
+        function getPathData(data, levels, level = 0) {
+            let index_ = parseInt(levels[level]);
+            let base;
+            if (index_)
+                base = data[index_];
+            else
+                base = data[levels[level]];
+            if (base == undefined) {
+                let type;
+                if (data.constructor === Array)
+                    type = "array";
+                else
+                    type = typeof data;
+                console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
+                return "";
+            }
+            else if (typeof base === "string")
+                return base;
+            else if (typeof base === "object")
+                return getPathData(base, levels, level + 1);
+            else
+                return "";
+        }
+        let i = 0;
+        for (let j = 0; j < name.length; j++)
+            if (name[j] == '.' || name[j] == ' ') {
+                levels.push("");
+                i++;
+            }
+            else
+                levels[i] += name[j];
+        rtrn = getPathData(iconData, levels);
+    }
+    path.setAttribute('d', rtrn);
+}
 //# sourceMappingURL=iconData.js.map

@@ -1095,7 +1095,7 @@ button {
 #app-base #sidebar .media-control .vc-control .connection button.disconnect {
   width: 32px;
   height: 32px;
-  display: relative;
+  position: relative;
   flex: 0 0 auto;
   margin: 0 0 0 10px;
   border-radius: 4px;

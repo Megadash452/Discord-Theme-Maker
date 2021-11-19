@@ -21,4 +21,9 @@ a {
   font-weight: 600;
 }
 
+span.file {
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
 /*# sourceMappingURL=404.css.map */

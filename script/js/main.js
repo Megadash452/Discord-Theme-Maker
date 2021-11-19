@@ -222,7 +222,6 @@ function writeServers(data) {
                 server.addEventListener('click', () => {
                     setActiveGuild(server);
                     element.classList.add("active");
-                    // TODO: set #app-base .head content
                 });
             });
         }
@@ -231,7 +230,6 @@ function writeServers(data) {
             applyMaskAndBadge(element, guild.pings, guild.currentEvent);
             element.addEventListener('click', () => {
                 setActiveGuild(element);
-                // TODO: set #app-base .head content
             });
         }
         document.getElementById("servers").appendChild(element);
@@ -265,162 +263,12 @@ fetch("script/data/chats.json").then(response => response.json()).then(json => {
     (_b = document.querySelectorAll("#private-chats .dm-channel, #guilds .item[href]")) === null || _b === void 0 ? void 0 : _b.forEach(chat => {
         chat.addEventListener('click', e => {
             e.preventDefault();
+            if (chat.classList.contains("active"))
+                return;
             window.history.pushState({}, document.title, chat.getAttribute("href"));
         });
-        console.log("when click", chat, ", will go to url:", chat.getAttribute("href"));
     });
 }).catch(error => {
     console.log("error: ", error);
 });
-function assignIconData(path) {
-    let name = path.getAttribute("icon-data");
-    let rtrn = "";
-    let hasSeparator = false;
-    let separatorIndexes = [];
-    for (let i = 0; i < name.length; i++) {
-        let char = name[i];
-        if (char == '.' || char == ' ') {
-            hasSeparator = true;
-            separatorIndexes.push(i);
-        }
-    }
-    if (!hasSeparator) {
-        let data = iconData[name];
-        if (data === undefined) {
-            console.error(`Icon <${name}> Data is invalid`);
-        }
-        else if (data.constructor === String) {
-            rtrn = data;
-        }
-        else if (data.constructor === Array) {
-            // data.forEach(str => {
-            //     rtrn += str;
-            // });
-            rtrn = data[0];
-            console.log(data.length);
-            for (let i = 1; i < data.length; i++) {
-                let element = document.createElement("path");
-                element.setAttribute('class', path.getAttribute('class'));
-                element.setAttribute('fill', "currentColor");
-                element.setAttribute('d', data[i]);
-                path.parentElement.appendChild(element);
-                // ! TODO: the new element is appended, but for some reason doesn't render
-            }
-        }
-    }
-    else {
-        let levels = [""];
-        function getPathData(data, levels, level = 0) {
-            let index_ = parseInt(levels[level]);
-            let base;
-            if (index_)
-                base = data[index_];
-            else
-                base = data[levels[level]];
-            if (base == undefined) {
-                let type;
-                if (data.constructor === Array)
-                    type = "array";
-                else
-                    type = typeof data;
-                console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
-                return "";
-            }
-            else if (typeof base === "string")
-                return base;
-            else if (typeof base === "object")
-                return getPathData(base, levels, level + 1);
-            else
-                return "";
-        }
-        let i = 0;
-        for (let j = 0; j < name.length; j++)
-            if (name[j] == '.' || name[j] == ' ') {
-                levels.push("");
-                i++;
-            }
-            else
-                levels[i] += name[j];
-        rtrn = getPathData(iconData, levels);
-    }
-    path.setAttribute('d', rtrn);
-}
-{
-    let friendInput = document.getElementById("new-friend-search-bar");
-    let form = friendInput.parentElement;
-    let msg = form.nextElementSibling;
-    function formNormal() {
-        msg.classList.add("hidden");
-        msg.classList.remove("error");
-        msg.classList.remove("success");
-        form.classList.remove("error");
-        form.classList.remove("success");
-    }
-    function formError() {
-        msg.classList.add("error");
-        msg.classList.remove("hidden");
-        msg.classList.remove("success");
-        form.classList.add("error");
-        form.classList.remove("success");
-    }
-    function formSuccess() {
-        msg.classList.add("success");
-        msg.classList.remove("error");
-        msg.classList.remove("hidden");
-        form.classList.add("success");
-        form.classList.remove("error");
-    }
-    const hashIndex = () => friendInput.value.indexOf('#');
-    const tag = () => friendInput.value.substring(hashIndex() + 1, friendInput.value.length);
-    const tagInt = () => parseInt(tag());
-    friendInput.parentElement.onsubmit = (e) => {
-        e.preventDefault();
-        if (hashIndex() < 0) {
-            formError();
-            msg.innerHTML = `We need ${friendInput.value}'s four digit tag so we know which one they are.`;
-        }
-        else if (tag().length < 4) {
-            formError();
-            msg.innerHTML = "Hm, didn't work. Double check that the capitalization, spelling, any spaces, and numbers are correct.";
-        }
-        else {
-            formSuccess();
-            msg.innerHTML = `Success! Your friend request to <strong>${friendInput.value.replace("#" + tag(), '')}</strong> was sent.`;
-        }
-    };
-    friendInput.addEventListener('input', (e) => {
-        let overlay = friendInput.nextElementSibling;
-        let submit = overlay.nextElementSibling;
-        let charsInTag = 4;
-        function ascii(index) {
-            // -1 is last character
-            if (index < 0)
-                return friendInput.value.charCodeAt(friendInput.value.length + index);
-            return friendInput.value.charCodeAt(index);
-        }
-        if (friendInput.value === "") {
-            overlay.innerHTML = "";
-            submit.disabled = true;
-        }
-        else if (hashIndex() > -1) {
-            overlay.innerHTML = friendInput.value.substring(0, hashIndex()) + "#0000";
-            if (friendInput.value.slice(-1) !== "#") {
-                if ((ascii(-1) < 48 || ascii(-1) > 57) ||
-                    friendInput.value.length - 1 - hashIndex() > charsInTag)
-                    friendInput.value = friendInput.value.slice(0, -1);
-            }
-            submit.disabled = false;
-            // maybe change the tag numbers in overlay???
-        }
-        else {
-            overlay.innerHTML = friendInput.value + "#0000";
-            submit.disabled = false;
-        }
-        formNormal();
-    });
-}
-activeBtnRelation(document.querySelector("#main-content .head .tab-btns"));
-linkToTabs(document.querySelector("#main-content .head .tab-btns"));
-// ? sidebar.content="active-now" by default
-appendTemplateElement(document.querySelector("#active-now-tmp"), document.querySelector("#main-content .sidebar > .scroller"));
 //# sourceMappingURL=main.js.map

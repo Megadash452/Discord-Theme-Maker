@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="../..">
 
         <title>${Theme Name} - Discord Theme Maker</title>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="style/css/style.css">
         <link rel="stylesheet" href="style/css/discord-main.css">
 
+        <script src="script/js/url.js"></script>
         <script defer src="script/js/main.js"></script>
         <script defer src="script/js/iconData.js"></script>
         <script defer src="script/js/contentChange.js"></script>
@@ -289,16 +291,32 @@
         <!-- URL ADDRESSES
             home/
             ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
+            
+            /theme
+                ?id=123456789         id=sample
+                ?    &page=channels   ==> default (necessary)
+                ?       &sec=dms      ==> default
+                            &content=friends
+                            &content=stage-discovery
+                            &content=nitro
+                            &content=${private-chat-name}
+                ?       &sec=${server-name}
+                            &content=server-settings
+                            &content=${channel-name}
+                ?    &page=settings
+                may use firebase to store theme data
 
-            /channels ==> is discord-main.html
-                ?sec=dms
-                    &content=friends
-                    &content=stage-discovery
-                    &content=nitro
-                    &content=${private-chat-name}
-                ?sec=${server-name}
 
-            /settings ==> is discord-settings.html
+            scrapped:
+                /channels ==> is discord-main.html
+                    ?sec=dms
+                        &content=friends
+                        &content=stage-discovery
+                        &content=nitro
+                        &content=${private-chat-name}
+                    ?sec=${server-name}
+
+                /settings ==> is discord-settings.html
         -->
 
 

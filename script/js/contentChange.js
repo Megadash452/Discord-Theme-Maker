@@ -1,4 +1,82 @@
 "use strict";
+{
+    let friendInput = document.getElementById("new-friend-search-bar");
+    let form = friendInput.parentElement;
+    let msg = form.nextElementSibling;
+    function formNormal() {
+        msg.classList.add("hidden");
+        msg.classList.remove("error");
+        msg.classList.remove("success");
+        form.classList.remove("error");
+        form.classList.remove("success");
+    }
+    function formError() {
+        msg.classList.add("error");
+        msg.classList.remove("hidden");
+        msg.classList.remove("success");
+        form.classList.add("error");
+        form.classList.remove("success");
+    }
+    function formSuccess() {
+        msg.classList.add("success");
+        msg.classList.remove("error");
+        msg.classList.remove("hidden");
+        form.classList.add("success");
+        form.classList.remove("error");
+    }
+    const hashIndex = () => friendInput.value.indexOf('#');
+    const tag = () => friendInput.value.substring(hashIndex() + 1, friendInput.value.length);
+    const tagInt = () => parseInt(tag());
+    friendInput.parentElement.onsubmit = (e) => {
+        e.preventDefault();
+        if (hashIndex() < 0) {
+            formError();
+            msg.innerHTML = `We need ${friendInput.value}'s four digit tag so we know which one they are.`;
+        }
+        else if (tag().length < 4) {
+            formError();
+            msg.innerHTML = "Hm, didn't work. Double check that the capitalization, spelling, any spaces, and numbers are correct.";
+        }
+        else {
+            formSuccess();
+            msg.innerHTML = `Success! Your friend request to <strong>${friendInput.value.replace("#" + tag(), '')}</strong> was sent.`;
+        }
+    };
+    friendInput.addEventListener('input', (e) => {
+        let overlay = friendInput.nextElementSibling;
+        let submit = overlay.nextElementSibling;
+        let charsInTag = 4;
+        function ascii(index) {
+            // -1 is last character
+            if (index < 0)
+                return friendInput.value.charCodeAt(friendInput.value.length + index);
+            return friendInput.value.charCodeAt(index);
+        }
+        if (friendInput.value === "") {
+            overlay.innerHTML = "";
+            submit.disabled = true;
+        }
+        else if (hashIndex() > -1) {
+            overlay.innerHTML = friendInput.value.substring(0, hashIndex()) + "#0000";
+            if (friendInput.value.slice(-1) !== "#") {
+                if ((ascii(-1) < 48 || ascii(-1) > 57) ||
+                    friendInput.value.length - 1 - hashIndex() > charsInTag)
+                    friendInput.value = friendInput.value.slice(0, -1);
+            }
+            submit.disabled = false;
+            // maybe change the tag numbers in overlay???
+        }
+        else {
+            overlay.innerHTML = friendInput.value + "#0000";
+            submit.disabled = false;
+        }
+        formNormal();
+    });
+}
+activeBtnRelation(document.querySelector("#main-content .head .tab-btns"));
+linkToTabs(document.querySelector("#main-content .head .tab-btns"));
+// ? sidebar.content="active-now" by default
+appendTemplateElement(document.querySelector("#active-now-tmp"), document.querySelector("#main-content .sidebar > .scroller"));
 // --- When click guild, dm contents, dm chats
 let mainContent = document.getElementById("main-content");
 let head = mainContent.querySelector(".head");
