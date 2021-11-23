@@ -6,6 +6,25 @@ var _a;
 (_a = document.querySelector("#notice button")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     document.querySelector("#app-base").classList.remove("show-notice");
 });
+function toggleMute() {
+    let muteBtn = document.querySelector("#mute-btn");
+    let paths = muteBtn.querySelectorAll("svg path");
+    if (muteBtn.matches(".muted")) {
+        muteBtn.classList.add("unmuted");
+        muteBtn.classList.remove("muted");
+        paths[0].setAttribute('icon-data', "microphone.unmuted.0");
+        paths[1].setAttribute('icon-data', "microphone.unmuted.1");
+    }
+    else {
+        muteBtn.classList.add("muted");
+        muteBtn.classList.remove("unmuted");
+        paths[0].setAttribute('icon-data', "microphone.muted.0");
+        paths[1].setAttribute('icon-data', "microphone.muted.1");
+        paths[1].classList.add("strike-through");
+    }
+    assignIconData(paths[0]);
+    assignIconData(paths[1]);
+}
 function getAcronym(str) {
     str = str.trim();
     let result = str[0];
@@ -253,22 +272,27 @@ fetch("script/data/chats.json").then(response => response.json()).then(json => {
     var _a, _b;
     writePrivateChats(json.privateChats);
     writeServers(json.servers);
+    (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
+    (_b = document.querySelectorAll("#private-chats .dm-channel")) === null || _b === void 0 ? void 0 : _b.forEach(chat => {
+        chat.addEventListener('click', e => {
+            e.preventDefault();
+            if (chat.classList.contains("active"))
+                return;
+            let urlParams = parseUrlParams();
+            urlParams.content = chat.getAttribute("href").split("chats-data/")[1].split(".json")[0];
+            setUrl("themes/?" + urlParams.str());
+            setPageContent();
+        });
+    });
     activeBtnArray(Array.from(document.querySelectorAll("#sidebar .channels .dm-channel[href]")));
     // activeBtnArray(
     //     Array.from(
     //         document.querySelectorAll("#servers .item")!
     //     )
     // );
-    (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
-    (_b = document.querySelectorAll("#private-chats .dm-channel, #guilds .item[href]")) === null || _b === void 0 ? void 0 : _b.forEach(chat => {
-        chat.addEventListener('click', e => {
-            e.preventDefault();
-            if (chat.classList.contains("active"))
-                return;
-            window.history.pushState({}, document.title, chat.getAttribute("href"));
-        });
-    });
 }).catch(error => {
+    var _a;
     console.log("error: ", error);
+    (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
 });
 //# sourceMappingURL=main.js.map

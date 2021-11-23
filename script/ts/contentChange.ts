@@ -98,8 +98,6 @@ document.getElementById("friends") ! .addEventListener('click', e => {
     e.preventDefault();
     if (document.getElementById("friends")!.classList.contains("active"))
         return;
-
-    // TODO: window.history.pushState({}, document.title, window.location + "/friends");
     
     head.querySelector(".info") ! .innerHTML = `
         <h3 class="header">
@@ -310,6 +308,10 @@ document.getElementById("friends") ! .addEventListener('click', e => {
         </div>
     `;
 
+    let url = parseUrlParams();
+    url.content = "friends";
+    pushUrl("themes/?" + url.str());
+
     activeBtnRelation(head.querySelector(".tab-btns")!);
     linkToTabs(head.querySelector(".tab-btns")!);
 
@@ -346,6 +348,10 @@ document.getElementById("nitro") ! .addEventListener('click', e => {
     head.querySelector(".tools") ! .innerHTML = "";
 
     main.innerHTML = ""; // TODO:
+
+    let url = parseUrlParams();
+    url.content = "nitro";
+    pushUrl("themes/?" + url.str());
 
     sidebar.classList.add("hidden");
 

@@ -33,6 +33,28 @@ document.querySelector("#notice button")?.addEventListener('click', () => {
 });
 
 
+function toggleMute() {
+    let muteBtn = document.querySelector("#mute-btn") as HTMLButtonElement;
+    let paths = muteBtn.querySelectorAll("svg path") as NodeListOf<SVGPathElement>;
+
+    if (muteBtn.matches(".muted")) {
+        muteBtn.classList.add("unmuted");
+        muteBtn.classList.remove("muted");
+        paths[0].setAttribute('icon-data', "microphone.unmuted.0");
+        paths[1].setAttribute('icon-data', "microphone.unmuted.1");
+    } else {
+        muteBtn.classList.add("muted");
+        muteBtn.classList.remove("unmuted");
+        paths[0].setAttribute('icon-data', "microphone.muted.0");
+        paths[1].setAttribute('icon-data', "microphone.muted.1");
+        paths[1].classList.add("strike-through");
+    }
+
+    assignIconData(paths[0]);
+    assignIconData(paths[1]);
+}
+
+
 
 function getAcronym(str: string): string {
     str = str.trim();
@@ -338,6 +360,21 @@ fetch("script/data/chats.json").then(
     writePrivateChats(json.privateChats);
     writeServers(json.servers);
 
+    document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
+
+    document.querySelectorAll("#private-chats .dm-channel")?.forEach(chat => { // TODO: , #guilds .item[href]
+        chat.addEventListener('click', e => {
+            e.preventDefault();
+            if (chat.classList.contains("active"))
+                return;
+
+            let urlParams = parseUrlParams();
+            urlParams.content = chat.getAttribute("href")!.split("chats-data/")[1].split(".json")[0];
+            setUrl("themes/?" + urlParams.str());
+            setPageContent();
+        });
+    });
+
     activeBtnArray(
         Array.from(
             document.querySelectorAll("#sidebar .channels .dm-channel[href]")!
@@ -348,17 +385,7 @@ fetch("script/data/chats.json").then(
     //         document.querySelectorAll("#servers .item")!
     //     )
     // );
-
-    document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
-    document.querySelectorAll("#private-chats .dm-channel, #guilds .item[href]")?.forEach(chat => {
-        chat.addEventListener('click', e => {
-            e.preventDefault();
-            if (chat.classList.contains("active"))
-                return;
-
-            window.history.pushState({}, document.title, chat.getAttribute("href"));
-        });
-    });
 }).catch(error => {
     console.log("error: ", error);
+    document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
 });

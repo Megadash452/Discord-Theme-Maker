@@ -88,7 +88,6 @@ document.getElementById("friends").addEventListener('click', e => {
     e.preventDefault();
     if (document.getElementById("friends").classList.contains("active"))
         return;
-    // TODO: window.history.pushState({}, document.title, window.location + "/friends");
     head.querySelector(".info").innerHTML = `
         <h3 class="header">
             <svg class="section-icon" x="0" y="0" width="24" height="24" viewbox="0 0 24 24">
@@ -295,6 +294,9 @@ document.getElementById("friends").addEventListener('click', e => {
             </div>
         </div>
     `;
+    let url = parseUrlParams();
+    url.content = "friends";
+    pushUrl("themes/?" + url.str());
     activeBtnRelation(head.querySelector(".tab-btns"));
     linkToTabs(head.querySelector(".tab-btns"));
     sidebar.setAttribute("content", "active-now");
@@ -321,6 +323,9 @@ document.getElementById("nitro").addEventListener('click', e => {
     `;
     head.querySelector(".tools").innerHTML = "";
     main.innerHTML = ""; // TODO:
+    let url = parseUrlParams();
+    url.content = "nitro";
+    pushUrl("themes/?" + url.str());
     sidebar.classList.add("hidden");
     (_a = mainContent.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
 });

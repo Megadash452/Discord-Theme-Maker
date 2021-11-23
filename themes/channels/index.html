@@ -270,55 +270,15 @@
         
         
         <!-- TEMPLATES END -->
-        
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
         <!-- * this page will be redirected from /theme with parameter ?t = where the theme data is found in the database -->
-
-        <!-- ! Do not use the slash model -->
-        <!-- URL ADDRESSES
-            home/
-            ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
-
-            /channels ==> is discord-main.html
-                /channels/dms
-                    /channels/dms/friends
-                    /channels/dms/stage-discovery
-                    /channels/dms/nitro
-                    /channels/dms/${private-chat-name}
-                /channels/${server-name}
-
-            /settings ==> is discord-settings.html
-        -->
-        <!-- URL ADDRESSES
-            home/
-            ::these will support browser back button ==> window.history.pushState({}, document.title, "/" + "my-new-url.html");
-            
-            /theme
-                ?id=123456789         id=sample
-                ?    &page=channels   ==> default (necessary)
-                ?       &sec=dms      ==> default
-                            &content=friends
-                            &content=stage-discovery
-                            &content=nitro
-                            &content=${private-chat-name}
-                ?       &sec=${server-name}
-                            &content=server-settings
-                            &content=${channel-name}
-                ?    &page=settings
-                may use firebase to store theme data
-
-
-            scrapped:
-                /channels ==> is discord-main.html
-                    ?sec=dms
-                        &content=friends
-                        &content=stage-discovery
-                        &content=nitro
-                        &content=${private-chat-name}
-                    ?sec=${server-name}
-
-                /settings ==> is discord-settings.html
-        -->
-
+        
 
         <section id="top-bar">
             <svg class="logo" width="55" height="16" viewbox="0 0 55 16">
@@ -393,7 +353,7 @@
                         <div class="channels" conent="private-msgs"> <!-- content: private-msgs, server-channels, public-servers -->
                             <div class="scroller">
                                 <!-- ? variable -->
-                                <a href="channels/friends" class="dm-channel active" id="friends">
+                                <a href="friends" class="dm-channel active" id="friends">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" fill-rule="nonzero" icon-data="friend" transform="translate(2 4)"></path>
@@ -403,7 +363,7 @@
                                     <h2 class="title">Friends</h2>
                                     <div class="badge">1</div>
                                 </a>
-                                <a href="channels/stage-discovery" class="dm-channel" id="stage-discovery">
+                                <a href="stage-discovery" class="dm-channel" id="stage-discovery">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" icon-data="stage"></path>
@@ -411,7 +371,7 @@
                                     </div>
                                     <span class="title">Stage Discovery</span>
                                 </a>
-                                <a href="channels/nitro" class="dm-channel" id="nitro">
+                                <a href="nitro" class="dm-channel" id="nitro">
                                     <div class="wrapper avatar">
                                         <svg width="24" height="24" viewport="0 0 24 24">
                                             <path fill="currentColor" icon-data="nitro"></path>
