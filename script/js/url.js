@@ -49,52 +49,67 @@ function paramsToStr(params, addQuestionAtStart = false) {
         return str;
 }
 function setUrl(url) {
-    window.history.replaceState(null, document.title, url);
+    window.history.replaceState({}, document.title, url);
 }
 function pushUrl(url) {
-    window.history.pushState(null, document.title, url);
+    window.history.pushState({}, document.title, url);
 }
 function setLocation(url) {
-    let params = parseUrlParams(url);
     let base = url.split('?')[0];
-    switch (params.id) { // TODO: get from database instead
+    let params = url.split('?')[1];
+    switch (parseUrlParams(url).id) { // TODO: get from database instead
         case "sample":
-            window.location.assign("themes/channels"); // ! TODO: replace acts like .href= (creates new history entry and write to the url)
-            setUrl(url);
-            break;
+            window.location.assign(`themes/channels?${params}`);
+        // function always exits after location change
     }
 }
-function setPageContent(params) {
+function setPageContent(params, set = true) {
+    // @param set
+    //      if true (default) use setUrl()
+    //      if false use pushUrl()
     // the params parameter would append instead of overwrite the url Parameters
     let urlParams = parseUrlParams();
     if (params)
         Object.assign(urlParams, parseUrlParams(params));
-    if (!urlParams.id) {
-        console.log("// TODO: show themes list to choose");
-    }
-    else {
+    // if no params.id just staay on the current /themes/ page
+    if (urlParams.id) {
         // TODO: show discord page with theme applied
-        if (!urlParams.page) {
-            urlParams.page = "channels";
-        }
-        else {
-            // TODO: show page
-        }
-        if (!urlParams.section) {
-            switch (urlParams.page) {
-                case "channels":
-                    urlParams.section = "dms";
-                    break;
-                case "settings":
-                    urlParams.section = "user-settings";
-                    break;
-            }
-        }
-        else {
-            // TODO: show section
+        switch (urlParams.page) {
+            case "settings":
+                switch (urlParams.sec) {
+                    /* // TODO: get every server and see if section == to a server filename (forEach())
+                        
+                    */
+                    default /*user-settings*/:
+                        urlParams.sec = "user-settings";
+                    // TODO
+                }
+                // TODO: show settings page
+                // 
+                break;
+            default /*channels*/:
+                urlParams.page = "channels";
+                switch (urlParams.sec) {
+                    /* // TODO: get every server and see if section == to a server filename (forEach())
+                        
+                    */
+                    default /*dms*/:
+                        urlParams.sec = "dms";
+                        switch (urlParams.content) {
+                            case "stage-discovery":
+                                break;
+                            case "nitro":
+                                break;
+                            /* // TODO: get every dm/group chat and see if content == to a dm/group chat filename (forEach())
+                            
+                            */
+                            default /*friends*/:
+                                urlParams.content = "friends";
+                        }
+                }
         }
         if (!urlParams.content) {
-            switch (urlParams.section) {
+            switch (urlParams.sec) {
                 case "dms":
                     urlParams.content = "friends";
                     break;
@@ -113,7 +128,10 @@ function setPageContent(params) {
             // TODO: show content
         }
     }
-    setUrl("themes/?" + urlParams.str());
+    if (set)
+        setUrl("themes/?" + urlParams.str());
+    else
+        pushUrl("themes/?" + urlParams.str());
 }
 setPageContent();
 /*

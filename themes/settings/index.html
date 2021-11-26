@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <base href="../..">
+
+        <title>${Theme Name} - Discord Theme Maker</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="style/css/style.css">
+        <link rel="stylesheet" href="style/css/base-theme.css">
+
+        <script src="script/js/url.js"></script>
+        <script defer src="script/js/main.js"></script>
+        <script defer src="script/js/iconData.js"></script>
+        <script defer src="script/js/contentChange.js"></script>
+    </head>
+
+    <body>
+
+        <!-- Settings Templates -->
+
+        <template setting-name="My Account" href="my-account">
+            <h1 class="title">My Account</h1>
+            <div class="account-info">
+                <div class="banner"></div>
+                <div class="user-info">
+                    <img src="-------" alt="avatar" class="avatar">
+                    <div class="info">
+                        <h1 class="name">
+                            <span class="username">Megadash452</span>
+                            <span class="tag">#0816</span>
+                        </h1>
+                        <div class="badges">
+                            <!-- Bdages that show up when clicking user profile, like Squad, Nitro, Booster, etc. -->
+                        </div>
+                    </div>
+                    <button class="to-user-prfile">Edit User Profile</button><!-- TODO: text-align: center -->
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <div class="data">
+                            <h5 class="title">Username</h5>
+                            <div class="content">
+                                <span class="username">Megadash452</span>
+                                <span class="tag">#0816</span>
+                            </div>
+                        </div>
+                        <button class="edit">Edit</button>
+                    </div>
+                    <div class="field">
+                        <div class="data">
+                            <h5 class="title">Email</h5>
+                            <div class="conent">
+                                <span>
+                                    *************@gmail.com
+                                    <button>Reveal</button>
+                                </span>
+                            </div>
+                        </div>
+                        <button class="edit">Edit</button>
+                    </div>
+                    <div class="field">
+                        <div class="data">
+                            <h5 class="title">Phone Number</h5>
+                            <div class="conent">
+                                <span>
+                                    **********
+                                    <button>Reveal</button>
+                                </span>
+                            </div>
+                        </div>
+                        <button class="edit">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Settings Templates END -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+        <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+
+
+        <section id="top-bar">
+            <svg class="logo" width="55" height="16" viewbox="0 0 55 16">
+                <path fill="currentColor" icon-data="discordWord" />
+            </svg>
+            <button class="close-app">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <polygon fill="currentColor" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1" />
+                </svg>
+            </button>
+            <button class="min-max">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" fill="none" />
+                </svg>
+            </button>
+            <button class="save">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="1" y="6" width="10" height="1" fill="currentColor" />
+                </svg>
+            </button>
+        </section>
+
+
+        <div id="main-wrapper">
+            <section class="sidebar">
+                <div class="scroller">
+                    <nav id="settings-list">
+
+                    </nav>
+                </div>
+            </section>
+            <section class="content">
+                <div class="scroller">
+                    <main id="settings-content">
+
+                    </main>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
