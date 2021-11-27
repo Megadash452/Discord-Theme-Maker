@@ -74,16 +74,28 @@ function pushUrl(url: string) {
     window.history.pushState({}, document.title, url);
 }
 
-
-function setLocation(url: string) {
+function setLocation(url: string, set: boolean = true) {
     let base = url.split('?')[0];
-    let params = url.split('?')[1];
+    let urlParams = parseUrlParams(url);
 
-    switch (parseUrlParams(url).id) { // TODO: get from database instead
-    case "sample":
-        window.location.assign(`themes/channels?${params}`);
-        // function always exits after location change
-    }
+    let paramPage = parseUrlParams(url).page;
+    let metaPage = document.querySelector(`meta[name="file"]`)?.getAttribute("content") as string;
+
+    // switch (parseUrlParams(url).id) { // TODO: get from database instead
+    // case "sample":
+    //     window.location.assign(`themes/channels?${params}`);
+    //     // function always exits after location change
+    // }
+
+    if (paramPage == "channels" && metaPage != "channels")
+        window.location.assign(`themes/channels?${urlParams.str()}`);
+    else if (paramPage == "settings" && metaPage != "settings")
+        window.location.assign(`themes/settings?${urlParams.str()}`);
+
+    // ! might make it all be in one discord page, and settigns will be in an iframe
+}
+function pushLocation(url: string) {
+    setLocation(url, false)
 }
 
 
@@ -97,74 +109,40 @@ function setPageContent(params?: string, set: boolean = true) {
     let urlParams = parseUrlParams();
     if (params) Object.assign(urlParams, parseUrlParams(params));
 
-    // if no params.id just staay on the current /themes/ page
+    // if no params.id just stay on the current /themes/ page
     if (urlParams.id) {
-        // TODO: show discord page with theme applied
-
-        switch (urlParams.page) {
-        case "settings":
-            switch (urlParams.sec) {
-            /* // TODO: get every server and see if section == to a server filename (forEach())
-                
-            */
-            default /*user-settings*/:
+        if (urlParams.page == "settings") {
+            /*if (urlParams.sec)*/ { // TODO: default (else), when all are applied remove. Get every server and see if section == to a server filename (forEach())
                 urlParams.sec = "user-settings";
-                // TODO
+                if (!urlParams.content)
+                    urlParams.content = "my-account";
+                // TODO: get all settings names and see if content == to one of them (forEach())
             }
-            // TODO: show settings page
-            // 
-            break;
-        default /*channels*/:
+        } else { // urlParams.page == "channels"
             urlParams.page = "channels";
 
-            switch (urlParams.sec) {
-            /* // TODO: get every server and see if section == to a server filename (forEach())
-                
-            */
-            default /*dms*/:
+            /*if (urlParams.sec)*/ { // TODO: default (else), when all are applied remove. Get every server and see if section == to a server filename (forEach())
                 urlParams.sec = "dms";
 
                 switch (urlParams.content) {
                 case "stage-discovery":
-
+                    // TODO
                     break;
                 case "nitro":
-
+                    // TODO
                     break;
-
                 /* // TODO: get every dm/group chat and see if content == to a dm/group chat filename (forEach())
                 
                 */
                 default /*friends*/:
                     urlParams.content = "friends";
-
                 }
             }
         }
-
-        if (!urlParams.content) {
-            switch (urlParams.sec) {
-            case "dms":
-                urlParams.content = "friends";
-                break;
-            case "user-settings":
-                urlParams.content = "my-account";
-                break;
-            default:
-                if (urlParams.page == "settings")
-                    urlParams.content = "overview";
-                else
-                    urlParams.content = "welcome";
-            }
-        } else {
-            // content for freinds, stage-discovery, and nitro are handled below this function
-            // TODO: show content
-        }
     }
-    if (set)
-        setUrl("themes/?" + urlParams.str());
-    else
-        pushUrl("themes/?" + urlParams.str());
+
+    pushLocation("themes/?" + urlParams.str());
+    setUrl("themes/?" + urlParams.str());
 } setPageContent();
 
 

@@ -4,18 +4,20 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <base href="../..">
 
         <title>${Theme Name} - Discord Theme Maker</title>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="style/css/style.css">
         <link rel="stylesheet" href="style/css/base-theme.css">
+        <link rel="stylesheet" href="style/css/settings.css">
+
+        <meta name="file" content="settings">
 
         <script src="script/js/url.js"></script>
-        <script defer src="script/js/main.js"></script>
+        <script defer src="script/js/util.js"></script>
+        <script defer src="script/js/settings.js"></script>
         <script defer src="script/js/iconData.js"></script>
-        <script defer src="script/js/contentChange.js"></script>
     </head>
 
     <body>
@@ -27,7 +29,7 @@
             <div class="account-info">
                 <div class="banner"></div>
                 <div class="user-info">
-                    <img src="-------" alt="avatar" class="avatar">
+                    <img src="" alt="avatar" class="avatar">
                     <div class="info">
                         <h1 class="name">
                             <span class="username">Megadash452</span>
@@ -54,10 +56,7 @@
                         <div class="data">
                             <h5 class="title">Email</h5>
                             <div class="conent">
-                                <span>
-                                    *************@gmail.com
-                                    <button>Reveal</button>
-                                </span>
+                                <span>*************@gmail.com<button>Reveal</button></span>
                             </div>
                         </div>
                         <button class="edit">Edit</button>
@@ -66,17 +65,28 @@
                         <div class="data">
                             <h5 class="title">Phone Number</h5>
                             <div class="conent">
-                                <span>
-                                    **********
-                                    <button>Reveal</button>
-                                </span>
+                                <span>**********<button>Reveal</button></span>
                             </div>
                         </div>
                         <button class="edit">Edit</button>
                     </div>
                 </div>
             </div>
+
+            <hr class="divider">
+
+            <div>
+
+            </div>
         </template>
+
+
+
+        <!-- Server Settings -->
+
+
+
+        <!-- Server Settings END -->
 
         <!-- Settings Templates END -->
         <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
@@ -120,9 +130,18 @@
             </section>
             <section class="content">
                 <div class="scroller">
-                    <main id="settings-content">
+                    <main id="settings-content" content="">
 
                     </main>
+                    <div class="tools">
+                        <div class="container">
+                            <button id="close-settings" class="close">
+                                <svg>
+                                    
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
