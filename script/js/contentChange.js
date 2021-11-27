@@ -294,9 +294,7 @@ document.getElementById("friends").addEventListener('click', e => {
             </div>
         </div>
     `;
-    let url = parseUrlParams();
-    url.content = "friends";
-    pushUrl("themes/?" + url.str());
+    pushParams({ content: "friends" });
     activeBtnRelation(head.querySelector(".tab-btns"));
     linkToTabs(head.querySelector(".tab-btns"));
     sidebar.setAttribute("content", "active-now");
@@ -323,9 +321,7 @@ document.getElementById("nitro").addEventListener('click', e => {
     `;
     head.querySelector(".tools").innerHTML = "";
     main.innerHTML = ""; // TODO:
-    let url = parseUrlParams();
-    url.content = "nitro";
-    pushUrl("themes/?" + url.str());
+    pushParams({ content: "nitro" });
     sidebar.classList.add("hidden");
     (_a = mainContent.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
 });

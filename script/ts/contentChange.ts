@@ -307,10 +307,7 @@ document.getElementById("friends") ! .addEventListener('click', e => {
             </div>
         </div>
     `;
-
-    let url = parseUrlParams();
-    url.content = "friends";
-    pushUrl("themes/?" + url.str());
+    pushParams({content: "friends"});
 
     activeBtnRelation(head.querySelector(".tab-btns")!);
     linkToTabs(head.querySelector(".tab-btns")!);
@@ -349,9 +346,7 @@ document.getElementById("nitro") ! .addEventListener('click', e => {
 
     main.innerHTML = ""; // TODO:
 
-    let url = parseUrlParams();
-    url.content = "nitro";
-    pushUrl("themes/?" + url.str());
+    pushParams({content: "nitro"});
 
     sidebar.classList.add("hidden");
 

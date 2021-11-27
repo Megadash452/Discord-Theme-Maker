@@ -22,6 +22,10 @@ function toggleMute() {
     assignIconData(paths[0]);
     assignIconData(paths[1]);
 }
+function toggleDeafen() {
+}
+function openSettings() {
+}
 const homeBtn = document.getElementById("home-btn");
 const guilds = document.getElementById("guilds");
 let currentActiveGuild = document.getElementById("home-btn");

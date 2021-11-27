@@ -24,6 +24,13 @@ function toggleMute() {
     assignIconData(paths[1]);
 }
 
+function toggleDeafen() {
+
+}
+
+function openSettings() {
+    
+}
 
 
 const homeBtn = document.getElementById("home-btn") as HTMLLIElement;

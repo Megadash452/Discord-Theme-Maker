@@ -91,6 +91,7 @@ function setPageContent(params, set = true) {
                     urlParams.content = "my-account";
                 // TODO: get all settings names and see if content == to one of them (forEach())
             }
+            // * GOTO settings
         }
         else { // urlParams.page == "channels"
             urlParams.page = "channels";
@@ -110,12 +111,25 @@ function setPageContent(params, set = true) {
                         urlParams.content = "friends";
                 }
             }
+            // * GOTO channels
         }
     }
     pushLocation("themes/?" + urlParams.str());
     setUrl("themes/?" + urlParams.str());
 }
 setPageContent();
+function setParams(params) {
+    let urlParams = getUrlParams();
+    for (let param in params)
+        urlParams[param] = params[param];
+    setUrl("themes/?" + urlParams.str());
+}
+function pushParams(params) {
+    let urlParams = getUrlParams();
+    for (let param in params)
+        urlParams[param] = params[param];
+    pushUrl("themes/?" + urlParams.str());
+}
 /*
 
 <!-- * this page will be redirected from /theme with parameter ?t = where the theme data is found in the database -->

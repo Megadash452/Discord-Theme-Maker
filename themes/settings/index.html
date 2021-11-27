@@ -16,15 +16,15 @@
 
         <script src="script/js/url.js"></script>
         <script defer src="script/js/util.js"></script>
-        <script defer src="script/js/settings.js"></script>
         <script defer src="script/js/iconData.js"></script>
+        <script defer src="script/js/settings.js"></script>
     </head>
 
     <body>
 
         <!-- Settings Templates -->
 
-        <template setting-name="My Account" href="my-account">
+        <template setting-name="My Account" section="User Settings" href="my-account">
             <h1 class="title">My Account</h1>
             <div class="account-info">
                 <div class="banner"></div>
@@ -80,6 +80,13 @@
             </div>
         </template>
 
+        <template setting-name="User Profile" section="User Settings" href="user-profile">
+            <p>amognus</p>
+        </template>
+
+        <template setting-name="Privacy & Safety" section="User Settings" href="privacy-and-safety">
+            <p>aaa</p>
+        </template>
 
 
         <!-- Server Settings -->
@@ -137,10 +144,11 @@
                         <div class="container">
                             <button id="close-settings" class="close">
                                 <svg>
-                                    
+                                    <path fill="currentColor" icon-data="x"></path>
                                 </svg>
                             </button>
                         </div>
+                        <span class="keybind"></span>
                     </div>
                 </div>
             </section>
