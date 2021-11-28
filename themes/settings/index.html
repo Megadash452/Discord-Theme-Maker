@@ -21,6 +21,58 @@
     </head>
 
     <body>
+        <svg style="position: absolute; z-index: -2;">
+            <mask id="user-status-mask" width="32" height="32" maskContentUnits="objectBoundingBox">
+                <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
+                <circle cx="0.84375" cy="0.84375" r="0.25" fill="black"/>
+            </mask>
+            <mask id="user-status-small-mask">
+                <path d="m31.8865 17.9153c.075-.628.1135-1.2671.1135-1.9153 0-8.83656-7.1634-16-16-16-8.83656 0-16 7.16344-16 16 0 8.8366 7.16344 16 16 16 .6482 0 1.2873-.0385 1.9153-.1135-1.2045-1.6514-1.9153-3.686-1.9153-5.8865 0-5.5228 4.4772-10 10-10 2.2005 0 4.2351.7108 5.8865 1.9153z" fill="#fff"/>
+            </mask>
+            <mask id="user-status-big-mask">
+                <circle cx="0.85" cy="0.85" r="0.175" fill="black"/>
+            </mask>
+            <mask id="user-status-mobile-mask" width="32" height="32">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="0.59375" y="0.4375" width="0.5" height="0.65625" fill="black" rx="0.13125" ry="0.13125"/>
+            </mask>
+            <mask id="users-list-item-mask">
+                <path d="m22 18.6356c-2.1498 3.2334-5.8261 5.3644-10 5.3644-6.62742 0-12-5.3726-12-12 0-6.62742 5.37258-12 12-12 4.1739 0 7.8502 2.13102 10 5.36441-1.2637 1.90061-2 4.18212-2 6.63559 0 2.4535.7363 4.735 2 6.6356z" fill="#fff"/>
+            </mask>
+            <mask id="guild-upper-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-1-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="28" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-2-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="22" y="28" width="30" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-lower-3-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="14" y="28" width="38" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-1-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="28" y="28" width="24" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-2-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="22" y="28" width="30" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+            <mask id="guild-upper-lower-3-mask" width="48" height="48">
+                <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                <rect x="28" y="-4" width="24" height="24" fill="black" rx="12" ry="12"/>
+                <rect x="14" y="28" width="38" height="24" fill="black" rx="12" ry="12"/>
+            </mask>
+        </svg>
+
+
 
         <!-- Settings Templates -->
 
@@ -56,8 +108,7 @@
                         <div class="data">
                             <h5 class="title">Username</h5>
                             <div class="content">
-                                <span class="username">Megadash452</span>
-                                <span class="tag">#0816</span>
+                                <span class="username">Megadash452</span><span class="tag">#0816</span>
                             </div>
                         </div>
                         <button class="edit">Edit</button>
@@ -65,7 +116,7 @@
                     <div class="field">
                         <div class="data">
                             <h5 class="title">Email</h5>
-                            <div class="conent">
+                            <div class="content">
                                 <span>*************@gmail.com<button class="reveal">Reveal</button></span>
                             </div>
                         </div>
@@ -74,7 +125,7 @@
                     <div class="field">
                         <div class="data">
                             <h5 class="title">Phone Number</h5>
-                            <div class="conent">
+                            <div class="content">
                                 <span>**********<button>Reveal</button></span>
                             </div>
                         </div>
@@ -207,7 +258,7 @@
 
         <div id="main-wrapper">
             <section class="sidebar">
-                <div class="scroller thin-scroll">
+                <div class="scroller thin-scroller">
                     <nav id="settings-list">
 
                     </nav>

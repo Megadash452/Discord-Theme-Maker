@@ -25,51 +25,17 @@ body.dark
     --thirtiary-col: #8e9297
     --thirtiary-bg:  #292b2f
 
-    --hover-col: var(--primary-col)
-    --hover-bg: #4f545c29
-    --active-col: #fff
-    --active-bg: #4f545c3d
+    --hover-col:         var(--primary-col)
+    --hover-bg:         #4f545c29
+    --active-col:       #fff
+    --active-bg:        #4f545c3d
     --second-active-bg: #4f545c52
+    --link-col:           #00aff4
     
     --scrollbar-col: var(--main-bg)
     // TODO: change
-    --scrollbar-bg: #2f3136
+    --scrollbar-bg: #2e3338
 
     --logo-col:        #72767d
     --logo-darker-col: #72767d4d
     --divider-col:     #ffffff0f
-
-
-::-webkit-scrollbar
-    width: 16px
-    height: 16px
-::-webkit-scrollbar-track
-    background-color: #2e3338 // TODO:
-::-webkit-scrollbar-thumb
-    min-height:40px
-    background-color: var(--scrollbar-col)
-::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb
-    background-clip: padding-box
-    border: 4px solid #0000
-    border-radius: 8px
-::-webkit-scrollbar-corner
-    background-color: #0000
-
-
-
-.thin-scroll
-    &::-webkit-scrollbar
-        width: 8px
-        height: 8px
-    &::-webkit-scrollbar-track
-        border-color: #0000
-        background-color: #0000
-        border: 2px solid #0000
-    &::-webkit-scrollbar-thumb
-        min-height: 40px
-        background-color: var(--scrollbar-col)
-        background-clip: padding-box
-        border: 2px solid #0000
-        border-radius: 4px
-    &::-webkit-scrollbar-corner
-        background-color: #0000

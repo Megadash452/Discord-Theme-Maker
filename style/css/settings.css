@@ -25,55 +25,18 @@ body.dark {
   --active-col: #fff;
   --active-bg: #4f545c3d;
   --second-active-bg: #4f545c52;
+  --link-col: #00aff4;
   --scrollbar-col: var(--main-bg);
-  --scrollbar-bg: #2f3136;
+  --scrollbar-bg: #2e3338;
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
 }
 
-::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #2e3338;
-}
-
-::-webkit-scrollbar-thumb {
-  min-height: 40px;
-  background-color: var(--scrollbar-col);
-}
-
-::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  border: 4px solid #0000;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-corner {
-  background-color: #0000;
-}
-
-.thin-scroll::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.thin-scroll::-webkit-scrollbar-track {
-  border-color: #0000;
-  background-color: #0000;
-  border: 2px solid #0000;
-}
-.thin-scroll::-webkit-scrollbar-thumb {
-  min-height: 40px;
-  background-color: var(--scrollbar-col);
-  background-clip: padding-box;
-  border: 2px solid #0000;
-  border-radius: 4px;
-}
-.thin-scroll::-webkit-scrollbar-corner {
-  background-color: #0000;
+header {
+  --col: $main-col;
+  color: var(--col);
+  background: var(--main-bg);
 }
 
 body {
@@ -105,14 +68,9 @@ body #top-bar button:active.close-app {
 }
 body #main-wrapper .sidebar .scroller {
   background: var(--secondary-bg);
-  scrollbar-color: #0000 #0000;
-}
-body #main-wrapper .sidebar .scroller:hover {
-  scrollbar-color: var(--scrollbar-col) #0000;
 }
 body #main-wrapper .content .scroller {
   background: var(--primary-bg);
-  scrollbar-color: var(--scrollbar-col) var(--scrollbar-bg);
 }
 body #main-wrapper .content .tools button {
   color: var(--primary-col);
@@ -164,26 +122,111 @@ body main#settings-content .account-info .user-info .name .tag {
 body main#settings-content .account-info .fields {
   background: var(--secondary-bg);
 }
+body main#settings-content .account-info .fields .content {
+  color: var(--active-col);
+}
+body main#settings-content .account-info .fields .content .tag {
+  color: var(--main-col);
+}
 body main#settings-content button {
   --col: #5865f2;
   color: var(--active-col);
   background: var(--col);
 }
+body main#settings-content button:hover {
+  --col: #4752c4;
+}
 body main#settings-content button.danger {
   --col: #ed4245;
+}
+body main#settings-content button.danger:hover {
+  --col: #c03537;
 }
 body main#settings-content button.edit {
   --col: #4f545c;
 }
+body main#settings-content button.edit:hover {
+  --cal: #5d6269;
+}
 body main#settings-content button.options {
-  --col: $main-col;
-  color: var(--col);
+  color: var(--main-col);
+}
+body main#settings-content button.reveal {
+  color: var(--link-col);
+}
+body main#settings-content button.options, body main#settings-content button.reveal {
   background: #0000;
 }
 body main#settings-content button.outline, body main#settings-content button.outlined {
   color: var(--col);
   border: 1px solid var(--col);
   background: #0000;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  background-color: var(--scrollbar-col);
+}
+
+::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 4px solid #0000;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #0000;
+}
+
+.scroller {
+  scrollbar-color: var(--scrollbar-col) var(--scrollbar-bg);
+}
+
+.no-scroller {
+  scrollbar-width: none;
+}
+.no-scroller::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.thin-scroller {
+  scrollbar-color: #0000 #0000;
+  scrollbar-width: thin;
+}
+.thin-scroller::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.thin-scroller::-webkit-scrollbar-track {
+  border-color: #0000;
+  background-color: #0000;
+  border: 2px solid #0000;
+}
+.thin-scroller::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  background-color: #0000;
+  background-clip: padding-box;
+  border: 2px solid #0000;
+  border-radius: 4px;
+}
+.thin-scroller::-webkit-scrollbar-corner {
+  background-color: #0000;
+}
+.thin-scroller:hover {
+  scrollbar-color: var(--scrollbar-col) #0000;
+}
+.thin-scroller:hover::webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-col);
 }
 
 button[data-tooltip]::after, a[data-tooltip]::after {
@@ -278,7 +321,6 @@ h1, h2, h3, p {
   align-items: flex-start;
   justify-content: flex-start;
   overflow: hidden scroll;
-  scrollbar-width: auto;
 }
 #main-wrapper .content .tools {
   width: 60px;
@@ -450,6 +492,10 @@ main#settings-content .account-info .user-info img.avatar, main#settings-content
   right: auto;
   border: 7px solid;
   border-radius: 50%;
+  mask-image: url(#user-status-mask);
+  mask-type: luminance;
+  -webkit-mask-image: url(#user-status-mask);
+  -webkit-mask-type: luminance;
 }
 main#settings-content .account-info .user-info .name {
   margin: 0 0 6px 0;
@@ -478,6 +524,22 @@ main#settings-content .account-info .fields .field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 24px 0 0 0;
+}
+main#settings-content .account-info .fields .field:first-child {
+  margin: 0;
+}
+main#settings-content .account-info .fields .field .content {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+main#settings-content .account-info .fields .field .content .username, main#settings-content .account-info .fields .field .content .tag {
+  line-height: inherit;
 }
 main#settings-content .account-info .fields .field .data {
   flex: 1 1 auto;
@@ -486,6 +548,28 @@ main#settings-content .account-info .fields .field .data {
 }
 main#settings-content .account-info .fields .field h5 {
   margin: 0 0 4px 0;
+}
+main#settings-content .account-info .fields .field button.edit {
+  margin: auto 0 auto;
+}
+main#settings-content .account-info .fields .field button.reveal {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  display: inline;
+  padding: 0 4px 2px 4px;
+  top: -2px;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+main#settings-content .account-info .fields .field button.reveal:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=settings.css.map */
