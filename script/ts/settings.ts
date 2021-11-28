@@ -7,17 +7,28 @@ document.querySelectorAll<SVGPathElement>("path[icon-data]")?.forEach(assignIcon
 function showSetting(settingName: string) {
     const template = document.querySelector<HTMLTemplateElement>(`template[setting-name="${settingName}"]`);
 
-    if (template) {
-        // clear settingsContent
-        settingsContent.innerHTML = "";
+    // if (template) {
+    //     // clear settingsContent
+    //     settingsContent.innerHTML = "";
 
-        appendTemplateElement(template, settingsContent, tmp => {
+    //     appendTemplateElement(template, settingsContent, tmp => {
+    //         // set data for each path in the setting content
+    //         tmp.querySelectorAll<SVGPathElement>("path[icon-data]").forEach(assignIconData);
+    //     });
+    //     settingsContent.setAttribute('content', template.getAttribute("href")!);
+    // } else
+    //     console.error(`Could not find template with attrribute "${settingName}"`);
+
+    try {
+        appendTemplateElement(template!, settingsContent, tmp => {
             // set data for each path in the setting content
+            settingsContent.innerHTML = "";
             tmp.querySelectorAll<SVGPathElement>("path[icon-data]").forEach(assignIconData);
+            settingsContent.setAttribute('content', template!.getAttribute("href")!);
         });
-        settingsContent.setAttribute('content', template.getAttribute("href")!);
-    } else
+    } catch {
         console.error(`Could not find template with attrribute "${settingName}"`);
+    }
 }
 
 
@@ -61,13 +72,17 @@ activeBtnRelation(settingsList);
 
 
 let settingHref = getUrlParams().content;
-if (settingHref) {
-    const button = settingsList.querySelector(`.item[href="${settingHref}"]`) as HTMLButtonElement;
-    button.classList.add('active');
-    showSetting(button.innerText);
-} else try {
-    settingsList.querySelector(`.item[href="my-account"]`)!.classList.add('active');
-    showSetting("My Account");
+
+
+try {
+    if (settingHref) {
+        const button = settingsList.querySelector(`.item[href="${settingHref}"]`) as HTMLButtonElement;
+        button.classList.add('active');
+        showSetting(button.innerText);
+    } else {
+        settingsList.querySelector(`.item[href="my-account"]`)!.classList.add('active');
+        showSetting("My Account");
+    }
 } catch {
     console.error("Could not find a default setting. Settings content is blank");
 }

@@ -22,10 +22,15 @@ body
     $scrollbar-col: var(--scrollbar-col) // var(--main-bg)
     $scrollbar-bg:  var(--scrollbar-bg)  // #2f3136
 
-    $logo-col: var(--logo-col) // #72767d
+    $logo-col: var(--logo-col)               // #72767d
+    $logo-darker-col: var(--logo-darker-col) // #72767d4d
+    $divider-col: var(--divider-col)         // #ffffff0f
 
     color: $main-col
     background: $main-bg
+
+    hr.divider
+        border-color:  $divider-col
 
     #top-bar
         .logo
@@ -35,6 +40,8 @@ body
             &:hover
                 color: $hover-col
                 background: $hover-bg
+                &.close-app
+                    background-color: #ed4245
             &:active
                 color: $active-col
                 background: $active-bg
@@ -55,6 +62,8 @@ body
             button
                 color: $primary-col
                 border-color: $logo-col
+                &:hover
+                    background: $logo-darker-col
             .keybind
                 color: $logo-col
 
@@ -84,16 +93,22 @@ body
                 .avatar
                     background: $main-bg
                     border-color: $main-bg !important
+                .name
+                    color: $active-col
+                    .tag
+                        color: $main-col
             .fields
                 background: $secondary-bg
-        hr.divider
-            border-color: #ffffff0f // TODO: assign to a variable
         button
             --col: #5865f2
             &.danger
                 --col: #ed4245
             &.edit
                 --col: #4f545c
+            &.options
+                --col: $main-col
+                color: var(--col)
+                background: #0000
             color: $active-col
             background: var(--col)
             &.outline, &.outlined
@@ -137,8 +152,6 @@ h1, h2, h3, p
         position: relative
         cursor: pointer
         pointer-events: auto
-        &.close-app:hover
-            background-color: #ed4245 !important
 
     *
         max-height: #{$top-bar-height}
@@ -211,6 +224,8 @@ h1, h2, h3, p
                 justify-content: center
                 border: 2px solid
                 border-radius: 50%
+                &:active
+                    transform: translateY(1px)
             .keybind
                 margin: 8px 0 0 0
                 +font(13px, Whitney, 600, 13px)
@@ -294,7 +309,6 @@ main#settings-content
         border: none
         border-top: thin solid
 
-    
     .account-info
         position: relative
         border-radius: 8px
@@ -315,6 +329,16 @@ main#settings-content
             display: flex
             justify-content: space-between
             padding: 16px 16px 0 120px
+            .info .wrapper
+                display: flex
+
+            button.options
+                width: 24px
+                min-width: 0
+                height: 24px
+                min-height: 0
+                padding: 0
+                margin: 0 0 0 8px
 
             img.avatar, svg.avatar
                 width: 80px
@@ -326,14 +350,17 @@ main#settings-content
                 // TODO: mask
             
             .name
-                //
-                .username
-                    //
-                .tag
-                    //
-            
+                margin: 0 0 6px 0
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                // overflow: hidden
+                +font(20px, Ginto, 600, 24px)
+                +ellipsis
             .badges
-                //
+                display: flex
+                flex-wrap: wrap
+                margin: 0 -2px 0 -2px
 
         .fields
             padding: 16px

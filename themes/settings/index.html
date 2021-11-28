@@ -24,6 +24,8 @@
 
         <!-- Settings Templates -->
 
+        <!-- * Section: USER SETTINGS -->
+
         <template setting-name="My Account" section="User Settings" href="my-account">
             <h1 class="title">My Account</h1>
             <section class="account-info">
@@ -31,11 +33,19 @@
                 <div class="user-info">
                     <img src="res/imgs/user-1.png" alt="avatar" class="avatar">
                     <div class="info">
-                        <h1 class="name">
-                            <span class="username">Megadash452</span>
-                            <span class="tag">#0816</span>
-                        </h1>
+                        <div class="wrapper">
+                            <h1 class="name">
+                                <span class="username">Megadash452</span>
+                                <span class="tag">#0816</span>
+                            </h1>
+                            <button class="options">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor" icon-data="optionsHorizontal"/>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="badges">
+                            <!-- TODO: add badges -->
                             <!-- Bdages that show up when clicking user profile, like Squad, Nitro, Booster, etc. -->
                         </div>
                     </div>
@@ -109,6 +119,54 @@
         </template>
 
 
+        <template setting-name="Authorized Apps" section="User Settings" href="authorized-apps"></template>
+
+        <template setting-name="Connections" section="User Settings" href="connections"></template>
+
+        <!-- * Section: BILLING SETTINGS -->
+        
+        <template setting-name="Disciord Nitro" section="Billing Settings" href="nitro"></template>
+
+        <template setting-name="Server Boost" section="Billing Settings" href="server-boost"></template>
+
+        <template setting-name="Subscriptions" section="Billing Settings" href="subscriptions"></template>
+        
+        <template setting-name="Gift Inventory" section="Billing Settings" href="gift-inventory"></template>
+
+        <template setting-name="Billing" section="Billing Settings" href="billing"></template>
+
+        <!-- * Section: APP SETTINGS -->
+        
+        <template setting-name="Appearance" section="App Settings" href="appearance"></template>
+
+        <template setting-name="Accessibility" section="App Settings" href="accessibility"></template>
+
+        <template setting-name="Voice & Video" section="App Settings" href="voice-and-video"></template>
+
+        <template setting-name="Text & Images" section="App Settings" href="text-and-images"></template>
+
+        <template setting-name="Notifications" section="App Settings" href="notifications"></template>
+
+        <template setting-name="Keybinds" section="App Settings" href="keybinds"></template>
+
+        <template setting-name="Language" section="App Settings" href="language"></template>
+
+        <template setting-name="Streamer Mode" section="App Settings" href="streamer-mode"></template>
+
+        <template setting-name="Advanced" section="App Settings" href="advanced"></template>
+
+        <!-- * Section: ACTIVITY SETTINGS -->
+
+        <template setting-name="Activity Status" section="Activity Settings" href="activity-status"></template>
+
+        <!-- * Section:  -->
+        
+        <template setting-name="Change Log" section="" href="">
+            <!-- TODO: Modal -->
+        </template>
+
+        <template setting-name="HypeSquad" section="" href=""></template>
+
         <!-- Server Settings -->
 
 
@@ -149,7 +207,7 @@
 
         <div id="main-wrapper">
             <section class="sidebar">
-                <div class="scroller">
+                <div class="scroller thin-scroll">
                     <nav id="settings-list">
 
                     </nav>
