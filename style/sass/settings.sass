@@ -1,0 +1,359 @@
+@use "sass:math"
+@import util
+@import base-theme
+
+
+body
+    $main-col:      var(--main-col)      // #b9bbbe
+    $main-bg:       var(--main-bg)       // #202225
+    $primary-col:   var(--primary-col)   // #dcddde
+    $primary-bg:    var(--primary-bg)    // #36393f
+    $secondary-col: var(--secondary-col) // #8e9297
+    $secondary-bg:  var(--secondary-bg)  // #2f3136
+    $thirtiary-col: var(--thirtiary-col) // #8e9297
+    $thirtiary-bg:  var(--thirtiary-bg)  // #292b2f
+
+    $hover-col:  var(--hover-col)  // var(--primary-col)
+    $hover-bg:   var(--hover-bg)   // #4f545c29
+    $active-col: var(--active-col) // #fff
+    $active-bg:  var(--active-bg)  // #4f545c3d
+    $second-active-bg: var(--second-active-bg)
+
+    $scrollbar-col: var(--scrollbar-col) // var(--main-bg)
+    $scrollbar-bg:  var(--scrollbar-bg)  // #2f3136
+
+    $logo-col: var(--logo-col) // #72767d
+
+    color: $main-col
+    background: $main-bg
+
+    #top-bar
+        .logo
+            color: $logo-col
+        button
+            color: $main-col
+            &:hover
+                color: $hover-col
+                background: $hover-bg
+            &:active
+                color: $active-col
+                background: $active-bg
+                &.close-app
+                    color: $primary-col
+
+    #main-wrapper
+        // background: $primary-bg
+        .sidebar .scroller
+            background: $secondary-bg
+            scrollbar-color: #0000 #0000
+            &:hover
+                scrollbar-color: $scrollbar-col #0000
+        .content .scroller
+            background: $primary-bg
+            scrollbar-color: $scrollbar-col $scrollbar-bg
+        .content .tools
+            button
+                color: $primary-col
+                border-color: $logo-col
+            .keybind
+                color: $logo-col
+
+    nav#settings-list
+        h2.section
+            color: $thirtiary-col
+        button.item
+            color: $main-col
+            &:hover
+                color: $hover-col
+                background: $hover-bg
+            &:active
+                color: $active-col
+                background: $active-bg
+            &.active
+                color: $active-col
+                background: $second-active-bg
+
+    main#settings-content
+        h1.title
+            color: $active-col
+        h5
+            color: $main-col
+        .account-info
+            background: $main-bg
+            .user-info
+                .avatar
+                    background: $main-bg
+                    border-color: $main-bg !important
+            .fields
+                background: $secondary-bg
+        hr.divider
+            border-color: #ffffff0f // TODO: assign to a variable
+        button
+            --col: #5865f2
+            &.danger
+                --col: #ed4245
+            &.edit
+                --col: #4f545c
+            color: $active-col
+            background: var(--col)
+            &.outline, &.outlined
+                color: var(--col)
+                border: 1px solid var(--col)
+                background: #0000
+
+
+button, a
+    &[data-tooltip]::after
+        +font(14px, Whitney, 500)
+button
+    background: #0000
+    border: none
+    padding: 0
+    margin: 0
+    cursor: pointer
+    box-sizing: border-box
+    
+h1, h2, h3, p
+    margin: 0
+
+    
+#top-bar
+    width: 100%
+    height: #{$top-bar-height}
+    display: flex
+    flex-direction: row-reverse
+    align-items: stretch
+    justify-content: flex-start
+    pointer-events: none
+    .logo
+        padding: 4px 9px 3px
+        +abs-pos(0, auto, auto, 0)
+    button
+        width: 28px
+        height: $top-bar-height
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+        cursor: pointer
+        pointer-events: auto
+        &.close-app:hover
+            background-color: #ed4245 !important
+
+    *
+        max-height: #{$top-bar-height}
+
+
+#main-wrapper
+    *
+        box-sizing: border-box
+    width: 100vw
+    height: calc(100vh - #{$top-bar-height})
+    // +abs-pos(0, 0, 0, 0)
+    display: flex
+    overflow: hidden
+    // z-index: 101
+
+    .sidebar
+        flex: 1 0 218px
+        display: flex
+        justify-content: flex-end
+        z-index: 1
+        .scroller
+            flex: 1 0 auto
+            min-height: 0
+            position: relative
+            display: flex
+            flex-direction: row
+            align-items: flex-start
+            justify-content: flex-end
+            overflow: hidden scroll
+            padding: 0
+            scrollbar-width: thin
+            // continued...
+
+    .content
+        flex: 1 1 800px
+        position: relative
+        // display: flex
+        // align-items: flex-start
+        .scroller
+            height: 100%
+            min-height: 0
+            flex: 1
+            position: static
+            display: flex
+            flex-direction: row
+            align-items: flex-start
+            justify-content: flex-start
+            overflow: hidden scroll
+            scrollbar-width: auto
+
+        .tools
+            width: 60px
+            flex: 0 0 36px
+            position: relative
+            padding: 60px 0 0 0
+            margin: 0 21px 0 0
+            .container // TODO: may remove container wrapper
+                position: fixed
+                display: flex
+                flex-direction: column
+                align-items: center
+
+            button
+                width: 36px
+                height: 36px
+                aspect-ratio: 1
+                flex: 0 0 36px
+                display: flex
+                align-items: center
+                justify-content: center
+                border: 2px solid
+                border-radius: 50%
+            .keybind
+                margin: 8px 0 0 0
+                +font(13px, Whitney, 600, 13px)
+                text-align: center
+
+
+nav#settings-list
+    width: 218px
+    display: flex
+    flex-direction: column
+    padding: 60px 6px 60px 20px
+    margin: 0
+
+    h2.section
+        // flex-shrink: 0
+        padding: 6px 10px
+        +font(12px, Ginto, 700, 16px)
+        +ellipsis
+        text-transform: uppercase
+        &:first-child
+            padding: 0px 10px 6px
+
+    button.item
+        flex-shrink: 0
+        position: relative
+        padding: 6px 10px
+        margin: 0 0 2px 0
+        border-radius: 4px
+        +font(16px, Whitney, 500, 20px)
+        +ellipsis
+        text-align: left
+
+
+main#settings-content
+    min-width: 460px
+    max-width: 740px
+    min-height: 100%
+    flex: 1 1 auto
+    position: relative
+    padding: 60px 40px 80px
+
+    $divider-margin: 40px
+
+    section
+        margin: $divider-margin 0 0 0
+        &:first-of-type
+            margin: 0
+
+    h1.title
+        // flex: 1
+        // display: flex
+        margin: 0 0 20px 0
+        +font(20px, Ginto, 600, 24px)
+        cursor: default
+
+    h5 // TODO: give class name
+        margin: 0 0 8px 0
+        +font(12px, Ginto, 600, 16px)
+        text-transform: uppercase
+        cursor: default
+
+    button
+        width: auto
+        min-width: 60px
+        height: 32px
+        min-height: 32px
+        position: relative
+        // display: flex
+        // justify-content: center
+        // align-items: center
+        padding: 2px 16px
+        border-radius: 3px
+        +font(14px, Whitney, 500, 16px)
+        user-select: none
+        transition: background-color 0.17s ease, color 0.17s ease
+
+    hr.divider
+        width: 100%
+        height: 1px
+        margin: $divider-margin 0 0 0
+        border: none
+        border-top: thin solid
+
+    
+    .account-info
+        position: relative
+        border-radius: 8px
+        overflow: hidden
+        .banner
+            width: 100%
+            height: 100px
+            position: relative
+            background: #f5dbb4 // TODO: use bg pic
+            background-size: cover
+            background-position: 50%
+            background-repeat: no-repeat
+            transistion: background-color 0.1s
+
+        .user-info
+            width: 100%
+            height: 72px
+            display: flex
+            justify-content: space-between
+            padding: 16px 16px 0 120px
+
+            img.avatar, svg.avatar
+                width: 80px
+                height: 80px
+                aspect-ratio: 1
+                +abs-pos(76px, auto, auto, 16px)
+                border: 7px solid
+                border-radius: 50%
+                // TODO: mask
+            
+            .name
+                //
+                .username
+                    //
+                .tag
+                    //
+            
+            .badges
+                //
+
+        .fields
+            padding: 16px
+            margin: 8px 16px 16px
+            border-radius: 8px
+            .field
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                .data
+                    flex: 1 1 auto
+                    margin: 0 16px 0 0
+                    overflow: hidden
+                h5
+                    margin: 0 0 4px 0
+                .content
+                    // 
+                    .username
+                        // 
+                    .tag
+                        // 
+        
+        

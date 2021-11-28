@@ -9,12 +9,12 @@
         <title>${Theme Name} - Discord Theme Maker</title>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="style/css/style.css">
-        <link rel="stylesheet" href="style/css/base-theme.css">
         <link rel="stylesheet" href="style/css/settings.css">
 
         <meta name="file" content="settings">
 
         <script src="script/js/url.js"></script>
+        <script defer src="script/js/ui.js"></script>
         <script defer src="script/js/util.js"></script>
         <script defer src="script/js/iconData.js"></script>
         <script defer src="script/js/settings.js"></script>
@@ -26,10 +26,10 @@
 
         <template setting-name="My Account" section="User Settings" href="my-account">
             <h1 class="title">My Account</h1>
-            <div class="account-info">
+            <section class="account-info">
                 <div class="banner"></div>
                 <div class="user-info">
-                    <img src="" alt="avatar" class="avatar">
+                    <img src="res/imgs/user-1.png" alt="avatar" class="avatar">
                     <div class="info">
                         <h1 class="name">
                             <span class="username">Megadash452</span>
@@ -56,7 +56,7 @@
                         <div class="data">
                             <h5 class="title">Email</h5>
                             <div class="conent">
-                                <span>*************@gmail.com<button>Reveal</button></span>
+                                <span>*************@gmail.com<button class="reveal">Reveal</button></span>
                             </div>
                         </div>
                         <button class="edit">Edit</button>
@@ -71,13 +71,33 @@
                         <button class="edit">Edit</button>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <hr class="divider">
 
-            <div>
+            <section>
+                <h1 class="title">Password and Authentication</h1>
+                <button>Change Password</button>
+                <div>
+                    <div>
+                        <h5>Two-factor authentication</h5>
+                        <p>Protect your Discord account with an extra layer of security. Once configured, you'll be required to enter both your password and an authentication code from your mobile phone in order to sign in.</p>
+                        <button>Enable Two-Factor Auth</button>
+                    </div>
+                    <img src="" alt="" class="desc-img">
+                </div>
+            </section>
 
-            </div>
+            <hr class="divider">
+
+            <section>
+                <h5>Account Removal</h5>
+                <p>Disabling your account means you can recover it at any time after taking this action.</p>
+                <div>
+                    <button class="danger">Disable Account</button>
+                    <button class="danger outline">Delete Account</button>
+                </div>
+            </section>
         </template>
 
         <template setting-name="User Profile" section="User Settings" href="user-profile">
@@ -143,12 +163,12 @@
                     <div class="tools">
                         <div class="container">
                             <button id="close-settings" class="close">
-                                <svg>
-                                    <path fill="currentColor" icon-data="x"></path>
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path fill="currentColor" icon-data="x"/>
                                 </svg>
                             </button>
+                            <span class="keybind">ESC</span>
                         </div>
-                        <span class="keybind"></span>
                     </div>
                 </div>
             </section>

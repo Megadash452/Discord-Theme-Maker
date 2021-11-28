@@ -1,15 +1,12 @@
 @use "sass:math"
-@import "util"
-    
-    
-$top-bar-height: 22px // web: 0px
+@import util
+@import base-theme
 
-$server-list-width: 72px
-$sidebar-width: 240px
-$ping-color: #ed4245
 
 // TODO: FONT: Whitney
 // TODO: FONT: Ginto
+
+// TODO: use font mixin
     
 // * All colors can be changed by user
 
@@ -328,11 +325,20 @@ body.dark
         border-color: #18191c
 
 
+// body::-webkit-scrollbar
+
+
 button, a
     &[data-tooltip]::after
         font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
         font-weight: 500
-
+button
+    background: #0000
+    border: none
+    padding: 0
+    margin: 0
+    cursor: pointer
+    box-sizing: border-box
 
 hr.vertical
     width: 1px
@@ -375,13 +381,7 @@ hr.vertical
         max-width: 100%
         max-height: 100%
 
-button
-    background: transparent
-    border: none
-    padding: 0
-    margin: 0
-    cursor: pointer
-    box-sizing: border-box
+
 
 .strike-through
     color: #ed4245
@@ -397,7 +397,7 @@ button
     pointer-events: none
     .logo
         padding: 4px 9px 3px
-        +abs-pos(0, 0, auto, auto)
+        +abs-pos(0, auto, auto, 0)
     button
         width: 28px
         height: $top-bar-height
@@ -578,7 +578,7 @@ button
             content: ''
             width: 8px // 
             height: 8px // unreads: 8px, hover: 20px, active: 40px
-            +abs-pos(calc(#{$icon-size} / 2), calc(var(--left) - 8px), auto, auto)
+            +abs-pos(calc(#{$icon-size} / 2), auto, auto, calc(var(--left) - 8px))
             --left: calc(-1 * (#{$server-list-width} - #{$icon-size}) / 2)
             background-color: #fff
             transform: translateY(-50%)
@@ -628,7 +628,7 @@ button
             justify-content: center
 
         .badge
-            +abs-pos(auto, auto, 50%, 0)
+            +abs-pos(auto, 0, 50%, auto)
             transition: all 0.25s // ! TODO: transition doesnt work // TODO: get accurate time
             pointer-events: none
             opacity: 1
@@ -720,7 +720,7 @@ button
     //     height: 1px
     //     z-index: 3
     //     display: block
-    //     +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), $server-list-width, auto, 0)
+    //     +abs-pos(calc(#{$head-height} + #{$top-bar-height} - 1px), 0, auto, $server-list-width)
     //     pointer-events: none
     //     box-shadow: 0 1px 0 #04040533, 0 1.5px 0 #0606070d, 0 2px 0 #0404050d
 
@@ -760,7 +760,7 @@ button
         button.close
             width: 36px
             height: 36px
-            +abs-pos(0, auto, auto, 0)
+            +abs-pos(0, 0, auto, auto)
             background: url("../../res/imgs/close.svg") no-repeat // from discord // TODO: img does not load
             background-position: 50% 55%
             background-size: 10px 10px
@@ -1124,7 +1124,7 @@ button
                     content: ''
                     width: 8px
                     height: 100%
-                    +abs-pos(0, auto, auto, 0)
+                    +abs-pos(0, 0, auto, auto)
 
                 h3.header
                     display: flex
@@ -1245,7 +1245,7 @@ button
                                 letter-spacing: 0.04em
                                 white-space: pre
                             .input-overlay
-                                +abs-pos(auto, 16px, auto, auto)
+                                +abs-pos(auto, auto, auto, 16px)
                                 padding: 16px 0
                                 cursor: text
                                 box-sizing: border-box
@@ -1505,7 +1505,7 @@ button
                                 display: flex
                                 align-items: center
                                 justify-content: center
-                                +abs-pos(auto, auto, -2px, -2px)
+                                +abs-pos(auto, -2px, -2px, auto)
                                 border-radius: 50%
                                 .icon-badge
                                     width: 16px

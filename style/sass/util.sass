@@ -1,9 +1,20 @@
-=abs-pos($top, $left, $bottom:auto, $right:auto)
+=font($size, $font-family, $weight: inherit, $line-height: inherit)
+    font-family: $font-family, "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-size: $size
+    font-weight: $weight
+    line-height: $line-height
+    
+=abs-pos($top, $right, $bottom, $left)
     position: absolute
     top: $top
     bottom: $bottom
     left: $left
     right: $right
+
+=ellipsis()
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
 
 body
     margin: 0

@@ -38,7 +38,7 @@ var sections = {};
     sections[template.getAttribute('section')].push(listItem);
 });
 for (let section in sections) {
-    const heading = document.createElement('h1');
+    const heading = document.createElement('h2');
     heading.classList.add('section');
     heading.innerText = section;
     settingsList.appendChild(heading);

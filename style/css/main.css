@@ -5,6 +5,32 @@ body {
 }
 
 body.light {
+  --main-bg: #e3e5e8;
+  --primary-bg: #ffffff;
+  --secondary-bg: #f2f3f5;
+  --thirtiary-bg: #ebedef;
+}
+
+body.dark {
+  --main-col: #b9bbbe;
+  --main-bg: #202225;
+  --primary-col: #dcddde;
+  --primary-bg: #36393f;
+  --secondary-col: #8e9297;
+  --secondary-bg: #2f3136;
+  --thirtiary-col: #8e9297;
+  --thirtiary-bg: #292b2f;
+  --hover-col: var(--primary-col);
+  --hover-bg: #4f545c29;
+  --active-col: #fff;
+  --active-bg: #4f545c3d;
+  --second-active-bg: #4f545c52;
+  --scrollbar-col: var(--main-bg);
+  --scrollbar-bg: #2f3136;
+  --logo-col: #72767d;
+}
+
+body.light {
   color: #4f5660;
   background-color: #e3e5e8;
 }
@@ -415,6 +441,15 @@ button[data-tooltip]::after, a[data-tooltip]::after {
   font-weight: 500;
 }
 
+button {
+  background: #0000;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
 hr.vertical {
   width: 1px;
   height: 100%;
@@ -461,15 +496,6 @@ hr.vertical {
 .avatar * {
   max-width: 100%;
   max-height: 100%;
-}
-
-button {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  box-sizing: border-box;
 }
 
 .strike-through {

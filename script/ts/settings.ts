@@ -48,7 +48,7 @@ document.querySelectorAll<HTMLTemplateElement>("template[setting-name]")?.forEac
 });
 
 for (let section in sections) {
-    const heading = document.createElement('h1') as HTMLHeadingElement;
+    const heading = document.createElement('h2') as HTMLHeadingElement;
     heading.classList.add('section');
     heading.innerText = section;
     settingsList.appendChild(heading);
