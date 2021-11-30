@@ -5,16 +5,6 @@ const settingsContent = document.getElementById("settings-content");
 (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
 function showSetting(settingName) {
     const template = document.querySelector(`template[setting-name="${settingName}"]`);
-    // if (template) {
-    //     // clear settingsContent
-    //     settingsContent.innerHTML = "";
-    //     appendTemplateElement(template, settingsContent, tmp => {
-    //         // set data for each path in the setting content
-    //         tmp.querySelectorAll<SVGPathElement>("path[icon-data]").forEach(assignIconData);
-    //     });
-    //     settingsContent.setAttribute('content', template.getAttribute("href")!);
-    // } else
-    //     console.error(`Could not find template with attrribute "${settingName}"`);
     try {
         appendTemplateElement(template, settingsContent, tmp => {
             // set data for each path in the setting content
@@ -57,19 +47,15 @@ for (let section in sections) {
     }
 }
 activeBtnRelation(settingsList);
-let settingHref = getUrlParams().content;
 try {
-    if (settingHref) {
-        const button = settingsList.querySelector(`.item[href="${settingHref}"]`);
-        button.classList.add('active');
-        showSetting(button.innerText);
-    }
-    else {
-        settingsList.querySelector(`.item[href="my-account"]`).classList.add('active');
-        showSetting("My Account");
-    }
+    const button = settingsList.querySelector(`.item[href="${getUrlParams().content}"]`);
+    button.classList.add('active');
+    showSetting(button.innerText);
 }
 catch (_c) {
     console.error("Could not find a default setting. Settings content is blank");
+    settingsList.querySelector(`.item[href="my-account"]`).classList.add('active');
+    pushParams({ content: "my-account" });
+    showSetting("My Account");
 }
 //# sourceMappingURL=settings.js.map

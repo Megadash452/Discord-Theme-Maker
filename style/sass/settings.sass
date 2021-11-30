@@ -27,17 +27,12 @@ $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
 
 
-header
-    --col: $main-col
-    color: var(--col)
-    background: $main-bg
-
 body
     color: $main-col
     background: $main-bg
 
     hr.divider
-        border-color:  $divider-col
+        border-color: $divider-col // TODO: doesn't work
 
     #top-bar
         .logo
@@ -119,9 +114,9 @@ body
                 &:hover
                     --cal: #5d6269
             &.options
-                color: $main-col
+                color: #{$main-col}
             &.reveal
-                color: $link-col
+                color: #{$link-col}
 
             &.options, &.reveal
                 background: #0000
@@ -157,25 +152,28 @@ body
         width: 0
         height: 0
 .thin-scroller
-    scrollbar-color: #0000 #0000
+    scrollbar-color: $scrollbar-col #0000
     scrollbar-width: thin
 
     &::-webkit-scrollbar
         width: 8px
         height: 8px
     &::-webkit-scrollbar-track
-        border-color: #0000
         background-color: #0000
         border: 2px solid #0000
     &::-webkit-scrollbar-thumb
         min-height: 40px
-        background-color: #0000
+        background-color: $scrollbar-col
         background-clip: padding-box
         border: 2px solid #0000
         border-radius: 4px
     &::-webkit-scrollbar-corner
         background-color: #0000
-
+.fade-scroller                             // ! TODO: DOESNT APPLY
+    scrollbar-color: #0000 #0000
+    &::webkit-scrollbar-thumb
+        background-color: #0000
+        
     &:hover
         scrollbar-color: $scrollbar-col #0000
         &::webkit-scrollbar-thumb
@@ -334,9 +332,20 @@ main#settings-content
     $divider-margin: 40px
 
     section
+        // display: flex
+        // flex-direction: column
         margin: $divider-margin 0 0 0
         &:first-of-type
             margin: 0
+    div.horizontal
+        // flex: 1 1 auto
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        align-items: stretch
+        justify-content: flex-start
+        .wrapper
+            margin: auto 0 auto 10px
 
     h1.title
         // flex: 1
@@ -371,7 +380,8 @@ main#settings-content
         height: 1px
         margin: $divider-margin 0 0 0
         border: none
-        border-top: thin solid
+        border-top-width: thin
+        border-top-style: solid
 
     .account-info
         position: relative
@@ -422,7 +432,6 @@ main#settings-content
                 display: flex
                 justify-content: flex-start
                 align-items: center
-                // overflow: hidden
                 +font(20px, Ginto, 600, 24px)
                 +ellipsis
             .badges
@@ -461,9 +470,9 @@ main#settings-content
                     min-width: 0
                     height: auto
                     min-height: 0
-                    display: inline
+                    display: inline-block
                     padding: 0 4px 2px 4px
-                    top: -2px // necessary
+                    // top: -2px // necessary
                     +font(14px, Whitney, 500, 16px)
                     +ellipsis
                     &:hover

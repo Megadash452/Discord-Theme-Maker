@@ -33,12 +33,6 @@ body.dark {
   --divider-col: #ffffff0f;
 }
 
-header {
-  --col: $main-col;
-  color: var(--col);
-  background: var(--main-bg);
-}
-
 body {
   color: var(--main-col);
   background: var(--main-bg);
@@ -200,7 +194,7 @@ body main#settings-content button.outline, body main#settings-content button.out
 }
 
 .thin-scroller {
-  scrollbar-color: #0000 #0000;
+  scrollbar-color: var(--scrollbar-col) #0000;
   scrollbar-width: thin;
 }
 .thin-scroller::-webkit-scrollbar {
@@ -208,13 +202,12 @@ body main#settings-content button.outline, body main#settings-content button.out
   height: 8px;
 }
 .thin-scroller::-webkit-scrollbar-track {
-  border-color: #0000;
   background-color: #0000;
   border: 2px solid #0000;
 }
 .thin-scroller::-webkit-scrollbar-thumb {
   min-height: 40px;
-  background-color: #0000;
+  background-color: var(--scrollbar-col);
   background-clip: padding-box;
   border: 2px solid #0000;
   border-radius: 4px;
@@ -222,10 +215,17 @@ body main#settings-content button.outline, body main#settings-content button.out
 .thin-scroller::-webkit-scrollbar-corner {
   background-color: #0000;
 }
-.thin-scroller:hover {
+
+.fade-scroller {
+  scrollbar-color: #0000 #0000;
+}
+.fade-scroller::webkit-scrollbar-thumb {
+  background-color: #0000;
+}
+.fade-scroller:hover {
   scrollbar-color: var(--scrollbar-col) #0000;
 }
-.thin-scroller:hover::webkit-scrollbar-thumb {
+.fade-scroller:hover::webkit-scrollbar-thumb {
   background-color: var(--scrollbar-col);
 }
 
@@ -409,6 +409,16 @@ main#settings-content section {
 main#settings-content section:first-of-type {
   margin: 0;
 }
+main#settings-content div.horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+main#settings-content div.horizontal .wrapper {
+  margin: auto 0 auto 10px;
+}
 main#settings-content h1.title {
   margin: 0 0 20px 0;
   font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -446,7 +456,8 @@ main#settings-content hr.divider {
   height: 1px;
   margin: 40px 0 0 0;
   border: none;
-  border-top: thin solid;
+  border-top-width: thin;
+  border-top-style: solid;
 }
 main#settings-content .account-info {
   position: relative;
@@ -557,9 +568,8 @@ main#settings-content .account-info .fields .field button.reveal {
   min-width: 0;
   height: auto;
   min-height: 0;
-  display: inline;
+  display: inline-block;
   padding: 0 4px 2px 4px;
-  top: -2px;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
