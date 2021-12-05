@@ -20,17 +20,20 @@ body.dark {
   --secondary-bg: #2f3136;
   --thirtiary-col: #8e9297;
   --thirtiary-bg: #292b2f;
+  --header-col: #;
   --hover-col: var(--primary-col);
   --hover-bg: #4f545c29;
   --active-col: #fff;
   --active-bg: #4f545c3d;
   --second-active-bg: #4f545c52;
   --link-col: #00aff4;
+  --ping-col: #ed4245;
   --scrollbar-col: var(--main-bg);
   --scrollbar-bg: #2e3338;
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
+  --banner-col: #18191c;
 }
 
 body.light {

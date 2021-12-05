@@ -12,19 +12,23 @@ $secondary-bg:  var(--secondary-bg)  // #2f3136
 $thirtiary-col: var(--thirtiary-col) // #8e9297
 $thirtiary-bg:  var(--thirtiary-bg)  // #292b2f
 
+
+
 $hover-col:        var(--hover-col)        // var(--primary-col)
 $hover-bg:         var(--hover-bg)         // #4f545c29
 $active-col:       var(--active-col)       // #fff
 $active-bg:        var(--active-bg)        // #4f545c3d
 $second-active-bg: var(--second-active-bg) // #4f545c52
 $link-col:         var(--link-col)         // #00aff4
+$ping-col:         var(--ping-col)         // #ed4245
 
 $scrollbar-col: var(--scrollbar-col) // var(--main-bg)
 $scrollbar-bg:  var(--scrollbar-bg)  // #2e3338
 
-$logo-col:        var(--logo-col)        // #72767d
+$logo-col:        var(--logo-col)        // #72767d // maybe muted channel color
 $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
+$banner-col:      var(--banner-col)      // #18191c
 
 
 body
@@ -32,7 +36,7 @@ body
     background: $main-bg
 
     hr.divider
-        border-color: $divider-col // TODO: doesn't work
+        border-color: $divider-col
 
     #top-bar
         .logo
@@ -43,7 +47,7 @@ body
                 color: $hover-col
                 background: $hover-bg
                 &.close-app
-                    background-color: #ed4245
+                    background-color: $ping-col
             &:active
                 color: $active-col
                 background: $active-bg
@@ -68,7 +72,7 @@ body
     nav#settings-list
         h2.section
             color: $thirtiary-col
-        button.item
+        button.item, a
             color: $main-col
             &:hover
                 color: $hover-col
@@ -79,6 +83,23 @@ body
             &.active
                 color: $active-col
                 background: $second-active-bg
+        #logout-btn
+            color: $ping-col
+        #bd-changelog-btn
+            color: $main-col
+            &:hover
+                color: $primary-col
+        .info
+            color: $logo-col
+        .social a
+            color: #adadad
+            background: #0000
+            &:hover
+                color: #fff
+                &[title="BetterDiscord"]
+                    color: #adadad
+                    path[icon-data="betterDiscord.0"]
+                        fill: #3e82e5
 
     main#settings-content
         h1.title
@@ -101,12 +122,15 @@ body
                     color: $active-col
                     .tag
                         color: $main-col
+        .notice
+            background: $main-bg
+            color: $primary-col
         button
             --col: #5865f2
             &:hover
                 --col: #4752c4
             &.danger
-                --col: #ed4245
+                --col: #{$ping-col}
                 &:hover
                     --col: #c03537
             &.edit
@@ -122,12 +146,16 @@ body
                 background: #0000
 
             color: $active-col
-            background: var(--col)
+            &.filled
+                background: var(--col)
             &.outline, &.outlined
                 color: var(--col)
                 border: 1px solid var(--col)
                 background: #0000
 
+    .profile-banner
+        background: #18191c
+        box-shadow: 0 8px 16px #0000003d
 
 ::-webkit-scrollbar
     width: 16px
@@ -194,6 +222,14 @@ button
 h1, h2, h3, p
     margin: 0
 
+hr, hr.divider
+    width: auto
+    height: 1px
+    margin: 2px 3px
+    border: none
+    border-top-width: thin
+    border-top-style: solid
+
     
 #top-bar
     width: 100%
@@ -230,7 +266,7 @@ h1, h2, h3, p
     overflow: hidden
     // z-index: 101
 
-    .sidebar
+    > .sidebar
         flex: 1 0 218px
         display: flex
         justify-content: flex-end
@@ -248,7 +284,7 @@ h1, h2, h3, p
             scrollbar-width: thin
             // continued...
 
-    .content
+    > .content
         flex: 1 1 800px
         position: relative
         // display: flex
@@ -301,12 +337,22 @@ nav#settings-list
     padding: 60px 6px 60px 20px
     margin: 0
 
+    hr.divider
+        margin: 8px 10px
+
+    .bd-heading
+        display: flex
+        justify-content: space-between
+    #bd-changelog-btn
+        height: 16px
+
     h2.section
         // flex-shrink: 0
         padding: 6px 10px
         +font(12px, Ginto, 700, 16px)
         +ellipsis
         text-transform: uppercase
+        user-select: none
         &:first-child
             padding: 0px 10px 6px
 
@@ -320,6 +366,23 @@ nav#settings-list
         +ellipsis
         text-align: left
 
+    .social
+        padding: 8px 10px
+        a
+            padding: 0 2px
+            margin: 0 8px 0 0
+            text-decoration: none
+            path
+                transition: fill 0.15s ease
+    .info
+        padding: 8px 10px
+        text-transform: capitalize
+        user-select: text
+        span
+            width: 100%
+            display: inline-block
+            +font(12px, Whitney, 400, 16px)
+
 
 main#settings-content
     min-width: 460px
@@ -328,8 +391,13 @@ main#settings-content
     flex: 1 1 auto
     position: relative
     padding: 60px 40px 80px
+    +font(14px, Whitney, 400, 20px)
+    #change-pass-btn
+        margin-bottom: 28px
 
     $divider-margin: 40px
+    hr.divider
+        margin: $divider-margin 0 0 0
 
     section
         // display: flex
@@ -346,6 +414,17 @@ main#settings-content
         justify-content: flex-start
         .wrapper
             margin: auto 0 auto 10px
+        button:not(:last-of-type)
+            margin-right: 0px
+        button:not(:first-child)
+            margin-left: 4px
+    div.columns
+        position: relative
+        display: flex
+        > section:not(:first-child)
+            flex: 0 0 auto
+            padding: 0 0 24px 0
+            margin: 0 0 24px 20px
 
     h1.title
         // flex: 1
@@ -360,6 +439,11 @@ main#settings-content
         text-transform: uppercase
         cursor: default
 
+    p
+        margin: 0 0 16px 0
+        +font(14px, Whitney, 400, 20px)
+        cursor: default
+
     button
         width: auto
         min-width: 60px
@@ -372,16 +456,11 @@ main#settings-content
         padding: 2px 16px
         border-radius: 3px
         +font(14px, Whitney, 500, 16px)
+        +ellipsis
         user-select: none
         transition: background-color 0.17s ease, color 0.17s ease
-
-    hr.divider
-        width: 100%
-        height: 1px
-        margin: $divider-margin 0 0 0
-        border: none
-        border-top-width: thin
-        border-top-style: solid
+        &:not(:last-of-type)
+            margin-right: 16px
 
     .account-info
         position: relative
@@ -477,5 +556,35 @@ main#settings-content
                     +ellipsis
                     &:hover
                         text-decoration: underline
+
         
-        
+    .notice
+        display: flex
+        align-items: center
+        padding: 8px
+        margin: 0 0 16px 0
+        border-radius: 4px
+        > .content
+            flex-grow: 1
+            display: flex
+            align-items: center
+
+        > .content, span, p
+            +font(14px, Whitney, 400, 18px)
+        strong
+            font-weight: 600
+        span, p
+            flex: 1
+            margin: 0 16px 0 0
+        .icon
+            margin: 0 8px 0 0
+
+
+.profile-banner
+    width: 300px
+    min-width: 300px
+    min-height: 280px
+    position: relative
+    border-radius: 8px
+    // TODO: continue
+    // ? possibly use border instead of divider in info

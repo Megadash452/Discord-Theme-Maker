@@ -22,6 +22,12 @@
 
     <body>
         <svg style="position: absolute; z-index: -2;">
+            <linearGradient id="nitro-gradient">
+                <!-- linear-gradient(90deg, #b473f5 0%, #e292aa 100%) -->
+                <stop stop-color="#b473f5"/>
+                <stop stop-color="#e292aa" offset="1"/>
+            </linearGradient>
+
             <mask id="user-status-mask" width="32" height="32" maskContentUnits="objectBoundingBox">
                 <rect x="0"  y="0"  width="100%" height="100%" fill="white"/>
                 <circle cx="0.84375" cy="0.84375" r="0.25" fill="black"/>
@@ -101,7 +107,7 @@
                             <!-- Bdages that show up when clicking user profile, like Squad, Nitro, Booster, etc. -->
                         </div>
                     </div>
-                    <button class="to-user-prfile">Edit User Profile</button><!-- TODO: text-align: center -->
+                    <button class="to-user-prfile filled">Edit User Profile</button><!-- TODO: text-align: center -->
                 </div>
                 <div class="fields">
                     <div class="field">
@@ -111,7 +117,7 @@
                                 <span class="username">Megadash452</span><span class="tag">#0816</span>
                             </div>
                         </div>
-                        <button class="edit">Edit</button>
+                        <button class="edit filled">Edit</button>
                     </div>
                     <div class="field">
                         <div class="data">
@@ -120,7 +126,7 @@
                                 <span>*************@gmail.com<button class="reveal">Reveal</button></span>
                             </div>
                         </div>
-                        <button class="edit">Edit</button>
+                        <button class="edit filled">Edit</button>
                     </div>
                     <div class="field">
                         <div class="data">
@@ -129,7 +135,7 @@
                                 <span>**********<button class="reveal">Reveal</button></span>
                             </div>
                         </div>
-                        <button class="edit">Edit</button>
+                        <button class="edit filled">Edit</button>
                     </div>
                 </div>
             </section>
@@ -138,15 +144,15 @@
 
             <section>
                 <h1 class="title">Password and Authentication</h1>
-                <button>Change Password</button>
+                <button id="change-pass-btn" class="filled">Change Password</button>
                 <div class="horizontal">
                     <div>
                         <h5>Two-factor authentication</h5>
-                        <p>Protect your Discord account with an extra layer of security. Once configured, you'll be required to enter both your password and an authentication code from your mobile phone in order to sign in.</p>
-                        <button>Enable Two-Factor Auth</button>
+                        <p style="margin-bottom: 20px;">Protect your Discord account with an extra layer of security. Once configured, you'll be required to enter both your password and an authentication code from your mobile phone in order to sign in.</p>
+                        <button class="filled">Enable Two-Factor Auth</button>
                     </div>
                     <div class="wrapper center">
-                        <img src="" alt="" class="desc-img" style="flex: 0 1 323px">
+                        <img width="100%" src="res/imgs/settings-password.svg" alt="" class="desc-img" style="flex: 0 1 323px">
                     </div>
                 </div>
             </section>
@@ -157,19 +163,68 @@
                 <h5>Account Removal</h5>
                 <p>Disabling your account means you can recover it at any time after taking this action.</p>
                 <div>
-                    <button class="danger">Disable Account</button>
-                    <button class="danger outline">Delete Account</button>
+                    <button class="danger filled">Disable Account</button><button class="danger outline">Delete Account</button>
                 </div>
             </section>
         </template>
 
         <template setting-name="User Profile" section="User Settings" href="user-profile">
-            <p>amognus</p>
+            <h1 class="title">User Profile</h1>
+            <div class="notice">
+                <div class="content">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="url(#nitro-gradient)" icon-data="nitro" />
+                    </svg>
+                    <span>
+                        <strong>Try animated avatars with Nitro!</strong>
+                        See how your profile looks animated.
+                    </span>
+                </div>
+                <button class="action filled">Try it now!</button>
+            </div>
+            <div class="columns">
+                <section>
+                    <h5>Avatar</h5>
+                    <div class="horizontal">
+                        <button class="filled">Change Avatar</button>
+                        <button>Remove Avatar</button>
+                    </div>
+                </section>
+                <section>
+                    <h5>Preview</h5>
+                    <div class="profile-banner">
+                        <div class="banner">
+                            <!-- TODO: nitro banner content -->
+                        </div>
+                        <div class="wrapper">
+                            <div class="hint"></div>
+                            <img src="res/imgs/user-1.png" alt="" class="avatar">
+                            <img src="<!-- TODO: -->" alt="" class="img-icon">
+                        </div>
+                        <div class="header">
+                            <div class="badges">
+
+                            </div>
+                            <h3 class="name">
+                                <span class="username">Megadash452</span><span class="tag">#0816</span>
+                            </h3>
+                        </div>
+                        <div class="info">
+                            <hr class="divider">
+                            <div class="about-me">
+
+                            </div>
+                            <div class="activity">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
         </template>
 
-        <template setting-name="Privacy & Safety" section="User Settings" href="privacy-and-safety">
-            <p>aaa</p>
-        </template>
+        <template setting-name="Privacy & Safety" section="User Settings" href="privacy-and-safety"></template>
 
 
         <template setting-name="Authorized Apps" section="User Settings" href="authorized-apps"></template>
@@ -178,7 +233,7 @@
 
         <!-- * Section: BILLING SETTINGS -->
         
-        <template setting-name="Disciord Nitro" section="Billing Settings" href="nitro"></template>
+        <template setting-name="Discord Nitro" section="Billing Settings" href="nitro"></template> <!-- TODO: Badge -->
 
         <template setting-name="Server Boost" section="Billing Settings" href="server-boost"></template>
 
@@ -203,6 +258,8 @@
         <template setting-name="Keybinds" section="App Settings" href="keybinds"></template>
 
         <template setting-name="Language" section="App Settings" href="language"></template>
+        
+        <template setting-name="Windows Settings" section="App Settings" href="windows-settings"></template>
 
         <template setting-name="Streamer Mode" section="App Settings" href="streamer-mode"></template>
 
@@ -212,13 +269,19 @@
 
         <template setting-name="Activity Status" section="Activity Settings" href="activity-status"></template>
 
-        <!-- * Section:  -->
-        
-        <template setting-name="Change Log" section="" href="">
-            <!-- TODO: Modal -->
-        </template>
+        <template setting-name="Game Overlay" section="Activity Settings" href="game-overlay"></template>
 
-        <template setting-name="HypeSquad" section="" href=""></template>
+        <!-- * Section: BETTERDISCORD -->
+
+        <template setting-name="Settings" section="BetterDiscord" href="bd-settings"></template> <!-- TODO: Badge on section header -->
+
+        <template setting-name="Emotes" section="BetterDiscord" href="bd-emotes"></template>
+
+        <template setting-name="Custom CSS" section="BetterDiscord" href="bd-css"></template>
+
+        <template setting-name="Plugins" section="BetterDiscord" href="bd-plugins"></template>
+
+        <template setting-name="Themes" section="BetterDiscord" href="bd-themes"></template>
 
         <!-- Server Settings -->
 
@@ -234,6 +297,15 @@
         <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
         <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
         <!-- * -->                       <!-- * -->                       <!-- * -->                               <!-- * -->
+
+
+        <div id="modal">
+            <div class="wrapper">
+                <div class="content">
+
+                </div>
+            </div>
+        </div>
 
 
         <section id="top-bar">

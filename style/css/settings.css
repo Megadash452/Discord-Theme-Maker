@@ -20,17 +20,20 @@ body.dark {
   --secondary-bg: #2f3136;
   --thirtiary-col: #8e9297;
   --thirtiary-bg: #292b2f;
+  --header-col: #;
   --hover-col: var(--primary-col);
   --hover-bg: #4f545c29;
   --active-col: #fff;
   --active-bg: #4f545c3d;
   --second-active-bg: #4f545c52;
   --link-col: #00aff4;
+  --ping-col: #ed4245;
   --scrollbar-col: var(--main-bg);
   --scrollbar-bg: #2e3338;
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
+  --banner-col: #18191c;
 }
 
 body {
@@ -51,7 +54,7 @@ body #top-bar button:hover {
   background: var(--hover-bg);
 }
 body #top-bar button:hover.close-app {
-  background-color: #ed4245;
+  background-color: var(--ping-col);
 }
 body #top-bar button:active {
   color: var(--active-col);
@@ -79,20 +82,45 @@ body #main-wrapper .content .tools .keybind {
 body nav#settings-list h2.section {
   color: var(--thirtiary-col);
 }
-body nav#settings-list button.item {
+body nav#settings-list button.item, body nav#settings-list a {
   color: var(--main-col);
 }
-body nav#settings-list button.item:hover {
+body nav#settings-list button.item:hover, body nav#settings-list a:hover {
   color: var(--hover-col);
   background: var(--hover-bg);
 }
-body nav#settings-list button.item:active {
+body nav#settings-list button.item:active, body nav#settings-list a:active {
   color: var(--active-col);
   background: var(--active-bg);
 }
-body nav#settings-list button.item.active {
+body nav#settings-list button.item.active, body nav#settings-list a.active {
   color: var(--active-col);
   background: var(--second-active-bg);
+}
+body nav#settings-list #logout-btn {
+  color: var(--ping-col);
+}
+body nav#settings-list #bd-changelog-btn {
+  color: var(--main-col);
+}
+body nav#settings-list #bd-changelog-btn:hover {
+  color: var(--primary-col);
+}
+body nav#settings-list .info {
+  color: var(--logo-col);
+}
+body nav#settings-list .social a {
+  color: #adadad;
+  background: #0000;
+}
+body nav#settings-list .social a:hover {
+  color: #fff;
+}
+body nav#settings-list .social a:hover[title=BetterDiscord] {
+  color: #adadad;
+}
+body nav#settings-list .social a:hover[title=BetterDiscord] path[icon-data="betterDiscord.0"] {
+  fill: #3e82e5;
 }
 body main#settings-content h1.title {
   color: var(--active-col);
@@ -122,16 +150,19 @@ body main#settings-content .account-info .fields .content {
 body main#settings-content .account-info .fields .content .tag {
   color: var(--main-col);
 }
+body main#settings-content .notice {
+  background: var(--main-bg);
+  color: var(--primary-col);
+}
 body main#settings-content button {
   --col: #5865f2;
   color: var(--active-col);
-  background: var(--col);
 }
 body main#settings-content button:hover {
   --col: #4752c4;
 }
 body main#settings-content button.danger {
-  --col: #ed4245;
+  --col: var(--ping-col);
 }
 body main#settings-content button.danger:hover {
   --col: #c03537;
@@ -151,10 +182,17 @@ body main#settings-content button.reveal {
 body main#settings-content button.options, body main#settings-content button.reveal {
   background: #0000;
 }
+body main#settings-content button.filled {
+  background: var(--col);
+}
 body main#settings-content button.outline, body main#settings-content button.outlined {
   color: var(--col);
   border: 1px solid var(--col);
   background: #0000;
+}
+body .profile-banner {
+  background: #18191c;
+  box-shadow: 0 8px 16px #0000003d;
 }
 
 ::-webkit-scrollbar {
@@ -249,6 +287,15 @@ h1, h2, h3, p {
   margin: 0;
 }
 
+hr, hr.divider {
+  width: auto;
+  height: 1px;
+  margin: 2px 3px;
+  border: none;
+  border-top-width: thin;
+  border-top-style: solid;
+}
+
 #top-bar {
   width: 100%;
   height: 22px;
@@ -289,13 +336,13 @@ h1, h2, h3, p {
 #main-wrapper * {
   box-sizing: border-box;
 }
-#main-wrapper .sidebar {
+#main-wrapper > .sidebar {
   flex: 1 0 218px;
   display: flex;
   justify-content: flex-end;
   z-index: 1;
 }
-#main-wrapper .sidebar .scroller {
+#main-wrapper > .sidebar .scroller {
   flex: 1 0 auto;
   min-height: 0;
   position: relative;
@@ -307,11 +354,11 @@ h1, h2, h3, p {
   padding: 0;
   scrollbar-width: thin;
 }
-#main-wrapper .content {
+#main-wrapper > .content {
   flex: 1 1 800px;
   position: relative;
 }
-#main-wrapper .content .scroller {
+#main-wrapper > .content .scroller {
   height: 100%;
   min-height: 0;
   flex: 1;
@@ -322,20 +369,20 @@ h1, h2, h3, p {
   justify-content: flex-start;
   overflow: hidden scroll;
 }
-#main-wrapper .content .tools {
+#main-wrapper > .content .tools {
   width: 60px;
   flex: 0 0 36px;
   position: relative;
   padding: 60px 0 0 0;
   margin: 0 21px 0 0;
 }
-#main-wrapper .content .tools .container {
+#main-wrapper > .content .tools .container {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#main-wrapper .content .tools button {
+#main-wrapper > .content .tools button {
   width: 36px;
   height: 36px;
   aspect-ratio: 1;
@@ -346,10 +393,10 @@ h1, h2, h3, p {
   border: 2px solid;
   border-radius: 50%;
 }
-#main-wrapper .content .tools button:active {
+#main-wrapper > .content .tools button:active {
   transform: translateY(1px);
 }
-#main-wrapper .content .tools .keybind {
+#main-wrapper > .content .tools .keybind {
   margin: 8px 0 0 0;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -365,6 +412,16 @@ nav#settings-list {
   padding: 60px 6px 60px 20px;
   margin: 0;
 }
+nav#settings-list hr.divider {
+  margin: 8px 10px;
+}
+nav#settings-list .bd-heading {
+  display: flex;
+  justify-content: space-between;
+}
+nav#settings-list #bd-changelog-btn {
+  height: 16px;
+}
 nav#settings-list h2.section {
   padding: 6px 10px;
   font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -375,6 +432,7 @@ nav#settings-list h2.section {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-transform: uppercase;
+  user-select: none;
 }
 nav#settings-list h2.section:first-child {
   padding: 0px 10px 6px;
@@ -394,6 +452,30 @@ nav#settings-list button.item {
   text-overflow: ellipsis;
   text-align: left;
 }
+nav#settings-list .social {
+  padding: 8px 10px;
+}
+nav#settings-list .social a {
+  padding: 0 2px;
+  margin: 0 8px 0 0;
+  text-decoration: none;
+}
+nav#settings-list .social a path {
+  transition: fill 0.15s ease;
+}
+nav#settings-list .info {
+  padding: 8px 10px;
+  text-transform: capitalize;
+  user-select: text;
+}
+nav#settings-list .info span {
+  width: 100%;
+  display: inline-block;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
 
 main#settings-content {
   min-width: 460px;
@@ -402,6 +484,16 @@ main#settings-content {
   flex: 1 1 auto;
   position: relative;
   padding: 60px 40px 80px;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+main#settings-content #change-pass-btn {
+  margin-bottom: 28px;
+}
+main#settings-content hr.divider {
+  margin: 40px 0 0 0;
 }
 main#settings-content section {
   margin: 40px 0 0 0;
@@ -418,6 +510,21 @@ main#settings-content div.horizontal {
 }
 main#settings-content div.horizontal .wrapper {
   margin: auto 0 auto 10px;
+}
+main#settings-content div.horizontal button:not(:last-of-type) {
+  margin-right: 0px;
+}
+main#settings-content div.horizontal button:not(:first-child) {
+  margin-left: 4px;
+}
+main#settings-content div.columns {
+  position: relative;
+  display: flex;
+}
+main#settings-content div.columns > section:not(:first-child) {
+  flex: 0 0 auto;
+  padding: 0 0 24px 0;
+  margin: 0 0 24px 20px;
 }
 main#settings-content h1.title {
   margin: 0 0 20px 0;
@@ -436,6 +543,14 @@ main#settings-content h5 {
   text-transform: uppercase;
   cursor: default;
 }
+main#settings-content p {
+  margin: 0 0 16px 0;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: default;
+}
 main#settings-content button {
   width: auto;
   min-width: 60px;
@@ -448,16 +563,14 @@ main#settings-content button {
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-main#settings-content hr.divider {
-  width: 100%;
-  height: 1px;
-  margin: 40px 0 0 0;
-  border: none;
-  border-top-width: thin;
-  border-top-style: solid;
+main#settings-content button:not(:last-of-type) {
+  margin-right: 16px;
 }
 main#settings-content .account-info {
   position: relative;
@@ -580,6 +693,42 @@ main#settings-content .account-info .fields .field button.reveal {
 }
 main#settings-content .account-info .fields .field button.reveal:hover {
   text-decoration: underline;
+}
+main#settings-content .notice {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin: 0 0 16px 0;
+  border-radius: 4px;
+}
+main#settings-content .notice > .content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+main#settings-content .notice > .content, main#settings-content .notice span, main#settings-content .notice p {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+main#settings-content .notice strong {
+  font-weight: 600;
+}
+main#settings-content .notice span, main#settings-content .notice p {
+  flex: 1;
+  margin: 0 16px 0 0;
+}
+main#settings-content .notice .icon {
+  margin: 0 8px 0 0;
+}
+
+.profile-banner {
+  width: 300px;
+  min-width: 300px;
+  min-height: 280px;
+  position: relative;
+  border-radius: 8px;
 }
 
 /*# sourceMappingURL=settings.css.map */
