@@ -183,23 +183,28 @@
                 <button class="action filled">Try it now!</button>
             </div>
             <div class="columns">
-                <section>
-                    <h5>Avatar</h5>
-                    <div class="horizontal">
-                        <button class="filled">Change Avatar</button>
-                        <button>Remove Avatar</button>
-                    </div>
+                <section class="column">
+                    <section class="customization">
+                        <h5>Avatar</h5>
+                        <div class="horizontal">
+                            <button class="filled">Change Avatar</button>
+                            <button>Remove Avatar</button>
+                        </div>
+                    </section>
                 </section>
-                <section>
+                <section class="column">
                     <h5>Preview</h5>
                     <div class="profile-banner">
-                        <div class="banner">
+                        <div class="banner" style="background: #130e1d;">
                             <!-- TODO: nitro banner content -->
                         </div>
-                        <div class="wrapper">
-                            <div class="hint"></div>
-                            <img src="res/imgs/user-1.png" alt="" class="avatar">
-                            <img src="<!-- TODO: -->" alt="" class="img-icon">
+                        <div class="avatar" style="background-image: url('res/imgs/user-1.png');">
+                            <h4 class="hint">Change<wbr>Avatar</h4>
+                            <div class="img-icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="#4f545c" icon-data="imgAdd" transform="translate(2.25 1.5)"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="header">
                             <div class="badges">
@@ -212,10 +217,20 @@
                         <div class="info">
                             <hr class="divider">
                             <div class="about-me">
-
+                                <h5>About Me</h5>
+                                <p class="content">3 syllables, 6 letters. Say it and I'm yours.</p>
                             </div>
                             <div class="activity">
-                                
+                                <h5>Customizing My Profile</h5>
+                                <div class="content">
+                                    <div class="icon" style="background: #3c45a5;">
+                                        <img width="48" height="48" src="res/imgs/settings-pencil.png" alt="">
+                                    </div>
+                                    <div class="wrapper">
+                                        <p class="title">User Profile</p>
+                                        <p><span class="time">20:21</span> ellapsed</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

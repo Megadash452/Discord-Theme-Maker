@@ -4,6 +4,66 @@ body {
   height: 100vh;
 }
 
+.no-margin {
+  margin: 0;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.no-margin-right {
+  margin-right: 0;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.no-padding-top {
+  padding-top: 0;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.no-border {
+  border: none;
+}
+
+.no-border-top {
+  border-top: none;
+}
+
+.no-border-right {
+  border-right: none;
+}
+
+.no-border-bottom {
+  border-bottom: none;
+}
+
+.no-border-left {
+  border-left: none;
+}
+
 body.light {
   --main-bg: #e3e5e8;
   --primary-bg: #ffffff;
@@ -33,7 +93,7 @@ body.dark {
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
-  --banner-col: #18191c;
+  --banner-bg: #18191c;
 }
 
 body {
@@ -128,18 +188,18 @@ body main#settings-content h1.title {
 body main#settings-content h5 {
   color: var(--main-col);
 }
+body main#settings-content .name {
+  color: var(--active-col);
+}
+body main#settings-content .name .tag {
+  color: var(--main-col);
+}
 body main#settings-content .account-info {
   background: var(--main-bg);
 }
-body main#settings-content .account-info .user-info .avatar {
+body main#settings-content .account-info .avatar {
   background: var(--main-bg);
-  border-color: var(--main-bg) !important;
-}
-body main#settings-content .account-info .user-info .name {
-  color: var(--active-col);
-}
-body main#settings-content .account-info .user-info .name .tag {
-  color: var(--main-col);
+  border-color: var(--main-bg);
 }
 body main#settings-content .account-info .fields {
   background: var(--secondary-bg);
@@ -153,6 +213,9 @@ body main#settings-content .account-info .fields .content .tag {
 body main#settings-content .notice {
   background: var(--main-bg);
   color: var(--primary-col);
+}
+body main#settings-content section.customization {
+  border-color: var(--divider-col);
 }
 body main#settings-content button {
   --col: #5865f2;
@@ -191,8 +254,25 @@ body main#settings-content button.outline, body main#settings-content button.out
   background: #0000;
 }
 body .profile-banner {
-  background: #18191c;
+  background: var(--banner-bg);
   box-shadow: 0 8px 16px #0000003d;
+}
+body .profile-banner .avatar {
+  background: var(--banner-bg);
+  border-color: var(--banner-bg);
+}
+body .profile-banner .avatar:hover {
+  box-shadow: inset 0 0 120px #000000bf;
+}
+body .profile-banner .avatar .hint {
+  color: #fff;
+}
+body .profile-banner .avatar .img-icon {
+  background: var(--primary-col);
+  box-shadow: 0 2px 4px 0 #00000033;
+}
+body .profile-banner .activity {
+  color: var(--primary-col);
 }
 
 ::-webkit-scrollbar {
@@ -477,7 +557,7 @@ nav#settings-list .info span {
   line-height: 16px;
 }
 
-main#settings-content {
+main {
   min-width: 460px;
   max-width: 740px;
   min-height: 100%;
@@ -489,44 +569,47 @@ main#settings-content {
   font-weight: 400;
   line-height: 20px;
 }
-main#settings-content #change-pass-btn {
+main #change-pass-btn {
   margin-bottom: 28px;
 }
-main#settings-content hr.divider {
+main hr.divider {
   margin: 40px 0 0 0;
 }
-main#settings-content section {
+main section {
   margin: 40px 0 0 0;
 }
-main#settings-content section:first-of-type {
+main section:first-of-type {
   margin: 0;
 }
-main#settings-content div.horizontal {
+main div.horizontal {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: stretch;
   justify-content: flex-start;
 }
-main#settings-content div.horizontal .wrapper {
+main div.horizontal .wrapper {
   margin: auto 0 auto 10px;
 }
-main#settings-content div.horizontal button:not(:last-of-type) {
+main div.horizontal button:not(:last-of-type) {
   margin-right: 0px;
 }
-main#settings-content div.horizontal button:not(:first-child) {
+main div.horizontal button:not(:first-child) {
   margin-left: 4px;
 }
-main#settings-content div.columns {
+main div.columns {
   position: relative;
   display: flex;
 }
-main#settings-content div.columns > section:not(:first-child) {
+main div.columns > .column:not(:first-child) {
   flex: 0 0 auto;
   padding: 0 0 24px 0;
   margin: 0 0 24px 20px;
 }
-main#settings-content h1.title {
+main div.columns > .column:first-child {
+  width: 340px;
+}
+main h1.title {
   margin: 0 0 20px 0;
   font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -534,7 +617,7 @@ main#settings-content h1.title {
   line-height: 24px;
   cursor: default;
 }
-main#settings-content h5 {
+main h5 {
   margin: 0 0 8px 0;
   font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -543,7 +626,7 @@ main#settings-content h5 {
   text-transform: uppercase;
   cursor: default;
 }
-main#settings-content p {
+main p {
   margin: 0 0 16px 0;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -551,7 +634,7 @@ main#settings-content p {
   line-height: 20px;
   cursor: default;
 }
-main#settings-content button {
+main button {
   width: auto;
   min-width: 60px;
   height: 32px;
@@ -569,15 +652,28 @@ main#settings-content button {
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-main#settings-content button:not(:last-of-type) {
+main button:not(:last-of-type) {
   margin-right: 16px;
 }
-main#settings-content .account-info {
+main .name {
+  margin: 0 0 6px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+main .account-info {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
 }
-main#settings-content .account-info .banner {
+main .account-info .banner {
   width: 100%;
   height: 100px;
   position: relative;
@@ -587,17 +683,22 @@ main#settings-content .account-info .banner {
   background-repeat: no-repeat;
   transistion: background-color 0.1s;
 }
-main#settings-content .account-info .user-info {
+main .account-info .user-info {
   width: 100%;
   height: 72px;
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 0 120px;
 }
-main#settings-content .account-info .user-info .info .wrapper {
+main .account-info .user-info .info .wrapper {
   display: flex;
 }
-main#settings-content .account-info .user-info button.options {
+main .account-info .user-info .badges {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -2px 0 -2px;
+}
+main .account-info .user-info button.options {
   width: 24px;
   min-width: 0;
   height: 24px;
@@ -605,7 +706,7 @@ main#settings-content .account-info .user-info button.options {
   padding: 0;
   margin: 0 0 0 8px;
 }
-main#settings-content .account-info .user-info img.avatar, main#settings-content .account-info .user-info svg.avatar {
+main .account-info .user-info img.avatar, main .account-info .user-info svg.avatar {
   width: 80px;
   height: 80px;
   aspect-ratio: 1;
@@ -621,39 +722,21 @@ main#settings-content .account-info .user-info img.avatar, main#settings-content
   -webkit-mask-image: url(#user-status-mask);
   -webkit-mask-type: luminance;
 }
-main#settings-content .account-info .user-info .name {
-  margin: 0 0 6px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-main#settings-content .account-info .user-info .badges {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -2px 0 -2px;
-}
-main#settings-content .account-info .fields {
+main .account-info .fields {
   padding: 16px;
   margin: 8px 16px 16px;
   border-radius: 8px;
 }
-main#settings-content .account-info .fields .field {
+main .account-info .fields .field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 24px 0 0 0;
 }
-main#settings-content .account-info .fields .field:first-child {
+main .account-info .fields .field:first-child {
   margin: 0;
 }
-main#settings-content .account-info .fields .field .content {
+main .account-info .fields .field .content {
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -662,21 +745,21 @@ main#settings-content .account-info .fields .field .content {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-main#settings-content .account-info .fields .field .content .username, main#settings-content .account-info .fields .field .content .tag {
+main .account-info .fields .field .content .username, main .account-info .fields .field .content .tag {
   line-height: inherit;
 }
-main#settings-content .account-info .fields .field .data {
+main .account-info .fields .field .data {
   flex: 1 1 auto;
   margin: 0 16px 0 0;
   overflow: hidden;
 }
-main#settings-content .account-info .fields .field h5 {
+main .account-info .fields .field h5 {
   margin: 0 0 4px 0;
 }
-main#settings-content .account-info .fields .field button.edit {
+main .account-info .fields .field button.edit {
   margin: auto 0 auto;
 }
-main#settings-content .account-info .fields .field button.reveal {
+main .account-info .fields .field button.reveal {
   width: auto;
   min-width: 0;
   height: auto;
@@ -691,36 +774,41 @@ main#settings-content .account-info .fields .field button.reveal {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-main#settings-content .account-info .fields .field button.reveal:hover {
+main .account-info .fields .field button.reveal:hover {
   text-decoration: underline;
 }
-main#settings-content .notice {
+main .notice {
   display: flex;
   align-items: center;
   padding: 8px;
   margin: 0 0 16px 0;
   border-radius: 4px;
 }
-main#settings-content .notice > .content {
+main .notice > .content {
   flex-grow: 1;
   display: flex;
   align-items: center;
 }
-main#settings-content .notice > .content, main#settings-content .notice span, main#settings-content .notice p {
+main .notice > .content, main .notice span, main .notice p {
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
 }
-main#settings-content .notice strong {
+main .notice strong {
   font-weight: 600;
 }
-main#settings-content .notice span, main#settings-content .notice p {
+main .notice span, main .notice p {
   flex: 1;
   margin: 0 16px 0 0;
 }
-main#settings-content .notice .icon {
+main .notice .icon {
   margin: 0 8px 0 0;
+}
+main section.customization {
+  padding: 0 0 24px 0;
+  margin: 0 0 24px 0;
+  border-bottom: 1px solid;
 }
 
 .profile-banner {
@@ -729,6 +817,143 @@ main#settings-content .notice .icon {
   min-height: 280px;
   position: relative;
   border-radius: 8px;
+  overflow: hidden;
+}
+.profile-banner h5 {
+  font-weight: 700;
+}
+.profile-banner .info {
+  padding: 0 16px 16px;
+}
+.profile-banner hr.divider {
+  margin: 0 0 12px 0;
+}
+.profile-banner .avatar {
+  width: 80px;
+  height: 80px;
+  aspect-ratio: 1;
+  z-index: 1;
+  position: absolute;
+  top: 16px;
+  bottom: auto;
+  left: 16px;
+  right: auto;
+  box-sizing: content-box;
+  border: 6px solid;
+  border-radius: 50%;
+  font-size: 12px;
+  text-align: center;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+.profile-banner .avatar:hover .hint {
+  visibility: visible;
+}
+.profile-banner .avatar .hint {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  text-transform: uppercase;
+  overflow-wrap: break-all;
+  white-space: pre;
+  pointer-events: none;
+}
+.profile-banner .avatar .img-icon {
+  width: 28px;
+  height: 28px;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.profile-banner .about-me .content {
+  line-height: 18px;
+}
+.profile-banner .activity .content {
+  display: flex;
+  align-items: center;
+}
+.profile-banner .activity .content div.icon {
+  width: 64px;
+  height: 64px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px 0 0;
+  border-radius: 8px;
+}
+.profile-banner .activity .content div.icon img {
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+}
+.profile-banner .activity .content .wrapper {
+  flex: 1 1 auto;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.profile-banner .activity .content .wrapper .title {
+  font-weight: 600;
+}
+.profile-banner .activity .content .wrapper .time {
+  font-family: Consolas;
+}
+.profile-banner .activity .content .wrapper * {
+  margin: 0;
+}
+.profile-banner .banner {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px 8px 0 0;
+}
+.profile-banner .header {
+  position: relative;
+  display: block;
+  padding: 64px 16px 16px;
+  overflow: hiddden;
+}
+.profile-banner .header .name {
+  display: block;
+  margin: 0;
+  font-weight: 500;
+  word-break: break-word;
+  white-space: normal;
+  user-select: text;
+}
+.profile-banner .header .badges {
+  max-width: 180px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 16px;
+  bottom: auto;
+  left: auto;
+  right: 16px;
+  margin: 0 -2px -2px 0;
 }
 
 /*# sourceMappingURL=settings.css.map */

@@ -28,7 +28,7 @@ $scrollbar-bg:  var(--scrollbar-bg)  // #2e3338
 $logo-col:        var(--logo-col)        // #72767d // maybe muted channel color
 $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
-$banner-col:      var(--banner-col)      // #18191c
+$banner-bg:      var(--banner-bg)      // #18191c
 
 
 body
@@ -106,16 +106,15 @@ body
             color: $active-col
         h5
             color: $main-col
+        .name
+            color: $active-col
+            .tag
+                color: $main-col
         .account-info
             background: $main-bg
-            .user-info
-                .avatar
-                    background: $main-bg
-                    border-color: $main-bg !important
-                .name
-                    color: $active-col
-                    .tag
-                        color: $main-col
+            .avatar
+                background: $main-bg
+                border-color: $main-bg
             .fields
                 background: $secondary-bg
                 .content
@@ -125,6 +124,8 @@ body
         .notice
             background: $main-bg
             color: $primary-col
+        section.customization
+            border-color: $divider-col
         button
             --col: #5865f2
             &:hover
@@ -154,9 +155,22 @@ body
                 background: #0000
 
     .profile-banner
-        background: #18191c
+        background: $banner-bg
         box-shadow: 0 8px 16px #0000003d
+        .avatar
+            background: $banner-bg
+            border-color: $banner-bg
+            &:hover
+                box-shadow: inset 0 0 120px #000000bf
+            .hint
+                color: #fff
+            .img-icon
+                background: $primary-col
+                box-shadow: 0 2px 4px 0 #00000033
+        .activity
+            color: $primary-col
 
+                
 ::-webkit-scrollbar
     width: 16px
     height: 16px
@@ -384,7 +398,7 @@ nav#settings-list
             +font(12px, Whitney, 400, 16px)
 
 
-main#settings-content
+main // #settings-content
     min-width: 460px
     max-width: 740px
     min-height: 100%
@@ -421,10 +435,12 @@ main#settings-content
     div.columns
         position: relative
         display: flex
-        > section:not(:first-child)
+        > .column:not(:first-child)
             flex: 0 0 auto
             padding: 0 0 24px 0
             margin: 0 0 24px 20px
+        > .column:first-child
+            width: 340px
 
     h1.title
         // flex: 1
@@ -462,6 +478,14 @@ main#settings-content
         &:not(:last-of-type)
             margin-right: 16px
 
+    .name
+        margin: 0 0 6px 0
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        +font(20px, Ginto, 600, 24px)
+        +ellipsis
+
     .account-info
         position: relative
         border-radius: 8px
@@ -484,6 +508,10 @@ main#settings-content
             padding: 16px 16px 0 120px
             .info .wrapper
                 display: flex
+            .badges
+                display: flex
+                flex-wrap: wrap
+                margin: 0 -2px 0 -2px
 
             button.options
                 width: 24px
@@ -505,18 +533,6 @@ main#settings-content
                 mask-type: luminance
                 -webkit-mask-image: url(#user-status-mask) // ! TODO: doesnt work properly
                 -webkit-mask-type: luminance
-            
-            .name
-                margin: 0 0 6px 0
-                display: flex
-                justify-content: flex-start
-                align-items: center
-                +font(20px, Ginto, 600, 24px)
-                +ellipsis
-            .badges
-                display: flex
-                flex-wrap: wrap
-                margin: 0 -2px 0 -2px
 
         .fields
             padding: 16px
@@ -579,6 +595,11 @@ main#settings-content
         .icon
             margin: 0 8px 0 0
 
+    section.customization
+        padding: 0 0 24px 0
+        margin: 0 0 24px 0
+        border-bottom: 1px solid
+
 
 .profile-banner
     width: 300px
@@ -586,5 +607,112 @@ main#settings-content
     min-height: 280px
     position: relative
     border-radius: 8px
-    // TODO: continue
+    overflow: hidden
+    h5
+        font-weight: 700
+
+    .info
+        padding: 0 16px 16px
+
     // ? possibly use border instead of divider in info
+    hr.divider
+        margin: 0 0 12px 0
+
+    .avatar
+        width: 80px
+        height: 80px
+        aspect-ratio: 1
+        z-index: 1
+        +abs-pos(16px, auto, auto, 16px) // TODO: make it right
+        box-sizing: content-box
+        border: 6px solid
+        border-radius: 50%
+        font-size: 12px
+        text-align: center
+
+        background-size: cover
+        background-position: 50%
+        background-repeat: no-repeat
+        
+        &:hover .hint
+            visibility: visible
+        .hint
+            visibility: hidden
+            +abs-pos(0, 0, 0, 0)
+            display: flex
+            align-items: center
+            justify-content: center
+            margin: 0
+            +font(10px, Ginto, 700, 12px)
+            text-transform: uppercase
+            overflow-wrap: break-all // TODO: Does not work (added <wbr> for temporal fix)
+            white-space: pre
+            pointer-events: none
+
+        .img-icon
+            width: 28px
+            height: 28px
+            aspect-ratio: 1
+            +abs-pos(0, 0, auto, auto)
+            display: flex
+            justify-content: center
+            align-items: center
+            border-radius: 50%
+            pointer-events: none
+    
+    .about-me .content
+        line-height: 18px
+    .activity .content
+        display: flex
+        align-items: center
+        div.icon
+            width: 64px
+            height: 64px
+            aspect-ratio: 1
+            flex: 0 0 auto
+            display: flex
+            align-items: center
+            justify-content: center
+            margin: 0 16px 0 0
+            border-radius: 8px
+            img
+                width: 48px
+                height: 48px
+                aspect-ratio: 1
+        .wrapper
+            flex: 1 1 auto
+            +font(14px, Whitney, 400, 18px)
+            .title
+                font-weight: 600
+            .time
+                font-family: Consolas
+            *
+                margin: 0
+
+    .banner
+        width: 100%
+        height: 60px
+        border-radius: 8px 8px 0 0
+
+    .header
+        position: relative
+        display: block
+        padding: 64px 16px 16px
+        overflow: hiddden
+        .name
+            display: block
+            margin: 0
+            font-weight: 500
+            word-break: break-word
+            white-space: normal
+            user-select: text
+        .badges
+            max-width: 180px
+            display: flex
+            justify-content: flex-end
+            flex-wrap: wrap
+            +abs-pos(16px, 16px, auto, auto)
+            margin: 0 -2px -2px 0
+    
+    
+    // TODO: continue
