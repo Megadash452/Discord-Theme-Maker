@@ -145,6 +145,8 @@ body
 
             &.options, &.reveal
                 background: #0000
+            &.paywall
+                --col: #3ba55d
 
             color: $active-col
             &.filled
@@ -154,7 +156,14 @@ body
                 border: 1px solid var(--col)
                 background: #0000
 
-    .profile-banner
+        .color-picker
+            button
+                color: $active-col
+                border-color: $divider-col
+            .name
+                color: $main-col
+
+    .profile-banner // TODO: assign colors to variables
         background: $banner-bg
         box-shadow: 0 8px 16px #0000003d
         .avatar
@@ -454,6 +463,9 @@ main // #settings-content
         +font(12px, Ginto, 600, 16px)
         text-transform: uppercase
         cursor: default
+        svg
+            margin: 0 4px 0 2px
+            vertical-align: sub
 
     p
         margin: 0 0 16px 0
@@ -477,6 +489,15 @@ main // #settings-content
         transition: background-color 0.17s ease, color 0.17s ease
         &:not(:last-of-type)
             margin-right: 16px
+        &.paywall
+            min-width: 96px
+            height: 38px
+            display: flex
+            align-items: center
+            justify-content: center
+            overflow: hidden
+            svg
+                margin: 0 4px 0 0
 
     .name
         margin: 0 0 6px 0
@@ -599,6 +620,33 @@ main // #settings-content
         padding: 0 0 24px 0
         margin: 0 0 24px 0
         border-bottom: 1px solid
+.color-pickers
+    display: flex
+    margin: 16px 0 0 0
+    .color-picker
+        margin: 0 16px 0 0
+.color-picker
+    position: relative
+    text-align: center
+    .name
+        display: block
+        margin: 4px 0 0 0
+        +font(12px, Whitney, 400, 16px)
+
+    button
+        width: 69px
+        height: 50px
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 0
+        margin: 0
+        border-radius: 4px
+        &.custom
+            position: relative
+            border: 1px solid
+        .dropper
+            +abs-pos(4px, 4px, auto, auto)
 
 
 .profile-banner
@@ -713,6 +761,4 @@ main // #settings-content
             flex-wrap: wrap
             +abs-pos(16px, 16px, auto, auto)
             margin: 0 -2px -2px 0
-    
-    
-    // TODO: continue
+

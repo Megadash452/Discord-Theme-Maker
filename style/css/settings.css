@@ -245,6 +245,9 @@ body main#settings-content button.reveal {
 body main#settings-content button.options, body main#settings-content button.reveal {
   background: #0000;
 }
+body main#settings-content button.paywall {
+  --col: #3ba55d;
+}
 body main#settings-content button.filled {
   background: var(--col);
 }
@@ -252,6 +255,13 @@ body main#settings-content button.outline, body main#settings-content button.out
   color: var(--col);
   border: 1px solid var(--col);
   background: #0000;
+}
+body main#settings-content .color-picker button {
+  color: var(--active-col);
+  border-color: var(--divider-col);
+}
+body main#settings-content .color-picker .name {
+  color: var(--main-col);
 }
 body .profile-banner {
   background: var(--banner-bg);
@@ -626,6 +636,10 @@ main h5 {
   text-transform: uppercase;
   cursor: default;
 }
+main h5 svg {
+  margin: 0 4px 0 2px;
+  vertical-align: sub;
+}
 main p {
   margin: 0 0 16px 0;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -654,6 +668,17 @@ main button {
 }
 main button:not(:last-of-type) {
   margin-right: 16px;
+}
+main button.paywall {
+  min-width: 96px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+main button.paywall svg {
+  margin: 0 4px 0 0;
 }
 main .name {
   margin: 0 0 6px 0;
@@ -809,6 +834,48 @@ main section.customization {
   padding: 0 0 24px 0;
   margin: 0 0 24px 0;
   border-bottom: 1px solid;
+}
+
+.color-pickers {
+  display: flex;
+  margin: 16px 0 0 0;
+}
+.color-pickers .color-picker {
+  margin: 0 16px 0 0;
+}
+
+.color-picker {
+  position: relative;
+  text-align: center;
+}
+.color-picker .name {
+  display: block;
+  margin: 4px 0 0 0;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+.color-picker button {
+  width: 69px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+}
+.color-picker button.custom {
+  position: relative;
+  border: 1px solid;
+}
+.color-picker button .dropper {
+  position: absolute;
+  top: 4px;
+  bottom: auto;
+  left: auto;
+  right: 4px;
 }
 
 .profile-banner {

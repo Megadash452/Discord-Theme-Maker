@@ -35,7 +35,7 @@ document.querySelectorAll<HTMLTemplateElement>("template[setting-name]")?.forEac
     listItem.addEventListener('click', e => {
         e.preventDefault();
         showSetting(name);
-        pushParams({content: template.getAttribute('href')!});
+        setParams({content: template.getAttribute('href')!});
     });
 
     // push to sections Object
@@ -134,7 +134,7 @@ try {
     button.classList.add('active');
     showSetting(button.innerText);
 } catch {
-    console.error("Could not find a default setting. Settings content is blank");
+    console.error("Setting <"+ getUrlParams().content +"> does not exist, defaulting to \"my-account\"");
     settingsList.querySelector(`.item[href="my-account"]`)!.classList.add('active');
     pushParams({content: "my-account"});
     showSetting("My Account");

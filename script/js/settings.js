@@ -29,7 +29,7 @@ var sections = {};
     listItem.addEventListener('click', e => {
         e.preventDefault();
         showSetting(name);
-        pushParams({ content: template.getAttribute('href') });
+        setParams({ content: template.getAttribute('href') });
     });
     // push to sections Object
     const section = template.getAttribute('section');
@@ -120,7 +120,7 @@ try {
     showSetting(button.innerText);
 }
 catch (_c) {
-    console.error("Could not find a default setting. Settings content is blank");
+    console.error("Setting <" + getUrlParams().content + "> does not exist, defaulting to \"my-account\"");
     settingsList.querySelector(`.item[href="my-account"]`).classList.add('active');
     pushParams({ content: "my-account" });
     showSetting("My Account");
