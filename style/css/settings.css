@@ -5,63 +5,127 @@ body {
 }
 
 .no-margin {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .no-margin-top {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .no-margin-right {
-  margin-right: 0;
+  margin-right: 0 !important;
 }
 
 .no-margin-bottom {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .no-margin-left {
-  margin-left: 0;
+  margin-left: 0 !important;
+}
+
+.margin-bottom-xl {
+  margin-bottom: 40px !important;
+}
+
+.margin-bottom-large, .margin-bottom-big {
+  margin-bottom: 20px !important;
+}
+
+.margin-bottom-med {
+  margin-bottom: 16px !important;
+}
+
+.margin-bottom-small {
+  margin-bottom: 8px !important;
+}
+
+.margin-top-xl {
+  margin-top: 40px !important;
+}
+
+.margin-top-large, .margin-top-big {
+  margin-top: 20px !important;
+}
+
+.margin-top-med {
+  margin-top: 16px !important;
+}
+
+.margin-top-small {
+  margin-top: 8px !important;
 }
 
 .no-padding {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .no-padding-top {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 .no-padding-right {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 .no-padding-bottom {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 
 .no-padding-left {
-  padding-left: 0;
+  padding-left: 0 !important;
+}
+
+.padding-bottom-xl {
+  padding-bottom: 40px !important;
+}
+
+.padding-bottom-large, .padding-bottom-big {
+  padding-bottom: 20px !important;
+}
+
+.padding-bottom-med {
+  padding-bottom: 16px !important;
+}
+
+.padding-bottom-small {
+  padding-bottom: 8px !important;
+}
+
+.padding-top-xl {
+  padding-top: 40px !important;
+}
+
+.padding-top-large, .padding-top-big {
+  padding-top: 20px !important;
+}
+
+.padding-top-med {
+  padding-top: 16px !important;
+}
+
+.padding-top-small {
+  padding-top: 8px !important;
 }
 
 .no-border {
-  border: none;
+  border: none !important;
 }
 
 .no-border-top {
-  border-top: none;
+  border-top: none !important;
 }
 
 .no-border-right {
-  border-right: none;
+  border-right: none !important;
 }
 
 .no-border-bottom {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .no-border-left {
-  border-left: none;
+  border-left: none !important;
 }
 
 body.light {
@@ -217,6 +281,20 @@ body main#settings-content .notice {
 body main#settings-content section.customization {
   border-color: var(--divider-col);
 }
+body main#settings-content .textarea-wrapper textarea {
+  color: var(--primary-col);
+  background: #0000001a;
+  border-color: #0000004d;
+}
+body main#settings-content .textarea-wrapper textarea:hover {
+  border-color: #040405;
+}
+body main#settings-content .textarea-wrapper textarea:focus {
+  border-color: var(--link-col);
+}
+body main#settings-content .textarea-wrapper span {
+  color: var(--logo-col);
+}
 body main#settings-content button {
   --col: #5865f2;
   color: var(--active-col);
@@ -283,6 +361,61 @@ body .profile-banner .avatar .img-icon {
 }
 body .profile-banner .activity {
   color: var(--primary-col);
+}
+body .radio-group.filled > .radio, body .radio-group.filled > li, body .radio-group.filled > .item, body .radio-group.filled > .radio, body .radio-group.filled > li, body .radio-group.filled > .item {
+  color: var(--main-col);
+  background: var(--secondary-bg);
+}
+body .radio-group.filled > .radio:hover, body .radio-group.filled > li:hover, body .radio-group.filled > .item:hover, body .radio-group.filled > .radio:hover, body .radio-group.filled > li:hover, body .radio-group.filled > .item:hover {
+  color: var(--primary-col);
+  background: var(--hover-bg);
+}
+body .radio-group.filled > .radio:active, body .radio-group.filled > li:active, body .radio-group.filled > .item:active, body .radio-group.filled > .radio:active, body .radio-group.filled > li:active, body .radio-group.filled > .item:active {
+  color: var(--active-col);
+  background: var(--active-bg);
+}
+body .radio-group.filled > .radio[aria-checked=true], body .radio-group.filled > .radio.active, body .radio-group.filled > li[aria-checked=true], body .radio-group.filled > li.active, body .radio-group.filled > .item[aria-checked=true], body .radio-group.filled > .item.active, body .radio-group.filled > .radio[aria-checked=true], body .radio-group.filled > .radio.active, body .radio-group.filled > li[aria-checked=true], body .radio-group.filled > li.active, body .radio-group.filled > .item[aria-checked=true], body .radio-group.filled > .item.active {
+  color: var(--active-col);
+  background: var(--main-bg);
+}
+body .radio.filled {
+  color: var(--main-col);
+  background: var(--secondary-bg);
+}
+body .radio:hover {
+  color: var(--primary-col);
+  background: var(--hover-bg);
+}
+body .radio:active {
+  color: var(--active-col);
+  background: var(--active-bg);
+}
+body .radio[aria-checked=true], body .radio.active {
+  color: var(--active-col);
+  background: var(--main-bg);
+}
+body .radio[aria-checked=true] .rad-circle::before, body .radio[aria-checked=true] .circle::before, body .radio[aria-checked=true] .radio-circle::before, body .radio.active .rad-circle::before, body .radio.active .circle::before, body .radio.active .radio-circle::before {
+  background: #949cf7;
+}
+body .switch-wrapper label, body .toggle-wrapper label, body .toggler-wrapper label {
+  color: var(--active-col);
+}
+body input.switch, body input.toggle, body input.toggler,
+body .switch, body .toggle, body .toggler {
+  color: var(--logo-col);
+  background: var(--logo-col);
+}
+body input.switch::after, body input.switch .circle, body input.toggle::after, body input.toggle .circle, body input.toggler::after, body input.toggler .circle,
+body .switch::after,
+body .switch .circle, body .toggle::after, body .toggle .circle, body .toggler::after, body .toggler .circle {
+  background: #fff;
+}
+body input.switch:checked, body input.switch.active, body input.switch.checked, body input.toggle:checked, body input.toggle.active, body input.toggle.checked, body input.toggler:checked, body input.toggler.active, body input.toggler.checked,
+body .switch:checked,
+body .switch.active,
+body .switch.checked, body .toggle:checked, body .toggle.active, body .toggle.checked, body .toggler:checked, body .toggler.active, body .toggler.checked {
+  color: #3ba55d;
+  background: #3ba55d;
 }
 
 ::-webkit-scrollbar {
@@ -542,6 +675,12 @@ nav#settings-list button.item {
   text-overflow: ellipsis;
   text-align: left;
 }
+nav#settings-list button.item.has-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 nav#settings-list .social {
   padding: 8px 10px;
 }
@@ -585,11 +724,8 @@ main #change-pass-btn {
 main hr.divider {
   margin: 40px 0 0 0;
 }
-main section {
-  margin: 40px 0 0 0;
-}
 main section:first-of-type {
-  margin: 0;
+  margin-top: 0;
 }
 main div.horizontal {
   display: flex;
@@ -641,7 +777,6 @@ main h5 svg {
   vertical-align: sub;
 }
 main p {
-  margin: 0 0 16px 0;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -679,6 +814,36 @@ main button.paywall {
 }
 main button.paywall svg {
   margin: 0 4px 0 0;
+}
+main textarea {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: inherit;
+  line-height: inherit;
+  outline: 0;
+  resize: none;
+  transition: border-color 0.2s ease-in-out;
+}
+main .textarea-wrapper {
+  position: relative;
+}
+main .textarea-wrapper span.maxlength {
+  position: absolute;
+  top: auto;
+  bottom: 12px;
+  left: auto;
+  right: 14px;
+  font-family: Consolas, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  pointer-events: none;
 }
 main .name {
   margin: 0 0 6px 0;
@@ -834,6 +999,9 @@ main section.customization {
   padding: 0 0 24px 0;
   margin: 0 0 24px 0;
   border-bottom: 1px solid;
+}
+main section.customization:last-child {
+  border-bottom: none;
 }
 
 .color-pickers {
@@ -1021,6 +1189,152 @@ main section.customization {
   left: auto;
   right: 16px;
   margin: 0 -2px -2px 0;
+}
+
+ul.radio-group {
+  padding-left: 0;
+  margin: 0;
+}
+
+.radio, .radio-group > li, .radio-group > .item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-left: 3px solid var(--accent-col, #0000);
+  border-radius: 4px;
+  list-style: none;
+  cursor: pointer;
+}
+.radio .circle, .radio .rad-circle, .radio .radio-circle, .radio-group > li .circle, .radio-group > li .rad-circle, .radio-group > li .radio-circle, .radio-group > .item .circle, .radio-group > .item .rad-circle, .radio-group > .item .radio-circle {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  position: relative;
+  border: 2px solid;
+  border-radius: 50%;
+}
+.radio .circle::before, .radio .rad-circle::before, .radio .radio-circle::before, .radio-group > li .circle::before, .radio-group > li .rad-circle::before, .radio-group > li .radio-circle::before, .radio-group > .item .circle::before, .radio-group > .item .rad-circle::before, .radio-group > .item .radio-circle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  border-radius: 50%;
+}
+.radio .content, .radio-group > li .content, .radio-group > .item .content {
+  width: 100%;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.radio .content > *, .radio-group > li .content > *, .radio-group > .item .content > * {
+  margin-bottom: 4px;
+  cursor: inherit;
+}
+.radio .content > *:last-child, .radio-group > li .content > *:last-child, .radio-group > .item .content > *:last-child {
+  margin-bottom: 0;
+}
+.radio .content .title, .radio-group > li .content .title, .radio-group > .item .content .title {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.radio .content p, .radio-group > li .content p, .radio-group > .item .content p {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.switch-wrapper, .toggle-wrapper, .toggler-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.switch-wrapper label, .toggle-wrapper label, .toggler-wrapper label {
+  flex: 1;
+  display: block;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  word-wrap: break-word;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+input.switch, input.toggle, input.toggler,
+.switch, .toggle, .toggler {
+  width: 40px;
+  height: 24px;
+  flex: 0 0 auto;
+  position: relative;
+  margin: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  appearance: none;
+  transition: background 0.25s;
+}
+input.switch svg, input.switch ~ .switch-icon, input.switch ~ .toggle-icon, input.switch ~ .toggler-icon, input.toggle svg, input.toggle ~ .switch-icon, input.toggle ~ .toggle-icon, input.toggle ~ .toggler-icon, input.toggler svg, input.toggler ~ .switch-icon, input.toggler ~ .toggle-icon, input.toggler ~ .toggler-icon,
+.switch svg,
+.switch ~ .switch-icon,
+.switch ~ .toggle-icon,
+.switch ~ .toggler-icon, .toggle svg, .toggle ~ .switch-icon, .toggle ~ .toggle-icon, .toggle ~ .toggler-icon, .toggler svg, .toggler ~ .switch-icon, .toggler ~ .toggle-icon, .toggler ~ .toggler-icon {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: auto;
+  z-index: 2;
+  transition: color 0.25s;
+}
+input.switch svg path, input.switch ~ .switch-icon path, input.switch ~ .toggle-icon path, input.switch ~ .toggler-icon path, input.toggle svg path, input.toggle ~ .switch-icon path, input.toggle ~ .toggle-icon path, input.toggle ~ .toggler-icon path, input.toggler svg path, input.toggler ~ .switch-icon path, input.toggler ~ .toggle-icon path, input.toggler ~ .toggler-icon path,
+.switch svg path,
+.switch ~ .switch-icon path,
+.switch ~ .toggle-icon path,
+.switch ~ .toggler-icon path, .toggle svg path, .toggle ~ .switch-icon path, .toggle ~ .toggle-icon path, .toggle ~ .toggler-icon path, .toggler svg path, .toggler ~ .switch-icon path, .toggler ~ .toggle-icon path, .toggler ~ .toggler-icon path {
+  transition: d 0.25s;
+  d: path("M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z");
+}
+input.switch::after, input.switch .circle, input.toggle::after, input.toggle .circle, input.toggler::after, input.toggler .circle,
+.switch::after,
+.switch .circle, .toggle::after, .toggle .circle, .toggler::after, .toggler .circle {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  right: auto;
+  display: block;
+  aspect-ratio: 1;
+  border-radius: inherit;
+  transition: left 0.25s, right 0.25s;
+}
+input.switch:checked svg, input.switch.active svg, input.switch.checked svg, input.toggle:checked svg, input.toggle.active svg, input.toggle.checked svg, input.toggler:checked svg, input.toggler.active svg, input.toggler.checked svg,
+.switch:checked svg,
+.switch.active svg,
+.switch.checked svg, .toggle:checked svg, .toggle.active svg, .toggle.checked svg, .toggler:checked svg, .toggler.active svg, .toggler.checked svg {
+  left: auto;
+  right: 2px;
+}
+input.switch:checked svg path, input.switch.active svg path, input.switch.checked svg path, input.toggle:checked svg path, input.toggle.active svg path, input.toggle.checked svg path, input.toggler:checked svg path, input.toggler.active svg path, input.toggler.checked svg path,
+.switch:checked svg path,
+.switch.active svg path,
+.switch.checked svg path, .toggle:checked svg path, .toggle.active svg path, .toggle.checked svg path, .toggler:checked svg path, .toggler.active svg path, .toggler.checked svg path {
+  d: path("M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z");
+}
+input.switch:checked::after, input.switch:checked .circle, input.switch.active::after, input.switch.active .circle, input.switch.checked::after, input.switch.checked .circle, input.toggle:checked::after, input.toggle:checked .circle, input.toggle.active::after, input.toggle.active .circle, input.toggle.checked::after, input.toggle.checked .circle, input.toggler:checked::after, input.toggler:checked .circle, input.toggler.active::after, input.toggler.active .circle, input.toggler.checked::after, input.toggler.checked .circle,
+.switch:checked::after,
+.switch:checked .circle,
+.switch.active::after,
+.switch.active .circle,
+.switch.checked::after,
+.switch.checked .circle, .toggle:checked::after, .toggle:checked .circle, .toggle.active::after, .toggle.active .circle, .toggle.checked::after, .toggle.checked .circle, .toggler:checked::after, .toggler:checked .circle, .toggler.active::after, .toggler.active .circle, .toggler.checked::after, .toggler.checked .circle {
+  left: auto;
+  right: 3px;
 }
 
 /*# sourceMappingURL=settings.css.map */

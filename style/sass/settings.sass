@@ -126,6 +126,17 @@ body
             color: $primary-col
         section.customization
             border-color: $divider-col
+        .textarea-wrapper
+            textarea
+                color: $primary-col
+                background: #0000001a // TODO:
+                border-color: #0000004d
+                &:hover
+                    border-color: #040405
+                &:focus
+                    border-color: $link-col
+            span
+                color: $logo-col
         button
             --col: #5865f2
             &:hover
@@ -178,7 +189,48 @@ body
                 box-shadow: 0 2px 4px 0 #00000033
         .activity
             color: $primary-col
-
+    .radio-group.filled, .radio-group.filled
+        > .radio, > li, > .item
+            color: $main-col
+            background: $secondary-bg
+            &:hover
+                color: $primary-col
+                background: $hover-bg
+            &:active
+                color: $active-col
+                background: $active-bg
+            &[aria-checked="true"], &.active
+                color: $active-col
+                background: $main-bg
+    .radio // * Compile as the same with above
+        &.filled
+            color: $main-col
+            background: $secondary-bg
+        &:hover
+            color: $primary-col
+            background: $hover-bg
+        &:active
+            color: $active-col
+            background: $active-bg
+        &[aria-checked="true"], &.active
+            color: $active-col
+            background: $main-bg
+            .rad-circle, .circle, .radio-circle
+                &::before
+                    background: #949cf7
+            
+    .switch-wrapper, .toggle-wrapper, .toggler-wrapper
+        label
+            color: $active-col
+    input.switch, input.toggle, input.toggler,
+         .switch,      .toggle,      .toggler
+        color: $logo-col
+        background: $logo-col
+        &::after, .circle
+            background: #fff
+        &:checked, &.active, &.checked
+            color: #3ba55d
+            background: #3ba55d
                 
 ::-webkit-scrollbar
     width: 16px
@@ -388,7 +440,12 @@ nav#settings-list
         +font(16px, Whitney, 500, 20px)
         +ellipsis
         text-align: left
-
+        &.has-icon
+            position: relative
+            display: flex
+            align-items: center
+            justify-content: space-between
+            
     .social
         padding: 8px 10px
         a
@@ -425,9 +482,8 @@ main // #settings-content
     section
         // display: flex
         // flex-direction: column
-        margin: $divider-margin 0 0 0
         &:first-of-type
-            margin: 0
+            margin-top: 0
     div.horizontal
         // flex: 1 1 auto
         display: flex
@@ -468,7 +524,7 @@ main // #settings-content
             vertical-align: sub
 
     p
-        margin: 0 0 16px 0
+        // margin: 0 0 16px 0
         +font(14px, Whitney, 400, 20px)
         cursor: default
 
@@ -498,6 +554,24 @@ main // #settings-content
             overflow: hidden
             svg
                 margin: 0 4px 0 0
+
+    textarea
+        width: 100%
+        height: auto
+        position: relative
+        padding: 10px
+        border: 1px solid
+        border-radius: 3px
+        +font(16px, Whitney)
+        outline: 0
+        resize: none
+        transition: border-color 0.2s ease-in-out
+    .textarea-wrapper
+        position: relative
+        span.maxlength
+            +abs-pos(auto, 14px, 12px, auto)
+            +font(12px, Consolas, 400, 12px)
+            pointer-events: none
 
     .name
         margin: 0 0 6px 0
@@ -620,6 +694,8 @@ main // #settings-content
         padding: 0 0 24px 0
         margin: 0 0 24px 0
         border-bottom: 1px solid
+        &:last-child
+            border-bottom: none
 .color-pickers
     display: flex
     margin: 16px 0 0 0
@@ -762,3 +838,99 @@ main // #settings-content
             +abs-pos(16px, 16px, auto, auto)
             margin: 0 -2px -2px 0
 
+
+ul.radio-group
+    padding-left: 0
+    margin: 0
+.radio, .radio-group > li, .radio-group > .item
+    display: flex
+    gap: 8px
+    // display: grid
+    // grid-template-columns: auto 1fr
+    // grid-gap: 8px
+    align-items: center
+    // padding: 10px
+    border-left: 3px solid var(--accent-col, #0000)
+    border-radius: 4px
+    list-style: none
+    cursor: pointer
+    .circle, .rad-circle, .radio-circle
+        width: 20px
+        height: 20px
+        aspect-ratio: 1
+        position: relative
+        border: 2px solid
+        border-radius: 50%
+        &::before
+            content: ''
+            +abs-pos(3px, 3px, 3px, 3px)
+            border-radius: 50%
+
+    .content
+        width: 100%
+        // display: grid
+        // grid-gap: 4px
+        // align-items: center
+        // margin: 0 8px 0 0 // in discord the margin is there but does not affect
+        +font(14px, Whitney, 400, 18px)
+        > *
+            margin-bottom: 4px
+            cursor: inherit
+            &:last-child
+                margin-bottom: 0
+
+        .title
+            +font(16px, Whitney, 500, 20px)
+        p
+            +font(inherit, Whitney, inherit, inherit)
+
+
+.switch-wrapper, .toggle-wrapper, .toggler-wrapper
+    width: 100%
+    display: flex
+    align-items: flex-start
+    label
+        flex: 1
+        display: block
+        +font(16px, Whitney, 500, 24px)
+        word-wrap: break-word
+        overflow: hidden
+        cursor: pointer
+input.switch, input.toggle, input.toggler,
+     .switch,      .toggle,      .toggler
+    width: 40px
+    height: 24px
+    flex: 0 0 auto
+    position: relative
+    margin: 0
+    border-radius: 14px
+    cursor: pointer
+    appearance: none
+    transition: background 0.25s
+    svg, & ~ .switch-icon, & ~ .toggle-icon, & ~ .toggler-icon
+        +abs-pos(2px, auto, 2px, 2px)
+        z-index: 2
+        transition: color 0.25s
+        path
+            transition: d 0.25s
+            d: path("M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z")
+    
+    &::after, .circle
+        content: ''
+        +abs-pos(3px, auto, 3px, 3px)
+        display: block
+        aspect-ratio: 1
+        border-radius: inherit
+        transition: left 0.25s, right 0.25s
+
+    &:checked, &.active, &.checked
+        svg
+            left: auto
+            right: 2px
+            path
+                d: path("M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z")
+        &::after, .circle
+            left: auto
+            right: 3px
+        
+    // todo: disabled
