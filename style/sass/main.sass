@@ -64,6 +64,16 @@ body.dark
                     color: #dcddde
                 
     #guilds
+        .unreads-indicator span
+            color: #0000
+            background: #4f545c
+            box-shadow: 0 2px 6px #0000003d
+        &.new-above > .unreads-indicator:first-of-type span
+            color: #fff
+            background: #ed4245
+        &.new-below > .unreads-indicator:last-of-type span
+            color: #fff
+            background: #ed4245
         li.folder, .item.folder
             background: #0000
             >svg .wrapper
@@ -86,6 +96,12 @@ body.dark
                 background-color: #5865f2
         .guild-actions
             background-color: #36393f
+        #bd-public-btn
+            color: #dcddde
+            background-color: #36393f
+            &:hover
+                color: #fff
+                background-color: #3e82e5
 
     #notice
         color: #fff
@@ -497,6 +513,7 @@ hr.vertical
     height: 100%
     position: relative
     overflow: hidden
+    // TODO: make flex column
 
     > .scroller
         width: 100%
@@ -531,8 +548,20 @@ hr.vertical
         position: relative
         margin: 0 0 $icon-spacing 0
         list-style-type: none
-        transition: background-color .15s ease-out, border-radius 0.2s ease-out, height 0.2s // border-rad:0.15s // Height doenst work // TODO: get accurate time
+        transition: background-color .15s ease-out, color 0.15s ease-out, border-radius 0.2s ease-out, height 0.2s // border-rad:0.15s // Height doenst work // TODO: get accurate time
         user-select: none
+        &#bd-public-btn
+            height: 24px
+            border-radius: 4px
+            // background-color: var(--background-primary) // TODO
+            // color: var(--text-normal)
+            +font(12px, Whitney, 400, 24px)
+            text-align: center
+            overflow: hidden
+            cursor: pointer
+            &:active
+                top: 0
+
         &.folder
             border-radius: $border-rad-hov $border-rad-hov math.div($icon-size, 2) math.div($icon-size, 2)
             cursor: default
@@ -725,47 +754,39 @@ hr.vertical
         background-color: #ffffff0f
 
 
-    $new-width: 56px
-    $new-height: 24px
-    $new-margin: 8px
-    &::before, &::after
-        +abs-pos(-#{$new-height + $new-margin}, 0, auto, 0)
-        // width: 3.5rem //
-        // height: 1.5rem //
-        max-height: $new-height //
-        padding: 0.281rem 0 0.281rem 0
-        margin: $new-margin
-        border-radius: 50px
+    .unreads-indicator
+        $height: 40px
+        width: 72px
+        height: $height
         z-index: 2
-
-        content: 'NEW'
-        opacity: 0.9
-        background: $ping-color
-        color: #fff //
-        font: 0.75rem Ginto, "Helvetica Neue", Helvetica, sans-serif // ginto is proprietarial
-        text-align: center
-        
-        font-weight: 600
-        cursor: pointer
-        // ! Vertically center using css method instead of padding
-        
-        --scale: 1 // * make user choose wether they want it to grow or to move // 0
-        transition: transform 0.05s, top 0.05s, bottom 0.05s
-        transform: scale(var(--scale, 1))
-        transform-origin: top center
-
-        &:hover
-            opacity: 1
-            background: yellow
-    &::after
-        top: auto
-        bottom: -#{$new-height + $new-margin}
-        transform-origin: bottom center
-    &.new-above::before
-        --scale: 1
+        +abs-pos(0, auto, auto, 0)
+        padding: 8px
+        box-sizing: border-box
+        overflow: hidden
+        &:last-of-type
+            top: auto
+            bottom: 0
+            span
+                top: auto
+                bottom: -#{$height}
+        span
+            width: 100%
+            height: 100%
+            position: relative
+            top: -#{$height}
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 12px
+            opacity: 0.9
+            +font(12px, Ginto, 600, 16px)
+            text-transform: uppercase
+            cursor: pointer
+            &:hover
+                opacity: 1
+    &.new-above > .unreads-indicator:first-of-type span
         top: 0
-    &.new-below::after
-        --scale: 1
+    &.new-below > .unreads-indicator:last-of-type span
         bottom: 0
 
 

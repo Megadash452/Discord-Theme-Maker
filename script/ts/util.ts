@@ -91,8 +91,46 @@ function activeBtnArray(btns: Array<HTMLElement>) {
         });
 }
 function activeBtnRelation(btnsHolder: HTMLElement) {
-    let btns = Array.from(btnsHolder.querySelectorAll("button"));
-    activeBtnArray(btns);
+    activeBtnArray(
+        Array.from(btnsHolder.querySelectorAll("button"))
+    );
+}
+
+
+function activeRadios(...radios: Array<HTMLElement>) {
+    // emulate the funcitonality of <input type="radio" name="">
+    // similar to activeBtns
+    for (let radio of radios)
+        if (radio.matches(":not(input[name])"))
+            radio.addEventListener('click', () => {
+                if (! radio.classList.contains("active")) {
+                    for (let radio of radios)
+                        if (radio.classList.contains("active"))
+                            radio.classList.remove("active");
+                    radio.classList.add("active");
+                }
+            });
+}
+function activeRadioArray(radios: Array<HTMLElement>) {
+    // emulate the funcitonality of <input type="radio" name="">
+    // similar to activeBtnArray
+    for (let radio of radios)
+        if (radio.matches(":not(input[name])"))
+            radio.addEventListener('click', () => {
+                if (! radio.classList.contains("active")) {
+                    for (let radio of radios)
+                        if (radio.classList.contains("active"))
+                            radio.classList.remove("active");
+                    radio.classList.add("active");
+                }
+            });
+}
+function activeRadioRelation(radiosHolder: HTMLElement) {
+    // emulate the funcitonality of <input type="radio" name="">
+    // similar to activeBtnRelation
+    activeRadioArray(
+        Array.from(radiosHolder.querySelectorAll(".radio, .radio-group > li, .radio-group > .item"))
+    );
 }
 
 

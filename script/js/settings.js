@@ -7,9 +7,17 @@ function showSetting(settingName) {
     const template = document.querySelector(`template[setting-name="${settingName}"]`);
     try {
         appendTemplateElement(template, settingsContent, tmp => {
-            // set data for each path in the setting content
             settingsContent.innerHTML = "";
             tmp.querySelectorAll("path[icon-data]").forEach(assignIconData);
+            tmp.querySelectorAll(".radio-group").forEach(activeRadioRelation); // TODO: doesnt work
+            tmp.querySelectorAll(// TODO: doesnt work
+            ".switch:not(input[type=\"checkbox\"])," +
+                ".toggle:not(input[type=\"checkbox\"])," +
+                ".toggler:not(input[type=\"checkbox\"])").forEach(element => {
+                element.addEventListener('click', () => {
+                    element.classList.toggle("active");
+                });
+            });
             settingsContent.setAttribute('content', template.getAttribute("href"));
         });
     }
@@ -27,6 +35,7 @@ var sections = {};
     listItem.classList.add('item');
     listItem.innerText = name;
     listItem.addEventListener('click', e => {
+        // set the url to current setting
         e.preventDefault();
         showSetting(name);
         setParams({ content: template.getAttribute('href') });
@@ -35,6 +44,15 @@ var sections = {};
     const section = template.getAttribute('section');
     if (!sections[section])
         sections[section] = [];
+    // add the nitro icon to the nitro setting in the sidebar
+    if (name == "Discord Nitro") {
+        listItem.classList.add("has-icon");
+        listItem.innerHTML += `
+            <svg width="20" height="14" viewBox="0 0 20 14">
+                <path fill="url(#nitro-gradient)" icon-data="nitro2" d="${iconData.nitro2}"/>
+            </svg>
+        `;
+    }
     if (section == "BetterDiscord")
         listItem.classList.add("bd-item");
     sections[section].push(listItem);
@@ -122,7 +140,7 @@ try {
 catch (_c) {
     console.error("Setting <" + getUrlParams().content + "> does not exist, defaulting to \"my-account\"");
     settingsList.querySelector(`.item[href="my-account"]`).classList.add('active');
-    pushParams({ content: "my-account" });
+    setParams({ content: "my-account" });
     showSetting("My Account");
 }
 //# sourceMappingURL=settings.js.map

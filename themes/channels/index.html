@@ -263,7 +263,7 @@
             </li>
             <li class="item empty-card">
                 <h3 class="title">It's quiet for now...</h3>
-                <p class="subtitle">When a friend starts an activity—like playing a game or hanging out on voice—we’ll show it here!</p>
+                <p class="subtitle">When a friend starts an activity—like playing a game or hanging out on voice—we'll show it here!</p>
             </li>
         </template>
 
@@ -320,6 +320,9 @@
 
         <div id="main-wrapper">
             <nav id="guilds" class=""> <!-- class="new-above, new-below" -->
+                <div class="unreads-indicator">
+                    <span>new</span>
+                </div>
                 <div class="scroller no-scroller">
                     <li class="item" id="home-btn">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg">
@@ -332,6 +335,11 @@
                             </foreignObject>
                         </svg>
                         <span class="badge lower ping">1</span>
+                    </li>
+
+                    <!-- TODO: public button -->
+                    <li class="item" id="bd-public-btn">
+                        public
                     </li>
         
                     <section id="dms-ping"> <!-- private-unreads -->
@@ -352,6 +360,9 @@
                             <path fill="currentColor" icon-data="compass"></path>
                         </svg>
                     </li>
+                </div>
+                <div class="unreads-indicator">
+                    <span>new</span>
                 </div>
             </nav>
     

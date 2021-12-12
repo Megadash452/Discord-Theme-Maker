@@ -107,7 +107,7 @@
                             <!-- Bdages that show up when clicking user profile, like Squad, Nitro, Booster, etc. -->
                         </div>
                     </div>
-                    <button class="to-user-prfile filled">Edit User Profile</button><!-- TODO: text-align: center -->
+                    <button class="to-user-prfile filled">Edit User Profile</button>
                 </div>
                 <div class="fields">
                     <div class="field">
@@ -142,13 +142,13 @@
 
             <hr class="divider">
 
-            <section>
+            <section class="margin-top-xl">
                 <h1 class="title">Password and Authentication</h1>
                 <button id="change-pass-btn" class="filled">Change Password</button>
                 <div class="horizontal">
                     <div>
                         <h5>Two-factor authentication</h5>
-                        <p style="margin-bottom: 20px;">Protect your Discord account with an extra layer of security. Once configured, you'll be required to enter both your password and an authentication code from your mobile phone in order to sign in.</p>
+                        <p class="margin-bottom-large">Protect your Discord account with an extra layer of security. Once configured, you'll be required to enter both your password and an authentication code from your mobile phone in order to sign in.</p>
                         <button class="filled">Enable Two-Factor Auth</button>
                     </div>
                     <div class="wrapper center">
@@ -161,7 +161,7 @@
 
             <section>
                 <h5>Account Removal</h5>
-                <p>Disabling your account means you can recover it at any time after taking this action.</p>
+                <p class="margin-bottom-med">Disabling your account means you can recover it at any time after taking this action.</p>
                 <div>
                     <button class="danger filled">Disable Account</button><button class="danger outline">Delete Account</button>
                 </div>
@@ -200,7 +200,7 @@
                                         <path fill="currentColor" icon-data="checkMark"/>
                                     </svg>
                                 </button>
-                                <p class="name">Default</p>
+                                <span class="name">Default</span>
                             </div>
                             <div class="color-picker">
                                 <button class="custom" style="background-color: #36393f;">
@@ -208,7 +208,7 @@
                                         <path fill="currentColor" icon-data="dropper"/>
                                     </svg>
                                 </button>
-                                <p class="name">Custom</p>
+                                <span class="name">Custom</span>
                             </div>
                         </div>
                     </section>
@@ -216,7 +216,7 @@
                         <h5>Profile Banner<svg width="16px" height="16px" viewBox="0 0 24 24" data-tooltip="Exclusive to Nitro">
                             <path fill="currentColor" icon-data="nitro"/>
                         </svg></h5>
-                        <p>We recommend an image of at least 600x240. You can upload a PNG, JPG, or an animated GIF under 10 MB.</p>
+                        <p class="margin-bottom-med">We recommend an image of at least 600x240. You can upload a PNG, JPG, or an animated GIF under 10 MB.</p>
                         <button class="paywall filled">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" data-tooltip="Exclusive to Nitro">
                                 <path fill="currentColor" icon-data="nitro"/>
@@ -225,10 +225,12 @@
                         </button>
                     </section>
                     <section class="customization">
-
-                    </section>
-                    <section class="customization">
-
+                        <h5>About Me</h5>
+                        <p class="margin-bottom-med">You can use markdown and links if you'd like.</p>
+                        <div class="textarea-wrapper">
+                            <textarea maxlength="190" placeholder="Tell this server a bit about yourself" rows="6" style="padding-right: 31.69px;"></textarea>
+                            <span class="maxlength">145</span>
+                        </div>
                     </section>
                 </section>
                 <section class="column">
@@ -278,7 +280,129 @@
             
         </template>
 
-        <template setting-name="Privacy & Safety" section="User Settings" href="privacy-and-safety"></template>
+        <template setting-name="Privacy & Safety" section="User Settings" href="privacy-and-safety">
+            <h1 class="title">Privacy & Safety</h1>
+            <section class="margin-bottom-xl">
+                <h5 style="margin-bottom: 5px">Safe Direct Messaging</h5>
+                <p class="margin-bottom-small">Automatically scan and delete direct messages you receive that contain explicit media content.</p>
+                <ul class="radio-group filled">
+                    <li class="radio margin-bottom-small" style="padding: 10px; --accent-col: #3ba55d">
+                        <span class="rad-circle"></span>
+                        <div class="content">
+                            <p class="title">Keep me safe</p>
+                            <p>Scan direct messages from everyone.</p>
+                        </div>
+                    </li>
+                    <li class="radio margin-bottom-small" style="padding: 10px; --accent-col: #cb8515">
+                        <span class="rad-circle"></span>
+                        <div class="content">
+                            <p class="title">My friends are nice</p>
+                            <p>Scan direct messages from everyone unless they are a friend.</p>
+                        </div>
+                    </li>
+                    <li class="radio margin-bottom-small" style="padding: 10px; --accent-col: #ed4245" aria-checked="true">
+                        <span class="rad-circle"></span>
+                        <div class="content">
+                            <p class="title">Do not scan</p>
+                            <p>Direct messages will not be scanned for explicit content.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="margin-bottom-xl">
+                <h5>Server Privacy Defaults</h5>
+                <div class="toggler-wrapper">
+                    <label>Allow direct messages from server members</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+                <p class="margin-top-small">This setting is applied when you join a new server. It does not apply retroactively to your existing servers.</p>
+                
+                <hr class="divider margin-top-large margin-bottom-large">
+                
+                <div class="toggler-wrapper">
+                    <label>Allow access to NSFW servers on iOS</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+                <p class="margin-top-small">After joining on desktop, view your servers for people 18+ on iOS devices.</p>
+                <hr class="divider margin-top-large padding-bottom-large">
+
+            </section>
+            <section class="margin-bottom-xl">
+                <h5>Who can add you as friend</h5>
+                <div class="toggler-wrapper padding-top-small">
+                    <label>Everyone</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+
+                <hr class="divider margin-top-large margin-bottom-large">
+
+                <div class="toggler-wrapper">
+                    <label>Friends of Friends</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+
+                <hr class="divider margin-top-large margin-bottom-large">
+
+                <div class="toggler-wrapper">
+                    <label>Server Members</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+                <hr class="divider margin-top-large padding-bottom-large">
+
+            </section>
+            <section class="margin-bottom-xl">
+                <h5>Rich Presence</h5>
+                <div class="toggler-wrapper">
+                    <label>Allow friends to join your game.</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+                <p class="margin-top-small">This setting allows friends to join your game without sending a request.</p>
+
+                <hr class="divider margin-top-large margin-bottom-large">
+
+                <div class="toggler-wrapper">
+                    <label>Allow voice channel participants to join your game.</label>
+                    <span type="checkbox" class="toggler">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="currentColor"/>
+                        </svg>
+                    </span>
+                </div>
+                <p class="margin-top-small">This setting allows people that are in the same voice channel as you to join your game without sending a request. This feature only works in non-community servers.</p>
+
+                <hr class="divider margin-top-large margin-bottom-large">
+            </section>
+            <section class="margin-bottom-xl">
+                ...
+            </section>
+            <section class="margin-bottom-xl">
+                ...
+            </section>
+        </template>
 
 
         <template setting-name="Authorized Apps" section="User Settings" href="authorized-apps"></template>
