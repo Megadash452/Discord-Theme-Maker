@@ -132,7 +132,7 @@ body.light {
   --main-bg: #e3e5e8;
   --primary-bg: #ffffff;
   --secondary-bg: #f2f3f5;
-  --thirtiary-bg: #ebedef;
+  --tertiary-bg: #ebedef;
 }
 
 body.dark {
@@ -142,9 +142,8 @@ body.dark {
   --primary-bg: #36393f;
   --secondary-col: #8e9297;
   --secondary-bg: #2f3136;
-  --thirtiary-col: #8e9297;
-  --thirtiary-bg: #292b2f;
-  --header-col: #;
+  --tertiary-col: #8e9297;
+  --tertiary-bg: #292b2f;
   --hover-col: var(--primary-col);
   --hover-bg: #4f545c29;
   --active-col: #fff;
@@ -204,7 +203,7 @@ body #main-wrapper .content .tools .keybind {
   color: var(--logo-col);
 }
 body nav#settings-list h2.section {
-  color: var(--thirtiary-col);
+  color: var(--tertiary-col);
 }
 body nav#settings-list button.item, body nav#settings-list a {
   color: var(--main-col);
@@ -480,13 +479,13 @@ body .switch.checked, body .toggle:checked, body .toggle.active, body .toggle.ch
 .fade-scroller {
   scrollbar-color: #0000 #0000;
 }
-.fade-scroller::webkit-scrollbar-thumb {
+.fade-scroller::-webkit-scrollbar-thumb {
   background-color: #0000;
 }
 .fade-scroller:hover {
   scrollbar-color: var(--scrollbar-col) #0000;
 }
-.fade-scroller:hover::webkit-scrollbar-thumb {
+.fade-scroller:hover::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-col);
 }
 
@@ -504,6 +503,7 @@ button {
   margin: 0;
   cursor: pointer;
   box-sizing: border-box;
+  outline: 0;
 }
 
 h1, h2, h3, p {
@@ -658,7 +658,7 @@ nav#settings-list h2.section {
   user-select: none;
 }
 nav#settings-list h2.section:first-child {
-  padding: 0px 10px 6px;
+  padding: 0 10px 6px;
 }
 nav#settings-list button.item {
   flex-shrink: 0;
@@ -871,7 +871,7 @@ main .account-info .banner {
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  transistion: background-color 0.1s;
+  transition: background-color 0.1s;
 }
 main .account-info .user-info {
   width: 100%;
@@ -1101,7 +1101,7 @@ main section.customization:last-child {
   font-weight: 700;
   line-height: 12px;
   text-transform: uppercase;
-  overflow-wrap: break-all;
+  overflow-wrap: break-word;
   white-space: pre;
   pointer-events: none;
 }
@@ -1154,7 +1154,7 @@ main section.customization:last-child {
   font-weight: 600;
 }
 .profile-banner .activity .content .wrapper .time {
-  font-family: Consolas;
+  font-family: Consolas, monospace;
 }
 .profile-banner .activity .content .wrapper * {
   margin: 0;
@@ -1168,7 +1168,7 @@ main section.customization:last-child {
   position: relative;
   display: block;
   padding: 64px 16px 16px;
-  overflow: hiddden;
+  overflow: hidden;
 }
 .profile-banner .header .name {
   display: block;

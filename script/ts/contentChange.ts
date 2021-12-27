@@ -352,3 +352,13 @@ document.getElementById("nitro") ! .addEventListener('click', e => {
 
     mainContent.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
 });
+
+
+
+function displayPrivateChat(json: Object) {
+    console.log("amogus")
+}
+
+function displayGroupChat(json: Object) {
+    console.log("susss")
+}

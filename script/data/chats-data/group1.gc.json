@@ -1,10 +1,200 @@
 {
+    "name": "Group 1",
+    "avatarUrl": "res/imgs/group-1.png",
+    "owner": 1000,
     "members": [
-        {
-            "username": ""
-        }
+        1000,
+        1002,
+        1004
     ],
     "messages": [
+        {
+            "id": 0,
+            "sender": 1,
+            "date": "Today at 1:01 PM",
+            "text": "@1000 added @1004 to the group.",
+            "reactions": [
 
+            ]
+        },
+        {
+            "id": 1,
+            "sender": 1000,
+            "date": "Today at 1:01 PM",
+            "text": "Hello World!",
+            "replyTo": 0,
+            "edited": false,
+            "reactions": [
+
+            ],
+            "embeds": [
+
+            ]
+        },
+        {
+            "id": 2,
+            "sender": 0,
+            "date": "Today at 1:01 PM",
+            "text": "@1004 left the group.",
+            "reactions": [
+
+            ]
+        },
+        {
+            "id": 3,
+            "sender": 1002,
+            "date":"Today at 1:02 PM",
+            "embeds": [
+                "https://tenor.com/view/spongebob-innocent-citizen-innocent-citizen-of-new-jersey-new-jersey-gif-21177040"
+            ]
+        },
+        {
+            "id": 4,
+            "sender": 1,
+            "date": "Today at 1:02 PM",
+            "text": "@1000 added @1004 to the group."
+        },
+        {
+            "id": 5,
+            "sender": 1004,
+            "date": "Today at 1:02 PM",
+            "text": "ok alr imma stay",
+            "reactions": [
+                {
+                    "sender": 1002,
+                    "emoji": "partying_face"
+                },
+                {
+                    "sender": 1000,
+                    "emoji": "lfg"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "sender": 1000,
+            "date": "Today at 1:02 PM",
+            "text": "less goooo",
+            "replyTo": 5
+        },
+        {
+            "id": 7,
+            "sender": 1000,
+            "date": "Today at 1:03 PM",
+            "text": "ok then, lets talk business"
+        },
+        {
+            "id": 8,
+            "sender": 1000,
+            "date": "Today at 1:03 PM",
+            "text": "im selling this gtx 1080 ti for $500, price is negotiable"
+        },
+        {
+            "id": 9,
+            "sender": 1000,
+            "date": "Today at 1:03 PM",
+            "text": "it got 11gb gddr5x at 11gbps and 3584 cores at 1582mhz"
+        },
+        {
+            "id": 9,
+            "sender": 1000,
+            "date": "Today at 1:03 PM",
+            "text": "id say thats a bargain"
+        },
+        {
+            "id": 10,
+            "sender": 1004,
+            "date": "Today at 1:04 PM",
+            "text": "price is negotiable? alr i'll give you $40 for it",
+            "reactions": [
+                {
+                    "sender": 1000,
+                    "emoji": "rage"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "sender": 1002,
+            "date": "Today at 1:05 PM",
+            "text": "bruhhhh",
+            "replyTo": 10
+        },
+        {
+            "id": 12,
+            "sender": 1002,
+            "date": "Today at 1:05 PM",
+            "text": "your delusional!!!"
+        },
+        {
+            "id": 13,
+            "sender": 1004,
+            "date": "Today at 1:05 PM",
+            "replyTo": 12,
+            "embeds": [
+                "https://tenor.com/view/youre-your-spies-spies-in-disguise-youre-spies-gif-20405819"
+            ]
+        },
+        {
+            "id": 14,
+            "sender": 0,
+            "date": "Today at 1:06 PM",
+            "text": "@1000 removed @1004 from the group.",
+            "reactions": [
+                {
+                    "sender": 1002,
+                    "emoji": "rofl"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "sender": 1002,
+            "date": "Today at 1:07 PM",
+            "text": "lolll"
+        },
+        {
+            "id": 16,
+            "sender": 1000,
+            "date": "Today at 1:08 PM",
+            "text": "@1002 would you be willing to buy this graphic card :pleading:"
+        },
+        {
+            "id": 17,
+            "sender": 1002,
+            "date": "Today at 1:08 PM",
+            "text": "nahh bruh i dont got cash",
+            "replyTo": 16
+        },
+        {
+            "id": 18,
+            "sender": 1000,
+            "date": "Today at 1:08 PM",
+            "text": "so why did you say you're interested in buying?"
+        },
+        {
+            "id": 19,
+            "sender": 1002,
+            "date": "Today at 1:08 PM",
+            "text": "i said im interested not that i can buy it",
+            "reactions": [
+                {
+                    "sender": 1000,
+                    "emoji": "neutral_face"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "sender": 1000,
+            "date": "Today at 1:09 PM",
+            "text": ":neutral_face:"
+        },
+        {
+            "id": 21,
+            "sender": 0,
+            "date": "Today at 1:10 PM",
+            "text": "@1000 left the group."
+        }
     ]
 }

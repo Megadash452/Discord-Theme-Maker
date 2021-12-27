@@ -29,7 +29,7 @@ function toggleDeafen() {
 }
 
 function openSettings() {
-    
+    window.location.href = "themes/settings/index.html";
 }
 
 
@@ -236,6 +236,7 @@ fetch("script/data/chats.json").then(
     document.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
 
     document.querySelectorAll("#private-chats .dm-channel")?.forEach(chat => { // TODO: , #guilds .item[href]
+        // set the content url parameter
         chat.addEventListener('click', e => {
             e.preventDefault();
             if (chat.classList.contains("active"))
@@ -245,6 +246,23 @@ fetch("script/data/chats.json").then(
             urlParams.content = chat.getAttribute("href")!.split("chats-data/")[1].split(".json")[0];
             setUrl("themes/?" + urlParams.str());
             setPageContent();
+        });
+
+        // show the chat content
+        chat.addEventListener('click', () => {
+            const chatUrl = chat.getAttribute('href');
+
+            fetch("script/data/" + chatUrl).then(
+                response => response.json()
+            ).then(json => {
+                // dm-channels content can only be of type .dm.json or .gc.json
+                if (chatUrl!.indexOf(".dm.json") > -1)
+                    displayPrivateChat(json);
+                else if (chatUrl!.indexOf(".gc.json") > -1)
+                    displayGroupChat(json);
+                else
+                    console.error("invalid file type for chat: " + chatUrl);
+            });
         });
     });
 

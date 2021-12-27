@@ -325,4 +325,10 @@ document.getElementById("nitro").addEventListener('click', e => {
     sidebar.classList.add("hidden");
     (_a = mainContent.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
 });
+function displayPrivateChat(json) {
+    console.log("amogus");
+}
+function displayGroupChat(json) {
+    console.log("susss");
+}
 //# sourceMappingURL=contentChange.js.map

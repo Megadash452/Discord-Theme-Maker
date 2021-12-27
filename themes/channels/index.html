@@ -139,7 +139,7 @@
                     <h2 class="title">Friend Name</h2>
                 </div>
                 <button class="close">
-                    <svg width="16" height="16" viewport="0 0 24 24">
+                    <svg width="16" height="16" viewbox="0 0 24 24">
                         <path fill="currentColor" icon-data="x"/>
                     </svg>
                 </button>
@@ -153,7 +153,7 @@
                     <p class="subtitle">subtitle</p>
                 </div>
                 <button class="close">
-                    <svg width="16" height="16" viewport="0 0 24 24">
+                    <svg width="16" height="16" viewbox="0 0 24 24">
                         <path fill="currentColor" icon-data="x"/>
                     </svg>
                 </button>
@@ -267,11 +267,38 @@
             </li>
         </template>
 
-        <template id="group-chat-members-tmp">
+
+        <template id="private-chat-tmp">
             <!-- TODO: -->
         </template>
 
-        <template id="server-members-tmp">
+
+        <template id="group-chat-tmp">
+            <section class="head">
+                <div class="info">
+                    <h3 class="header">
+                        <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" icon-data="members"/>
+                        </svg>
+                        <span class="name">Group-Chat-Name</span>
+                    </h3>
+                </div>
+                <div class="tools">
+                    <!-- TODO: call, videocall, pin, add-members, members, inbox, help -->
+                </div>
+            </section>
+            <section class="content">
+                <main class="chat">
+
+                </main>
+                <section class="sidebar">
+                    
+                </section>
+            </section>
+        </template>
+
+
+        <template id="server-tmp">
             <!-- TODO: -->
         </template>
         
@@ -382,7 +409,7 @@
                                 <!-- ? variable -->
                                 <a href="friends" class="dm-channel active" id="friends">
                                     <div class="wrapper avatar">
-                                        <svg width="24" height="24" viewport="0 0 24 24">
+                                        <svg width="24" height="24" viewbox="0 0 24 24">
                                             <path fill="currentColor" fill-rule="nonzero" icon-data="friend" transform="translate(2 4)"></path>
                                             <path fill-rule="evenodd"></path>
                                         </svg>
@@ -464,7 +491,7 @@
                                     </foreignObject>
                                 </svg>
                                 <div class="name">
-                                    <h3 class="title">MyUser</h3>
+                                    <h3 class="title">MyName</h3>
                                     <p class="subtitle">
                                         <span class="desc">Description</span>
                                         <span class="tag">#1234</span>

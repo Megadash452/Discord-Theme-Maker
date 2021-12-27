@@ -2,16 +2,14 @@
 @import util
 @import base-theme
 
-
 $main-col:      var(--main-col)      // #b9bbbe
 $main-bg:       var(--main-bg)       // #202225
 $primary-col:   var(--primary-col)   // #dcddde
 $primary-bg:    var(--primary-bg)    // #36393f
 $secondary-col: var(--secondary-col) // #8e9297
 $secondary-bg:  var(--secondary-bg)  // #2f3136
-$thirtiary-col: var(--thirtiary-col) // #8e9297
-$thirtiary-bg:  var(--thirtiary-bg)  // #292b2f
-
+$tertiary-col:  var(--tertiary-col) // #8e9297
+$tertiary-bg:   var(--tertiary-bg)  // #292b2f
 
 
 $hover-col:        var(--hover-col)        // var(--primary-col)
@@ -28,7 +26,7 @@ $scrollbar-bg:  var(--scrollbar-bg)  // #2e3338
 $logo-col:        var(--logo-col)        // #72767d // maybe muted channel color
 $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
-$banner-bg:      var(--banner-bg)      // #18191c
+$banner-bg:       var(--banner-bg)       // #18191c
 
 
 body
@@ -71,7 +69,7 @@ body
 
     nav#settings-list
         h2.section
-            color: $thirtiary-col
+            color: $tertiary-col
         button.item, a
             color: $main-col
             &:hover
@@ -238,7 +236,7 @@ body
 ::-webkit-scrollbar-track
     background-color: $scrollbar-bg
 ::-webkit-scrollbar-thumb
-    min-height:40px
+    min-height: 40px
     background-color: $scrollbar-col
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb
     background-clip: padding-box
@@ -272,14 +270,13 @@ body
         border-radius: 4px
     &::-webkit-scrollbar-corner
         background-color: #0000
-.fade-scroller                             // ! TODO: DOESNT APPLY
+.fade-scroller
     scrollbar-color: #0000 #0000
-    &::webkit-scrollbar-thumb
+    &::-webkit-scrollbar-thumb
         background-color: #0000
-        
     &:hover
         scrollbar-color: $scrollbar-col #0000
-        &::webkit-scrollbar-thumb
+        &::-webkit-scrollbar-thumb
             background-color: $scrollbar-col
 
 
@@ -293,6 +290,7 @@ button
     margin: 0
     cursor: pointer
     box-sizing: border-box
+    outline: 0
     
 h1, h2, h3, p
     margin: 0
@@ -429,7 +427,7 @@ nav#settings-list
         text-transform: uppercase
         user-select: none
         &:first-child
-            padding: 0px 10px 6px
+            padding: 0 10px 6px
 
     button.item
         flex-shrink: 0
@@ -593,7 +591,7 @@ main // #settings-content
             background-size: cover
             background-position: 50%
             background-repeat: no-repeat
-            transistion: background-color 0.1s
+            transition: background-color 0.1s
 
         .user-info
             width: 100%
@@ -662,7 +660,6 @@ main // #settings-content
                     min-height: 0
                     display: inline-block
                     padding: 0 4px 2px 4px
-                    // top: -2px // necessary
                     +font(14px, Whitney, 500, 16px)
                     +ellipsis
                     &:hover
@@ -769,7 +766,7 @@ main // #settings-content
             margin: 0
             +font(10px, Ginto, 700, 12px)
             text-transform: uppercase
-            overflow-wrap: break-all // TODO: Does not work (added <wbr> for temporal fix)
+            overflow-wrap: break-word // TODO: Does not work (added <wbr> for temporal fix)
             white-space: pre
             pointer-events: none
 
@@ -809,7 +806,7 @@ main // #settings-content
             .title
                 font-weight: 600
             .time
-                font-family: Consolas
+                font-family: Consolas, monospace
             *
                 margin: 0
 
@@ -822,7 +819,7 @@ main // #settings-content
         position: relative
         display: block
         padding: 64px 16px 16px
-        overflow: hiddden
+        overflow: hidden
         .name
             display: block
             margin: 0

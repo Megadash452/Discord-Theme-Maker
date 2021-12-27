@@ -98,7 +98,7 @@ function activeBtnRelation(btnsHolder: HTMLElement) {
 
 
 function activeRadios(...radios: Array<HTMLElement>) {
-    // emulate the funcitonality of <input type="radio" name="">
+    // emulate the functionality of <input type="radio" name="">
     // similar to activeBtns
     for (let radio of radios)
         if (radio.matches(":not(input[name])"))
@@ -112,7 +112,7 @@ function activeRadios(...radios: Array<HTMLElement>) {
             });
 }
 function activeRadioArray(radios: Array<HTMLElement>) {
-    // emulate the funcitonality of <input type="radio" name="">
+    // emulate the functionality of <input type="radio" name="">
     // similar to activeBtnArray
     for (let radio of radios)
         if (radio.matches(":not(input[name])"))
@@ -126,7 +126,7 @@ function activeRadioArray(radios: Array<HTMLElement>) {
             });
 }
 function activeRadioRelation(radiosHolder: HTMLElement) {
-    // emulate the funcitonality of <input type="radio" name="">
+    // emulate the functionality of <input type="radio" name="">
     // similar to activeBtnRelation
     activeRadioArray(
         Array.from(radiosHolder.querySelectorAll(".radio, .radio-group > li, .radio-group > .item"))

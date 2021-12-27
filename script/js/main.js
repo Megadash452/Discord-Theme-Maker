@@ -25,6 +25,7 @@ function toggleMute() {
 function toggleDeafen() {
 }
 function openSettings() {
+    window.location.href = "themes/settings/index.html";
 }
 const homeBtn = document.getElementById("home-btn");
 const guilds = document.getElementById("guilds");
@@ -189,6 +190,7 @@ fetch("script/data/chats.json").then(response => response.json()).then(json => {
     writeServers(json.servers);
     (_a = document.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
     (_b = document.querySelectorAll("#private-chats .dm-channel")) === null || _b === void 0 ? void 0 : _b.forEach(chat => {
+        // set the content url parameter
         chat.addEventListener('click', e => {
             e.preventDefault();
             if (chat.classList.contains("active"))
@@ -197,6 +199,19 @@ fetch("script/data/chats.json").then(response => response.json()).then(json => {
             urlParams.content = chat.getAttribute("href").split("chats-data/")[1].split(".json")[0];
             setUrl("themes/?" + urlParams.str());
             setPageContent();
+        });
+        // show the chat content
+        chat.addEventListener('click', () => {
+            const chatUrl = chat.getAttribute('href');
+            fetch("script/data/" + chatUrl).then(response => response.json()).then(json => {
+                // dm-channels content can only be of type .dm.json or .gc.json
+                if (chatUrl.indexOf(".dm.json") > -1)
+                    displayPrivateChat(json);
+                else if (chatUrl.indexOf(".gc.json") > -1)
+                    displayGroupChat(json);
+                else
+                    console.error("invalid file type for chat: " + chatUrl);
+            });
         });
     });
     activeBtnArray(Array.from(document.querySelectorAll("#sidebar .channels .dm-channel[href]")));

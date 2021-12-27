@@ -132,7 +132,7 @@ body.light {
   --main-bg: #e3e5e8;
   --primary-bg: #ffffff;
   --secondary-bg: #f2f3f5;
-  --thirtiary-bg: #ebedef;
+  --tertiary-bg: #ebedef;
 }
 
 body.dark {
@@ -142,9 +142,8 @@ body.dark {
   --primary-bg: #36393f;
   --secondary-col: #8e9297;
   --secondary-bg: #2f3136;
-  --thirtiary-col: #8e9297;
-  --thirtiary-bg: #292b2f;
-  --header-col: #;
+  --tertiary-col: #8e9297;
+  --tertiary-bg: #292b2f;
   --hover-col: var(--primary-col);
   --hover-bg: #4f545c29;
   --active-col: #fff;

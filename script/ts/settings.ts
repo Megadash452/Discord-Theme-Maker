@@ -11,20 +11,24 @@ function showSetting(settingName: string) {
         appendTemplateElement(template, settingsContent, tmp => {
             settingsContent.innerHTML = "";
             tmp.querySelectorAll<SVGPathElement>("path[icon-data]").forEach(assignIconData);
-            tmp.querySelectorAll<HTMLElement>(".radio-group").forEach(activeRadioRelation); // TODO: doesnt work
-            tmp.querySelectorAll(                          // TODO: doesnt work
-                ".switch:not(input[type=\"checkbox\"])," +
-                ".toggle:not(input[type=\"checkbox\"])," +
-                ".toggler:not(input[type=\"checkbox\"])"
-            ).forEach(element => {
-                element.addEventListener('click', () => {
-                    element.classList.toggle("active");
-                });
-            });
             settingsContent.setAttribute('content', template.getAttribute("href")!);
         });
+
+        // These cannot go in the template handler because the events will be deleted
+        // add functionality to radio buttons
+        settingsContent.querySelectorAll<HTMLElement>(".radio-group").forEach(activeRadioRelation);
+        // add functionality to togglers/switches (checkboxes)
+        settingsContent.querySelectorAll(
+            ".switch:not(input[type=\"checkbox\"])," +
+            ".toggle:not(input[type=\"checkbox\"])," +
+            ".toggler:not(input[type=\"checkbox\"])"
+        ).forEach(element => {
+            element.addEventListener('click', () => {
+                element.classList.toggle("active");
+            });
+        });
     } catch {
-        console.error(`Could not find template with attrribute "${settingName}"`);
+        console.error(`Could not find template with attribute "${settingName}"`);
     }
 }
 

@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1000,
+        "username": "MyName",
+        "tag": "1234",
+        "avatar": "res/imgs/user-1.png",
+        "description": "C++ Programming Language",
+        "about": "3 syllables, 6 letters. Say it and I'm yours",
+        "bannerCol": "#fff",
+        "bannerImg": "",
+        "note": "I agree",
+        "friend": true
+    },
+
+    "///",
+
+    {
+        "id": 1005,
+        "username": "Rando 1",
+        "tag": "0000",
+        "avatar": "res/imgs/user-5.png",
+        "description": "I am root",
+        "about": "sudo",
+        "bannerCol": "#fff",
+        "bannerImg": "",
+        "note": "I disagree",
+        "friend": false
+    }
+]
