@@ -310,10 +310,12 @@
                         </svg>
                     </button>
                     <div class="search-bar">
-                        <input type="text">
-                        <svg width="16" height="16" viewBox="0 0 24 24">
-                            <path fill="currentColor" icon-data="search"/>
-                        </svg>
+                        <input type="text" placeholder="Search" value="">
+                        <div class="icon-wrapper">
+                            <svg width="16" height="16" viewBox="0 0 24 24">
+                                <path fill="currentColor" icon-data="search"/>
+                            </svg>
+                        </div>
                     </div>
                     <button onclick="showInbox()" data-tooltip="Inbox">
                         <svg width="24" height="24" viewbox="0 0 24 24">
@@ -616,7 +618,6 @@
                             <main class="chat">
                                 <div class="tab active" name="online">
                                     <div class="scroller">
-                                        <!-- TODO: add the new searchbar -->
                                         <div class="search-bar">
                                             <input type="text" placeholder="Search">
                                             <div class="icon-wrapper">

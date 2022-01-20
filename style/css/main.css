@@ -1574,6 +1574,51 @@ hr.vertical {
   margin: 0 8px;
   flex: 0 0 auto;
 }
+#app-base #main-content .head .tools .search-bar {
+  width: 144px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  padding: 0 2px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: text;
+  transition: width 0.25s ease;
+}
+#app-base #main-content .head .tools .search-bar:focus-within, #app-base #main-content .head .tools .search-bar input:not([value=""]) {
+  width: 240px;
+}
+#app-base #main-content .head .tools .search-bar input {
+  height: 24px;
+  flex: 1;
+  position: relative;
+  padding: 2px 0;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: initial;
+}
+#app-base #main-content .head .tools .search-bar .icon-wrapper {
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app-base #main-content .head .tools .search-bar .icon-wrapper .icon {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1;
+  position: relative;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
 #app-base #main-content .content {
   width: 100%;
   height: calc(100% - 48px);

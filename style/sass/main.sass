@@ -208,6 +208,7 @@ body.dark
                         background-color: #4f545c52
 
     .search-bar
+        // color: #dcddde
         color: #72767d
         background-color: #202225
         // &:hover
@@ -1271,6 +1272,51 @@ hr.vertical
                 button, .search-bar
                     margin: 0 8px
                     flex: 0 0 auto
+
+                .search-bar
+                    width: 144px
+                    height: 24px
+                    position: relative
+                    // z-index: 100
+                    display: flex
+                    align-items: stretch
+                    padding: 0 2px
+                    border-radius: 4px
+                    overflow: hidden
+                    // box-shadow: none
+                    cursor: text
+                    transition: width .25s ease
+                    &:focus-within, input:not([value=""]) // check for not empty input fails
+                        width: 240px
+
+                    input
+                        height: 24px // inherit
+                        flex: 1
+                        position: relative
+                        padding: 2px 0
+                        border: none
+                        border-radius: 2px
+                        box-sizing: border-box
+                        overflow: hidden
+                        +font(14px, Whitney, 500, 20px)
+                        text-align: initial
+                        // TODO: define a color for this
+
+                    .icon-wrapper
+                        width: 24px
+                        height: 24px
+                        aspect-ratio: 1
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        .icon
+                            width: 16px
+                            height: 16px
+                            aspect-ratio: 1
+                            position: relative
+                            transition: transform .1s ease-out, opacity .1s ease-out
+                            // where is opacity changed
+
 
         .content
             width: 100%
