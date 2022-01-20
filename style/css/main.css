@@ -153,6 +153,7 @@ body.dark {
   --ping-col: #ed4245;
   --scrollbar-col: var(--main-bg);
   --scrollbar-bg: #2e3338;
+  --accent-col: #5865f2;
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
@@ -379,13 +380,14 @@ body.dark .search-bar {
   color: #72767d;
   background-color: #202225;
 }
-body.dark .search-bar:hover {
-  color: #72767d;
-  background-color: #202225;
+body.dark .search-bar input {
+  background-color: #0000;
 }
-body.dark .search-bar:active {
-  color: #72767d;
-  background-color: #202225;
+body.dark main .search-bar {
+  color: #b9bbbe;
+}
+body.dark main .search-bar input {
+  color: #dcddde;
 }
 body.dark #main-content .head {
   background-color: #36393f;
@@ -663,6 +665,10 @@ button {
   margin: 0;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+button, input {
+  outline: 0;
 }
 
 hr.vertical {
@@ -1697,7 +1703,7 @@ hr.vertical {
 #app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .actions button.reject:hover, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .actions button.reject:hover {
   color: #ed4245;
 }
-#app-base #main-content .content main.chat .tab .scroller {
+#app-base #main-content .content main.chat .scroller {
   --margin-top: 8px;
   height: calc(100% - var(--margin-top));
   min-height: 0;
@@ -1709,7 +1715,7 @@ hr.vertical {
   overflow: hidden scroll;
   scrollbar-width: auto;
 }
-#app-base #main-content .content main.chat .tab .scroller.empty {
+#app-base #main-content .content main.chat .scroller.empty {
   width: 100%;
   height: auto;
   display: flex;
@@ -1719,14 +1725,14 @@ hr.vertical {
   padding: 0;
   overflow: hidden;
 }
-#app-base #main-content .content main.chat .tab .scroller.empty .wrapper {
+#app-base #main-content .content main.chat .scroller.empty .wrapper {
   max-width: 440px;
 }
-#app-base #main-content .content main.chat .tab .scroller.empty img {
+#app-base #main-content .content main.chat .scroller.empty img {
   flex: 0 1 auto;
   margin: 0 0 40px 0;
 }
-#app-base #main-content .content main.chat .tab .scroller.empty .subtitle {
+#app-base #main-content .content main.chat .scroller.empty .subtitle {
   flex: 0 1 auto;
   margin: 8px 0 0 0;
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1734,7 +1740,7 @@ hr.vertical {
   line-height: 20px;
   text-align: center;
 }
-#app-base #main-content .content main.chat .tab .scroller.empty button {
+#app-base #main-content .content main.chat .scroller.empty button {
   height: 38px;
   min-width: 96px;
   position: relative;
@@ -1749,7 +1755,45 @@ hr.vertical {
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-#app-base #main-content .content main.chat .tab .scroller .header {
+#app-base #main-content .content main.chat .search-bar {
+  position: relative;
+  display: flex;
+  margin: 16px 20px 8px 30px;
+  padding: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#app-base #main-content .content main.chat .search-bar input {
+  min-width: 48px;
+  height: 30px;
+  resize: none;
+  flex: 1;
+  margin: 1px;
+  padding: 0 8px;
+  border: none;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  appearance: none;
+}
+#app-base #main-content .content main.chat .search-bar .icon-wrapper {
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app-base #main-content .content main.chat .search-bar .icon-wrapper .icon {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  position: relative;
+  cursor: text;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+#app-base #main-content .content main.chat .header {
   margin: 16px 20px 8px 30px;
   font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
@@ -1757,7 +1801,7 @@ hr.vertical {
   letter-spacing: 0.25px;
   text-transform: uppercase;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item {
+#app-base #main-content .content main.chat li.item {
   height: 62px;
   display: flex;
   align-items: center;
@@ -1768,24 +1812,24 @@ hr.vertical {
   box-sizing: border-box;
   cursor: pointer;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item:hover {
+#app-base #main-content .content main.chat li.item:hover {
   border-radius: 8px;
   margin: 0 10px 0 20px;
   padding: 0 10px;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item:hover .user-info .name .title .tag {
+#app-base #main-content .content main.chat li.item:hover .user-info .name .title .tag {
   visibility: visible;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info {
+#app-base #main-content .content main.chat li.item .user-info {
   display: flex;
   overflow: hidden;
   flex-shrink: 0;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info .avatar {
+#app-base #main-content .content main.chat li.item .user-info .avatar {
   margin: 0 12px 0 0;
   pointer-events: none;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title {
+#app-base #main-content .content main.chat li.item .user-info .name .title {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -1794,30 +1838,30 @@ hr.vertical {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title .username {
+#app-base #main-content .content main.chat li.item .user-info .name .title .username {
   flex: 0 1 auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .title .tag {
+#app-base #main-content .content main.chat li.item .user-info .name .title .tag {
   visibility: hidden;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .user-info .name .subtitle {
+#app-base #main-content .content main.chat li.item .user-info .name .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .actions {
+#app-base #main-content .content main.chat li.item .actions {
   display: flex;
   margin: 0 0 0 8px;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .actions button {
+#app-base #main-content .content main.chat li.item .actions button {
   width: 36px;
   height: 36px;
   display: flex;
@@ -1826,7 +1870,7 @@ hr.vertical {
   border-radius: 50%;
   margin: 0 0 0 10px;
 }
-#app-base #main-content .content main.chat .tab .scroller li.item .actions button:first-child {
+#app-base #main-content .content main.chat li.item .actions button:first-child {
   margin: 0;
 }
 #app-base #main-content .content .sidebar[content=active-now] {

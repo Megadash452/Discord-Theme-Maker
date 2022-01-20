@@ -29,6 +29,7 @@ $link-col:         var(--link-col)         // #00aff4
 $scrollbar-col: var(--scrollbar-col) // var(--main-bg)
 $scrollbar-bg:  var(--scrollbar-bg)  // #2e3338
 
+$accent-col:      var(--accent-col)      // #5865f2
 $logo-col:        var(--logo-col)        // #72767d
 $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
@@ -209,12 +210,18 @@ body.dark
     .search-bar
         color: #72767d
         background-color: #202225
-        &:hover
-            color: #72767d
-            background-color: #202225
-        &:active
-            color: #72767d
-            background-color: #202225
+        // &:hover
+        //     color: #72767d
+        //     background-color: #202225
+        // &:active
+        //     color: #72767d
+        //     background-color: #202225
+        input
+            background-color: #0000
+    main .search-bar
+        color: #b9bbbe
+        input
+            color: #dcddde
 
     #main-content
         .head
@@ -423,6 +430,9 @@ button
     margin: 0
     cursor: pointer
     box-sizing: border-box
+
+button, input
+    outline: 0
 
 hr.vertical
     width: 1px
@@ -1370,129 +1380,167 @@ hr.vertical
                                 &.reject:hover
                                     color: #ed4245
 
-                    .scroller
-                        --margin-top: 8px
-                        height: calc(100% - var(--margin-top))
-                        min-height: 0
-                        flex: 1 1 auto
-                        position: relative
-                        box-sizing: border-box
-                        padding: 0 0 8px 0
-                        margin: var(--margin-top) 0 0 0
-                        overflow: hidden scroll
-                        scrollbar-width: auto
-                        &.empty
-                            width: 100%
-                            height: auto
+                .scroller
+                    --margin-top: 8px
+                    height: calc(100% - var(--margin-top))
+                    min-height: 0
+                    flex: 1 1 auto
+                    position: relative
+                    box-sizing: border-box
+                    padding: 0 0 8px 0
+                    margin: var(--margin-top) 0 0 0
+                    overflow: hidden scroll
+                    scrollbar-width: auto
+                    &.empty
+                        width: 100%
+                        height: auto
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        margin: 0
+                        padding: 0
+                        overflow: hidden
+                        .wrapper
+                            max-width: 440px
+                        img
+                            flex: 0 1 auto
+                            margin: 0 0 40px 0
+                        .subtitle
+                            flex: 0 1 auto
+                            margin: 8px 0 0 0
+                            font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 400
+                            line-height: 20px
+                            text-align: center
+                        button
+                            height: 38px
+                            min-width: 96px
+                            position: relative
+                            display: block
+                            margin: 20px auto 0 auto
+                            padding: 2px 16px
+                            border-radius: 3px
+                            box-sizing: border-box
+                            font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                            font-weight: 500
+                            line-height: 16px
+                            user-select: none
+                            transition: background-color 0.17s ease, color 0.17s ease
+
+                .search-bar
+                    // min-width: 0
+                    position: relative
+                    display: flex
+                    // flex-direction: row
+                    // flex-wrap: wrap
+                    margin: 16px 20px 8px 30px
+                    padding: 1px
+                    border-radius: 4px
+                    overflow: hidden
+                    input
+                        min-width: 48px
+                        height: 30px
+                        resize: none
+                        flex: 1
+                        margin: 1px
+                        padding: 0 8px
+                        border: none
+                        +font(16px, Whitney, 400, 32px)
+                        appearance: none
+
+                    .icon-wrapper
+                        width: 32px
+                        height: 32px
+                        aspect-ratio: 1
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        .icon
+                            width: 20px
+                            height: 20px
+                            aspect-ratio: 1
+                            position: relative
+                            cursor: text
+                            transition: transform .1s ease-out, opacity .1s ease-out
+                            // where is opacity changed
+
+
+                .header
+                    margin: 16px 20px 8px 30px
+                    font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
+                    font-weight: 600
+                    line-height: 16px
+                    letter-spacing: 0.25px
+                    text-transform: uppercase
+
+                li.item
+                    height: 62px
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    border-top-width: 1px
+                    border-top-style: solid
+                    margin: 0 20px 0 30px
+                    box-sizing: border-box
+                    // overflow: hidden
+                    cursor: pointer
+                    &:hover
+                        border-radius: 8px
+                        margin: 0 10px 0 20px
+                        padding: 0 10px
+                        // box-shadow: none
+                        .user-info .name .title .tag
+                            visibility: visible
+
+                    .user-info
+                        display: flex
+                        overflow: hidden
+                        flex-shrink: 0
+                        .avatar
+                            margin: 0 12px 0 0
+                            pointer-events: none
+                        .name
+                            // display: flex
+                            // flex-direction: column
+                            .title
+                                display: flex
+                                align-items: flex-end
+                                justify-content: flex-start
+                                flex-grow: 1
+                                margin: 0
+                                font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                font-weight: 600
+                                .username
+                                    flex: 0 1 auto
+                                    overflow: hidden
+                                    white-space: nowrap
+                                    text-overflow: ellipsis
+                                .tag
+                                    visibility: hidden
+                                    font-size: 14px
+                                    font-weight: 500
+                                    line-height: 16px
+
+                            .subtitle
+                                font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
+                                font-weight: 500
+                                overflow: hidden
+                                white-space: nowrap
+                                text-overflow: ellipsis
+
+                    .actions
+                        display: flex
+                        margin: 0 0 0 8px
+                        button
+                            width: 36px
+                            height: 36px
                             display: flex
                             align-items: center
                             justify-content: center
-                            margin: 0
-                            padding: 0
-                            overflow: hidden
-                            .wrapper
-                                max-width: 440px
-                            img
-                                flex: 0 1 auto
-                                margin: 0 0 40px 0
-                            .subtitle
-                                flex: 0 1 auto
-                                margin: 8px 0 0 0
-                                font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-                                font-weight: 400
-                                line-height: 20px
-                                text-align: center
-                            button
-                                height: 38px
-                                min-width: 96px
-                                position: relative
-                                display: block
-                                margin: 20px auto 0 auto
-                                padding: 2px 16px
-                                border-radius: 3px
-                                box-sizing: border-box
-                                font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-                                font-weight: 500
-                                line-height: 16px
-                                user-select: none
-                                transition: background-color 0.17s ease, color 0.17s ease
-
-                        .header
-                            margin: 16px 20px 8px 30px
-                            font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif
-                            font-weight: 600
-                            line-height: 16px
-                            letter-spacing: 0.25px
-                            text-transform: uppercase
-
-                        li.item
-                            height: 62px
-                            display: flex
-                            align-items: center
-                            justify-content: space-between
-                            border-top-width: 1px
-                            border-top-style: solid
-                            margin: 0 20px 0 30px
-                            box-sizing: border-box
-                            // overflow: hidden
-                            cursor: pointer
-                            &:hover
-                                border-radius: 8px
-                                margin: 0 10px 0 20px
-                                padding: 0 10px
-                                // box-shadow: none
-                                .user-info .name .title .tag
-                                    visibility: visible
-
-                            .user-info
-                                display: flex
-                                overflow: hidden
-                                flex-shrink: 0
-                                .avatar
-                                    margin: 0 12px 0 0
-                                    pointer-events: none
-                                .name
-                                    // display: flex
-                                    // flex-direction: column
-                                    .title
-                                        display: flex
-                                        align-items: flex-end
-                                        justify-content: flex-start
-                                        flex-grow: 1
-                                        margin: 0
-                                        font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-                                        font-weight: 600
-                                        .username
-                                            flex: 0 1 auto
-                                            overflow: hidden
-                                            white-space: nowrap
-                                            text-overflow: ellipsis
-                                        .tag
-                                            visibility: hidden
-                                            font-size: 14px
-                                            font-weight: 500
-                                            line-height: 16px
-
-                                    .subtitle
-                                        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-                                        font-weight: 500
-                                        overflow: hidden
-                                        white-space: nowrap
-                                        text-overflow: ellipsis
-
-                            .actions
-                                display: flex
-                                margin: 0 0 0 8px
-                                button
-                                    width: 36px
-                                    height: 36px
-                                    display: flex
-                                    align-items: center
-                                    justify-content: center
-                                    border-radius: 50%
-                                    margin: 0 0 0 10px
-                                    &:first-child
-                                        margin: 0
+                            border-radius: 50%
+                            margin: 0 0 0 10px
+                            &:first-child
+                                margin: 0
 
             .sidebar[content="active-now"]
                 min-width: 360px

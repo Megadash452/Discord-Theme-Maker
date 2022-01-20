@@ -23,6 +23,7 @@ body.dark {
   --ping-col: #ed4245;
   --scrollbar-col: var(--main-bg);
   --scrollbar-bg: #2e3338;
+  --accent-col: #5865f2;
   --logo-col: #72767d;
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;

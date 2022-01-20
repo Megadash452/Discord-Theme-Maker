@@ -23,6 +23,7 @@ $ping-col:         var(--ping-col)         // #ed4245
 $scrollbar-col: var(--scrollbar-col) // var(--main-bg)
 $scrollbar-bg:  var(--scrollbar-bg)  // #2e3338
 
+$accent-col:      var(--accent-col)      // #5865f2
 $logo-col:        var(--logo-col)        // #72767d // maybe muted channel color
 $logo-darker-col: var(--logo-darker-col) // #72767d4d
 $divider-col:     var(--divider-col)     // #ffffff0f
@@ -136,7 +137,7 @@ body
             span
                 color: $logo-col
         button
-            --col: #5865f2
+            --col: #{$accent-col}
             &:hover
                 --col: #4752c4
             &.danger
