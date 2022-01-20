@@ -251,8 +251,8 @@ body.dark
                     color: #b9bbbe
                     &:hover
                         color: #dcddde
-                    &:active, &.active
-                        color: #dcddde
+                    &.active
+                        color: #fff
         .content
             scrollbar-color: #202225 #2f3136
             main.chat
@@ -322,12 +322,7 @@ body.dark
                     background-color: #36393f
                 &[content="members"]
                     background-color: #2f3136
-                    .scroller
-                        scrollbar-color:#0000 #0000
-                        &:hover
-                            scrollbar-color: #202225 #0000
                 .scroller
-                    scrollbar-color: #202225 #0000
                     border-color: #ffffff0f
                     .header
                         color: #fff
@@ -1263,7 +1258,7 @@ hr.vertical
                 flex: 0 0 auto
                 display: flex
                 align-items: center
-                button
+                button, .search-bar
                     margin: 0 8px
                     flex: 0 0 auto
 
@@ -1499,10 +1494,11 @@ hr.vertical
                                     &:first-child
                                         margin: 0
 
-            .sidebar
+            .sidebar[content="active-now"]
                 min-width: 360px
                 max-width: 420px
                 flex: 0 1 30%
+
                 .scroller
                     height: 100%
                     min-height: 0
@@ -1652,8 +1648,11 @@ hr.vertical
                                     &:last-child
                                         mask: none
             
-            // #members-sidebar
-                // TODO:
+            .sidebar:not([content="active-now"])
+                min-width: 240px
+                max-height: 100%
+                position: relative
+                .scroller
                 
 
 

@@ -208,7 +208,7 @@ function writeServers(data: Array<any>) {
         document.getElementById("servers") ! .appendChild(element);
     });
 
-    function manageServer(server: Server): HTMLLIElement {
+    function manageServer(server: ServerGuild): HTMLLIElement {
         let element: HTMLLIElement;
 
         if (!server.picture) { // is server no-img
@@ -255,6 +255,12 @@ fetch("script/data/chats.json").then(
             fetch("script/data/" + chatUrl).then(
                 response => response.json()
             ).then(json => {
+                // set the name of the ocntent that is being displayed at #main-content
+                document.getElementById("main-content")!.setAttribute(
+                    'content',
+                    chatUrl!.replace(RegExp("chats-data/"), '')
+                            .replace(RegExp(".json"), '')
+                );
                 // dm-channels content can only be of type .dm.json or .gc.json
                 if (chatUrl!.indexOf(".dm.json") > -1)
                     displayPrivateChat(json);

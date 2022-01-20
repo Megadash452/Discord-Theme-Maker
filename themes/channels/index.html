@@ -280,19 +280,75 @@
                         <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor" icon-data="members"/>
                         </svg>
-                        <span class="name">Group-Chat-Name</span>
+                        <span class="title">Group-Chat-Name</span>
                     </h3>
                 </div>
                 <div class="tools">
-                    <!-- TODO: call, videocall, pin, add-members, members, inbox, help -->
+                    <button data-tooltip="Start Voice Call">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="voiceCall"/>
+                        </svg>
+                    </button>
+                    <button data-tooltip="Start Video Call">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="videoCall"/>
+                        </svg>
+                    </button>
+                    <button data-tooltip="Pinned Messages">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="pin"/>
+                        </svg>
+                    </button>
+                    <button data-tooltip="Add Friends to DM">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="invite"/>
+                        </svg>
+                    </button>
+                    <button class="active" data-tooltip="Hide Member List">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="members"/>
+                        </svg>
+                    </button>
+                    <div class="search-bar">
+                        <input type="text">
+                        <svg width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="currentColor" icon-data="search"/>
+                        </svg>
+                    </div>
+                    <button onclick="showInbox()" data-tooltip="Inbox">
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="inbox"/>
+                        </svg>
+                    </button>
+                    <button>
+                        <svg width="24" height="24" viewbox="0 0 24 24">
+                            <path fill="currentColor" icon-data="help"/>
+                        </svg>
+                    </button>
                 </div>
             </section>
             <section class="content">
                 <main class="chat">
-
+                    <!-- TODO: -->
                 </main>
-                <section class="sidebar">
-                    
+                <section class="sidebar" content="members">
+                    <div class="scroller thin-scroller fade-scroller">
+                        <h3 class="title">Members—$member-count</h3>
+
+                        <template class="member">
+                            <li class="item">
+                                <!-- TODO: may change viewbox.width to 32 -->
+                                <svg class="avatar" width="32" height="32" viewBox="0 0 40 32">
+                                    <foreignObject x="0" y="0" width="32" height="32" mask="url(#)">
+                                        <img src="$user-pfp">
+                                    </foreignObject>
+                                </svg>
+                                <div class="content">
+                                    <!-- TODO -->
+                                </div>
+                            </li>
+                        </template>
+                    </div>
                 </section>
             </section>
         </template>

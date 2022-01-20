@@ -359,6 +359,21 @@ function displayPrivateChat(json: Object) {
     console.log("amogus")
 }
 
-function displayGroupChat(json: Object) {
-    console.log("susss")
+function displayGroupChat(group: GroupChatObj) {
+    // clear maincontent and display
+    mainContent.innerHTML = "";
+    appendTemplateElement(
+        document.getElementById("group-chat-tmp") as HTMLTemplateElement,
+        mainContent,
+        template => {
+            // set the d attribute for all svg path elements
+            template.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
+
+            // set header title to the groupchat name
+            template.querySelector<HTMLSpanElement>("h3.header .title")!.innerHTML  = `
+                <input type="text" value="${group.name}">
+            `;
+            
+        }
+    );
 }

@@ -44,6 +44,7 @@
             "id": 3,
             "sender": 1002,
             "date":"Today at 1:02 PM",
+            "text": "",
             "embeds": [
                 "https://tenor.com/view/spongebob-innocent-citizen-innocent-citizen-of-new-jersey-new-jersey-gif-21177040"
             ]
@@ -130,6 +131,7 @@
             "id": 13,
             "sender": 1004,
             "date": "Today at 1:05 PM",
+            "text": "",
             "replyTo": 12,
             "embeds": [
                 "https://tenor.com/view/youre-your-spies-spies-in-disguise-youre-spies-gif-20405819"

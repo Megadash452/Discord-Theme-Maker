@@ -12,7 +12,7 @@ interface GroupChat extends PrivateChat {
     memberCount: number
 };
 
-interface Server {
+interface ServerGuild {
     name: string,
     picture: string,
     unreads: boolean,
@@ -22,10 +22,33 @@ interface Server {
 }
 interface Folder {
     name: string,
-    color: string
+    color: string,
     state: "colapsed" | "opened",
-    guilds: Array<Server>
+    guilds: Array<ServerGuild>
 }
+
+interface Reaction {
+    // user id
+    sender: number,
+    emoji: string
+}
+interface Message {
+    sender: number, // user id
+    date: string, // mm/dd/yyy OR day-of-week/"Tooday" at 12-hour-time
+    text: string,
+    edited?: boolean,
+    replyTo?: number, // index of message/message id
+    reactions?: Array<Reaction>,
+    embeds?: Array<string>
+}
+interface GroupChatObj {
+    name: string,
+    avatarUrl: string,
+    owner: string, // user id
+    members: Array<number>, // user ids
+    messages: Array<Message>
+}
+
 
 function getAcronym(str: string): string {
     str = str.trim();

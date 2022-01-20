@@ -208,6 +208,7 @@ button[data-tooltip]::before, a[data-tooltip]::before {
   text-align: center;
   font-family: Roboto, sans-serif;
   font-size: 1rem;
+  white-space: nowrap;
   margin: 0;
   padding: 0.5rem 0.75rem;
   border-radius: 5px;

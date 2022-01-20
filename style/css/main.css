@@ -433,8 +433,8 @@ body.dark #main-content .head .tools button {
 body.dark #main-content .head .tools button:hover {
   color: #dcddde;
 }
-body.dark #main-content .head .tools button:active, body.dark #main-content .head .tools button.active {
-  color: #dcddde;
+body.dark #main-content .head .tools button.active {
+  color: #fff;
 }
 body.dark #main-content .content {
   scrollbar-color: #202225 #2f3136;
@@ -530,14 +530,7 @@ body.dark #main-content .content .sidebar[content=active-now] {
 body.dark #main-content .content .sidebar[content=members] {
   background-color: #2f3136;
 }
-body.dark #main-content .content .sidebar[content=members] .scroller {
-  scrollbar-color: #0000 #0000;
-}
-body.dark #main-content .content .sidebar[content=members] .scroller:hover {
-  scrollbar-color: #202225 #0000;
-}
 body.dark #main-content .content .sidebar .scroller {
-  scrollbar-color: #202225 #0000;
   border-color: #ffffff0f;
 }
 body.dark #main-content .content .sidebar .scroller .header {
@@ -1571,7 +1564,7 @@ hr.vertical {
   display: flex;
   align-items: center;
 }
-#app-base #main-content .head .tools button {
+#app-base #main-content .head .tools button, #app-base #main-content .head .tools .search-bar {
   margin: 0 8px;
   flex: 0 0 auto;
 }
@@ -1836,12 +1829,12 @@ hr.vertical {
 #app-base #main-content .content main.chat .tab .scroller li.item .actions button:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar {
+#app-base #main-content .content .sidebar[content=active-now] {
   min-width: 360px;
   max-width: 420px;
   flex: 0 1 30%;
 }
-#app-base #main-content .content .sidebar .scroller {
+#app-base #main-content .content .sidebar[content=active-now] .scroller {
   height: 100%;
   min-height: 0;
   position: relative;
@@ -1855,46 +1848,46 @@ hr.vertical {
   list-style: none;
   transition: scrollbar-color;
 }
-#app-base #main-content .content .sidebar .scroller.empty li.item.empty-card {
+#app-base #main-content .content .sidebar[content=active-now] .scroller.empty li.item.empty-card {
   display: block;
 }
-#app-base #main-content .content .sidebar .scroller .header {
+#app-base #main-content .content .sidebar[content=active-now] .scroller .header {
   margin: 8px 0 16px;
   font: 20px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 24px;
 }
-#app-base #main-content .content .sidebar .scroller li.item {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item {
   border-radius: 8px;
   padding: 16px;
   margin: 8px 0 0 0;
   cursor: pointer;
   user-select: none;
 }
-#app-base #main-content .content .sidebar .scroller li.item:first-child {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar .scroller li.item.spotify .body .wrapper .section-icon {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.spotify .body .wrapper .section-icon {
   mask: none;
 }
-#app-base #main-content .content .sidebar .scroller li.item.empty-card {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card {
   display: none;
   text-align: center;
   cursor: default;
 }
-#app-base #main-content .content .sidebar .scroller li.item.empty-card .title {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card .title {
   font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
   margin: 0 0 4px 0;
 }
-#app-base #main-content .content .sidebar .scroller li.item.empty-card .subtitle {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 18px;
   padding: 0;
 }
-#app-base #main-content .content .sidebar .scroller li.item header {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header {
   height: 36px;
   display: grid;
   grid-gap: 12px;
@@ -1902,32 +1895,32 @@ hr.vertical {
   align-items: center;
   position: relative;
 }
-#app-base #main-content .content .sidebar .scroller li.item header svg.avatar {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header svg.avatar {
   pointer-events: none;
 }
-#app-base #main-content .content .sidebar .scroller li.item header .title, #app-base #main-content .content .sidebar .scroller li.item header .subtitle {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .title, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .subtitle {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content .sidebar .scroller li.item header .title {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .title {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
 }
-#app-base #main-content .content .sidebar .scroller li.item header .subtitle {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 18px;
 }
-#app-base #main-content .content .sidebar .scroller li.item header .header-icon {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .header-icon {
   width: 24px;
   height: 24px;
   aspect-ratio: 1;
   border-radius: 8px;
   justify-self: end;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body {
   display: grid;
   grid-gap: 12px;
   grid-template-columns: 32px minmax(20px, auto) max-content;
@@ -1937,7 +1930,7 @@ hr.vertical {
   margin: 12px 0 0 0;
   border-radius: 8px;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .section-icon {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .section-icon {
   width: 32px;
   height: 32px;
   aspect-ratio: 1;
@@ -1945,7 +1938,7 @@ hr.vertical {
   mask-size: 100%;
   mask-type: luminance;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .badge-wrapper {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper {
   width: 16px;
   height: 16px;
   aspect-ratio: 1;
@@ -1959,51 +1952,51 @@ hr.vertical {
   right: -2px;
   border-radius: 50%;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .badge-wrapper .icon-badge {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper .icon-badge {
   width: 16px;
   height: 16px;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .wrapper {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper {
   width: 32px;
   height: 32px;
   position: relative;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .wrapper .section-icon {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper .section-icon {
   mask: url(#user-status-small-mask);
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .wrapper.server .section-icon {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .section-icon {
   border-radius: 50%;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .wrapper.server .icon-badge {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .icon-badge {
   width: 10px;
   height: 10px;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .name:hover a {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .name:hover a {
   text-decoration: underline;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .title, #app-base #main-content .content .sidebar .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar .scroller li.item .body .time-elapsed {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .title, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .title {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .title {
   display: block;
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 18px;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar .scroller li.item .body .time-elapsed {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
   display: block;
   font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 16px;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .users {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users {
   height: 24px;
   display: flex;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .users img {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img {
   width: 24px;
   height: 24px;
   aspect-ratio: 1;
@@ -2011,13 +2004,17 @@ hr.vertical {
   border-radius: 50%;
   mask: url(#users-list-item-mask);
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .users img:first-child {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar .scroller li.item .body .users img:last-child {
+#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img:last-child {
   mask: none;
 }
-
+#app-base #main-content .content .sidebar:not([content=active-now]) {
+  min-width: 240px;
+  max-height: 100%;
+  position: relative;
+}
 button[data-tooltip]::before, a[data-tooltip]::before {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;

@@ -204,6 +204,9 @@ fetch("script/data/chats.json").then(response => response.json()).then(json => {
         chat.addEventListener('click', () => {
             const chatUrl = chat.getAttribute('href');
             fetch("script/data/" + chatUrl).then(response => response.json()).then(json => {
+                // set the name of the ocntent that is being displayed at #main-content
+                document.getElementById("main-content").setAttribute('content', chatUrl.replace(RegExp("chats-data/"), '')
+                    .replace(RegExp(".json"), ''));
                 // dm-channels content can only be of type .dm.json or .gc.json
                 if (chatUrl.indexOf(".dm.json") > -1)
                     displayPrivateChat(json);

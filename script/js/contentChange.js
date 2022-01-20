@@ -329,6 +329,14 @@ function displayPrivateChat(json) {
     console.log("amogus");
 }
 function displayGroupChat(json) {
-    console.log("susss");
+    // clear maincontent and display
+    mainContent.innerHTML = "";
+    appendTemplateElement(document.getElementById("group-chat-tmp"), mainContent, template => {
+        var _a;
+        // set the d attribute for all svg path elements
+        (_a = template.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
+        // set header title to the groupchat name
+        template.querySelector("h3.header .title").innerText = json.name;
+    });
 }
 //# sourceMappingURL=contentChange.js.map
