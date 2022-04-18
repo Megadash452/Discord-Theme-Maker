@@ -9,10 +9,7 @@
 			"problemMatcher": [
 				"$tsc-watch"
 			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+			"group": "build"
 		},
 		{
 			"type": "typescript",
@@ -21,7 +18,10 @@
 			"problemMatcher": [
 				"$tsc"
 			],
-			"group": "build"
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }
