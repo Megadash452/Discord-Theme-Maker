@@ -217,9 +217,9 @@ function assignIconData(path: Element | null) {
             if (base == undefined) {
                 let type: string;
                 if (data.constructor === Array)
-                type = "array";
+                    type = "array";
                 else
-                type = typeof data;
+                    type = typeof data;
                 
                 console.error("Cannot set property of type", type, "in", name, "as SVG Path Data");
                 return "";
