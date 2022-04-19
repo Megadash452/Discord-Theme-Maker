@@ -158,8 +158,13 @@ const iconOthers = {
 
 
 
-function assignIconData(path: Element) {
-    let name = path.getAttribute("icon-data")!;
+function assignIconData(path: Element | null) {
+    let name = path?.getAttribute("icon-data");
+    if (!name || !path) {
+        console.error("Element ", path, " is not a path[icon-data] element");
+        return;
+    }
+
     let rtrn = "";
     
     let hasSeparator = false;
