@@ -338,7 +338,7 @@ function displayGroupChat(group) {
         // sidebar
         template.querySelector(".content .sidebar .header").innerText = `Members—${group.members.length}`;
         appendGroupMemberElements(template.querySelector(".content .sidebar .scroller"), group.members, group.owner);
-        // set the d attribute for all svg path elements
+        // set the d attribute for all svg path elements. Do this last
         (_a = template.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
     });
 }

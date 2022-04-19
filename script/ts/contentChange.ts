@@ -372,7 +372,7 @@ function displayGroupChat(group: GroupChatObj) {
             template.querySelector<HTMLElement>(".content .sidebar .header")!.innerText = `Members—${group.members.length}`;
             appendGroupMemberElements(template.querySelector(".content .sidebar .scroller"), group.members, group.owner);
 
-            // set the d attribute for all svg path elements
+            // set the d attribute for all svg path elements. Do this last
             template.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
         }
     );
