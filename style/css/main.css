@@ -2181,9 +2181,9 @@ hr.vertical {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 1px 8px;
+  padding: 0 8px;
   border-radius: 4px;
-  margin: 0 0 0 8px;
+  margin: 1px 0 1px 8px;
   cursor: pointer;
 }
 #app-base #main-content > .content .sidebar:not([content=active-now]) .item.offline {
