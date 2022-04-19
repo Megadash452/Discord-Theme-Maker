@@ -44,7 +44,7 @@ interface Message {
 interface GroupChatObj {
     name: string,
     avatarUrl: string,
-    owner: string, // user id
+    owner: number,
     members: Array<number>, // user ids
     messages: Array<Message>
 }
@@ -66,26 +66,14 @@ function getAcronym(str: string): string {
 
 function appendTemplateElement(template: HTMLTemplateElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
     let tmp = template.content.cloneNode(true) as HTMLElement;
-    let first = tmp.querySelector("*") as HTMLElement;
 
-    if (first == null) {
+    if (tmp.querySelector("*") == null) {
         console.error("Template", template,"does not contain any elements");
         return;
     } else
         templateManipulator(tmp);
     
-    element.appendChild(tmp.cloneNode(true));
-}
-function appendTemplateNode(template: HTMLElement, element: HTMLElement, templateManipulator = (tmp: HTMLElement) => {}) {
-    let first = template.querySelector("*") as HTMLElement;
-
-    if (first == null) {
-        console.error("Template", template,"does not contain any elements");
-        return;
-    } else
-        templateManipulator(template);
-    
-    element.appendChild(template.cloneNode(true));
+    element.appendChild(tmp);
 }
 
 
@@ -189,5 +177,70 @@ function setToggleClasses(element: HTMLElement, classes: Array<string>, target=e
             target.classList.add(classes[0]);
         else
             target.classList.add(classes[index + 1])
+    });
+}
+
+
+// Create a user element from each user-id in array using script/data/user.json, and append it to *element*
+function appendGroupMemberElements(element: HTMLElement | null, userIds: Array<number>, ownerId: number) {
+    let tmp: any = document.getElementById("member-tmp") as HTMLTemplateElement | null;
+
+    if (!tmp) {
+        console.error("Template for member not found");
+        return;
+    }
+
+    fetch("script/data/users.json").then(
+        response => response.json()
+    ).then(json => {
+        for (let userId of userIds)
+        {
+            // The member Element to be appended
+            let memEl = tmp.content.cloneNode(true);
+
+            let member = json[`${userId}`];
+            if (member == null) {
+                console.error("Member with id <" + userId + "> not found");
+                // continue;
+                member = {
+                    avatar: "$userPfp",
+                    username: "$uid: " + userId
+                };
+            }
+
+            memEl.querySelector(".avatar img, img.avatar")?.setAttribute('src', member.avatar);
+            // Status Badge
+            if (member.status == "offline" && member.friend)
+                memEl.querySelector("li.item")?.classList.add("offline");
+            else if (member.status != "offline")
+            {
+                // TODO: normal status badge (online, idle, etc.)
+            }
+
+            // Name
+            memEl.querySelector(".title .name").innerText = member.username;
+            // Owner Icon
+            if (userId == ownerId) {
+                memEl.querySelector(".title .owner-icon").style.display = "block";
+                assignIconData(memEl.querySelector(".title .owner-icon path[icon-data]"));
+            }
+            else
+                memEl.querySelector(".title .owner-icon").remove();
+
+            // Subtitle
+            if (member.description) {
+                memEl.querySelector(".subtitle .description").innerText = member.description;
+                memEl.querySelector(".subtitle .activity-icon").remove();
+            }
+            else if (member.activity) {
+                memEl.querySelector(".subtitle .description").innerText = member.activity;
+                memEl.querySelector(".subtitle .activity-icon").style.display = "block";
+                assignIconData(memEl.querySelector(".subtitle .activity-icon path[icon-data]"));
+            }
+            else
+                memEl.querySelector(".subtitle").style.display = "none";
+
+            element?.appendChild(memEl);
+        }
     });
 }

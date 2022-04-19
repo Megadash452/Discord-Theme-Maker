@@ -366,14 +366,14 @@ function displayGroupChat(group: GroupChatObj) {
         document.getElementById("group-chat-tmp") as HTMLTemplateElement,
         mainContent,
         template => {
+            // set header title to the groupchat name
+            template.querySelector<HTMLSpanElement>(".header input.title")!.setAttribute('value', group.name);
+            // sidebar
+            template.querySelector<HTMLElement>(".content .sidebar .header")!.innerText = `Members—${group.members.length}`;
+            appendGroupMemberElements(template.querySelector(".content .sidebar .scroller"), group.members, group.owner);
+
             // set the d attribute for all svg path elements
             template.querySelectorAll("path[icon-data]")?.forEach(assignIconData);
-
-            // set header title to the groupchat name
-            template.querySelector<HTMLSpanElement>("h3.header .title")!.innerHTML  = `
-                <input type="text" value="${group.name}">
-            `;
-            
         }
     );
 }

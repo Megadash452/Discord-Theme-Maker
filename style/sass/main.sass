@@ -234,6 +234,11 @@ body.dark
                     color: #fff
                     svg
                         color: #72767d
+                    input.title
+                        color: #dcddde
+                        background-color: #0000
+                        &:hover
+                            box-shadow: inset 0 0 0 1px #202225
                 .tab-btns button
                     color: #b9bbbe
                     background-color: #0000 
@@ -328,12 +333,10 @@ body.dark
             .sidebar
                 &[content="active-now"]
                     background-color: #36393f
-                &[content="members"]
-                    background-color: #2f3136
-                .scroller
-                    border-color: #ffffff0f
-                    .header
-                        color: #fff
+                    .scroller
+                        border-color: #ffffff0f
+                        .header
+                            color: #fff
                     li.item
                         background-color: #2f3136
                         border-color: rgba(255, 255, 255, 0.06)
@@ -358,6 +361,20 @@ body.dark
                                 color: #dcddde
                             .server .badge-wrapper
                                 background-color: #18191c
+                &[content="members"]
+                    color: #8e9297
+                    background-color: #2f3136
+                    .item
+                        &:hover
+                            color: #dcddde
+                            background-color: #4f545c66
+                        &:active
+                            color: #fff
+                            background-color: #4f545c99
+                        .subtitle // To keep color from changing on hover
+                            color: #8e9297
+                        .owner-icon
+                            color: var(--warning-col)
             #members-sidebar
                 background-color: #2f3136
 
@@ -932,13 +949,10 @@ hr.vertical
                     margin: 18px 8px 4px 18px
                     border-radius: 4px
                     box-sizing: border-box
-                    font: 12px Ginto, "Helvetica Neue", Helvetica, sans-serif
-                    font-weight: 600
-                    line-height: 16px
-                    letter-spacing: 0.25px
-                    white-space: nowrap
-                    text-overflow: ellipsis
                     display: flex
+                    +font(12px, Ginto, 600, 16px)
+                    letter-spacing: 0.25px
+                    +ellipsis
                     span
                         flex: 1
                     button.add
@@ -967,23 +981,15 @@ hr.vertical
                 .title
                     display: block
                     margin: 0
-                    font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                    font-weight: 500
-                    line-height: 20px
-                    white-space: nowrap
-                    overflow: hidden
-                    text-overflow: ellipsis
+                    +font(16px, Whitney, 500, 20px)
+                    +ellipsis
                     flex: 1 1 auto
 
                 .subtitle
                     display: block
                     margin: -2px 0 0 0
-                    font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                    font-weight: 500
-                    line-height: 16px
-                    white-space: nowrap
-                    overflow: hidden
-                    text-overflow: ellipsis
+                    +font(12px, Whitney, 500, 16px)
+                    +ellipsis
 
                 .avatar
                     margin-right: 12px //
@@ -998,9 +1004,7 @@ hr.vertical
 
                 .content
                     flex: 1 1 auto
-                    overflow: hidden
-                    white-space: nowrap
-                    text-overflow: ellipsis
+                    +ellipsis
                 &:hover
                     .close
                         display: block
@@ -1049,9 +1053,7 @@ hr.vertical
                             margin: 0 0 2px 0
                             font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                             font-weight: 600
-                            overflow: hidden
-                            white-space: nowrap
-                            text-overflow: ellipsis
+                            +ellipsis
                             &.connected
                                 color: #4fdc7c
                             // &.connecting
@@ -1071,9 +1073,7 @@ hr.vertical
                             font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                             line-height: 13px
                             text-decoration: none
-                            overflow: hidden
-                            white-space: nowrap
-                            text-overflow: ellipsis
+                            +ellipsis
                             cursor: pointer
 
                     button.disconnect
@@ -1105,13 +1105,9 @@ hr.vertical
                         padding: 2px 16px
                         border-radius: 3px
                         margin: 0 4px
-                        font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
-                        font-weight: 500
-                        line-height: 16px
+                        +font(14px, Whitney, 500, 16px)
+                        +ellipsis
                         transition: background-color .17s ease, color .17s ease
-                        white-space: nowrap
-                        text-overflow: ellipsis
-                        overflow: hidden
                         &:first-child
                             margin-left: 0
                         &:last-child
@@ -1143,9 +1139,7 @@ hr.vertical
                         font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                         font-weight: 600
                         line-height: 18px
-                        overflow: hidden
-                        white-space: nowrap
-                        text-overflow: ellipsis
+                        +ellipsis
                     .subtitle
                         // height is 13
                         display: block
@@ -1154,9 +1148,7 @@ hr.vertical
                         font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif //
                         font-weight: 500
                         line-height: 13px
-                        overflow: hidden
-                        white-space: nowrap
-                        text-overflow: ellipsis
+                        +ellipsis
                         span
                             display: block
                             transition: top 0.22s ease
@@ -1236,6 +1228,19 @@ hr.vertical
                     svg
                         flex: 0 0 auto
                         margin: 0 8px
+                    input.title
+                        // * why is element size static?
+                        height: 32px
+                        flex: 0 1 auto
+                        position: relative
+                        box-sizing: border-box
+                        padding: 0 6px
+                        border: none
+                        border-radius: 3px
+                        margin: 0 4px 0 -6px
+                        +font(16px, Ginto, 500, 32px)
+                        +ellipsis
+                        white-space: pre
 
                 .tab-btns
                     display: flex
@@ -1252,9 +1257,7 @@ hr.vertical
                         font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                         font-weight: 500
                         text-align: center
-                        overflow: hidden
-                        white-space: nowrap
-                        text-overflow: ellipsis
+                        +ellipsis
                         &.active
                             cursor: default
                         .badge
@@ -1318,7 +1321,7 @@ hr.vertical
                             // where is opacity changed
 
 
-        .content
+        > .content
             width: 100%
             height: calc(100% - #{$head-height})
             position: relative
@@ -1405,9 +1408,7 @@ hr.vertical
                                 font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                                 font-weight: 500
                                 line-height: 16px
-                                overflow: hidde
-                                white-space: nowrap
-                                text-overflow: ellipsis
+                                +ellipsis
                                 user-select: none
                                 transition: background-color 0.17s ease, color 0.17s ease
                                 &:disabled
@@ -1417,9 +1418,7 @@ hr.vertical
                     &[name="pending"], &[name="blocked"]
                         .scroller li.item
                             .user-info .name .subtitle
-                                font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
-                                font-weight: 500
-                                line-height: 20px
+                                +font(12px, Whitney, 500, 20px)
                             .actions button
                                 &.accept:hover
                                     color: #3ba55d
@@ -1558,9 +1557,7 @@ hr.vertical
                                 font-weight: 600
                                 .username
                                     flex: 0 1 auto
-                                    overflow: hidden
-                                    white-space: nowrap
-                                    text-overflow: ellipsis
+                                    +ellipsis
                                 .tag
                                     visibility: hidden
                                     font-size: 14px
@@ -1570,9 +1567,7 @@ hr.vertical
                             .subtitle
                                 font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                                 font-weight: 500
-                                overflow: hidden
-                                white-space: nowrap
-                                text-overflow: ellipsis
+                                +ellipsis
 
                     .actions
                         display: flex
@@ -1648,9 +1643,7 @@ hr.vertical
                             svg.avatar
                                 pointer-events: none
                             .title, .subtitle
-                                overflow: hidden
-                                white-space: nowrap
-                                text-overflow: ellipsis
+                                +ellipsis
                             .title
                                 font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif
                                 font-weight: 600
@@ -1709,9 +1702,7 @@ hr.vertical
                             .name:hover a
                                 text-decoration: underline
                             .title, .subtitle, .time-elapsed
-                                overflow: hidden
-                                white-space: nowrap
-                                text-overflow: ellipsis
+                                +ellipsis
                                 text-decoration: none
                             .title
                                 display: block
@@ -1746,9 +1737,69 @@ hr.vertical
                 min-width: 240px
                 max-height: 100%
                 position: relative
+                list-style: none
+                user-select: none
                 .scroller
+                    width: 240px
+                    height: auto
+                    padding: 0 0 20px
+                    overflow: hidden scroll
                 
+                .header
+                    height: 40px
+                    box-sizing: border-box
+                    padding: 24px 8px 0 16px
+                    +font(12px, Ginto, 500, 16px)
+                    text-transform: uppercase
+                    letter-spacing: 0.02em
+                    +ellipsis
 
+                .item
+                    max-width: 224px
+                    height: 42px
+                    position: relative
+                    box-sizing: border-box
+                    display: flex
+                    align-items: center
+                    padding: 1px 8px
+                    border-radius: 4px
+                    margin: 0 0 0 8px
+                    cursor: pointer
+                    // transition: none
+                    &.offline
+                        opacity: 0.3
+                    .avatar
+                        flex: 0 0 auto
+                        margin-right: 12px
+                    .content
+                        flex: 1 1 auto
+                        +ellipsis
+                        .title
+                            display: flex
+                            justify-content: flex-start
+                            align-items: center
+                            padding: 0
+                            .name
+                                flex: 0 1 auto
+                                display: block
+                                +font(16px, Whitney, 500, 20px)
+                                +ellipsis
+                            svg, .owner-icon
+                                flex: 0 0 auto
+                                position: relative
+                                top: 1px
+                                margin: 0 0 0 4px
+                        .subtitle
+                            display: flex
+                            align-items: center
+                            margin: -2px 0 0 0
+                            +font(12px, Whitney, 500, 16px)
+                            .description
+                                flex: 0 1 auto
+                                +ellipsis
+                            .activity-icon
+                                flex: 0 0 auto
+                                margin: 0 0 0 2px
 
 
 button, a

@@ -328,15 +328,18 @@ document.getElementById("nitro").addEventListener('click', e => {
 function displayPrivateChat(json) {
     console.log("amogus");
 }
-function displayGroupChat(json) {
+function displayGroupChat(group) {
     // clear maincontent and display
     mainContent.innerHTML = "";
     appendTemplateElement(document.getElementById("group-chat-tmp"), mainContent, template => {
         var _a;
+        // set header title to the groupchat name
+        template.querySelector(".header input.title").setAttribute('value', group.name);
+        // sidebar
+        template.querySelector(".content .sidebar .header").innerText = `Members—${group.members.length}`;
+        appendGroupMemberElements(template.querySelector(".content .sidebar .scroller"), group.members, group.owner);
         // set the d attribute for all svg path elements
         (_a = template.querySelectorAll("path[icon-data]")) === null || _a === void 0 ? void 0 : _a.forEach(assignIconData);
-        // set header title to the groupchat name
-        template.querySelector("h3.header .title").innerText = json.name;
     });
 }
 //# sourceMappingURL=contentChange.js.map

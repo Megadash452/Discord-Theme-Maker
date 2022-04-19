@@ -13,24 +13,13 @@ function getAcronym(str) {
 }
 function appendTemplateElement(template, element, templateManipulator = (tmp) => { }) {
     let tmp = template.content.cloneNode(true);
-    let first = tmp.querySelector("*");
-    if (first == null) {
+    if (tmp.querySelector("*") == null) {
         console.error("Template", template, "does not contain any elements");
         return;
     }
     else
         templateManipulator(tmp);
-    element.appendChild(tmp.cloneNode(true));
-}
-function appendTemplateNode(template, element, templateManipulator = (tmp) => { }) {
-    let first = template.querySelector("*");
-    if (first == null) {
-        console.error("Template", template, "does not contain any elements");
-        return;
-    }
-    else
-        templateManipulator(template);
-    element.appendChild(template.cloneNode(true));
+    element.appendChild(tmp);
 }
 function activeBtns(...btns) {
     // buttons will have a relationship where when one is clicked, it gets .active, but buttons with .active have the class removed
@@ -118,6 +107,59 @@ function setToggleClasses(element, classes, target = element) {
             target.classList.add(classes[0]);
         else
             target.classList.add(classes[index + 1]);
+    });
+}
+// Create a user element from each user-id in array using script/data/user.json, and append it to *element*
+function appendGroupMemberElements(element, userIds, ownerId) {
+    let tmp = document.getElementById("member-tmp");
+    if (!tmp) {
+        console.error("Template for member not found");
+        return;
+    }
+    fetch("script/data/users.json").then(response => response.json()).then(json => {
+        var _a, _b;
+        for (let userId of userIds) {
+            // The member Element to be appended
+            let memEl = tmp.content.cloneNode(true);
+            let member = json[`${userId}`];
+            if (member == null) {
+                console.error("Member with id <" + userId + "> not found");
+                // continue;
+                member = {
+                    avatar: "$userPfp",
+                    username: "$uid: " + userId
+                };
+            }
+            (_a = memEl.querySelector(".avatar img, img.avatar")) === null || _a === void 0 ? void 0 : _a.setAttribute('src', member.avatar);
+            // Status Badge
+            if (member.status == "offline" && member.friend)
+                (_b = memEl.querySelector("li.item")) === null || _b === void 0 ? void 0 : _b.classList.add("offline");
+            else if (member.status != "offline") {
+                // TODO: normal status badge (online, idle, etc.)
+            }
+            // Name
+            memEl.querySelector(".title .name").innerText = member.username;
+            // Owner Icon
+            if (userId == ownerId) {
+                memEl.querySelector(".title .owner-icon").style.display = "block";
+                assignIconData(memEl.querySelector(".title .owner-icon path[icon-data]"));
+            }
+            else
+                memEl.querySelector(".title .owner-icon").remove();
+            // Subtitle
+            if (member.description) {
+                memEl.querySelector(".subtitle .description").innerText = member.description;
+                memEl.querySelector(".subtitle .activity-icon").remove();
+            }
+            else if (member.activity) {
+                memEl.querySelector(".subtitle .description").innerText = member.activity;
+                memEl.querySelector(".subtitle .activity-icon").style.display = "block";
+                assignIconData(memEl.querySelector(".subtitle .activity-icon path[icon-data]"));
+            }
+            else
+                memEl.querySelector(".subtitle").style.display = "none";
+            element === null || element === void 0 ? void 0 : element.appendChild(memEl);
+        }
     });
 }
 //# sourceMappingURL=util.js.map

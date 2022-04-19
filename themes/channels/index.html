@@ -280,7 +280,7 @@
                         <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor" icon-data="members"/>
                         </svg>
-                        <span class="title">Group-Chat-Name</span>
+                        <input class="title" type="text" value="${group.name}">
                     </h3>
                 </div>
                 <div class="tools">
@@ -335,21 +335,9 @@
                 </main>
                 <section class="sidebar" content="members">
                     <div class="scroller thin-scroller fade-scroller">
-                        <h3 class="title">Members—$member-count</h3>
+                        <h3 class="header">Members—${member-count}</h3>
 
-                        <template class="member">
-                            <li class="item">
-                                <!-- TODO: may change viewbox.width to 32 -->
-                                <svg class="avatar" width="32" height="32" viewBox="0 0 40 32">
-                                    <foreignObject x="0" y="0" width="32" height="32" mask="url(#)">
-                                        <img src="$user-pfp">
-                                    </foreignObject>
-                                </svg>
-                                <div class="content">
-                                    <!-- TODO -->
-                                </div>
-                            </li>
-                        </template>
+                        <!-- Here goes members -->
                     </div>
                 </section>
             </section>
@@ -358,6 +346,31 @@
 
         <template id="server-tmp">
             <!-- TODO: -->
+        </template>
+
+
+        <template id="member-tmp">
+            <li class="item">
+                <svg class="avatar" width="32" height="32" viewBox="0 0 32 32">
+                    <foreignObject x="0" y="0" width="32" height="32" mask="url(#)">
+                        <img src="$user-pfp" width="100%" height="100%">
+                    </foreignObject>
+                </svg>
+                <div class="content">
+                    <div class="title">
+                        <h2 class="name">${username}</h2>
+                        <svg class="owner-icon" data-tooltip="Group Owner" tooltip-direction="up" style="display: none" width="14" height="14" viewBox="0 0 16 16">
+                            <path fill="currentColor" icon-data="crown"/>
+                        </svg>
+                    </div>
+                    <div class="subtitle">
+                        <p class="description">${user_desc}</p>
+                        <svg class="activity-icon" style="display: none" width="16" height="16" viewBox="0 0 16 16">
+                            <path fill="currentColor" transform="translate(3 3)" icon-data="activity"/>
+                        </svg>
+                    </div>
+                </div>
+            </li>
         </template>
         
         

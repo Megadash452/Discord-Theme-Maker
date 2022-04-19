@@ -1,24 +1,25 @@
-[
-    {
+{
+    "1000": {
         "id": 1000,
         "username": "MyName",
         "tag": "1234",
         "avatar": "res/imgs/user-1.png",
+        "status": "online",
         "description": "C++ Programming Language",
         "about": "3 syllables, 6 letters. Say it and I'm yours",
+        "activity": "Dolphin Emulator",
         "bannerCol": "#fff",
         "bannerImg": "",
         "note": "I agree",
         "friend": true
     },
 
-    "///",
-
-    {
+    "1005": {
         "id": 1005,
         "username": "Rando 1",
         "tag": "0000",
         "avatar": "res/imgs/user-5.png",
+        "status": "offline",
         "description": "I am root",
         "about": "sudo",
         "bannerCol": "#fff",
@@ -26,4 +27,4 @@
         "note": "I disagree",
         "friend": false
     }
-]
+}

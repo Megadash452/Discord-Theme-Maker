@@ -151,6 +151,7 @@ body.dark {
   --second-active-bg: #4f545c52;
   --link-col: #00aff4;
   --ping-col: #ed4245;
+  --warning-col: #faa81a;
   --scrollbar-col: var(--main-bg);
   --scrollbar-bg: #2e3338;
   --accent-col: #5865f2;
@@ -158,6 +159,7 @@ body.dark {
   --logo-darker-col: #72767d4d;
   --divider-col: #ffffff0f;
   --banner-bg: #18191c;
+  --channel-col: #8e9297;
 }
 
 body.light {
@@ -401,6 +403,13 @@ body.dark #main-content .head .info .header {
 body.dark #main-content .head .info .header svg {
   color: #72767d;
 }
+body.dark #main-content .head .info .header input.title {
+  color: #dcddde;
+  background-color: #0000;
+}
+body.dark #main-content .head .info .header input.title:hover {
+  box-shadow: inset 0 0 0 1px #202225;
+}
 body.dark #main-content .head .info .tab-btns button {
   color: #b9bbbe;
   background-color: #0000;
@@ -529,48 +538,63 @@ body.dark #main-content .content main.chat .scroller li.item .actions button:act
 body.dark #main-content .content .sidebar[content=active-now] {
   background-color: #36393f;
 }
-body.dark #main-content .content .sidebar[content=members] {
-  background-color: #2f3136;
-}
-body.dark #main-content .content .sidebar .scroller {
+body.dark #main-content .content .sidebar[content=active-now] .scroller {
   border-color: #ffffff0f;
 }
-body.dark #main-content .content .sidebar .scroller .header {
+body.dark #main-content .content .sidebar[content=active-now] .scroller .header {
   color: #fff;
 }
-body.dark #main-content .content .sidebar .scroller li.item {
+body.dark #main-content .content .sidebar[content=active-now] li.item {
   background-color: #2f3136;
   border-color: rgba(255, 255, 255, 0.06);
 }
-body.dark #main-content .content .sidebar .scroller li.item:hover {
+body.dark #main-content .content .sidebar[content=active-now] li.item:hover {
   background-color: #18191c;
 }
-body.dark #main-content .content .sidebar .scroller li.item.empty-card {
+body.dark #main-content .content .sidebar[content=active-now] li.item.empty-card {
   background-color: #0000;
 }
-body.dark #main-content .content .sidebar .scroller li.item.empty-card .title {
+body.dark #main-content .content .sidebar[content=active-now] li.item.empty-card .title {
   color: #fff;
 }
-body.dark #main-content .content .sidebar .scroller li.item.empty-card .subtitle {
+body.dark #main-content .content .sidebar[content=active-now] li.item.empty-card .subtitle {
   color: #b9bbbe;
 }
-body.dark #main-content .content .sidebar .scroller li.item header .title {
+body.dark #main-content .content .sidebar[content=active-now] li.item header .title {
   color: #dcddde;
 }
-body.dark #main-content .content .sidebar .scroller li.item header .subtitle {
+body.dark #main-content .content .sidebar[content=active-now] li.item header .subtitle {
   color: #b9bbbe;
 }
-body.dark #main-content .content .sidebar .scroller li.item .body {
+body.dark #main-content .content .sidebar[content=active-now] li.item .body {
   background-color: #36393f;
 }
-body.dark #main-content .content .sidebar .scroller li.item .body .title {
+body.dark #main-content .content .sidebar[content=active-now] li.item .body .title {
   color: #dcddde;
 }
-body.dark #main-content .content .sidebar .scroller li.item .body .subtitle, body.dark #main-content .content .sidebar .scroller li.item .body .time-elapsed {
+body.dark #main-content .content .sidebar[content=active-now] li.item .body .subtitle, body.dark #main-content .content .sidebar[content=active-now] li.item .body .time-elapsed {
   color: #dcddde;
 }
-body.dark #main-content .content .sidebar .scroller li.item .body .server .badge-wrapper {
+body.dark #main-content .content .sidebar[content=active-now] li.item .body .server .badge-wrapper {
   background-color: #18191c;
+}
+body.dark #main-content .content .sidebar[content=members] {
+  color: #8e9297;
+  background-color: #2f3136;
+}
+body.dark #main-content .content .sidebar[content=members] .item:hover {
+  color: #dcddde;
+  background-color: #4f545c66;
+}
+body.dark #main-content .content .sidebar[content=members] .item:active {
+  color: #fff;
+  background-color: #4f545c99;
+}
+body.dark #main-content .content .sidebar[content=members] .item .subtitle {
+  color: #8e9297;
+}
+body.dark #main-content .content .sidebar[content=members] .item .owner-icon {
+  color: var(--warning-col);
 }
 body.dark #main-content .content #members-sidebar {
   background-color: #2f3136;
@@ -1209,13 +1233,15 @@ hr.vertical {
   margin: 18px 8px 4px 18px;
   border-radius: 4px;
   box-sizing: border-box;
-  font: 12px Ginto, "Helvetica Neue", Helvetica, sans-serif;
+  display: flex;
+  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0.25px;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  display: flex;
 }
 #app-base #sidebar .channels .scroller .category span {
   flex: 1;
@@ -1246,22 +1272,24 @@ hr.vertical {
 #app-base #sidebar .channels .dm-channel .title {
   display: block;
   margin: 0;
-  font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   font-weight: 500;
   line-height: 20px;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1 1 auto;
 }
 #app-base #sidebar .channels .dm-channel .subtitle {
   display: block;
   margin: -2px 0 0 0;
-  font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 #app-base #sidebar .channels .dm-channel .avatar {
@@ -1391,13 +1419,14 @@ hr.vertical {
   padding: 2px 16px;
   border-radius: 3px;
   margin: 0 4px;
-  font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
   font-weight: 500;
   line-height: 16px;
-  transition: background-color 0.17s ease, color 0.17s ease;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
+  transition: background-color 0.17s ease, color 0.17s ease;
 }
 #app-base #sidebar .media-control .vc-control .actions button:first-child {
   margin-left: 0;
@@ -1532,6 +1561,24 @@ hr.vertical {
   flex: 0 0 auto;
   margin: 0 8px;
 }
+#app-base #main-content .head .info h3.header input.title {
+  height: 32px;
+  flex: 0 1 auto;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 6px;
+  border: none;
+  border-radius: 3px;
+  margin: 0 4px 0 -6px;
+  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: pre;
+}
 #app-base #main-content .head .info .tab-btns {
   display: flex;
 }
@@ -1619,7 +1666,7 @@ hr.vertical {
   position: relative;
   transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 }
-#app-base #main-content .content {
+#app-base #main-content > .content {
   width: 100%;
   height: calc(100% - 48px);
   position: relative;
@@ -1627,51 +1674,51 @@ hr.vertical {
   overflow: hidden;
   transform: translateZ(0);
 }
-#app-base #main-content .content main.chat {
+#app-base #main-content > .content main.chat {
   flex: 1 1 auto;
 }
-#app-base #main-content .content main.chat .tab {
+#app-base #main-content > .content main.chat .tab {
   width: 100%;
   height: 100%;
   display: none;
   flex-direction: column;
 }
-#app-base #main-content .content main.chat .tab.active {
+#app-base #main-content > .content main.chat .tab.active {
   display: flex;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header {
   flex-shrink: 0;
   padding: 20px 30px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .title, #app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .title, #app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle {
   user-select: none;
   line-height: 20px;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .title {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .title {
   margin: 0 0 8px 0;
   font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.message {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle.message {
   margin: 8px 0 0 0;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.message strong {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle.message strong {
   font-weight: 600;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.success {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle.success {
   color: #4fdc7c;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header .subtitle.error {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header .subtitle.error {
   color: #ed4245;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form {
   display: flex;
   align-items: center;
   position: relative;
@@ -1681,16 +1728,16 @@ hr.vertical {
   border-style: solid;
   border-radius: 8px;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form:focus-within {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form:focus-within {
   border-color: #00aff4;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form.success {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form.success {
   border-color: #3ba55d;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form.error {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form.error {
   border-color: #ed4245;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form input {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form input {
   flex: 1 1 auto;
   z-index: 1;
   margin: 0 16px 0 0;
@@ -1699,14 +1746,14 @@ hr.vertical {
   outline: 0;
   box-sizing: border-box;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form input, #app-base #main-content .content main.chat .tab[name=add-friend] header form .input-overlay {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form input, #app-base #main-content > .content main.chat .tab[name=add-friend] header form .input-overlay {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.04em;
   white-space: pre;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form .input-overlay {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form .input-overlay {
   position: absolute;
   top: auto;
   bottom: auto;
@@ -1716,7 +1763,7 @@ hr.vertical {
   cursor: text;
   box-sizing: border-box;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form button {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form button {
   height: 32px;
   min-width: 60px;
   min-height: 32px;
@@ -1727,28 +1774,29 @@ hr.vertical {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 16px;
-  overflow: hidde;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-#app-base #main-content .content main.chat .tab[name=add-friend] header form button:disabled {
+#app-base #main-content > .content main.chat .tab[name=add-friend] header form button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .user-info .name .subtitle, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .user-info .name .subtitle {
-  font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+#app-base #main-content > .content main.chat .tab[name=pending] .scroller li.item .user-info .name .subtitle, #app-base #main-content > .content main.chat .tab[name=blocked] .scroller li.item .user-info .name .subtitle {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   font-weight: 500;
   line-height: 20px;
 }
-#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .actions button.accept:hover, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .actions button.accept:hover {
+#app-base #main-content > .content main.chat .tab[name=pending] .scroller li.item .actions button.accept:hover, #app-base #main-content > .content main.chat .tab[name=blocked] .scroller li.item .actions button.accept:hover {
   color: #3ba55d;
 }
-#app-base #main-content .content main.chat .tab[name=pending] .scroller li.item .actions button.reject:hover, #app-base #main-content .content main.chat .tab[name=blocked] .scroller li.item .actions button.reject:hover {
+#app-base #main-content > .content main.chat .tab[name=pending] .scroller li.item .actions button.reject:hover, #app-base #main-content > .content main.chat .tab[name=blocked] .scroller li.item .actions button.reject:hover {
   color: #ed4245;
 }
-#app-base #main-content .content main.chat .scroller {
+#app-base #main-content > .content main.chat .scroller {
   --margin-top: 8px;
   height: calc(100% - var(--margin-top));
   min-height: 0;
@@ -1760,7 +1808,7 @@ hr.vertical {
   overflow: hidden scroll;
   scrollbar-width: auto;
 }
-#app-base #main-content .content main.chat .scroller.empty {
+#app-base #main-content > .content main.chat .scroller.empty {
   width: 100%;
   height: auto;
   display: flex;
@@ -1770,14 +1818,14 @@ hr.vertical {
   padding: 0;
   overflow: hidden;
 }
-#app-base #main-content .content main.chat .scroller.empty .wrapper {
+#app-base #main-content > .content main.chat .scroller.empty .wrapper {
   max-width: 440px;
 }
-#app-base #main-content .content main.chat .scroller.empty img {
+#app-base #main-content > .content main.chat .scroller.empty img {
   flex: 0 1 auto;
   margin: 0 0 40px 0;
 }
-#app-base #main-content .content main.chat .scroller.empty .subtitle {
+#app-base #main-content > .content main.chat .scroller.empty .subtitle {
   flex: 0 1 auto;
   margin: 8px 0 0 0;
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1785,7 +1833,7 @@ hr.vertical {
   line-height: 20px;
   text-align: center;
 }
-#app-base #main-content .content main.chat .scroller.empty button {
+#app-base #main-content > .content main.chat .scroller.empty button {
   height: 38px;
   min-width: 96px;
   position: relative;
@@ -1800,7 +1848,7 @@ hr.vertical {
   user-select: none;
   transition: background-color 0.17s ease, color 0.17s ease;
 }
-#app-base #main-content .content main.chat .search-bar {
+#app-base #main-content > .content main.chat .search-bar {
   position: relative;
   display: flex;
   margin: 16px 20px 8px 30px;
@@ -1808,7 +1856,7 @@ hr.vertical {
   border-radius: 4px;
   overflow: hidden;
 }
-#app-base #main-content .content main.chat .search-bar input {
+#app-base #main-content > .content main.chat .search-bar input {
   min-width: 48px;
   height: 30px;
   resize: none;
@@ -1822,7 +1870,7 @@ hr.vertical {
   line-height: 32px;
   appearance: none;
 }
-#app-base #main-content .content main.chat .search-bar .icon-wrapper {
+#app-base #main-content > .content main.chat .search-bar .icon-wrapper {
   width: 32px;
   height: 32px;
   aspect-ratio: 1;
@@ -1830,7 +1878,7 @@ hr.vertical {
   justify-content: center;
   align-items: center;
 }
-#app-base #main-content .content main.chat .search-bar .icon-wrapper .icon {
+#app-base #main-content > .content main.chat .search-bar .icon-wrapper .icon {
   width: 20px;
   height: 20px;
   aspect-ratio: 1;
@@ -1838,7 +1886,7 @@ hr.vertical {
   cursor: text;
   transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 }
-#app-base #main-content .content main.chat .header {
+#app-base #main-content > .content main.chat .header {
   margin: 16px 20px 8px 30px;
   font: 12px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
@@ -1846,7 +1894,7 @@ hr.vertical {
   letter-spacing: 0.25px;
   text-transform: uppercase;
 }
-#app-base #main-content .content main.chat li.item {
+#app-base #main-content > .content main.chat li.item {
   height: 62px;
   display: flex;
   align-items: center;
@@ -1857,24 +1905,24 @@ hr.vertical {
   box-sizing: border-box;
   cursor: pointer;
 }
-#app-base #main-content .content main.chat li.item:hover {
+#app-base #main-content > .content main.chat li.item:hover {
   border-radius: 8px;
   margin: 0 10px 0 20px;
   padding: 0 10px;
 }
-#app-base #main-content .content main.chat li.item:hover .user-info .name .title .tag {
+#app-base #main-content > .content main.chat li.item:hover .user-info .name .title .tag {
   visibility: visible;
 }
-#app-base #main-content .content main.chat li.item .user-info {
+#app-base #main-content > .content main.chat li.item .user-info {
   display: flex;
   overflow: hidden;
   flex-shrink: 0;
 }
-#app-base #main-content .content main.chat li.item .user-info .avatar {
+#app-base #main-content > .content main.chat li.item .user-info .avatar {
   margin: 0 12px 0 0;
   pointer-events: none;
 }
-#app-base #main-content .content main.chat li.item .user-info .name .title {
+#app-base #main-content > .content main.chat li.item .user-info .name .title {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -1883,30 +1931,30 @@ hr.vertical {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
-#app-base #main-content .content main.chat li.item .user-info .name .title .username {
+#app-base #main-content > .content main.chat li.item .user-info .name .title .username {
   flex: 0 1 auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content main.chat li.item .user-info .name .title .tag {
+#app-base #main-content > .content main.chat li.item .user-info .name .title .tag {
   visibility: hidden;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
 }
-#app-base #main-content .content main.chat li.item .user-info .name .subtitle {
+#app-base #main-content > .content main.chat li.item .user-info .name .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content main.chat li.item .actions {
+#app-base #main-content > .content main.chat li.item .actions {
   display: flex;
   margin: 0 0 0 8px;
 }
-#app-base #main-content .content main.chat li.item .actions button {
+#app-base #main-content > .content main.chat li.item .actions button {
   width: 36px;
   height: 36px;
   display: flex;
@@ -1915,15 +1963,15 @@ hr.vertical {
   border-radius: 50%;
   margin: 0 0 0 10px;
 }
-#app-base #main-content .content main.chat li.item .actions button:first-child {
+#app-base #main-content > .content main.chat li.item .actions button:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar[content=active-now] {
+#app-base #main-content > .content .sidebar[content=active-now] {
   min-width: 360px;
   max-width: 420px;
   flex: 0 1 30%;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller {
   height: 100%;
   min-height: 0;
   position: relative;
@@ -1937,46 +1985,46 @@ hr.vertical {
   list-style: none;
   transition: scrollbar-color;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller.empty li.item.empty-card {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller.empty li.item.empty-card {
   display: block;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller .header {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller .header {
   margin: 8px 0 16px;
   font: 20px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 24px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item {
   border-radius: 8px;
   padding: 16px;
   margin: 8px 0 0 0;
   cursor: pointer;
   user-select: none;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item:first-child {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.spotify .body .wrapper .section-icon {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item.spotify .body .wrapper .section-icon {
   mask: none;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item.empty-card {
   display: none;
   text-align: center;
   cursor: default;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card .title {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item.empty-card .title {
   font: 16px Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
   margin: 0 0 4px 0;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item.empty-card .subtitle {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item.empty-card .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 18px;
   padding: 0;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header {
   height: 36px;
   display: grid;
   grid-gap: 12px;
@@ -1984,32 +2032,32 @@ hr.vertical {
   align-items: center;
   position: relative;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header svg.avatar {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header svg.avatar {
   pointer-events: none;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .title, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .subtitle {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header .title, #app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header .subtitle {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .title {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header .title {
   font: 16px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .subtitle {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header .subtitle {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 18px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item header .header-icon {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item header .header-icon {
   width: 24px;
   height: 24px;
   aspect-ratio: 1;
   border-radius: 8px;
   justify-self: end;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body {
   display: grid;
   grid-gap: 12px;
   grid-template-columns: 32px minmax(20px, auto) max-content;
@@ -2019,7 +2067,7 @@ hr.vertical {
   margin: 12px 0 0 0;
   border-radius: 8px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .section-icon {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .section-icon {
   width: 32px;
   height: 32px;
   aspect-ratio: 1;
@@ -2027,7 +2075,7 @@ hr.vertical {
   mask-size: 100%;
   mask-type: luminance;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper {
   width: 16px;
   height: 16px;
   aspect-ratio: 1;
@@ -2041,51 +2089,51 @@ hr.vertical {
   right: -2px;
   border-radius: 50%;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper .icon-badge {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .badge-wrapper .icon-badge {
   width: 16px;
   height: 16px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .wrapper {
   width: 32px;
   height: 32px;
   position: relative;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper .section-icon {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .wrapper .section-icon {
   mask: url(#user-status-small-mask);
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .section-icon {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .section-icon {
   border-radius: 50%;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .icon-badge {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .wrapper.server .icon-badge {
   width: 10px;
   height: 10px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .name:hover a {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .name:hover a {
   text-decoration: underline;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .title, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .title, #app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .title {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .title {
   display: block;
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 18px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .subtitle, #app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .time-elapsed {
   display: block;
   font: 12px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 16px;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .users {
   height: 24px;
   display: flex;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .users img {
   width: 24px;
   height: 24px;
   aspect-ratio: 1;
@@ -2093,17 +2141,107 @@ hr.vertical {
   border-radius: 50%;
   mask: url(#users-list-item-mask);
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img:first-child {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .users img:first-child {
   margin: 0;
 }
-#app-base #main-content .content .sidebar[content=active-now] .scroller li.item .body .users img:last-child {
+#app-base #main-content > .content .sidebar[content=active-now] .scroller li.item .body .users img:last-child {
   mask: none;
 }
-#app-base #main-content .content .sidebar:not([content=active-now]) {
+#app-base #main-content > .content .sidebar:not([content=active-now]) {
   min-width: 240px;
   max-height: 100%;
   position: relative;
+  list-style: none;
+  user-select: none;
 }
+#app-base #main-content > .content .sidebar:not([content=active-now]) .scroller {
+  width: 240px;
+  height: auto;
+  padding: 0 0 20px;
+  overflow: hidden scroll;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .header {
+  height: 40px;
+  box-sizing: border-box;
+  padding: 24px 8px 0 16px;
+  font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item {
+  max-width: 224px;
+  height: 42px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin: 0 0 0 8px;
+  cursor: pointer;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item.offline {
+  opacity: 0.3;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .avatar {
+  flex: 0 0 auto;
+  margin-right: 12px;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .title .name {
+  flex: 0 1 auto;
+  display: block;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .title svg, #app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .title .owner-icon {
+  flex: 0 0 auto;
+  position: relative;
+  top: 1px;
+  margin: 0 0 0 4px;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .subtitle {
+  display: flex;
+  align-items: center;
+  margin: -2px 0 0 0;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .subtitle .description {
+  flex: 0 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#app-base #main-content > .content .sidebar:not([content=active-now]) .item .content .subtitle .activity-icon {
+  flex: 0 0 auto;
+  margin: 0 0 0 2px;
+}
+
 button[data-tooltip]::before, a[data-tooltip]::before {
   font: 14px Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
